@@ -7,7 +7,7 @@
       {{question.label}}
     </h2>
     <div class="answer" *ngFor="let answer of question.answers; let i=index">
-      {{i}} - {{answer.value}} <input type="checkbox" [formControlName]="'isCorrect'">
+      {{i}} - {{answer.value}} <input type="checkbox" [formControlName]="'chose'">
       <br>
     </div>
     <button class="button-card" (click)="valideQuestion()">Valide</button>
