@@ -16,6 +16,8 @@ import { QuestionComponent } from './questions/question/question.component';
 import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { GameQuizComponent } from './quizzes/game-quiz/game-quiz.component';
+import {GameQuestionComponent} from './questions/game-question/game-question.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { UserListComponent } from './users/user-list/user-list.component';
     UserComponent,
     UserFormComponent,
     UserListComponent,
+    GameQuizComponent,
+    GameQuestionComponent,
   ],
   imports: [
     BrowserModule,

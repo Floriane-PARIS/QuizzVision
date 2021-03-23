@@ -1,0 +1,15 @@
+<div class="question-list">
+  <div class="question" *ngFor="let question of quiz.questions">
+    <!--Inputs & Output allow communication between parent & child components.-->
+    <!--More information: https://angular.io/guide/component-interaction-->
+    <h2>
+      <i class="fab fa-leanpub"></i>
+      {{question.label}}
+    </h2>
+    <div class="answer" *ngFor="let answer of question.answers; let i=index">
+      {{i}} - {{answer.value}} <input type="checkbox" [formControlName]="'isCorrect'">
+      <br>
+    </div>
+    <button class="button-card" (click)="valideQuestion()">Valide</button>
+  </div>
+</div>
