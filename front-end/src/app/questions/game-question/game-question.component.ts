@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { Question } from 'src/models/question.model';
+import { Answer } from 'src/models/question.model';
+
 
 @Component({
   selector: 'app-game-question',
@@ -12,6 +14,7 @@ export class GameQuestionComponent implements OnInit {
 
   @Input()
   quiz: Quiz;
+  answer: Answer;
 
   constructor(private quizService: QuizService) { }
 
@@ -19,6 +22,11 @@ export class GameQuestionComponent implements OnInit {
   }
 
   valideQuestion(question: Question): void {
+    console.log("Je valide cette réponse");
+  }
+
+  valideAnswer(answer: Answer): void {
+    this.answer = answer;
     console.log("Je valide cette réponse");
   }
 
