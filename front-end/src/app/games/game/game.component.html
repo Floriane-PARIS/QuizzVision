@@ -1,9 +1,10 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
 
-<div class="question" *ngFor="let question of quiz.questions">
-  <!--Inputs & Output allow communication between parent & child components.-->
-  <!--More information: https://angular.io/guide/component-interaction-->
-  <app-game-question [question]="question"></app-game-question>
+<div class="game">
+  <div class="question" *ngFor="let question of quiz.questions">
+    <!--Inputs & Output allow communication between parent & child components.-->
+    <!--More information: https://angular.io/guide/component-interaction-->
+  </div>
 </div>
 
 
