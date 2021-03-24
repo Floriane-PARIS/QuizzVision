@@ -14,19 +14,17 @@ export class GameQuestionComponent implements OnInit {
 
   @Input()
   quiz: Quiz;
-  answer: Answer;
 
   constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
   }
 
-  valideQuestion(question: Question): void {
+  valideQuestion(): void {
     console.log("Je valide cette réponse");
   }
 
-  valideAnswer(answer: Answer): void {
-    this.answer = answer;
+  valideAnswer(): void {
     console.log("Je valide cette réponse");
   }
 
