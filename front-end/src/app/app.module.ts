@@ -16,7 +16,8 @@ import { QuestionComponent } from './questions/question/question.component';
 import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
-import { GameQuizComponent } from './quizzes/game-quiz/game-quiz.component';
+import { GameComponent } from './games/game/game.component';
+import { GameStartComponent } from './games/game-start/game-start.component';
 import {GameQuestionComponent} from './questions/game-question/game-question.component';
 
 @NgModule({
@@ -33,7 +34,8 @@ import {GameQuestionComponent} from './questions/game-question/game-question.com
     UserComponent,
     UserFormComponent,
     UserListComponent,
-    GameQuizComponent,
+    GameComponent,
+    GameStartComponent,
     GameQuestionComponent,
   ],
   imports: [

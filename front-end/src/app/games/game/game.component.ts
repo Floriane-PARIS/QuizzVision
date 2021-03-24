@@ -3,12 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
+import { Game } from '../../../models/game.model';
+
 @Component({
-  selector: 'app-quiz-game',
-  templateUrl: './game-quiz.component.html',
-  styleUrls: ['./game-quiz.component.scss']
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.scss']
 })
-export class GameQuizComponent implements OnInit {
+export class GameComponent implements OnInit {
 
   public quiz: Quiz;
 

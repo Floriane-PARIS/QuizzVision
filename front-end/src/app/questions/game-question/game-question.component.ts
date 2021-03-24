@@ -13,7 +13,7 @@ import { Answer } from 'src/models/question.model';
 export class GameQuestionComponent implements OnInit {
 
   @Input()
-  quiz: Quiz;
+  question: Question;
   answer: Answer;
 
   constructor(private quizService: QuizService) { }

@@ -1,9 +1,9 @@
 <div class="card">
-  <div class="question" *ngFor="let question of quiz.questions; let j=index">
+  <div class="question" >
     <!--Inputs & Output allow communication between parent & child components.-->
     <!--More information: https://angular.io/guide/component-interaction-->
     <h2>
-     Question {{j+1}} : {{question.label}}
+     Question {{question.label}}
     </h2>
     <div class="answer" *ngFor="let answer of question.answers; let i=index">
       <button class="button-card" (click)="valideAnswer()">{{i+1}} - {{answer.value}}</button>
