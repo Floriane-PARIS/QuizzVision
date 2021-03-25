@@ -35,24 +35,6 @@ router.get('/:answerId', (req, res) => {
   }
 })
 
-/*router.compare('/:answerId', (req, res) =>{
-  try{
-    const answer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId)
-    const correctAnswer = getAnswerFromQuestion(req.params.quizId, req.params.questionId.answer.isCorrect)
-    if(answer == correctAnswer){
-      console.log("votre réponse est correcte")
-    }
-    else{
-      console.log("la réponse est mauvaise.")
-    }
-  } catch (err) {
-    if (err.name === 'NotFoundError') {
-      res.status(404).end()
-    } else {
-      res.status(500).json(err)
-    }
-  }
-})*/
 
 router.post('/', (req, res) => {
   try {
