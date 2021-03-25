@@ -2,9 +2,12 @@
   <h2>Create a new question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
-      Title <br>
+      Question:
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
     </label>
+    <br>
+    Correct Answer:
+    <input type="text" [formControlName]="'value'">
     <br>
     <button class="button-card" (click)="addAnswer()">Add Answer</button>
     <div class="answer" formArrayName="answers">
@@ -14,8 +17,6 @@
             Answer
             <input type="text" [formControlName]="'value'">
             <br>
-            Correct
-            <input type="checkbox" [formControlName]="'isCorrect'">
           </label>
         </div>
       </div>

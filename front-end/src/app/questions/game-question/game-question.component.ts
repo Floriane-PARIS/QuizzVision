@@ -14,6 +14,8 @@ export class GameQuestionComponent implements OnInit {
   @Output()
   deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
+  @Output()
+  nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
   constructor() { }
 
   ngOnInit(): void {
@@ -25,6 +27,10 @@ export class GameQuestionComponent implements OnInit {
 
   valideQuestion(): void {
     this.deleteQuestion.emit(this.question);
+  }
+
+  nextquestion(): void {
+    this.nextQuestion.emit(this.question);
   }
 
 }

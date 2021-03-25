@@ -57,6 +57,13 @@ export class QuizService {
     });
   }
 
+  nextQuestion(quiz:Quiz, question:Question){
+    /*const questionUrl = this.quizUrl + '/' + quiz.id + '/' +this.questionsPath;
+    this.http.get<Question>(urlWithId).subscribe((question) => {
+      this.nextQuestion.next(question);
+    })*/
+  }
+
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());

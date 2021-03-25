@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../../models/question.model';
+import { Answer, Question } from '../../../models/question.model';
 
 @Component({
   selector: 'app-question',
@@ -7,14 +7,15 @@ import { Question } from '../../../models/question.model';
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent implements OnInit {
-
+  //public question: Answer[] = [];
   @Input()
   question: Question;
 
   @Output()
   deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
@@ -23,4 +24,9 @@ export class QuestionComponent implements OnInit {
     this.deleteQuestion.emit(this.question);
   }
 
+  nextQuestion(): void {
+    this.nextQuestion.emit(this.question);
+  }
+
 }
+
