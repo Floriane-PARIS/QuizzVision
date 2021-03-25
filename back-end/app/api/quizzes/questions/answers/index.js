@@ -38,7 +38,7 @@ router.get('/:answerId', (req, res) => {
 router.compare('/:answerId', (req, res) =>{
   try{
     const answer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId)
-    const correctAnswer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId, req.params.answer.isCorrect)
+    const correctAnswer = getAnswerFromQuestion(req.params.quizId, req.params.questionId.answer.isCorrect)
     if(answer == correctAnswer){
       console.log("votre réponse est correcte")
     }
