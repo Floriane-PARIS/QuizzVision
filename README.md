@@ -15,3 +15,6 @@ dans le dossier back-end :
     npm install
     
     npm start
+    
+    
+Chrome : http://localhost:4200
