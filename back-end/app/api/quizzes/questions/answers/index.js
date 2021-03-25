@@ -35,7 +35,7 @@ router.get('/:answerId', (req, res) => {
   }
 })
 
-router.compare('/:answerId', (req, res) =>{
+/*router.compare('/:answerId', (req, res) =>{
   try{
     const answer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId)
     const correctAnswer = getAnswerFromQuestion(req.params.quizId, req.params.questionId.answer.isCorrect)
@@ -52,7 +52,7 @@ router.compare('/:answerId', (req, res) =>{
       res.status(500).json(err)
     }
   }
-})
+})*/
 
 router.post('/', (req, res) => {
   try {
