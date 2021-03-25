@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { try } = require('joi/lib/types/alternatives')
 const { Answer } = require('../../../../models')
 
 const { getQuestionFromQuiz } = require('../manager')
@@ -24,6 +25,26 @@ router.get('/:answerId', (req, res) => {
   try {
     const answer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId)
     res.status(200).json(answer)
+    console.log(answer)
+  } catch (err) {
+    if (err.name === 'NotFoundError') {
+      res.status(404).end()
+    } else {
+      res.status(500).json(err)
+    }
+  }
+})
+
+router.compare('/:answerId', (req, res) =>{
+  try{
+    const answer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId)
+    const correctAnswer = getAnswerFromQuestion(req.params.quizId, req.params.questionId, req.params.answerId, req.params.answer.isCorrect)
+    if(answer == correctAnswer){
+      console.log("votre réponse est correcte")
+    }
+    else{
+      console.log("la réponse est mauvaise.")
+    }
   } catch (err) {
     if (err.name === 'NotFoundError') {
       res.status(404).end()
