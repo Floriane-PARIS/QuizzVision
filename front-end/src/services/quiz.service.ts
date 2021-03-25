@@ -30,6 +30,8 @@ export class QuizService {
 
   public quizSelected$: Subject<Quiz> = new Subject();
 
+  public questionNext$: Subject<Question> = new Subject();
+
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
 
@@ -58,10 +60,10 @@ export class QuizService {
   }
 
   nextQuestion(quiz:Quiz, question:Question){
-    /*const questionUrl = this.quizUrl + '/' + quiz.id + '/' +this.questionsPath;
-    this.http.get<Question>(urlWithId).subscribe((question) => {
-      this.nextQuestion.next(question);
-    })*/
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' +this.questionsPath;
+    this.http.get<Question>(questionUrl).subscribe((question) => {
+      this.questionNext$.next(question);
+    })
   }
 
   deleteQuiz(quiz: Quiz): void {
