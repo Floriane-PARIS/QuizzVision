@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { try } = require('joi/lib/types/alternatives')
+//const { try } = require('joi/lib/types/alternatives')
 const { Answer } = require('../../../../models')
 
 const { getQuestionFromQuiz } = require('../manager')

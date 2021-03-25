@@ -7,5 +7,5 @@ module.exports = new BaseModel('Question', {
   answer1: Joi.array(),
   answer2: Joi.array(),
   answer3: Joi.array(),
-  correctAnswer: Joi.array(),
+  correctAnswer: Joi.array().required,
 })
