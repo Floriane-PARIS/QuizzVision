@@ -1,9 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Quiz } from 'src/models/quiz.model';
-import { QuizService } from 'src/services/quiz.service';
-import { Question } from 'src/models/question.model';
-import { Answer } from 'src/models/question.model';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Question } from '../../../models/question.model';
 
 @Component({
   selector: 'app-game-question',
@@ -13,19 +9,22 @@ import { Answer } from 'src/models/question.model';
 export class GameQuestionComponent implements OnInit {
 
   @Input()
-  quiz: Quiz;
+  question: Question;
 
-  constructor(private quizService: QuizService) { }
+  @Output()
+  deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  valideQuestion(): void {
-    console.log("Je valide cette réponse");
+  valideAnswer(): void {
+    this.deleteQuestion.emit(this.question);
   }
 
-  valideAnswer(): void {
-    console.log("Je valide cette réponse");
+  valideQuestion(): void {
+    this.deleteQuestion.emit(this.question);
   }
 
 }

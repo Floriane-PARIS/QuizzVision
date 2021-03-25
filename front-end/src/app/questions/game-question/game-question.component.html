@@ -1,12 +1,9 @@
 <div class="card">
-  <h2> Vous avez commencer le Quiz</h2>
-  <div class="question" *ngFor="let question of quiz.questions">
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
-     Question {{question.label}}
-    <div class="answer" *ngFor="let answer of question.answers; let i=index">
-      <button class="button-card" (click)="valideAnswer()">{{i+1}} - {{answer.value}}</button>
-    </div>
-    <button class="button-card" (click)="valideQuestion()">Valide Ma Reponse</button>
-  </div>
+  <h2>
+    Question : {{question.label}}
+  </h2>
+  <div class="answer" *ngFor="let answer of question.answers; let i=index">
+    <button class="button-card" (click)="valideAnswer()">{{i}} - {{answer.value}}</button>
+   </div>
+  <button class="button-card" (click)="valideQuestion()">Valide</button>
 </div>
