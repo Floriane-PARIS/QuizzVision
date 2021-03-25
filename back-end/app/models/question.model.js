@@ -4,8 +4,6 @@ const BaseModel = require('../utils/base-model.js')
 module.exports = new BaseModel('Question', {
   label: Joi.string().required(),
   quizId: Joi.number(),
-  answer1: Joi.array(),
-  answer2: Joi.array(),
-  answer3: Joi.array(),
+  answers: Joi.array(),
   correctAnswer: Joi.array().required,
 })

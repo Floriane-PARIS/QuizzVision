@@ -33,10 +33,11 @@ router.post('/', (req, res) => {
     const quizId = parseInt(req.params.quizId, 10)
     let question = Question.create({ label: req.body.label, quizId })
     // If answers have been provided in the request, we create the answer and update the response to send.
-    if (req.body.answers && req.body.answers.length > 0) {
+    if (req.body.answers && req.body.answers.length > 0 && req.body.answers.length <= 4) {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
       question = { ...question, answers }
     }
+    const correctAnswer = Answer.create({ ...answer, questionId: question.id})
     res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)

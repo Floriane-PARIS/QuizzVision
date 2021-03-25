@@ -7,8 +7,6 @@ export interface Answer {
 export interface Question {
     id: string;
     label: string;
-    answer1: string;
-    answer2: string;
-    answer3: string;
+    answers: Answer[];
     correctAnswer: string;
 }
