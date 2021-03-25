@@ -4,7 +4,7 @@ import { Question } from '../models/question.model';
 export const QUESTION_ACTOR: Question = {
     id: '1',
     label: 'Jean Gabin a joué dans...',
-    numeroQuestion: 1,
+    numberQuestion: 1,
     answers: [
         {
             value: 'Les tuches II',

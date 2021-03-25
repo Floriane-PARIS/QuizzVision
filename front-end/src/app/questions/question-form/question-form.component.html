@@ -9,6 +9,9 @@
     Correct Answer:
     <input type="text" [formControlName]="'value'">
     <br>
+    Numero de la Question:
+    <input type="number" [formControlName]="'value'">
+    <br>
     <button class="button-card" (click)="addAnswer()">Add Answer</button>
     <div class="answer" formArrayName="answers">
       <div *ngFor="let address of answers.controls; let i=index">

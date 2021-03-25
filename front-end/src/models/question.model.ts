@@ -5,7 +5,7 @@ export interface Answer {
 
 export interface Question {
     id: string;
-    numeroQuestion: Int16Array;
+    numberQuestion: number;
     label: string;
     answers: Answer[];
     correctAnswer: string;
