@@ -24,9 +24,5 @@ export class QuestionComponent implements OnInit {
     this.deleteQuestion.emit(this.question);
   }
 
-  nextQuestion(): void {
-    this.nextQuestion.emit(this.question);
-  }
-
 }
 
