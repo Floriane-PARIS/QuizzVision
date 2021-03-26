@@ -1,7 +1,7 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
 
 <ng-container *ngIf="quiz">
-  <h1> Vous avez choisie le Quiz "{{quiz.name}}" dans le theme "{{quiz.theme}}"</h1>
+  <h1> Vous avez choisi le Quiz "{{quiz.name}}" dans le theme "{{quiz.theme}}"</h1>
 
   <button class="button-card start" routerLink="/game-question/{{quiz}}">Commencer</button>
 </ng-container>
