@@ -10,7 +10,7 @@
 
 
 
-## lancer le projet:
+## Lancer le projet
 
 git clone https://github.com/2019-2020-ps6/2020-2021-ps6-brocoli.git
 
