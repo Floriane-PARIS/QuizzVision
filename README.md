@@ -1,7 +1,7 @@
 # 2020-2021-ps6-brocoli
-###Site gérant les problèmes de vision
+### Site gérant les problèmes de vision
 
-##Membres
+## Membres
 - AJIMI Ghada
 - AZEBAZE ZEWO Nadine Carel
 - CHAKROUN Ferdaouss
@@ -10,7 +10,7 @@
 
 
 
-##lancer le projet:
+## lancer le projet:
 
 git clone https://github.com/2019-2020-ps6/2020-2021-ps6-brocoli.git
 
