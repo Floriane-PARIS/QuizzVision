@@ -4,6 +4,8 @@ import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { Game } from '../../../models/game.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Question} from '../../../models/question.model';
+import {GameService} from '../../../services/game.service';
 
 @Component({
   selector: 'app-game-start',
@@ -15,8 +17,11 @@ export class GameStartComponent implements OnInit {
   public quiz: Quiz;
   public gameForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService) {
-    this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) {
+    this.quizService.quizSelected$.subscribe((quiz) => {
+      this.quiz = quiz;
+      this.initializeGameForm(quiz);
+    });
   }
 
   ngOnInit(): void {
@@ -24,11 +29,18 @@ export class GameStartComponent implements OnInit {
     this.quizService.setSelectedQuiz(id);
   }
 
-  private initializeGameForm(): void {
-    this.gameForm = this.formBuilder.group({
-      quizId: this.quiz.id,
-      questionId: this.quiz.questions.pop().id
-    });
+  private initializeGameForm(quiz: Quiz): void {
+    if (quiz.questions.length > 0 ) {
+      this.gameForm = this.formBuilder.group({
+        quizId: [quiz.id],
+        questionId: [quiz.questions[0].id]
+      });
+    }
+  }
+
+  addGame(): void {
+    const gameToCreate: Game = this.gameForm.getRawValue() as Game;
+    this.gameService.addGame(gameToCreate);
   }
 
 }
