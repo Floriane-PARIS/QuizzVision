@@ -8,12 +8,13 @@ export const QUESTION_ACTOR: Question = {
     answers: [
         {
             value: 'Les tuches II',
+            isCorrect: false,
         },
         {
             value: 'La grande illusion',
+            isCorrect: true,
         }
-    ],
-    correctAnswer: 'Les tuches II'
+    ]
     
 };
 
