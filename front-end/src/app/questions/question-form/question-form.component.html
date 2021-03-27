@@ -2,12 +2,12 @@
   <h2>Create a new question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
-      Question:
+      Title <br>
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      <br>
+      Numero de la Question:
+      <input type="number" [formControlName]="'value'">
     </label>
-    <br>
-    Numero de la Question:
-    <input type="number" [formControlName]="'value'">
     <br>
     <button class="button-card" (click)="addAnswer()">Add Answer</button>
     <div class="answer" formArrayName="answers">
@@ -17,11 +17,8 @@
             Answer
             <input type="text" [formControlName]="'value'">
             <br>
-          </label>
-          <label>
-            isCorrect
-            <input type="checkbox" [formControlName]="checked">
-            <br>
+            Correct
+            <input type="checkbox" [formControlName]="'isCorrect'">
           </label>
         </div>
       </div>
@@ -30,5 +27,7 @@
   </form>
 </div>
 
+<!-- Uncomment below to see your form structure and how it changes-->
+<!-- <br><br>{{quizForm.getRawValue() | json}} -->
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
