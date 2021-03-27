@@ -6,9 +6,6 @@
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
     </label>
     <br>
-    Correct Answer:
-    <input type="text" [formControlName]="'value'">
-    <br>
     Numero de la Question:
     <input type="number" [formControlName]="'value'">
     <br>
@@ -19,6 +16,11 @@
           <label>
             Answer
             <input type="text" [formControlName]="'value'">
+            <br>
+          </label>
+          <label>
+            isCorrect
+            <input type="checkbox" [formControlName]="checked">
             <br>
           </label>
         </div>

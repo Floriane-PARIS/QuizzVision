@@ -1,12 +1,12 @@
 export interface Answer {
     type?: string;
     value: string;
+    isCorrect: boolean;
 }
 
 export interface Question {
     id: string;
-    numberQuestion: number;
     label: string;
     answers: Answer[];
-    correctAnswer: string;
+    numberQuestion: number;
 }

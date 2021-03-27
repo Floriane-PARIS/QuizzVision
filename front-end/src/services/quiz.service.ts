@@ -81,9 +81,9 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  valideQuestion(quiz: Quiz, question: Question): void {
+ // valideQuestion(quiz: Quiz, question: Question): void {
    /* to do*/
-  }
+ // }
 
   /*
   Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
