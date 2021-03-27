@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import {Quiz} from "../models/quiz.model";
+import {Answer, Question} from "../models/question.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,7 @@ export class GameService {
   public gameSelected$: Subject<Game> = new Subject();
 
   private gameUrl = serverUrl + '/games';
+  private answersPath = 'answers';
 
   private httpOptions = httpOptionsBase;
 
@@ -50,5 +53,15 @@ export class GameService {
   deleteGame(game: Game): void {
     const urlWithId = this.gameUrl + '/' + game.id;
     this.http.delete<Game>(urlWithId, this.httpOptions).subscribe(() => this.retrieveGames());
+  }
+
+  addAnswer(game: Game, answer: Answer): void {
+    const answerUrl =  '/' + game.quizId + '/' + game.questionId + '/' + this.answersPath;
+    this.http.post<Answer>(answerUrl, answer, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
+  }
+
+  deleteAnswer(game: Game, answer: Answer): void {
+    const answerUrl = '/' + game.quizId + '/' + game.questionId + '/' + this.answersPath;
+    this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
 }
