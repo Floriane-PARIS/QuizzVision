@@ -50,8 +50,11 @@ export class QuizService {
 
   retrieveQuizze(quizName: string): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
-      this.quizzes = quizList;
-      this.quizzes$.next(this.quizzes);
+      // tslint:disable-next-line:triple-equals
+      if (quizList.quizName == quizName){
+        this.quizzes = quizList;
+        this.quizzes$.next(this.quizzes);
+      }
     });
   }
 
