@@ -5,13 +5,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-align:center;
+    text-align:left;
 }
 
 body{
     display:grid;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: left;
     min-height: 500vh;
     background-color: #2f3552;;
 
@@ -20,6 +20,7 @@ body{
       text-decoration-line: underline;
       text-transform: capitalize;
       font-size: 3rem;
+      text-align: center;
 
       span, i{
           color:chocolate;
