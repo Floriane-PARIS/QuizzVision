@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
-import { QuizService } from 'src/services/quiz.service';
-
+import { GameService } from 'src/services/game.service';
 import { Game } from '../../../models/game.model';
+import {Answer, Question} from '../../../models/question.model';
 
 @Component({
   selector: 'app-game',
@@ -12,15 +12,19 @@ import { Game } from '../../../models/game.model';
 })
 export class GameComponent implements OnInit {
 
-  public quiz: Quiz;
+  public game: Game;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) {
-    this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+  constructor(private route: ActivatedRoute, private gameService: GameService) {
+    this.gameService.gameSelected$.subscribe((game) => this.game = game);
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
+    this.gameService.setSelectedGame(id);
+  }
+
+  valideAnswer(answer: Answer): void {
+    this.gameService.addAnswer(this.game, answer);
   }
 
 }

@@ -59,9 +59,8 @@ export class QuizService {
     });
   }
 
-
   nextQuestion(quiz: Quiz, question: Question){
-    const questionUrl = this.quizUrl + '/' + quiz.id + '/' +this.questionsPath;
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
     this.http.get<Question>(questionUrl).subscribe((question) => {
       this.questionNext$.next(question);
     })

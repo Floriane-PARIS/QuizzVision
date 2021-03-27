@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../../models/question.model';
+import {Answer, Question} from '../../../models/question.model';
 
 @Component({
   selector: 'app-game-question',
@@ -15,18 +15,24 @@ export class GameQuestionComponent implements OnInit {
   deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   @Output()
+  valideQuestion: EventEmitter<Question> = new EventEmitter<Question>();
+
+  @Output()
+  valideAnswer: EventEmitter<Answer> = new EventEmitter<Answer>();
+
+  @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  valideAnswer(): void {
-    this.deleteQuestion.emit(this.question);
+  choseAnswer(answer: Answer): void {
+    this.valideAnswer.emit(answer);
   }
 
-  valideQuestion(): void {
-    this.deleteQuestion.emit(this.question);
+  valideQuestionAnswered(): void {
+    this.valideQuestion.emit(this.question);
   }
 
   nextquestion(): void {
