@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
@@ -19,11 +18,13 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { GameComponent } from './games/game/game.component';
 import { GameStartComponent } from './games/game-start/game-start.component';
 import {GameQuestionComponent} from './questions/game-question/game-question.component';
+import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
+    QuizSearchComponent,
     QuizComponent,
     HeaderComponent,
     QuizFormComponent,
@@ -37,6 +38,7 @@ import {GameQuestionComponent} from './questions/game-question/game-question.com
     GameComponent,
     GameStartComponent,
     GameQuestionComponent,
+    QuizSearchComponent,
   ],
   imports: [
     BrowserModule,
