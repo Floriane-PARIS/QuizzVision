@@ -38,6 +38,14 @@ export class GameService {
     });
   }
 
+  islastGame(): string {
+    console.log('log:', this.games.length);
+    if (this.games.length < 1) {
+      return null;
+    }
+    return this.games[this.games.length - 1].id;
+  }
+
   addGame(game: Game): void {
     this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames());
   }
