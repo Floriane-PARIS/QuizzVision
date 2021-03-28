@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { Game } from '../../../models/game.model';
@@ -16,11 +16,15 @@ export class GameStartComponent implements OnInit {
 
   public quiz: Quiz;
   public gameForm: FormGroup;
+  public game: Game;
 
-  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) {
+  constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       this.initializeGameForm(quiz);
+    });
+    this.gameService.gameSelected$.subscribe((game) => {
+      this.game = game;
     });
   }
 
