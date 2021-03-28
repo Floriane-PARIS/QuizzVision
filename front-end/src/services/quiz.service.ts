@@ -59,11 +59,18 @@ export class QuizService {
     });
   }
 
-  nextQuestion(quiz: Quiz, question: Question){
-    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-    this.http.get<Question>(questionUrl).subscribe((question) => {
-      this.questionNext$.next(question);
-    })
+  nextQuestion(quiz: Quiz, question: Question): void{
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
+    this.http.get<Question>(questionUrl).subscribe((questionNext) => {
+      this.questionNext$.next(questionNext);
+    });
+  }
+
+  getQuestion(quizId: string, questionId: string): void{
+    const questionUrl = this.quizUrl + '/' + quizId + '/' + this.questionsPath + '/' + questionId;
+    this.http.get<Question>(questionUrl).subscribe((questionNext) => {
+      this.questionNext$.next(questionNext);
+    });
   }
 
   deleteQuiz(quiz: Quiz): void {
