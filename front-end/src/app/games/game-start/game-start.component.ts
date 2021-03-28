@@ -39,7 +39,7 @@ export class GameStartComponent implements OnInit {
   }
 
   addGame(): void {
-    const gameToCreate: Game = this.gameForm.getRawValue() as Game;
+    const gameToCreate = this.gameForm.getRawValue() as Game;
     this.gameService.addGame(gameToCreate);
   }
 
