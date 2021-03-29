@@ -65,8 +65,9 @@ export class GameService {
   }
 
   addAnswer(game: Game, answer: Answer): void {
-    const answerUrl =  '/' + game.quizId + '/' + game.questionId + '/' + this.answersPath;
-    this.http.post<Answer>(answerUrl, answer, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
+    const answerWrite = {answers: [answer]};
+    const answerUrl = this.gameUrl + '/' + game.id ;
+    this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
 
   addQuestion(game: Game, question: Question): void {
@@ -75,7 +76,7 @@ export class GameService {
   }
 
   deleteAnswer(game: Game, answer: Answer): void {
-    const answerUrl = '/' + game.quizId + '/' + game.questionId + '/' + this.answersPath;
+    const answerUrl = '/' + game.quizId + '/' + game.question[0].id + '/' + this.answersPath;
     this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
 }
