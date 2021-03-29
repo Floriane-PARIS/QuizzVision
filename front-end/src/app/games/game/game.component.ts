@@ -13,6 +13,7 @@ import {Answer, Question} from '../../../models/question.model';
 export class GameComponent implements OnInit {
 
   public game: Game;
+  public answer: Answer;
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
@@ -25,6 +26,17 @@ export class GameComponent implements OnInit {
 
   valideAnswer(answer: Answer): void {
     this.gameService.addAnswer(this.game, answer);
+    this.answer = answer;
+    console.log('answer', this.answer);
+  }
+
+  valideQuestion(): void {
+    console.log('Verification Réponse:', this.answer.isCorrect);
+    if (this.answer.isCorrect) {
+
+    } else {
+
+    }
   }
 
 }

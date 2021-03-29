@@ -4,6 +4,6 @@ import { Answer } from './question.model';
 export interface Game {
   id: string;
   quizId: string;
-  questionId: string;
+  question: Question[];
   answers: Answer[];
 }
