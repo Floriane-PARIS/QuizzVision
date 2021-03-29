@@ -49,7 +49,7 @@ export class GameStartComponent implements OnInit {
 
   startGame(string: string): void {
     console.log('event received from child:', string);
-    this.router.navigate(['/game/' + string]);
+    this.router.navigate(['/game/' + string ]);
   }
 
 }
