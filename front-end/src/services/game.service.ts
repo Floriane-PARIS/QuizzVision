@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {Quiz} from "../models/quiz.model";
-import {Answer, Question} from "../models/question.model";
+import {Answer, Question} from '../models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class GameService {
   /*
    The list of game.
    */
-  private users: Game[] = [];
+  private games: Game[] = [];
 
   /*
    Observable which contains the list of the game.
@@ -33,10 +32,18 @@ export class GameService {
   }
 
   retrieveGames(): void {
-    this.http.get<Game[]>(this.gameUrl).subscribe((userList) => {
-      this.users = userList;
-      this.games$.next(this.users);
+    this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
+      this.games = gameList;
+      this.games$.next(this.games);
     });
+  }
+
+  islastGame(): string {
+    console.log('log:', this.games.length);
+    if (this.games.length < 1) {
+      return null;
+    }
+    return this.games[this.games.length - 1].id;
   }
 
   addGame(game: Game): void {

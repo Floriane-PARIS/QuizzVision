@@ -24,9 +24,8 @@ export class QuestionFormComponent implements OnInit {
   private initializeQuestionForm(): void {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
-      numberQuestion: [ , Validators.required ],
-      answers: this.formBuilder.array([4]),
-      correctAnswer: ['', Validators.required]
+      answers: this.formBuilder.array([]),
+      numberQuestion: ['', Validators.required ],
     });
   }
 
@@ -40,6 +39,7 @@ export class QuestionFormComponent implements OnInit {
   private createAnswer(): FormGroup {
     return this.formBuilder.group({
       value: '',
+      isCorrect: false,
     });
   }
 

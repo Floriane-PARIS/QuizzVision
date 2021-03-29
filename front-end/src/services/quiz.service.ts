@@ -69,11 +69,18 @@ export class QuizService {
     });
   }
 
-  nextQuestion(quiz: Quiz, question: Question){
-    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-    this.http.get<Question>(questionUrl).subscribe((question) => {
-      this.questionNext$.next(question);
-    })
+  nextQuestion(quiz: Quiz, question: Question): void{
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
+    this.http.get<Question>(questionUrl).subscribe((questionNext) => {
+      this.questionNext$.next(questionNext);
+    });
+  }
+
+  getQuestion(quizId: string, questionId: string): void{
+    const questionUrl = this.quizUrl + '/' + quizId + '/' + this.questionsPath + '/' + questionId;
+    this.http.get<Question>(questionUrl).subscribe((questionNext) => {
+      this.questionNext$.next(questionNext);
+    });
   }
 
   deleteQuiz(quiz: Quiz): void {
@@ -91,9 +98,9 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  valideQuestion(quiz: Quiz, question: Question): void {
+ // valideQuestion(quiz: Quiz, question: Question): void {
    /* to do*/
-  }
+ // }
 
   /*
   Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.

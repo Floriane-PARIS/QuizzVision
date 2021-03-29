@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { Game } from '../../../models/game.model';
@@ -16,8 +16,9 @@ export class GameStartComponent implements OnInit {
 
   public quiz: Quiz;
   public gameForm: FormGroup;
+  public game: Game;
 
-  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) {
+  constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       this.initializeGameForm(quiz);
@@ -39,8 +40,16 @@ export class GameStartComponent implements OnInit {
   }
 
   addGame(): void {
-    const gameToCreate: Game = this.gameForm.getRawValue() as Game;
+    const gameToCreate = this.gameForm.getRawValue() as Game;
     this.gameService.addGame(gameToCreate);
+    const id = this.gameService.islastGame();
+    console.log('game:', id);
+    this.startGame(id);
+  }
+
+  startGame(string: string): void {
+    console.log('event received from child:', string);
+    this.router.navigate(['/game/' + string]);
   }
 
 }
