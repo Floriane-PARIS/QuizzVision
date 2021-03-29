@@ -14,6 +14,7 @@ export class GameComponent implements OnInit {
 
   public game: Game;
   public answer: Answer;
+  public message: string;
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
@@ -30,12 +31,12 @@ export class GameComponent implements OnInit {
     console.log('answer', this.answer);
   }
 
-  valideQuestion(): void {
-    console.log('Verification Réponse:', this.answer.isCorrect);
+  isValideAnswer(question: Question): void {
     if (this.answer.isCorrect) {
-
-    } else {
-
+      this.message = 'Bravo, bonne réponse';
+    }
+    else  {
+      this.message = 'Hoooooooo, mauvaise réponse';
     }
   }
 
