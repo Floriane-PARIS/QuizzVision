@@ -5,8 +5,9 @@
     <h1> game n° {{game.id}}</h1>
     <!--Inputs & Output allow communication between parent & child components.-->
     <!--More information: https://angular.io/guide/component-interaction-->
-    <app-game-question [question]=game.question[0] (valideAnswer)="valideAnswer($event)"></app-game-question>
-
+    <app-game-question [question]=game.question[0] (valideAnswer)="valideAnswer($event)" (valideQuestion)="valideQuestion($event)" ></app-game-question>
+    <br>
+    <app-game-response [answer]=answer ></app-game-response>
   </div>
 </div>
 
