@@ -5,7 +5,6 @@ import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Answer, Question} from '../models/question.model';
 import {Quiz} from "../models/quiz.model";
-import {QuizService} from "./quiz.service";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +40,7 @@ export class GameService {
 
   constructor(private http: HttpClient) {
     this.retrieveGames();
-    this.getQuestion(this.games[this.games.length -1 ]); //changes
+    //this.getQuestion(this.games[this.games.length -1 ]); //changes
   }
 
   retrieveGames(isSetSelectedGame: boolean = false): void {
