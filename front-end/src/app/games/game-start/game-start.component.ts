@@ -23,6 +23,10 @@ export class GameStartComponent implements OnInit {
       this.quiz = quiz;
       this.initializeGameForm(quiz);
     });
+
+    this.gameService.selectedGameId$.subscribe((gameId) =>{
+      this.startGame(gameId);
+    });
   }
 
   ngOnInit(): void {
@@ -42,9 +46,6 @@ export class GameStartComponent implements OnInit {
   addGame(): void {
     const gameToCreate = this.gameForm.getRawValue() as Game;
     this.gameService.addGame(gameToCreate);
-    const id = this.gameService.islastGame();
-    console.log('game:', id);
-    this.startGame(id);
   }
 
   startGame(string: string): void {
