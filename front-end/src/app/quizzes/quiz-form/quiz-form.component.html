@@ -1,18 +1,24 @@
 <div class="card">
-  <h2>Create a new Quiz</h2>
+  <h3 p style="font-family: cursive;">Create a new Quiz</h3>
   <form class="quiz-form" [formGroup]="quizForm">
-    <label for="title">
-      Title <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-    </label>
-    <br>
-    <label for="theme">
-      Theme <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-    </label>
-    <br>
-    <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
+    <h6>
+      <label for="title">
+        <p>
+          Title:
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+        </p>
+        
+      </label>
+      <label for="theme">
+        <p>
+          Theme:
+        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+        </p>
+        
+      </label>
+    </h6> 
   </form>
+      <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
