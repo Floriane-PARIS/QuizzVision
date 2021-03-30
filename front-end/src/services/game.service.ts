@@ -109,8 +109,6 @@ export class GameService {
 
   //faire une méthode pour update l'id de la question 
   nextQuestion(game: Game): string {
-   // const quiz = 
-   // const index = game.quizId.
     //this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
     return game[0];
   }
