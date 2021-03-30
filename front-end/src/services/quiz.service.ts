@@ -89,8 +89,8 @@ export class QuizService {
   }
 
   //recuperer l'index de la question
-  getIndex(quiz: Quiz, question: Question){
-
+  getIndex(quiz: Quiz, question: Question): number {
+    return quiz.questions.indexOf(question, 0);
   }
  // valideQuestion(quiz: Quiz, question: Question): void {
    /* to do*/
