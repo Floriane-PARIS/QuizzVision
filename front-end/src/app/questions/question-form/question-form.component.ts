@@ -25,7 +25,6 @@ export class QuestionFormComponent implements OnInit {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
       answers: this.formBuilder.array([]),
-      numberQuestion: ['', Validators.required ],
     });
   }
 

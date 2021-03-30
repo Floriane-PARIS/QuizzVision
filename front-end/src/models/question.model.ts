@@ -8,5 +8,4 @@ export interface Question {
     id: string;
     label: string;
     answers: Answer[];
-    numberQuestion: number;
 }

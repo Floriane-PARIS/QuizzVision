@@ -2,11 +2,8 @@
   <h2>Create a new question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
-      Title <br>
+      Question :
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
-      <br>
-      Numero de la Question:
-      <input type="number" [formControlName]="'numberQuestion'">
     </label>
     <br>
     <button class="button-card" (click)="addAnswer()">Add Answer</button>
