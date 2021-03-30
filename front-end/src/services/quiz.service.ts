@@ -48,6 +48,34 @@ export class QuizService {
     });
   }
 
+  retrieveQuizzeName(quizName: string): void {
+    this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
+      this.quizzes = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < quizList.length; i++){
+        // tslint:disable-next-line:triple-equals
+        if (quizList[i].name == quizName){
+          this.quizzes.push(quizList[i]);
+          this.quizzes$.next(this.quizzes);
+        }
+      }
+    });
+  }
+
+  retrieveQuizzeTheme(quizTheme: string): void {
+    this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
+      this.quizzes = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < quizList.length; i++){
+        // tslint:disable-next-line:triple-equals
+        if (quizList[i].theme == quizTheme){
+          this.quizzes.push(quizList[i]);
+          this.quizzes$.next(this.quizzes);
+        }
+      }
+    });
+  }
+
   addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }

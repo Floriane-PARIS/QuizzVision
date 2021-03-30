@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
@@ -21,11 +20,13 @@ import { GameResponseComponent } from './games/game-response/game-response.compo
 import { GameResultComponent } from './games/game-result/game-result.component';
 import { GameStartComponent } from './games/game-start/game-start.component';
 import {GameQuestionComponent} from './questions/game-question/game-question.component';
+import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
+    QuizSearchComponent,
     QuizComponent,
     HeaderComponent,
     QuizFormComponent,
@@ -41,13 +42,15 @@ import {GameQuestionComponent} from './questions/game-question/game-question.com
     GameResultComponent,
     GameStartComponent,
     GameQuestionComponent,
+    QuizSearchComponent,
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
