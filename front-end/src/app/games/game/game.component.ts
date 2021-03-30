@@ -49,9 +49,8 @@ export class GameComponent implements OnInit {
 
   //changes
   next(): void {
-  /* this.game.question.indexOf(this.gameQuestion, 0);
-   this.game.
-   */
+  this.gameService.nextQuestion(this.game);
+  console.log("nous passons à la prochaine question^^!")
   }
 
 }
