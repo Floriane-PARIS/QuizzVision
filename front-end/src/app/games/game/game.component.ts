@@ -47,6 +47,15 @@ export class GameComponent implements OnInit {
     }
   }
 
+  isNotNull(game: Game): boolean {
+    if(game.id != null){
+      return true;
+      console.log("ok");
+    }
+    console.log("nok")
+    return false;
+  }
+  
   //changes
   next(): void {
   this.gameService.nextQuestion(this.game);
