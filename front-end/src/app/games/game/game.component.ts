@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { GameService } from 'src/services/game.service';
@@ -14,6 +14,10 @@ export class GameComponent implements OnInit {
 
   public game: Game;
   public answer: Answer;
+  public message: string;
+
+  @Output()
+  nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
@@ -30,13 +34,17 @@ export class GameComponent implements OnInit {
     console.log('answer', this.answer);
   }
 
-  valideQuestion(): void {
-    console.log('Verification Réponse:', this.answer.isCorrect);
+  isValideAnswer(question: Question): void {
     if (this.answer.isCorrect) {
-
-    } else {
-
+      this.message = 'Bravo, bonne réponse';
     }
+    else  {
+      this.message = 'Hoooooooo, mauvaise réponse';
+    }
+  }
+
+  next(): void {
+    // this.nextQuestion.emit(this.question);
   }
 
 }

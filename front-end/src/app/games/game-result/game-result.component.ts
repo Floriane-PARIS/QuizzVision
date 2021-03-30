@@ -2,19 +2,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
 
 @Component({
-  selector: 'app-game-response',
-  templateUrl: './game-response.component.html',
-  styleUrls: ['./game-response.component.scss']
+  selector: 'app-game-result',
+  templateUrl: './game-result.component.html',
+  styleUrls: ['./game-result.component.scss']
 })
-export class GameResponseComponent implements OnInit {
+export class GameResultComponent implements OnInit {
 
   @Input()
-  answer: Answer;
+  message: string;
 
   constructor() {
   }
 
   ngOnInit(): void {
   }
+
 
 }

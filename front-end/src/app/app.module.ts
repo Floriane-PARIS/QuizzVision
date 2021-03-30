@@ -17,6 +17,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { GameComponent } from './games/game/game.component';
 import { GameResponseComponent } from './games/game-response/game-response.component';
+import { GameResultComponent } from './games/game-result/game-result.component';
 import { GameStartComponent } from './games/game-start/game-start.component';
 import {GameQuestionComponent} from './questions/game-question/game-question.component';
 import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component';
@@ -38,6 +39,7 @@ import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component
     UserListComponent,
     GameComponent,
     GameResponseComponent,
+    GameResultComponent,
     GameStartComponent,
     GameQuestionComponent,
     QuizSearchComponent,

@@ -22,6 +22,7 @@ export class GameService {
     = new BehaviorSubject([]);
 
   public gameSelected$: Subject<Game> = new Subject();
+  public selectedGameId$: Subject<string> = new Subject();
 
   private gameUrl = serverUrl + '/games';
   private answersPath = 'answers';
@@ -33,10 +34,15 @@ export class GameService {
     this.retrieveGames();
   }
 
-  retrieveGames(): void {
+  retrieveGames(isSetSelectedGame: boolean = false): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = gameList;
       this.games$.next(this.games);
+      if(isSetSelectedGame){
+        //this.setSelectedGame(this.islastGame());
+        this.selectedGameId$.next(this.islastGame());
+      }
+
     });
   }
 
@@ -49,7 +55,7 @@ export class GameService {
   }
 
   addGame(game: Game): void {
-    this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames());
+    this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames(true));
   }
 
   setSelectedGame(gameId: string): void {
@@ -67,7 +73,7 @@ export class GameService {
   addAnswer(game: Game, answer: Answer): void {
     const answerWrite = {answers: [answer]};
     const answerUrl = this.gameUrl + '/' + game.id ;
-    this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
+    this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
   }
 
   addQuestion(game: Game, question: Question): void {
