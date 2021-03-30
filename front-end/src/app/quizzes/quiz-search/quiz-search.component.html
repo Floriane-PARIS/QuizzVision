@@ -1,17 +1,22 @@
-<div class="card">
-  <h2>Search for a quiz</h2>
+
+<div class="card" p style="background-color: bisque;" p style="text-align: right;">
+  <h4>Search for a quiz</h4>
   <form class="quiz-search">
+    <h6>
     <label for="title">
-      Title
+        <p style="color: #225597;">Title
       <input class="input-custom" type="text" id="name" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+    </p>
     </label>
     <button type="submit" class="button-card" (click)="searchQuizName()">Search</button>
-    <br>
     <label for="theme">
-      Theme
+      <p style="color: #225597;">Theme
       <input class="input-custom" type="text" id="theme" [(ngModel)] = "quizTheme" [ngModelOptions]="{standalone: true}">
+    </p> 
     </label>
-    <button type="submit" class="button-card" (click)="searchQuizTheme()">Search</button>
+    <button type="submit" class="button-card" (click)="searchQuizTheme()"> Search</button>
+  </h6>
   </form>
   <button type="submit" class="button-card" (click)="annule()">Annule</button>
 </div>
+
