@@ -49,8 +49,14 @@ export class GameComponent implements OnInit {
 
   //changes
   next(): void {
+<<<<<<< Updated upstream
   this.gameService.nextQuestion(this.game);
   console.log("nous passons à la prochaine question^^!")
+=======
+  /* this.game.question.indexOf(this.gameQuestion, 0);
+   this.game.
+   */
+>>>>>>> Stashed changes
   }
 
 }
