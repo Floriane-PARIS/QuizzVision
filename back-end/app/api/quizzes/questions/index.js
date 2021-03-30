@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
   }
 })
 
-router.get('/:questionId', (req, res) => {
+router.get('/:questionId', (req, res) => { 
   try {
-    const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
+    const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId) 
     res.status(200).json(question)
   } catch (err) {
     manageAllErrors(res, err)

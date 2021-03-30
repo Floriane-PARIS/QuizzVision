@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { GameService } from 'src/services/game.service';
@@ -15,12 +15,16 @@ export class GameComponent implements OnInit {
   public game: Game;
   public answer: Answer;
   public message: string;
+  public gameQuestion: Question;
+
 
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
+   // this.gameQuestion.id = gameService.get   récupérer l'id de la question actuelle du game
+   //placer un observale sur cet id
   }
 
   ngOnInit(): void {
@@ -43,8 +47,11 @@ export class GameComponent implements OnInit {
     }
   }
 
+  //changes
   next(): void {
-    // this.nextQuestion.emit(this.question);
+  /* this.game.question.indexOf(this.gameQuestion, 0);
+   this.game.
+   */
   }
 
 }

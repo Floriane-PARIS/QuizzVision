@@ -14,6 +14,7 @@ export class GameService {
    The list of game.
    */
   private games: Game[] = [];
+  public gameQuestion: Question;//changes
 
   /*
    Observable which contains the list of the game.
@@ -22,7 +23,11 @@ export class GameService {
     = new BehaviorSubject([]);
 
   public gameSelected$: Subject<Game> = new Subject();
+
   public selectedGameId$: Subject<string> = new Subject();
+  
+  public gameQuestion$: Subject<Question> = new Subject(); //changes
+
 
   private gameUrl = serverUrl + '/games';
   private answersPath = 'answers';
@@ -32,6 +37,7 @@ export class GameService {
 
   constructor(private http: HttpClient) {
     this.retrieveGames();
+    this.getQuestion(this.games[this.games.length -1 ]); //changes
   }
 
   retrieveGames(isSetSelectedGame: boolean = false): void {
@@ -85,4 +91,19 @@ export class GameService {
     const answerUrl = '/' + game.quizId + '/' + game.question[0].id + '/' + this.answersPath;
     this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
+
+  //faire une méthode pour récupérer la question
+  getQuestion(game: Game):void{
+    const gameUrl = this.gameUrl + '/' + game.id ;
+    this.http.get<Game>(gameUrl, this.httpOptions).subscribe((gameList) => {
+      this.gameQuestion$.next(gameList.question[0]);
+    });
+  }
+  //faire une méthode pour récupérer l'id de la question actuelle du game
+  getQuestionId(game: Game): string {
+    this.getQuestion(game);
+    return this.gameQuestion.id;
+  }
+
+  //faire une méthode pour update l'id de la question 
 }
