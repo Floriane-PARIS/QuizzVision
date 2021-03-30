@@ -5,6 +5,7 @@ import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Answer, Question} from '../models/question.model';
 import {Quiz} from "../models/quiz.model";
+import {QuizService} from "./quiz.service";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class GameService {
   public selectedGameId$: Subject<string> = new Subject();
   
   public gameQuestion$: Subject<Question> = new Subject(); //changes
+  public gameQuestionId$: Subject<string> = new Subject();// changes
 
 
   private gameUrl = serverUrl + '/games';
@@ -106,4 +108,11 @@ export class GameService {
   }
 
   //faire une méthode pour update l'id de la question 
+  nextQuestion(game: Game): string {
+    const id = game.quizId;
+    const quiz =
+    const index = 
+    //this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+    return game[index].id;
+  }
 }
