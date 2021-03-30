@@ -29,7 +29,7 @@ export class GameService {
 
   public selectedGameId$: Subject<string> = new Subject();
   
-  public gameQuestion$: Subject<Question> = new Subject(); //changes
+  //public gameQuestion$: Subject<Question> = new Subject(); //changes
   public gameQuestionId$: Subject<string> = new Subject();// changes
 
 
@@ -44,12 +44,7 @@ export class GameService {
     this.getQuestion(this.games[this.games.length -1 ]); //changes
   }
 
-<<<<<<< Updated upstream
   retrieveGames(isSetSelectedGame: boolean = false): void {
-=======
-
-  retrieveGames(): void {
->>>>>>> Stashed changes
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = gameList;
       this.games$.next(this.games);
