@@ -1,28 +1,16 @@
 <div class="card">
   <h2>Configuration</h2>
   <form class="configuration-form" [formGroup]="configurationForm">
-    <label for="bold">
-      Mettre en gras : <input type ="radio" name ="bold" />
-    </label>
-    <br>
+    <p>
+    <label for="bold">Bold </label>
+    <input type="radio" value="yes" id="bold" name="bold"> Yes
+    </p>
     <label for="size">
-      Taille du texte:
-      <input type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4">
+      Taille du texte <br>
+      <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4">
     </label>
     <br>
-    <label for="font">
-      Police du texte:
-      <select name = "police">
-        <option selected = "yes">Times new Roman</option>
-        <option>Arial</option>
-        <option>Arial Black</option>
-        <option>Comic Sans MS</option>
-        <option>Georgia</option>
-        <option>Impact</option>
-        <option>Trebuchet MS</option>
-        <option>Verdana</option>
-      </select>
-    </label>
-    <br>
+    <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>
+<br><br>{{configurationForm.getRawValue() | json }}
