@@ -116,9 +116,9 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  //recuperer l'index de la question
-  getIndex(quiz: Quiz, question: Question): number {
-    return quiz.questions.indexOf(question, 0);
+  //recuperer l'id de la question
+  getQuestionIdQuiz(quiz: Quiz, index: number): string {
+    return quiz.questions[index].id;
   }
  // valideQuestion(quiz: Quiz, question: Question): void {
    /* to do*/
