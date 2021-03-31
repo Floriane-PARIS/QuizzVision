@@ -23,7 +23,7 @@ export class GameComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
-   // this.gameQuestion.id = gameService.get   récupérer l'id de la question actuelle du game
+    //this.gameQuestion.id = gameService.get   récupérer l'id de la question actuelle du game
    //placer un observale sur cet id
   }
 
@@ -55,7 +55,7 @@ export class GameComponent implements OnInit {
     console.log("nok")
     return false;
   }
-  
+
   //changes
   next(): void {
   this.gameService.nextQuestion(this.game);
