@@ -19,8 +19,11 @@ import { GameComponent } from './games/game/game.component';
 import { GameResponseComponent } from './games/game-response/game-response.component';
 import { GameResultComponent } from './games/game-result/game-result.component';
 import { GameStartComponent } from './games/game-start/game-start.component';
-import {GameQuestionComponent} from './questions/game-question/game-question.component';
+import { GameQuestionComponent} from './questions/game-question/game-question.component';
 import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component';
+import { ConfigurationEditComponent } from './configurations/configuration-edit/configuration-edit.component';
+import { ConfigurationFormComponent } from './configurations/configuration-form/configuration-form.component';
+import { ConfigurationComponent } from './configurations/configuration/configuration.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component
     UserComponent,
     UserFormComponent,
     UserListComponent,
+    ConfigurationComponent,
+    ConfigurationFormComponent,
+    ConfigurationEditComponent,
     GameComponent,
     GameResponseComponent,
     GameResultComponent,
