@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-configuration-form',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfigurationFormComponent implements OnInit {
 
-  constructor() { }
+  public configurationForm: FormGroup
+  constructor(public formBuilder: FormBuilder) {
+    this.configurationForm =  this.formBuilder.group({
+      bold: [''],
+      size: ['']
+    });
+  }
 
   ngOnInit(): void {
   }
 
+  addConfiguration(): void {
+    //ajouter une configuration
+  }
 }
