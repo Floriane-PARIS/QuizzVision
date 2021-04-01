@@ -2,15 +2,16 @@
   <h2>Choisir une nouvelle configuration</h2>
   <form class="configuration-form" [formGroup]="configurationForm">
     <p>
-    <label for="bold">Bold </label>
-    <input type="radio" value="yes" id="bold" name="bold"> Yes
+    <label for="bold">Texte en gras ? </label>
+    <input type="radio" value="yes" id="bold" name="bold" [formControlName]="'bold'"> Oui
+      <input type="radio" value="no" id="nobold" name="bold" [formControlName]="'bold'"> Non
     </p>
     <label for="size">
       Taille du texte <br>
-      <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4">
+      <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
     </label>
     <br>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>
-<!--br><br>{{configurationForm.getRawValue() | json }}-->
+<!--br><br>{{configurationForm.getRawValue() | json }} -->

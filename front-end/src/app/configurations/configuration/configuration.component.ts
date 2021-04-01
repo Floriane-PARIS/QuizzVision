@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { Configuration } from '../../../models/configuration.model';
+
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
@@ -7,6 +9,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class ConfigurationComponent implements OnInit {
+
+  @Input()
+  configuration: Configuration;
 
   constructor() { }
 

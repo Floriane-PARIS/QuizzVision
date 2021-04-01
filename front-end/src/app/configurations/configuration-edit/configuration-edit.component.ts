@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigurationService } from 'src/services/configuration.service';
+import { Configuration } from '../../../models/configuration.model';
 
 @Component({
   selector: 'app-configuration-edit',
@@ -8,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfigurationEditComponent implements OnInit {
 
-  constructor() { }
+  public configurationList: Configuration[] = [];
+
+  constructor(private configurationService: ConfigurationService) {
+   this.configurationService.configurations$.subscribe((configurations) => {
+     console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
+     this.configurationList = configurations;
+   })
+
+  }
 
   ngOnInit(): void {
   }

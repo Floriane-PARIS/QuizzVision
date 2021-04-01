@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Configuration } from '../../../models/configuration.model';
+import { ConfigurationService } from '../../../services/configuration.service';
 
 @Component({
   selector: 'app-configuration-form',
@@ -9,8 +11,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class ConfigurationFormComponent implements OnInit {
 
-  public configurationForm: FormGroup
-  constructor(public formBuilder: FormBuilder) {
+  public configurationForm: FormGroup;
+
+  constructor(public formBuilder: FormBuilder, private configurationService: ConfigurationService) {
     this.configurationForm =  this.formBuilder.group({
       bold: [''],
       size: ['']
@@ -22,5 +25,8 @@ export class ConfigurationFormComponent implements OnInit {
 
   addConfiguration(): void {
     //ajouter une configuration
+    const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
+    console.log("configuration: ", configurationToCreate);
+    this.configurationService.addConfiguration(configurationToCreate);
   }
 }
