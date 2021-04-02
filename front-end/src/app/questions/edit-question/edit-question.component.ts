@@ -15,23 +15,18 @@ export class EditQuestionComponent implements OnInit {
   @Input()
   question: Question;
 
-  @Output()
-  deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
+  public questionLabel: string;
+  public questionAnswers: string[];
 
   @Output()
   editQuestionDone: EventEmitter<Question> = new EventEmitter<Question>();
 
-  @Output()
-  nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
-
   constructor() {
+    this.questionLabel = '';
+    this.questionAnswers = [];
   }
 
   ngOnInit(): void {
-  }
-
-  delete(): void {
-    this.deleteQuestion.emit(this.question);
   }
 
   edit(): void {

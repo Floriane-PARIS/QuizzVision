@@ -32,12 +32,10 @@ export class QuestionListComponent implements OnInit {
 
   editQuestion(question: Question): void {
     this.editQuestionChose = question.id;
-    console.log(this.editQuestionChose);
   }
 
   editQuestionDone(question: Question): void {
     this.editQuestionChose = '';
-    console.log(this.editQuestionChose);
   }
 
 }

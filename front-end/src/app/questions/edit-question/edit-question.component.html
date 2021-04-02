@@ -1,5 +1,18 @@
 <div class="card">
-  Question : {{question.label}}
+  <h2>
+    <i class="fab fa-leanpub"></i>
+    <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "question.label" [ngModelOptions]="{standalone: true}">
+  </h2>
+  <div class="answer" *ngFor="let answer of question.answers; let i=index">
+    {{i}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
+   <ng-container *ngIf="answer.isCorrect">
+    <input type="checkbox" checked="true">
+    </ng-container>
+    <ng-container *ngIf="!answer.isCorrect">
+      <input type="checkbox">
+    </ng-container>
+    <br>
+  </div>
     <button class="button-card" (click)="edit()">Edit</button>
 </div>
 
