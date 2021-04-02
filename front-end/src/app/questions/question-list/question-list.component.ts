@@ -12,8 +12,11 @@ export class QuestionListComponent implements OnInit {
 
   @Input()
   quiz: Quiz;
+  public editQuestionChose: string;
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService) {
+    this.editQuestionChose = '';
+  }
 
   ngOnInit(): void {
   }
@@ -25,6 +28,16 @@ export class QuestionListComponent implements OnInit {
   nextQuestion(question: Question): void {
     this.quizService.nextQuestion(this.quiz, question);
     console.log(question);
+  }
+
+  editQuestion(question: Question): void {
+    this.editQuestionChose = question.id;
+    console.log(this.editQuestionChose);
+  }
+
+  editQuestionDone(question: Question): void {
+    this.editQuestionChose = '';
+    console.log(this.editQuestionChose);
   }
 
 }

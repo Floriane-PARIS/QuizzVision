@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionComponent } from './questions/question/question.component';
+import { EditQuestionComponent } from './questions/edit-question/edit-question.component';
 import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
@@ -37,6 +38,7 @@ import { ConfigurationComponent } from './configurations/configuration/configura
     QuestionListComponent,
     QuestionFormComponent,
     QuestionComponent,
+    EditQuestionComponent,
     UserComponent,
     UserFormComponent,
     UserListComponent,
