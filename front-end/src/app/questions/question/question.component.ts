@@ -15,6 +15,9 @@ export class QuestionComponent implements OnInit {
   deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   @Output()
+  editQuestion: EventEmitter<Question> = new EventEmitter<Question>();
+
+  @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor() {
@@ -25,6 +28,10 @@ export class QuestionComponent implements OnInit {
 
   delete(): void {
     this.deleteQuestion.emit(this.question);
+  }
+
+  edit(): void {
+    this.editQuestion.emit(this.question);
   }
 
 }
