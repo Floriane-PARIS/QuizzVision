@@ -35,6 +35,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   editQuestionDone(question: Question): void {
+    this.quizService.putQuestion(this.quiz, question);
     this.editQuestionChose = '';
   }
 

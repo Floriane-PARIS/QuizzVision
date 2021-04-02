@@ -15,15 +15,10 @@ export class EditQuestionComponent implements OnInit {
   @Input()
   question: Question;
 
-  public questionLabel: string;
-  public questionAnswers: string[];
-
   @Output()
   editQuestionDone: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor() {
-    this.questionLabel = '';
-    this.questionAnswers = [];
   }
 
   ngOnInit(): void {
