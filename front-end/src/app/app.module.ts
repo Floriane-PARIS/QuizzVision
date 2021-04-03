@@ -25,6 +25,7 @@ import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component
 import { ConfigurationEditComponent } from './configurations/configuration-edit/configuration-edit.component';
 import { ConfigurationFormComponent } from './configurations/configuration-form/configuration-form.component';
 import { ConfigurationComponent } from './configurations/configuration/configuration.component';
+import { ThemeComponent } from './themes/theme/theme.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ConfigurationComponent } from './configurations/configuration/configura
     GameStartComponent,
     GameQuestionComponent,
     QuizSearchComponent,
+    ThemeComponent,
   ],
     imports: [
         BrowserModule,

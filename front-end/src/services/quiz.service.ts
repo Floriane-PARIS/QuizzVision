@@ -58,9 +58,9 @@ export class QuizService {
         // tslint:disable-next-line:triple-equals
         if (quizList[i].name == quizName){
           this.quizzes.push(quizList[i]);
-          this.quizzes$.next(this.quizzes);
         }
       }
+      this.quizzes$.next(this.quizzes);
     });
   }
 
