@@ -119,7 +119,6 @@ export class QuizService {
   }
 
   putQuestion(quiz: Quiz, question: Question): void {
-    console.log('' + question.label);
     const questionWrite = {label : question.label };
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
@@ -129,7 +128,6 @@ export class QuizService {
   }
 
   putAnswer(quiz: Quiz, question: Question, answer: Answer): void {
-    console.log('' + answer.value);
     const answerWrite = {value: answer.value, isCorrect: answer.isCorrect};
     const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id + '/' + this.answersPath + '/' + answer.id;
     this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));

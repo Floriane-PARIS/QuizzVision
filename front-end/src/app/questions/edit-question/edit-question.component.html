@@ -5,12 +5,7 @@
   </h2>
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
     {{i}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
-   <ng-container *ngIf="answer.isCorrect">
-    <input type="checkbox" checked="true">
-    </ng-container>
-    <ng-container *ngIf="!answer.isCorrect">
-      <input type="checkbox">
-    </ng-container>
+    <input type="checkbox" [(ngModel)] = "answer.isCorrect">
     <br>
   </div>
     <button class="button-card" (click)="edit()">Edit</button>
