@@ -138,9 +138,14 @@ export class GameService {
     const questionUrl = this.quizUrl + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((question) => {
       console.log(this.gameQuestion);
+      this.gameQuestion = question;
       this.gameQuestion$.next(question);
     });
+    this.http.put<Game>(this.gameUrl + '/' + game.id, nextQuestionId, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+    //this.changeQuestion(game, this.gameQuiz.questions[indexNext]);
     }
   }
+
+
 
 }
