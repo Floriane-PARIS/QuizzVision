@@ -1,0 +1,15 @@
+<div class="card">
+  <h3 p style="font-family: cursive;">Create a new Theme</h3>
+  <form class="theme-form" [formGroup]="themeForm">
+    <h6>
+      <label for="title">
+        <p>
+          Subject:
+          <input class="input-custom" type="text" id="subject" [formControlName]="'subject'">
+        </p>
+      </label>
+    </h6>
+  </form>
+  <button type="submit" class="button-card" (click)="addTheme()">Create</button>
+</div>
+
