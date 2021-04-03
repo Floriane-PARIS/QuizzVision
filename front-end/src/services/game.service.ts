@@ -124,8 +124,8 @@ export class GameService {
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion , 0);
     const indexNext = ind +1 ;
     if(this.gameQuiz.questions.length > indexNext){
-    const nextQuestionId = this.gameQuiz.questions[indexNext].id;
-    const questionUrl = this.gameUrl + '/' + game.id  + '/' + this.questionsPath + '/' + nextQuestionId ;
+    const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+ 
+    const questionUrl = this.quizzesPath + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
     this.http.get<Question>(questionUrl).subscribe((question) => {
       this.gameQuestion$.next(question);
     });
