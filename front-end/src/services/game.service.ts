@@ -125,12 +125,13 @@ export class GameService {
   //faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
-    console.log(this.getQuestion(game));
+    console.log(this.gameQuestion);
     this.getQuiz(game);
     console.log(this.gameQuiz);
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion , 0);
     console.log(ind);
-    const indexNext = ind + 1 ;
+    const indexNext = ind + 2 ;
+    console.log(indexNext);
     if(this.gameQuiz.questions.length > indexNext){
     const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+
     console.log(nextQuestionId);
