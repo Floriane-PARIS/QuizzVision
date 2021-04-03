@@ -13,9 +13,16 @@ export class ConfigurationComponent implements OnInit {
   @Input()
   configuration: Configuration;
 
+  @Output()
+  deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  delete(){
+    this.deleteConfiguration.emit(this.configuration);
   }
 
 }

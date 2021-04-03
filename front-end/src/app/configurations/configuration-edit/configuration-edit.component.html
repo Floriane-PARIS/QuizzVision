@@ -3,7 +3,7 @@
 
 <div class = "configuration-edit">
   <div class = "configuration" *ngFor="let configuration of configurationList">
-    <app-configuration [configuration]="configuration"></app-configuration>
+    <app-configuration [configuration]="configuration" (deleteConfiguration)="delete($event)"></app-configuration>
   </div>
 </div>
 

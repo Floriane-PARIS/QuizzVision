@@ -14,13 +14,18 @@ export class ConfigurationEditComponent implements OnInit {
 
   constructor(private configurationService: ConfigurationService) {
    this.configurationService.configurations$.subscribe((configurations) => {
-     console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
+     //console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
      this.configurationList = configurations;
    })
 
   }
 
   ngOnInit(): void {
+  }
+
+  delete(configuration: Configuration){
+    console.log("[Delete]configuration ", configuration);
+    this.configurationService.delete(configuration);
   }
 
 }

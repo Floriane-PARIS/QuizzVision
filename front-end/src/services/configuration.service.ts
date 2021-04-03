@@ -29,6 +29,10 @@ export class ConfigurationService {
     this.retrieveConfigurations();
   }
 
+  delete(configuration: Configuration){
+
+  }
+
   retrieveConfigurations(): void {
     this.http.get<Configuration[]>(this.configurationUrl).subscribe((ConfigurationEdit) => {
       this.configurations = ConfigurationEdit;
@@ -39,7 +43,7 @@ export class ConfigurationService {
   addConfiguration(configuration: Configuration): void {
     //this.http.post<Configuration>(this.configurationUrl, configuration, this.httpOptions).subscribe(() => this.retrieveConfigurations());
     this.configurations.push(configuration);
-    console.log('configurations before emit ', this.configurations);
+    //console.log('configurations before emit ', this.configurations);
     this.configurations$.next(this.configurations);
   }
 
