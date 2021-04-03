@@ -7,12 +7,16 @@ import { ConfigurationEditComponent } from './configurations/configuration-edit/
 import { GameStartComponent } from './games/game-start/game-start.component';
 import { GameComponent } from './games/game/game.component';
 import { GameQuestionComponent } from './questions/game-question/game-question.component';
+import {ThemeListComponent} from './themes/theme-list/theme-list.component';
+import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
 
 const routes: Routes = [
+    {path: 'theme-list', component: ThemeListComponent},
     {path: 'user-list', component: UserListComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'configuration-edit', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
+    {path: 'edit-theme/:id', component: EditThemeComponent},
     {path: 'game-start/:id', component: GameStartComponent},
     {path: 'game/:id', component: GameComponent},
     //{path: 'game-question/:id', component: GameQuestionComponent},

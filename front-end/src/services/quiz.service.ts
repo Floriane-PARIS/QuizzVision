@@ -5,7 +5,7 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import {Answer, Question} from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {Game} from "../models/game.model";
+import {Game} from '../models/game.model';
 
 @Injectable({
   providedIn: 'root'
@@ -58,9 +58,9 @@ export class QuizService {
         // tslint:disable-next-line:triple-equals
         if (quizList[i].name == quizName){
           this.quizzes.push(quizList[i]);
-          this.quizzes$.next(this.quizzes);
         }
       }
+      this.quizzes$.next(this.quizzes);
     });
   }
 
@@ -129,11 +129,12 @@ export class QuizService {
 
   putAnswer(quiz: Quiz, question: Question, answer: Answer): void {
     const answerWrite = {value: answer.value, isCorrect: answer.isCorrect};
+    // tslint:disable-next-line:max-line-length
     const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id + '/' + this.answersPath + '/' + answer.id;
     this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  //recuperer l'id de la question
+  // recuperer l'id de la question
   getQuestionIdQuiz(quiz: Quiz, index: number): string {
     return quiz.questions[index].id;
   }

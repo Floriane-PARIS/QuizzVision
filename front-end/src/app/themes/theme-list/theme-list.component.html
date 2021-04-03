@@ -1,0 +1,12 @@
+<app-theme-form></app-theme-form>
+<app-theme-search></app-theme-search>
+<div *ngIf="themeList.length > 0; else elseBlock">
+  <div class="theme" *ngFor="let theme of themeList">
+    <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div>
+    No themes
+  </div>
+</ng-template>

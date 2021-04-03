@@ -4,8 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Answer, Question} from '../models/question.model';
-import {Quiz} from "../models/quiz.model";
-import { QuizService } from "../services/quiz.service";
+import {Quiz} from '../models/quiz.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,8 @@ export class GameService {
    The list of game.
    */
   private games: Game[] = [];
-  public gameQuestion: Question;//changes
-  public gameQuiz: Quiz; //changes
+  public gameQuestion: Question;  // changes
+  public gameQuiz: Quiz; // changes
 
   /*
    Observable which contains the list of the game.
@@ -26,13 +25,13 @@ export class GameService {
 
   public gameSelected$: Subject<Game> = new Subject();
 
-  public gameQuestion$: Subject<Question> = new Subject(); //changes
+  public gameQuestion$: Subject<Question> = new Subject(); // changes
   public gameQuiz$: Subject<Quiz> = new Subject();
 
   public selectedGameId$: Subject<string> = new Subject();
 
-  //public gameQuestion$: Subject<Question> = new Subject(); //changes
-  public gameQuestionId$: Subject<string> = new Subject();// changes
+  // public gameQuestion$: Subject<Question> = new Subject(); // changes
+  public gameQuestionId$: Subject<string> = new Subject();  // changes
 
   private gameUrl = serverUrl + '/games';
   private quizUrl = serverUrl + '/quizzes';
@@ -51,8 +50,8 @@ export class GameService {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = gameList;
       this.games$.next(this.games);
-      if(isSetSelectedGame){
-        //this.setSelectedGame(this.islastGame());
+      if (isSetSelectedGame){
+        // this.setSelectedGame(this.islastGame());
         this.selectedGameId$.next(this.islastGame());
       }
 
@@ -86,6 +85,7 @@ export class GameService {
   addAnswer(game: Game, answer: Answer): void {
     const answerWrite = {answers: [answer]};
     const answerUrl = this.gameUrl + '/' + game.id ;
+    // tslint:disable-next-line:no-shadowed-variable
     this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
   }
 
@@ -98,7 +98,7 @@ export class GameService {
     const answerUrl = '/' + game.quizId + '/' + game.question[0].id + '/' + this.answersPath;
     this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
-  //faire une méthode pour récupérer la question
+  // faire une méthode pour récupérer la question
   getQuestion(game: Game): void{
     //const gameUrl = this.gameUrl + '/' + game.id ;
     const questionUrl = this.quizUrl + '/' + game.quizId + '/' + this.questionsPath + '/' + game.question[0].id;
@@ -114,15 +114,16 @@ export class GameService {
     return this.gameQuestion.id;
   }*/
 
-  //récupérer le quiz correspondant au jeu"
+  // récupérer le quiz correspondant au jeu"
   getQuiz(game: Game): void{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
       this.gameQuiz = quiz;
       this.gameQuiz$.next(quiz);;
+
     });
   }
-  //faire une méthode pour update l'id de la question
+  // faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
     console.log(this.gameQuestion);
@@ -139,6 +140,7 @@ export class GameService {
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((question) => {
       console.log(this.gameQuestion);
       this.gameQuestion = question;
+
       this.gameQuestion$.next(question);
     });
     this.http.put<Game>(this.gameUrl + '/' + game.id, nextQuestionId, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));

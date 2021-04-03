@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import '@angular/compiler';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,11 @@ import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component
 import { ConfigurationEditComponent } from './configurations/configuration-edit/configuration-edit.component';
 import { ConfigurationFormComponent } from './configurations/configuration-form/configuration-form.component';
 import { ConfigurationComponent } from './configurations/configuration/configuration.component';
+import { ThemeComponent } from './themes/theme/theme.component';
+import { ThemeListComponent } from './themes/theme-list/theme-list.component';
+import { EditThemeComponent } from './themes/edit-theme/edit-theme.component';
+import { ThemeSearchComponent } from './themes/theme-search/theme-search.component';
+import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,11 @@ import { ConfigurationComponent } from './configurations/configuration/configura
     GameStartComponent,
     GameQuestionComponent,
     QuizSearchComponent,
+    ThemeComponent,
+    ThemeListComponent,
+    EditThemeComponent,
+    ThemeSearchComponent,
+    ThemeFormComponent,
   ],
     imports: [
         BrowserModule,
