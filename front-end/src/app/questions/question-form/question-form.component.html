@@ -20,7 +20,13 @@
         </div>
       </div>
     </div>
+    <div *ngIf="answers.length >= 2">
     <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+    </div>
+    <div *ngIf="answers.length < 2">
+      <br>
+      (ps: Une question doit avoir au moins 2 réponses pour être créée)
+    </div>
   </form>
 </div>
 
