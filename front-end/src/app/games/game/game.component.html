@@ -5,15 +5,15 @@
     <h1> <div *ngIf = "game !== undefined"> game n° {{game.id}} </div></h1>
     <!--Inputs & Output allow communication between parent & child components.-->
     <!--More information: https://angular.io/guide/component-interaction-->
-    <!--div *ngIf = "question !== undefined"-->
+    <div *ngIf = "game.question[0] !== undefined">
     <app-game-question [question]=game.question[0] (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
     <br>
     <app-game-response [answer]=answer ></app-game-response>
     <br>
     <app-game-result [message]=message ></app-game-result>
     <br><br>
-    <button type="button" class="button-card" routerLink="/app-game-question" (click)="next()">Question Suivante</button>
-  <!--/div-->
+    <button type="button" class="button-card" (click)="next()">Question Suivante</button>
+  </div>
   </div>
 </div>
 

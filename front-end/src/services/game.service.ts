@@ -35,6 +35,7 @@ export class GameService {
   public gameQuestionId$: Subject<string> = new Subject();// changes
 
   private gameUrl = serverUrl + '/games';
+  private quizUrl = serverUrl + '/quizzes';
   private answersPath = 'answers';
   private questionsPath = 'questions';
   private quizzesPath = 'quizzes'; // changes
@@ -42,8 +43,8 @@ export class GameService {
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    this.retrieveGames();
     //this.getQuestion(this.games[this.games.length -1 ]); //changes
+    this.retrieveGames();
   }
 
   retrieveGames(isSetSelectedGame: boolean = false): void {
@@ -99,9 +100,12 @@ export class GameService {
   }
   //faire une méthode pour récupérer la question
   getQuestion(game: Game): void{
-    const gameUrl = this.gameUrl + '/' + game.id ;
-    this.http.get<Game>(gameUrl, this.httpOptions).subscribe((gameList) => {
-      this.gameQuestion$.next(gameList.question[0]);
+    //const gameUrl = this.gameUrl + '/' + game.id ;
+    const questionUrl = this.quizUrl + '/' + game.quizId + '/' + this.questionsPath + '/' + game.question[0].id;
+    this.http.get<Question>(questionUrl, this.httpOptions).subscribe((gameList) => {
+      this.gameQuestion = gameList;
+      this.gameQuestion$.next(gameList);
+      
     });
   }
  /* //faire une méthode pour récupérer l'id de la question actuelle du game
@@ -112,21 +116,27 @@ export class GameService {
 
   //récupérer le quiz correspondant au jeu"
   getQuiz(game: Game): void{
-    const quizUrl = this.gameUrl + '/' + game.id + '/' + this.quizzesPath;
-    this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((gameList) => {
-      this.gameQuiz$.next(gameList);;
+    const quizUrl = this.quizUrl + '/' + game.quizId ;
+    this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
+      this.gameQuiz = quiz;
+      this.gameQuiz$.next(quiz);;
     });
   }
   //faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
+    console.log(this.getQuestion(game));
     this.getQuiz(game);
+    console.log(this.gameQuiz);
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion , 0);
+    console.log(ind);
     const indexNext = ind + 1 ;
     if(this.gameQuiz.questions.length > indexNext){
     const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+
-    const questionUrl = this.quizzesPath + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
-    this.http.get<Question>(questionUrl).subscribe((question) => {
+    console.log(nextQuestionId);
+    const questionUrl = this.quizUrl + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
+    this.http.get<Question>(questionUrl, this.httpOptions).subscribe((question) => {
+      console.log(this.gameQuestion);
       this.gameQuestion$.next(question);
     });
     }
