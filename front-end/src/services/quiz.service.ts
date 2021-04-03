@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
-import { Question } from '../models/question.model';
+import {Answer, Question} from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Game} from "../models/game.model";
 
@@ -35,6 +35,7 @@ export class QuizService {
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private answersPath = 'answers';
 
   private httpOptions = httpOptionsBase;
 
@@ -122,6 +123,16 @@ export class QuizService {
     const questionWrite = {label : question.label };
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+    for (const answer of question.answers) {
+      this.putAnswer(quiz, question, answer);
+    }
+  }
+
+  putAnswer(quiz: Quiz, question: Question, answer: Answer): void {
+    console.log('' + answer.value);
+    const answerWrite = {value: answer.value, isCorrect: answer.isCorrect};
+    const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id + '/' + this.answersPath + '/' + answer.id;
+    this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
   //recuperer l'id de la question
