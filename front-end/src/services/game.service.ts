@@ -16,7 +16,7 @@ export class GameService {
    */
   private games: Game[] = [];
   public gameQuestion: Question;//changes
-  public gameQuiz: Quiz;
+  public gameQuiz: Quiz; //changes
 
   /*
    Observable which contains the list of the game.
@@ -120,13 +120,16 @@ export class GameService {
   //faire une méthode pour update l'id de la question 
   nextQuestion(game: Game): void {
     this.getQuestion(game);
+    this.getQuiz(game);
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion , 0);
     const indexNext = ind +1 ;
-    const nextQuestionId = this.gameQuiz.questions[indexNext];
-    const questionUrl = this.gameUrl + '/' + nextQuestionId ;
+    if(this.gameQuiz.questions.length > indexNext){
+    const nextQuestionId = this.gameQuiz.questions[indexNext].id;
+    const questionUrl = this.gameUrl + '/' + game.id  + '/' + this.questionsPath + '/' + nextQuestionId ;
     this.http.get<Question>(questionUrl).subscribe((question) => {
       this.gameQuestion$.next(question);
     });
+    }
   }
 
 }
