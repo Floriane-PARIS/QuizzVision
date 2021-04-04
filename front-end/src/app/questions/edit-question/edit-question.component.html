@@ -11,6 +11,19 @@
     </div>
     <br>
   </div>
+  <div *ngIf="question.answers.length < 4">
+    <div *ngFor="let address of answers.controls; let i=index">
+      <div class="answer-form" [formGroup]="answerForm">
+    <div class="answer-form" >
+      <label>
+        {{question.answers.length + i}} - <input type="text" [formControlName]="'value'">
+        <input type="checkbox" [formControlName]="'isCorrect'">
+      </label>
+    </div>
+    </div>
+    </div>
+    <button class="button-card" (click)="addAnswer()">Add an Answer</button>
+  </div>
     <button class="button-card" (click)="edit()">Edit</button>
 </div>
 

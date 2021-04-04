@@ -6,9 +6,6 @@
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
     </label>
     <br>
-    <div *ngIf="answers.length < 4">
-    <button class="button-card" (click)="addAnswer()">Add Answer</button>
-    </div>
     <div *ngIf="answers.length >= 4">
       Vous avez atteint le nombre de réponse maximal par question
     </div>
@@ -16,7 +13,7 @@
       <div *ngFor="let address of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
           <label>
-            Answer
+            Answer {{i}} -
             <input type="text" [formControlName]="'value'">
             <br>
             Correct
@@ -24,6 +21,9 @@
           </label>
         </div>
       </div>
+    </div>
+    <div *ngIf="answers.length < 4">
+      <button class="button-card" (click)="addAnswer()">Add Answer</button>
     </div>
     <div *ngIf="answers.length >= 2 && answers.length <= 4">
     <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
