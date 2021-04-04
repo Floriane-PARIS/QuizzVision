@@ -4,6 +4,7 @@ const Quiz = require('./quiz.model.js')
 const User = require('./user.model.js')
 const Game = require('./game.model.js')
 const Theme = require('./theme.model.js')
+const Configuration = require('./configuration.model.js')
 
 module.exports = {
   Answer,
@@ -12,4 +13,5 @@ module.exports = {
   User,
   Game,
   Theme,
+  Configuration,
 }
