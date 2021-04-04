@@ -6,10 +6,21 @@
     <input type="radio" value="yes" id="bold" name="bold" [formControlName]="'bold'"> Oui
       <input type="radio" value="no" id="nobold" name="bold" [formControlName]="'bold'"> Non
     </p>
-    <label for="size">
-      Taille du texte <br>
+    <label for="size">Taille du texte </label>
       <input class="input-custom" type="text" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
-    </label>
+
+    <label for="police"> <br>Police du texte  </label>
+      <!--input class="input-custom" type="text" id="police" name="police" [formControlName]="'police'"-->
+      <select id = "police" name="police" [formControlName]="'police'">
+        <option value = "arial">Arial</option>
+        <option value = "ab">Arial Black</option>
+        <option value = "csms">Comic Sans MS</option>
+        <option value = "georgia">Georgia</option>
+        <option value = "impact">Impact</option>
+        <option value = "tnr">Times new Roman</option>
+        <option value = "trebuchet">Trebuchet</option>
+        <option value = "verdana">Verdana</option>
+      </select>
     <br>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
