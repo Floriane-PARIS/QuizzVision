@@ -134,6 +134,11 @@ export class QuizService {
     this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  deleteAnswer(quiz: Quiz, questionId: string, answer: Answer): void {
+    const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + questionId + '/' + this.answersPath + '/' + answer.id;
+    this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
   // recuperer l'id de la question
   getQuestionIdQuiz(quiz: Quiz, index: number): string {
     return quiz.questions[index].id;

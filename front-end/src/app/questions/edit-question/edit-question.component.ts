@@ -2,7 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
-import { Question } from 'src/models/question.model';
+import {Answer, Question} from 'src/models/question.model';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -18,6 +18,9 @@ export class EditQuestionComponent implements OnInit {
   @Output()
   editQuestionDone: EventEmitter<Question> = new EventEmitter<Question>();
 
+  @Output()
+  deleteAnswer: EventEmitter<Answer> = new EventEmitter<Answer>();
+
   constructor() {
   }
 
@@ -26,6 +29,10 @@ export class EditQuestionComponent implements OnInit {
 
   edit(): void {
     this.editQuestionDone.emit(this.question);
+  }
+
+  delete(answer: Answer): void {
+    this.deleteAnswer.emit(answer);
   }
 
 }

@@ -3,7 +3,7 @@
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf="editQuestionChose == question.id">
-        <app-edit-question [question]="question"  (editQuestionDone)="editQuestionDone($event)"></app-edit-question>
+        <app-edit-question [question]="question"  (editQuestionDone)="editQuestionDone($event)" (deleteAnswer)="deleteAnswer($event)"></app-edit-question>
       </div>
       <div *ngIf="editQuestionChose != question.id">
         <app-question [question]="question" (nextQuestion)="nextQuestion($event)" (deleteQuestion)="deleteQuestion($event)" (editQuestion)="editQuestion($event)"></app-question>

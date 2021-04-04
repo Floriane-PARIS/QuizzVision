@@ -6,6 +6,9 @@
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
     {{i}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
     <input type="checkbox" [(ngModel)] = "answer.isCorrect">
+    <div *ngIf="question.answers.length > 2">
+      <button class="button-card" (click)="delete(answer)">Delete</button>
+    </div>
     <br>
   </div>
     <button class="button-card" (click)="edit()">Edit</button>

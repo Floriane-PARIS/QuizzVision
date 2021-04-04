@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
-import { Question } from 'src/models/question.model';
+import {Answer, Question} from 'src/models/question.model';
 
 @Component({
   selector: 'app-question-list',
@@ -23,6 +23,10 @@ export class QuestionListComponent implements OnInit {
 
   deleteQuestion(question: Question): void {
     this.quizService.deleteQuestion(this.quiz, question);
+  }
+
+  deleteAnswer(answer: Answer): void {
+    this.quizService.deleteAnswer(this.quiz, this.editQuestionChose,  answer);
   }
 
   nextQuestion(question: Question): void {
