@@ -42,10 +42,10 @@ export class ConfigurationService {
   }
 
   addConfiguration(configuration: Configuration): void {
-    //this.http.post<Configuration>(this.configurationUrl, configuration, this.httpOptions).subscribe(() => this.retrieveConfigurations());
-    this.configurations.push(configuration);
-    // console.log('configurations before emit ', this.configurations);
-    this.configurations$.next(this.configurations);
+    this.http.post<Configuration>(this.configurationUrl, configuration, this.httpOptions).subscribe(() => this.retrieveConfigurations());
+    // this.configurations.push(configuration);
+    console.log('configurations before emit ', this.configurations);
+    // this.configurations$.next(this.configurations);
   }
 
   setSelectedConfiguration(configurationId: string): void {

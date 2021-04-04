@@ -8,7 +8,7 @@
     </p>
     <label for="size">
       Taille du texte <br>
-      <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
+      <input class="input-custom" type="text" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
     </label>
     <br>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
