@@ -26,7 +26,7 @@ export class ConfigurationFormComponent implements OnInit {
   addConfiguration(): void {
     //ajouter une configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
-    console.log("configuration: ", configurationToCreate);
+    console.log("[Add]configuration: ", configurationToCreate);
     this.configurationService.addConfiguration(configurationToCreate);
   }
 }

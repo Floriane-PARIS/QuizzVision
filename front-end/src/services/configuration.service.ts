@@ -29,11 +29,6 @@ export class ConfigurationService {
     this.retrieveConfigurations();
   }
 
-  // tslint:disable-next-line:typedef
-  delete(configuration: Configuration){
-
-  }
-
   retrieveConfigurations(): void {
     this.http.get<Configuration[]>(this.configurationUrl).subscribe((ConfigurationEdit) => {
       this.configurations = ConfigurationEdit;
