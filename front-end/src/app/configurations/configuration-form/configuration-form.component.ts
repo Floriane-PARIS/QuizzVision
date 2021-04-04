@@ -15,9 +15,9 @@ export class ConfigurationFormComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, private configurationService: ConfigurationService) {
     this.configurationForm =  this.formBuilder.group({
-      bold: [''],
-      size: [''],
-      police: ['']
+      bold: ['false'],
+      size: ['18'],
+      police: ['Times new Roman']
     });
   }
 
