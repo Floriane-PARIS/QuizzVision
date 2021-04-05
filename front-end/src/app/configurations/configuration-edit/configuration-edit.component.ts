@@ -11,11 +11,17 @@ import { Configuration } from '../../../models/configuration.model';
 export class ConfigurationEditComponent implements OnInit {
 
   public configurationList: Configuration[] = [];
+  public configuration: Configuration;
 
   constructor(private configurationService: ConfigurationService) {
    this.configurationService.configurations$.subscribe((configurations) => {
      //console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
      this.configurationList = configurations;
+     if(configurations.length>0){
+        this.configuration = configurations[configurations.length-1];
+     } else {
+        this.configuration = undefined;
+     }
    })
 
   }

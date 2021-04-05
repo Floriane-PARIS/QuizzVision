@@ -1,11 +1,11 @@
 <div class="card">
   <h2>Choisir une nouvelle configuration</h2>
   <form class="configuration-form" [formGroup]="configurationForm">
-    <p>
+
     <label for="bold">Texte en gras ? </label>
     <input type="radio" value="true" id="bold" name="bold" [formControlName]="'bold'"> Oui
-      <input type="radio" value="false" id="nobold" name="bold" [formControlName]="'bold'"> Non
-    </p>
+    <input type="radio" value="false" id="nobold" name="bold" [formControlName]="'bold'"> Non
+<br>
     <label for="size">Taille du texte </label>
       <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
 

@@ -2,8 +2,15 @@
   <h2>Configuration choisie
     <i class="bi bi-bookmarks"></i>
   </h2>
+  <!--input type="button" value="set config" ng-click="Config={color:'blue'}">
+  <span ng-style="Config">
+    Voici un exemple de votre configuration.<br>
+  </span-->
+  <!--div [ngStyle]="{'color': 'purple', 'font-size': 'x-large'}">
+    Ceci est un test de configuration
+  </div-->
     Texte en gras: {{configuration.bold}}<br>
     Taille du texte: {{configuration.size}}<br>
     Police du texte: {{configuration.police}}<br>
-  <button class="button-card" (click)="delete()"> Delete</button>
+  <button class="button-card" (click)="delete()"> Back</button>
 </div>
