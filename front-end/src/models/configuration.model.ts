@@ -1,6 +1,6 @@
 export interface Configuration {
     id: string;
-    bold: boolean;
+    bold: string;
     size: number;
     police: string;
 }

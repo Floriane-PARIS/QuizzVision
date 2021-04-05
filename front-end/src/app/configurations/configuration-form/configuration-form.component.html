@@ -3,14 +3,13 @@
   <form class="configuration-form" [formGroup]="configurationForm">
 
     <label for="bold">Texte en gras ? </label>
-    <input type="radio" value="true" id="bold" name="bold" [formControlName]="'bold'"> Oui
-    <input type="radio" value="false" id="nobold" name="bold" [formControlName]="'bold'"> Non
+    <input type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
+    <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
 <br>
     <label for="size">Taille du texte </label>
       <input class="input-custom" type="number" id="size" name="police-size" min="6" max="70" value = "14" step = "4" [formControlName]="'size'">
 
     <label for="police"> <br>Police du texte  </label>
-      <!--input class="input-custom" type="text" id="police" name="police" [formControlName]="'police'"-->
       <select id = "police" name="police" [formControlName]="'police'">
         <option value = "Arial">Arial</option>
         <option value = "Arial Black">Arial Black</option>

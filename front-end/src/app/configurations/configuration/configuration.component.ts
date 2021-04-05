@@ -25,4 +25,17 @@ export class ConfigurationComponent implements OnInit {
     this.deleteConfiguration.emit(this.configuration);
   }
 
+  getBold(){
+      return this.configuration.bold;
+  }
+
+  getPolice(){
+      return this.configuration.police;
+  }
+
+  getSize(){
+      return this.configuration.size+"px";
+  }
+
 }
+
