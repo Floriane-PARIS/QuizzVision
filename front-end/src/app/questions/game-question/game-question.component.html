@@ -3,7 +3,14 @@
     Question : {{question.label}}
   </h2>
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
+    <div *ngIf="!isValided">
     <button class="button-card" (click)="choseAnswer(answer)">{{i}} - {{answer.value}}</button>
+    </div>
+    <div *ngIf="isValided">
+      {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
+    </div>
    </div>
+  <div *ngIf="!isValided">
   <button class="button-card" (click)="valideQuestionAnswered()">Valide</button>
+ </div>
 </div>

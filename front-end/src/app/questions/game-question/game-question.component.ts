@@ -10,6 +10,8 @@ export class GameQuestionComponent implements OnInit {
 
   @Input()
   question: Question;
+  @Input()
+  isValided: boolean;
 
   @Output()
   valideQuestion: EventEmitter<Question> = new EventEmitter<Question>();
