@@ -136,15 +136,16 @@ export class GameService {
     if(this.gameQuiz.questions.length > indexNext){
     const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+
     console.log(nextQuestionId);
+    const questionWrite = {questions: [this.nextQuestion]};
+    console.log(this.nextQuestion);
     const questionUrl = this.quizUrl + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((question) => {
       console.log(this.gameQuestion);
       this.gameQuestion = question;
-
       this.gameQuestion$.next(question);
     });
-    this.http.put<Game>(this.gameUrl + '/' + game.id, nextQuestionId, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
-    //this.changeQuestion(game, this.gameQuiz.questions[indexNext]);
+    console.log("on change de question");
+    this.http.put<Game>(this.gameUrl + '/' + game.id, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
     }
   }
 
