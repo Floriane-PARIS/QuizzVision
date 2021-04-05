@@ -15,6 +15,7 @@ export class GameComponent implements OnInit {
   public game: Game;
   public answer: Answer;
   public message: string;
+  public isValided: boolean;
   public gameQuestion: Question;
 
 
@@ -23,6 +24,7 @@ export class GameComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
+    this.isValided = false;
   }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class GameComponent implements OnInit {
   }
 
   isValideAnswer(question: Question): void {
+    this.isValided = true;
     if (this.answer.isCorrect) {
       this.message = 'Bravo, bonne réponse';
     }
@@ -58,6 +61,7 @@ export class GameComponent implements OnInit {
     console.log(this.game);
     this.answer = undefined;
     this.message = '';
+    this.isValided = false;
     // this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
     console.log('nous passons à la prochaine question^^!');
