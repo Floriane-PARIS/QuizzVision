@@ -21,7 +21,35 @@
         <option value = "Verdana">Verdana</option>
       </select>
     <br>
+    <label for="bright"> <br> Luminosité </label>
+    <div class="range">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+      <input type="range" id="bright" min="0" max="200" value="100 [formControlName]="'value'">
+      <span class= "value">100</span>
+    </div>
+    <label for="contrast"> <br> Contraste </label> 
+    <div class="range">
+      <i class="fa fa-adjust" aria-hidden="true"></i>
+      <input type="range" id="contrast" min="0" max="200" value="100">
+      <span class= "value">100</span>
+    </div>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>
+<script>
+  const rangeInput = document.querySelectorAll('input');
+  const value = document.querySelectorAll('.value');
+  const container = document.querySelector('.card');
+
+  for(let i=0; i<rangeInput.length; i++){
+    value[i].textContent = rangeInput[i].value;
+    rangeInput[i].addEventListener('input', ()=>{
+      value[i].textContent = rangeInput[i].value;
+      if(document.getElementById("bright")){
+        card.style.filter = 'brightness(${rangeInput[i].value}%)';
+      }
+    })
+  }
+</script>
+
 <!--br><br>{{configurationForm.getRawValue() | json }} -->
