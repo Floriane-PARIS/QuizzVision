@@ -56,9 +56,9 @@ export class GameComponent implements OnInit {
   //changes
   next(): void {
     console.log(this.game);
-  this.gameService.nextQuestion(this.game);
-  
-  console.log("nous passons à la prochaine question^^!");
+    // this.gameService.nextQuestion(this.game);
+    this.gameService.nextQuestionGame(this.game);
+    console.log("nous passons à la prochaine question^^!");
   }
 
 }

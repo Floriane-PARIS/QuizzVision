@@ -105,7 +105,7 @@ export class GameService {
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((gameList) => {
       this.gameQuestion = gameList;
       this.gameQuestion$.next(gameList);
-      
+
     });
   }
  /* //faire une méthode pour récupérer l'id de la question actuelle du game
@@ -114,25 +114,57 @@ export class GameService {
     return this.gameQuestion.id;
   }*/
 
-  // récupérer le quiz correspondant au jeu"
-  getQuiz(game: Game): void{
+  nextQuestionGame(game: Game): void{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
-      this.gameQuiz = quiz;
-      this.gameQuiz$.next(quiz);;
-
+      const index = this.getIndexQuestionInQuiz(game, quiz);
+      if (index >= 0 ) {
+        this.updateGameQuestion(game, this.getQuestionWithIndexInQuiz(index + 1, quiz));
+      }
     });
   }
+
+  updateGameQuestion(game: Game, question: Question): void {
+    const questionWrite = {question: [question]};
+    const questionUrl = this.gameUrl + '/' + game.id ;
+    this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+  }
+
+  // return index of Question in Quiz
+  getIndexQuestionInQuiz(game: Game, quiz: Quiz): number{
+    let index = 0;
+    for (const question of quiz.questions) {
+      if (question.id === game.question[0].id) {
+        return index;
+      }
+      index++;
+    }
+    return -1;
+  }
+
+  // return question of index in Quiz
+  getQuestionWithIndexInQuiz(indexQuestion: number, quiz: Quiz): Question{
+    let index = 0;
+    for (const question of quiz.questions) {
+      if (index === indexQuestion) {
+        return question;
+      }
+      index++;
+    }
+    return null;
+  }
+
   // faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
-    console.log(this.gameQuestion);
-    this.getQuiz(game);
-    console.log(this.gameQuiz);
-    const ind = this.gameQuiz.questions.indexOf(this.gameQuestion , 0);
-    console.log(ind);
+    // recupere la question en cours
+    // console.log('question en cours', game.question[0]);
+    this.nextQuestionGame(game);
+    // console.log('quiz en cours', this.gameQuiz);
+    const ind = this.gameQuiz.questions.indexOf(this.gameQuestion);
+    console.log('index', ind);
     const indexNext = ind + 2 ;
-    console.log(indexNext);
+    console.log('nextindex', indexNext);
     if(this.gameQuiz.questions.length > indexNext){
     const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+
     console.log(nextQuestionId);
