@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { GameService } from 'src/services/game.service';
 import { Game } from '../../../models/game.model';
@@ -21,7 +21,7 @@ export class GameComponent implements OnInit {
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor(private route: ActivatedRoute, private gameService: GameService) {
+  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
   }
 
@@ -49,16 +49,24 @@ export class GameComponent implements OnInit {
     if(game.id != null){
       return true;
     }
-    console.log("nok")
+    console.log('nok');
     return false;
   }
 
-  //changes
+  // changes
   next(): void {
     console.log(this.game);
-    //this.gameService.nextQuestion(this.game);
+    this.answer = undefined;
+    this.message = '';
+    // this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
-    console.log("nous passons à la prochaine question^^!");
+    console.log('nous passons à la prochaine question^^!');
+  }
+
+
+  quitGame() {
+    this.gameService.deleteGame(this.game);
+    this.router.navigate(['/quiz-list']);
   }
 
 }

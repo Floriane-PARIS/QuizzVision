@@ -2,6 +2,11 @@
 
 <div class="game">
   <div class="question">
+    <div *ngIf = "game.question[0] === null">
+      Vous avez fini le Quiz
+      <button type="button" class="button-card" (click)="quitGame()">Quit</button>
+    </div>
+    <div *ngIf = "game.question[0] !== null">
     <h1> <div *ngIf = "game !== undefined"> game n° {{game.id}} </div></h1>
     <!--Inputs & Output allow communication between parent & child components.-->
     <!--More information: https://angular.io/guide/component-interaction-->
@@ -14,6 +19,7 @@
     <br><br>
     <button type="button" class="button-card" (click)="next()">Question Suivante</button>
   </div>
+    </div>
   </div>
 </div>
 
