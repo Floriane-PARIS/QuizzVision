@@ -154,12 +154,20 @@ export class GameService {
     return null;
   }
 
+  getQuiz(game: Game): void{
+    const quizUrl = this.quizUrl + '/' + game.quizId ;
+    this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
+      this.gameQuiz = quiz;
+      this.gameQuiz$.next(quiz);
+    });
+  }
+
   // faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
     // recupere la question en cours
     // console.log('question en cours', game.question[0]);
-    this.nextQuestionGame(game);
+    this.getQuiz(game);
     // console.log('quiz en cours', this.gameQuiz);
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion);
     console.log('index', ind);
