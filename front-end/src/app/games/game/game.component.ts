@@ -4,6 +4,8 @@ import { Quiz } from 'src/models/quiz.model';
 import { GameService } from 'src/services/game.service';
 import { Game } from '../../../models/game.model';
 import {Answer, Question} from '../../../models/question.model';
+import {Configuration} from '../../../models/configuration.model';
+import {ConfigurationService} from '../../../services/configuration.service';
 
 @Component({
   selector: 'app-game',
@@ -17,13 +19,15 @@ export class GameComponent implements OnInit {
   public message: string;
   public isValided: boolean;
   public gameQuestion: Question;
+  public configuration: Configuration;
 
 
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService) {
+  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private configurationService: ConfigurationService) {
     this.gameService.gameSelected$.subscribe((game) => this.game = game);
+    this.configuration = configurationService.lastConfiguration();
     this.isValided = false;
   }
 
@@ -73,4 +77,25 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/quiz-list']);
   }
 
+  getBold(){
+      if(this.configuration != undefined){
+           return this.configuration.bold;
+      }
+       return 'normal';
+  }
+
+
+  getPolice(){
+      if(this.configuration != undefined){
+         return this.configuration.police;
+      }
+      return 'Arial';
+  }
+
+  getSize(){
+      if(this.configuration != undefined){
+        return this.configuration.size+"px";
+      }
+      return "22px";
+  }
 }

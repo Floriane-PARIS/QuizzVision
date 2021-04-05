@@ -28,7 +28,7 @@ export class GameStartComponent implements OnInit {
     });
 
     this.configuration = configurationService.lastConfiguration();
-    console.log("[Configuration1] ", this.configuration);
+    //console.log("[Configuration1] ", this.configuration);
 
     /*this.configurationService.configurationSelected$.subscribe((configuration) =>{
           this.configuration = configurationService.lastConfiguration();
