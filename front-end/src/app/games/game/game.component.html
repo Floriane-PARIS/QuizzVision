@@ -3,7 +3,7 @@
 <div class="game">
   <div class="question">
     <div *ngIf = "game.question[0] === null">
-      Vous avez fini le Quiz
+      <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
       <button type="button" class="button-card" (click)="quitGame()">Quit</button>
     </div>
     <div *ngIf = "game.question[0] !== null">
