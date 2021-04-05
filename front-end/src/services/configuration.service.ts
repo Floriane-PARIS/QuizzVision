@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Configuration } from '../models/configuration.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,20 @@ export class ConfigurationService {
     this.http.get<Configuration>(urlWithId).subscribe((configuration) => {
       this.configurationSelected$.next(configuration);
     });
+  }
+
+  lastConfiguration(): Configuration {
+    if(this.configurations.length>0){
+      return this.configurations[this.configurations.length-1];
+    }
+    /*var formBuilder: FormBuilder;
+    const configurationForm =  formBuilder.group({
+                     bold: ['normal'],
+                     size: ['22'],
+                     police: ['Arial']
+                   });
+    const configurationToCreate: Configuration = configurationForm.getRawValue() as Configuration;*/
+    return undefined;
   }
 
   deleteConfiguration(configuration: Configuration): void {

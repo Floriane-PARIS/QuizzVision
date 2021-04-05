@@ -2,11 +2,14 @@
 
 <ng-container *ngIf="quiz">
   <div class="start">
+    <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize()}">
     <br>
   <h1>Vous avez choisi le Quiz "{{quiz.name}}"
     <br>
     dans le theme "{{quiz.theme}}"</h1>
   <button type="button" class="button-card" style="font-size : 50px; width: 50%; height: 100px;" (click)="addGame()">Commencer</button>
+    </div>
   </div>
+
 </ng-container>
 
