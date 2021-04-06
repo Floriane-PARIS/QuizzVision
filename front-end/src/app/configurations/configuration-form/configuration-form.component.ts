@@ -18,8 +18,8 @@ export class ConfigurationFormComponent implements OnInit {
       bold: ['normal'],
       size: ['22'],
       police: ['Arial'],
-      bright: ['60'],
-      contrast: ['40']
+      bright: ['20'],
+      contrast: ['20']
     });
   }
 

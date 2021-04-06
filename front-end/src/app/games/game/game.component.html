@@ -2,7 +2,7 @@
 
 <div class="game">
   
-  <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize()}">
+  <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <div *ngIf = "game !== undefined" >
     <div class="question">
       <div *ngIf = "game.question[0] === null">
