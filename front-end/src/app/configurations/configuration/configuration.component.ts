@@ -36,8 +36,9 @@ export class ConfigurationComponent implements OnInit {
   getSize(){
       return this.configuration.size+"px";
   }
+
   getBright(){
-    return "brightness("+this.configuration.size+"%)";
+    return "brightness("+this.configuration.bright+"%)";
   }
   getContrast(){
     return this.configuration.contrast+ "%";

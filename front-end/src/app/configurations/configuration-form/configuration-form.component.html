@@ -24,13 +24,13 @@
     <label for="bright"> <br> Luminosité </label>
     <div class="range">
       <i class="fa fa-sun-o" aria-hidden="true"></i>
-      <input type="range" id="bright" min="0" max="200" value="100">
+      <input type="range" id="bright" min="0" max="200" value="100" [formControlName]="'bright'">
       <span class= "value">100</span>
     </div>
     <label for="contrast"> <br> Contraste </label>
     <div class="range">
       <i class="fa fa-adjust" aria-hidden="true"></i>
-      <input type="range" id="contrast" min="0" max="200" value="100">
+      <input type="range" id="contrast" min="0" max="200" value="100" [formControlName]="'contrast'">
       <span class= "value">100</span>
     </div>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
