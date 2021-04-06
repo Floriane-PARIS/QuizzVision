@@ -117,7 +117,7 @@ export class QuestionFormComponent implements OnInit {
 
     // write the PCM samples
     var index = 44;
-    this.volume = 1;
+    this.volume = 175;
     for (var i = 0; i < interleaved.length; i++) {
         view.setInt16(index, interleaved[i] * (0x7FFF * this.volume), true);
         index += 2;
@@ -133,7 +133,7 @@ export class QuestionFormComponent implements OnInit {
     navigator.getUserMedia(
     {
         audio: true
-    }
+    },
    function (e) {
         console.log("user consent");
 
