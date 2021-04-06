@@ -10,14 +10,15 @@
 
       </label>
       <label for="theme">
+
         <p>
           Theme:
-        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-          <!--select name="theme-field" id="theme" [formControlName]="'theme'"> //Code du prof pour selectionner parmi une liste de theme
-          <option *ngFor="let theme of THEME_LIST" [value]="theme">
-          {{theme}}
+          <select name="theme-field" id="theme" [formControlName]="'theme'">
+          <option *ngFor="let theme of themes" [value]="theme.subject">
+          {{theme.subject}}
           </option>
-          </select--></p>
+          </select>
+        </p>
       </label>
     </h6>
   </form>
@@ -25,3 +26,4 @@
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
+

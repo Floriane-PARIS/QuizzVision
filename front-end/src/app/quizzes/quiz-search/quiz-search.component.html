@@ -4,19 +4,30 @@
   <form class="quiz-search">
     <h6>
     <label for="title">
-        <p style="color: #225597;">Title
-      <input class="input-custom" type="text" id="name" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
-    </p>
+      <p style="color: #225597;">Title
+        <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+      </p>
+      <p style="color: #225597;">Title
+        <select name="quiz-field" id="name2" [(ngModel)] = "quizName">
+          <option *ngFor="let quiz of quizzes" [value]="quiz.name">
+            {{quiz.name}}
+          </option>
+        </select>
+      </p>
     </label>
     <button type="submit" class="button-card" (click)="searchQuizName()">Search</button>
     <label for="theme">
       <p style="color: #225597;">Theme
-      <input class="input-custom" type="text" id="theme" [(ngModel)] = "quizTheme" [ngModelOptions]="{standalone: true}">
-    </p> 
+        <select name="theme-field" id="theme" [(ngModel)] = "quizTheme">
+          <option *ngFor="let theme of themes" [value]="theme.subject">
+            {{theme.subject}}
+          </option>
+        </select>
+      </p>
     </label>
     <button type="submit" class="button-card" (click)="searchQuizTheme()"> Search</button>
   </h6>
   </form>
-  <button type="submit" class="button-card" (click)="annule()">Annule</button>
+  <button type="submit" class="button-card" (click)="annule()">Tous les quizz</button>
 </div>
 

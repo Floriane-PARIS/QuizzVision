@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import {Theme} from '../../../models/Theme.model';
+import {ThemeService} from '../../../services/theme.service';
 
 @Component({
   selector: 'app-quiz-form',
@@ -10,7 +11,7 @@ import { Quiz } from '../../../models/quiz.model';
   styleUrls: ['./quiz-form.component.scss']
 })
 export class QuizFormComponent implements OnInit {
-
+  public themes: Theme[];
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
 
@@ -20,7 +21,10 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(public formBuilder: FormBuilder, public quizService: QuizService, public themeService: ThemeService) {
+    this.themeService.themes$.subscribe((themes: Theme[]) => {
+      this.themes = themes;
+    });
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: ['']
