@@ -15,6 +15,23 @@ export class QuestionFormComponent implements OnInit {
   quiz: Quiz;
 
   public questionForm: FormGroup;
+  //changes
+  private startRecordingButton = document.getElementById("startRecordingButton");
+  private stopRecordingButton = document.getElementById("stopRecordingButton");
+  private playButton = document.getElementById("playButton");
+  private downloadButton = document.getElementById("downloadButton");
+
+
+  private leftchannel = [];
+  private rightchannel = [];
+  private recorder = null;
+  private recordingLength = 0;
+  private volume = null;
+  private mediaStream = null;
+  private sampleRate = 44100;
+  private context = null;
+  private blob = null;
+//
 
   constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
