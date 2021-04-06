@@ -81,6 +81,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   stopRecord(){
+
     // stop recording
     this.recorder.disconnect(this.context.destination);
     this.mediaStream.disconnect(this.recorder);
@@ -100,7 +101,7 @@ export class QuestionFormComponent implements OnInit {
     // RIFF chunk descriptor
     this.writeUTFBytes(view, 0, 'RIFF');
     view.setUint32(4, 44 + interleaved.length * 2, true);
-   this.writeUTFBytes(view, 8, 'WAVE');
+    this.writeUTFBytes(view, 8, 'WAVE');
     // FMT sub-chunk
     this.writeUTFBytes(view, 12, 'fmt ');
     view.setUint32(16, 16, true); // chunkSize
@@ -127,14 +128,13 @@ export class QuestionFormComponent implements OnInit {
   }
 
   startRecord(){
-    this.startRecordingButton.addEventListener("click", function () {
     // Initialize recorder
     navigator.getUserMedia = navigator.getUserMedia;
     navigator.getUserMedia(
     {
         audio: true
-    },
-    function (e) {
+    }
+   function (e) {
         console.log("user consent");
 
         // creates the audio context
@@ -168,7 +168,6 @@ export class QuestionFormComponent implements OnInit {
                 function (e) {
                     console.error(e);
                 });
-              });
   }
 
 
