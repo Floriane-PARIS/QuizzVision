@@ -46,7 +46,7 @@
     rangeInput[i].addEventListener('input', ()=>{
       value[i].textContent = rangeInput[i].value;
       if(document.getElementById("bright")){
-        card.style.filter = 'brightness(${rangeInput[i].value}%)';
+        card.style.filter = "brightness("+this.configuration.bright+"%)";
       }
     })
   }
