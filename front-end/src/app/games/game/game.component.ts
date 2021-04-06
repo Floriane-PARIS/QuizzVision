@@ -52,7 +52,7 @@ export class GameComponent implements OnInit {
       this.message = 'Hoooooooo, mauvaise réponse';
     }
     }
-    
+
   }
 
   isNotNull(game: Game): boolean {
@@ -115,5 +115,9 @@ export class GameComponent implements OnInit {
     }
     return "20%"
   }
-  
+
+  getFiltre(){
+      return this.getBright() + " " + this.getContrast();
+  }
+
 }
