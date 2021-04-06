@@ -30,19 +30,16 @@ export class GameService {
 
   public selectedGameId$: Subject<string> = new Subject();
 
-  // public gameQuestion$: Subject<Question> = new Subject(); // changes
   public gameQuestionId$: Subject<string> = new Subject();  // changes
 
   private gameUrl = serverUrl + '/games';
   private quizUrl = serverUrl + '/quizzes';
   private answersPath = 'answers';
   private questionsPath = 'questions';
-  private quizzesPath = 'quizzes'; // changes
 
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    //this.getQuestion(this.games[this.games.length -1 ]); //changes
     this.retrieveGames();
   }
 
@@ -51,7 +48,6 @@ export class GameService {
       this.games = gameList;
       this.games$.next(this.games);
       if (isSetSelectedGame){
-        // this.setSelectedGame(this.islastGame());
         this.selectedGameId$.next(this.islastGame());
       }
 
@@ -85,7 +81,6 @@ export class GameService {
   addAnswer(game: Game, answer: Answer): void {
     const answerWrite = {answers: [answer]};
     const answerUrl = this.gameUrl + '/' + game.id ;
-    // tslint:disable-next-line:no-shadowed-variable
     this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
   }
 
@@ -100,7 +95,6 @@ export class GameService {
   }
   // faire une méthode pour récupérer la question
   getQuestion(game: Game): void{
-    //const gameUrl = this.gameUrl + '/' + game.id ;
     const questionUrl = this.quizUrl + '/' + game.quizId + '/' + this.questionsPath + '/' + game.question[0].id;
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((gameList) => {
       this.gameQuestion = gameList;
@@ -108,12 +102,7 @@ export class GameService {
 
     });
   }
- /* //faire une méthode pour récupérer l'id de la question actuelle du game
-  getQuestionId(game: Game): string {
-    this.getQuestion(game);
-    return this.gameQuestion.id;
-  }*/
-
+ 
   nextQuestionGame(game: Game): void{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
@@ -165,16 +154,13 @@ export class GameService {
   // faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
-    // recupere la question en cours
-    // console.log('question en cours', game.question[0]);
     this.getQuiz(game);
-    // console.log('quiz en cours', this.gameQuiz);
     const ind = this.gameQuiz.questions.indexOf(this.gameQuestion);
     console.log('index', ind);
     const indexNext = ind + 2 ;
     console.log('nextindex', indexNext);
     if(this.gameQuiz.questions.length > indexNext){
-    const nextQuestionId = this.gameQuiz.questions[indexNext].id; //this.gameUrl + '/'+
+    const nextQuestionId = this.gameQuiz.questions[indexNext].id;
     console.log(nextQuestionId);
     const questionWrite = {questions: [this.nextQuestion]};
     console.log(this.nextQuestion);
