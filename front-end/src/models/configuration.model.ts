@@ -3,4 +3,6 @@ export interface Configuration {
     bold: string;
     size: number;
     police: string;
+    bright: number;
+    contrast: number;
 }
