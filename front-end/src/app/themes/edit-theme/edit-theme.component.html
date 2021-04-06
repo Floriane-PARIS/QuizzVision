@@ -1,5 +1,8 @@
-<button class="button-card" routerLink="/theme-list">Back</button>
-
 <ng-container *ngIf="theme">
-  <h2>{{theme.subject}}</h2>
+  <h2>Edit the theme : {{theme.subject}}</h2>
+  <h4 p style="font-family: cursive;">New subject</h4>
+  <input class="input-custom" type="text" id="subject" [(ngModel)] = "themeSubject" [ngModelOptions]="{standalone: true}">
+  <button type="submit" class="button-card" (click)="modifThemeSubject()">Save</button>
 </ng-container>
+<br>
+<button class="button-card" routerLink="/theme-list">Back</button>

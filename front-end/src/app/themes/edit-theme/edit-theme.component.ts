@@ -10,13 +10,20 @@ import {ThemeService} from '../../../services/theme.service';
 })
 export class EditThemeComponent implements OnInit {
   public theme: Theme;
+  public themeSubject: string;
 
   constructor(private route: ActivatedRoute, private themeService: ThemeService) {
     this.themeService.themeSelected$.subscribe((theme) => this.theme = theme);
+    this.themeSubject = '';
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.themeService.setSelectedTheme(id);
+  }
+
+  modifThemeSubject(): void {
+    const themeToSearch: string = this.themeSubject as string;
+    this.themeService.retrieveThemeSubject(themeToSearch);
   }
 }

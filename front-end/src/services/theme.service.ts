@@ -13,7 +13,7 @@ export class ThemeService {
    The list of theme.
    The list is retrieved from the mock.
    */
-  private themes: Theme[] = THEME_LIST;
+  public themes: Theme[] = THEME_LIST;
 
   /*
    Observable which contains the list of the theme.
