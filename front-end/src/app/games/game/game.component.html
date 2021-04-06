@@ -1,7 +1,9 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
 
 <div class="game">
+  
   <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize()}">
+    <div *ngIf = "game !== undefined" >
     <div class="question">
       <div *ngIf = "game.question[0] === null">
         <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
@@ -21,8 +23,10 @@
       <button type="button" class="button-card" (click)="next()">Question Suivante</button>
         </div>
     </div>
+    
       </div>
     </div>
+  </div>
   </div>
 </div>
 
