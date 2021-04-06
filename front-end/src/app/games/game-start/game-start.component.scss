@@ -1,1 +1,9 @@
 @import '../../../styles/card.scss';
+
+.start {
+  font-size: 30px;
+  text-align: center;
+  height: 20em; /* hauteur du parent */
+  line-height: 5em; /* hauteur de ligne (identique) */
+  font-weight: bold;
+}

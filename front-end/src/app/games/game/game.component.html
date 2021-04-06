@@ -1,24 +1,27 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
 
 <div class="game">
-  <div class="question">
-    <div *ngIf = "game.question[0] === null">
-      Vous avez fini le Quiz
-      <button type="button" class="button-card" (click)="quitGame()">Quit</button>
+  <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize()}">
+    <div class="question">
+      <div *ngIf = "game.question[0] === null">
+        <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
+        <button type="button" class="button-card" (click)="quitGame()">Quit</button>
+      </div>
+      <div *ngIf = "game.question[0] !== null">
+      <!--Inputs & Output allow communication between parent & child components.-->
+      <!--More information: https://angular.io/guide/component-interaction-->
+      <div *ngIf = "game.question[0] !== undefined">
+      <app-game-question [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
+      <br>
+      <app-game-response [answer]=answer ></app-game-response>
+      <br>
+        <div *ngIf = "isValided">
+      <app-game-result [message]=message ></app-game-result>
+      <br><br>
+      <button type="button" class="button-card" (click)="next()">Question Suivante</button>
+        </div>
     </div>
-    <div *ngIf = "game.question[0] !== null">
-    <h1> <div *ngIf = "game !== undefined"> game n° {{game.id}} </div></h1>
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
-    <div *ngIf = "game.question[0] !== undefined">
-    <app-game-question [question]=game.question[0] (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
-    <br>
-    <app-game-response [answer]=answer ></app-game-response>
-    <br>
-    <app-game-result [message]=message ></app-game-result>
-    <br><br>
-    <button type="button" class="button-card" (click)="next()">Question Suivante</button>
-  </div>
+      </div>
     </div>
   </div>
 </div>
