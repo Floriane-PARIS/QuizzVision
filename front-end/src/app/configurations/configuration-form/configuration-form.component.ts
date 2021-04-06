@@ -17,7 +17,9 @@ export class ConfigurationFormComponent implements OnInit {
     this.configurationForm =  this.formBuilder.group({
       bold: ['normal'],
       size: ['22'],
-      police: ['Arial']
+      police: ['Arial'],
+      bright: ['20'],
+      contrast: ['20']
     });
   }
 

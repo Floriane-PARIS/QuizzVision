@@ -43,13 +43,16 @@ export class GameComponent implements OnInit {
   }
 
   isValideAnswer(question: Question): void {
-    this.isValided = true;
+    if(this.answer !== undefined){
+      this.isValided = true;
     if (this.answer.isCorrect) {
       this.message = 'Bravo, bonne réponse';
     }
     else  {
       this.message = 'Hoooooooo, mauvaise réponse';
     }
+    }
+    
   }
 
   isNotNull(game: Game): boolean {
@@ -98,4 +101,19 @@ export class GameComponent implements OnInit {
       }
       return "22px";
   }
+
+  getBright(){
+    if(this.configuration != undefined){
+      return this.configuration.bright+ "%";
+    }
+    return "20%"
+  }
+
+  getContrast(){
+    if(this.configuration != undefined){
+      return this.configuration.bright+ "%";
+    }
+    return "20%"
+  }
+  
 }

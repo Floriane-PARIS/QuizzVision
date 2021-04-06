@@ -5,4 +5,6 @@ module.exports = new BaseModel('Configuration', {
   bold: Joi.string().required(),
   size: Joi.number().required(),
   police: Joi.string().required(),
+  bright: Joi.number().required(),
+  contrast: Joi.number().required(),
 })

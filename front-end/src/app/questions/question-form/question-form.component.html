@@ -4,6 +4,14 @@
     <label for="label">
       Question :
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      <br>
+      Audio
+      <br>
+        <button id="startRecordingButton">Start recording</button>
+        <br>
+        <button id="stopRecordingButton">Stop recording</button>
+        <br>
+        <button id="playButton">Play</button>
     </label>
     <br>
     <div *ngIf="answers.length >= 4">
@@ -18,6 +26,14 @@
             <br>
             Correct
             <input type="checkbox" [formControlName]="'isCorrect'">
+            <br>
+            Audio
+            <br>
+            <button id="startRecordingButton">Start recording</button>
+            <br>
+            <button id="stopRecordingButton">Stop recording</button>
+            <br>
+            <button id="playButton">Play</button>
           </label>
         </div>
       </div>
