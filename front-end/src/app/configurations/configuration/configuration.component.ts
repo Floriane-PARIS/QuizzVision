@@ -43,6 +43,9 @@ export class ConfigurationComponent implements OnInit {
   getContrast(){
     return "contrast("+this.configuration.contrast+"%)";
   }
+  getFiltre(){
+    return this.getBright() + " " + this.getContrast();
+  }
 
 }
 
