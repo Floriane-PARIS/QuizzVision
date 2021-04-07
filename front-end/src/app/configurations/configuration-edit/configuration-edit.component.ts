@@ -29,9 +29,10 @@ export class ConfigurationEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteConfiguration(configuration: Configuration){
+  deleteConfiguration(configuration: Configuration): void{
     console.log("[Delete]configuration ", configuration);
     this.configurationService.deleteConfiguration(configuration);
   }
+
 
 }

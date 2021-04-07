@@ -2,7 +2,7 @@
 <app-configuration-form></app-configuration-form>
 
 <div class = "configuration-edit">
-  <div *ngIf="configuration != undefined; else elseBlock">
+  <div class="configuration-chose" *ngIf="configuration != undefined; else elseBlock">
     <!--div class = "configuration" *ngFor="let configuration of configurationList"-->
       <app-configuration [configuration]="configuration" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration>
     <!--/div-->
