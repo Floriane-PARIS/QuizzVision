@@ -7,4 +7,5 @@ module.exports = new BaseModel('Configuration', {
   police: Joi.string().required(),
   bright: Joi.number().required(),
   contrast: Joi.number().required(),
+  shift: Joi.number().required()
 })

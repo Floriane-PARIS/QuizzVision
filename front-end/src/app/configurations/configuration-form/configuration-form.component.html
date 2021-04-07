@@ -33,6 +33,12 @@
       <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
       <span class= "value">200</span>
     </div>
+    <label for="decalage"> <br> Décalage </label>
+    <div class="range">
+      <span class= "value">centre</span>
+      <input type="range" id="shift" min="0" max="100" value="100" [formControlName]="'shift'">
+      <span class= "value">bordure</span>
+    </div>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>

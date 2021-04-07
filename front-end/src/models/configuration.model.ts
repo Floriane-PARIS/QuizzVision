@@ -5,4 +5,5 @@ export interface Configuration {
     police: string;
     bright: number;
     contrast: number;
+    shift: number;
 }
