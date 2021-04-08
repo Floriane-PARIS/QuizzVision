@@ -1,16 +1,46 @@
 <div class="card">
-    <h2>Create a new user</h2>
-    <form class="user-form" [formGroup]="userForm">
+    <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Create a new user</h2>
+    <form class="user-form" [formGroup]="userForm" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
       <label for="firstName">
-        First name <br>
+        First name:
         <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
       </label>
       <br>
       <label for="lastName">
-        Last name <br>
+        Last name: 
         <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
       </label>
       <br>
-      <button type="submit" class="button-card" (click)="addUser()">Create</button>
+      <label for="Encadreur">
+        Encadreur:
+      </label>
+      <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
+        <option value = "admin1">Sophie Dupont</option>
+        <option value = "admin2">Paul Smith</option>
+      </select>
+      <br>
+      <label for="Maladies">
+        Type de troubles:
+      </label>
+      <select id = "Maladies" name="Maladies" [formControlName]="'Maladies'">
+        <option value = "trouble1">Cataracte</option>
+        <option value = "trouble2">DMLA</option>
+        <option value = "trouble3">Presbytie</option>
+        <option value = "trouble4">Fatigue Visuelle</option>
+        <option value = "trouble6">Glaucome</option>
+      </select>
+      <br>
+      <label for="Commentaires">
+        Commentaires:
+      </label>
+      <input type="text" placeholder="A savoir sur le patient">
+      <br>
+      <label for="Date d'entrée">
+        Date d'entrée:
+      </label>
+      <input type="date" placeholder=" / /">
+      <br>
+      <br>
+      <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>
     </form>
   </div>

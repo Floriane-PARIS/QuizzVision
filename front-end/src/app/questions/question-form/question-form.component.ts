@@ -27,7 +27,6 @@ export class QuestionFormComponent implements OnInit {
   private startRecordingButton = document.getElementById("startRecordingButton");
   private stopRecordingButton = document.getElementById("stopRecordingButton");
   private playButton = document.getElementById("playButton");
-  private downloadButton = document.getElementById("downloadButton");
 
   public questionForm: FormGroup;
 
@@ -170,7 +169,21 @@ export class QuestionFormComponent implements OnInit {
                 });
   }
 
+download(){
+    if (this.blob == null) {
+      return;
+  }
 
+  var url = URL.createObjectURL(this.blob);
+
+  var a = document.createElement("a");
+  document.body.appendChild(a);
+ //a.style = "display: none";
+  a.href = url;
+  a.download = "sample.wav";
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
 
 
   flattenArray(channelBuffer, recordingLength) {

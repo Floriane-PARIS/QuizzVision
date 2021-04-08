@@ -29,11 +29,13 @@
             <br>
             Audio
             <br>
-            <button id="startRecordingButton">Start recording</button>
+            <button id="startRecordingButton"  (click)="startRecord()">Start recording</button>
             <br>
-            <button id="stopRecordingButton">Stop recording</button>
+            <button id="stopRecordingButton" (click)="stopRecord()">Stop recording</button>
             <br>
-            <button id="playButton">Play</button>
+            <button id="playButton" (click)="playAudio()">Play</button>
+            <br>
+            <button id="downloadButton" (click)="Download()">Download</button>
           </label>
         </div>
       </div>
