@@ -7,6 +7,6 @@ module.exports = new BaseModel('User', {
   encadreur: Joi.string().required(),
   maladies: Joi.string().required(),
   commentaires: Joi.string().required(),
-  configurations: Joi.configurations().required(),
-  date: Joi.date().required(),
+  configurations: Joi.array(),
+  //date: Joi.date().required(),
 })
