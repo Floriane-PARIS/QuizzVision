@@ -13,15 +13,14 @@
       <br>
       <label for="encadreur">
         Encadreur:
-      </label>
       <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
         <option value = "Sophie Dupont">Sophie Dupont</option>
         <option value = "Paul Smith">Paul Smith</option>
       </select>
+    </label>
       <br>
       <label for="maladies">
         Type de troubles:
-      </label>
       <select id = "maladies" name="maladies" [formControlName]="'maladies'">
         <option value = "Cataracte">Cataracte</option>
         <option value = "DMLA">DMLA</option>
@@ -29,6 +28,7 @@
         <option value = "Fatigue Visuelle">Fatigue Visuelle</option>
         <option value = "Glaucome">Glaucome</option>
       </select>
+    </label>
       <br>
       <label for="commentaires">
         Commentaires:
@@ -38,6 +38,17 @@
       <label for="date">
         Date d'entrée:
       <input class="input-custom" type="date" id = "date" [formControlName]="'date'" >
+    </label>
+      <br>
+      <label for="configuration">
+        Configuration du patient:
+      <select id = "configuration" name="configuration" [formControlName]="'configuration'">
+        <option value = "Configuration Cataracte">Configuration Cataracte</option>
+        <option value = "Configuration DMLA">Configuration DMLA</option>
+        <option value = "Configuration Presbytie">Configuration Presbytie</option>
+        <option value = "Configuration Fatigue Visuelle">Configuration Fatigue Visuelle</option>
+        <option value = "Configuration Glaucome">Configuration Glaucome</option>
+      </select>
     </label>
       <br>
       <br>

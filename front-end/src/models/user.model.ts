@@ -1,3 +1,5 @@
+import { Configuration } from "./configuration.model";
+
 export interface User {
     id: string;
     firstName: string;
@@ -5,5 +7,6 @@ export interface User {
     encadreur: string;
     maladies: string;
     commentaires: string;
+    configuration: Configuration;
    // date: Date;
 }
