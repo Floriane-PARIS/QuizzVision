@@ -15,19 +15,19 @@
         Encadreur:
       </label>
       <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
-        <option value = "admin1">Sophie Dupont</option>
-        <option value = "admin2">Paul Smith</option>
+        <option value = "Sophie Dupont">Sophie Dupont</option>
+        <option value = "Paul Smith">Paul Smith</option>
       </select>
       <br>
       <label for="maladies">
         Type de troubles:
       </label>
       <select id = "maladies" name="maladies" [formControlName]="'maladies'">
-        <option value = "trouble1">Cataracte</option>
-        <option value = "trouble2">DMLA</option>
-        <option value = "trouble3">Presbytie</option>
-        <option value = "trouble4">Fatigue Visuelle</option>
-        <option value = "trouble6">Glaucome</option>
+        <option value = "Cataracte">Cataracte</option>
+        <option value = "DMLA">DMLA</option>
+        <option value = "Presbytie">Presbytie</option>
+        <option value = "Fatigue Visuelle">Fatigue Visuelle</option>
+        <option value = "Glaucome">Glaucome</option>
       </select>
       <br>
       <label for="commentaires">
@@ -45,4 +45,4 @@
     </form>
   </div>
 
-  <br><br>{{userForm.getRawValue() | json}} 
+  <!--<br><br>{{userForm.getRawValue() | json}} -->
