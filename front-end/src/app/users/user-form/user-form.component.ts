@@ -17,10 +17,10 @@ export class UserFormComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       firstName: [''],
       lastName: [''],
-      /*encadreur: [''],
+      encadreur: [''],
       maladies: [''],
       commentaires:[''],
-      date : ['']*/
+      date : ['']
     });
   }
 
