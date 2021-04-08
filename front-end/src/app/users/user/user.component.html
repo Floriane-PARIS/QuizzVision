@@ -2,15 +2,15 @@
     <h2>
         <i class="fas fa-user"></i>
         {{user.firstName}} {{user.lastName}}
+        {{user.encadreur}} 
+        {{user.maladies}}
+        {{user.commentaires}}
     </h2>
     <h4>
         {{user.encadreur}} 
-        
-        {{user.commentaires}}
-        
         {{user.maladies}}
-        
-        {{user.date}}
+        {{user.commentaires}}
+       
     </h4>   
     <button class="button-card" (click)="delete()">Delete</button>
 </div>

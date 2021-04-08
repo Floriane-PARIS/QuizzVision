@@ -22,7 +22,7 @@
       <label for="maladies">
         Type de troubles:
       </label>
-      <select id = "maladies" name="maladies" [formControlName]="'Maladies'">
+      <select id = "maladies" name="maladies" [formControlName]="'maladies'">
         <option value = "trouble1">Cataracte</option>
         <option value = "trouble2">DMLA</option>
         <option value = "trouble3">Presbytie</option>
@@ -32,15 +32,17 @@
       <br>
       <label for="commentaires">
         Commentaires:
+        <input class="input-custom" type="text"  id = "commentaires" [formControlName]="'commentaires'">
       </label>
-      <input type="text" placeholder="A savoir sur le patient">
       <br>
       <label for="date">
         Date d'entrée:
-      </label>
-      <input type="date" placeholder=" / /">
+      <input class="input-custom" type="date" id = "date" [formControlName]="'date'" >
+    </label>
       <br>
       <br>
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>
     </form>
   </div>
+
+  <br><br>{{userForm.getRawValue() | json}} 

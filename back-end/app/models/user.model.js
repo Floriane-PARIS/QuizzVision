@@ -7,5 +7,5 @@ module.exports = new BaseModel('User', {
   encadreur: Joi.string().required(),
   maladies: Joi.string().required(),
   commentaires: Joi.string().required(),
-  date: Joi.date().required()
+  //date: Joi.date().required(),
 })

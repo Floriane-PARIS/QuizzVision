@@ -20,7 +20,7 @@ export class UserFormComponent implements OnInit {
       encadreur: [''],
       maladies: [''],
       commentaires:[''],
-      date : ['']
+      //date : [''],
     });
   }
 
