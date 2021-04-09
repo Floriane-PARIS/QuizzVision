@@ -8,6 +8,6 @@
     Contraste: {{configuration.contrast}}<br>
     Décalage: {{configuration.shift}}<br>
 
-    <button class="button-card" (click)="delete()"> Back</button>
+    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="delete()"> Back</button>
   </div>
 </div>
