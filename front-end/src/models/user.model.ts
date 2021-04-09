@@ -8,5 +8,5 @@ export interface User {
     maladies: string;
     commentaires: string;
     configuration: Configuration;
-   // date: Date;
+    date: Date;
 }

@@ -8,5 +8,5 @@ module.exports = new BaseModel('User', {
   maladies: Joi.string().required(),
   commentaires: Joi.string().required(),
   configurations: Joi.array(),
-  //date: Joi.date().required(),
+  date: Joi.date().required(),
 })
