@@ -4,9 +4,9 @@ import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.scss']
 })
 export class EditUserComponent implements OnInit {
 

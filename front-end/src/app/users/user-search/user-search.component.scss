@@ -1,0 +1,17 @@
+@import '../../../styles/card.scss';
+
+* {
+    font-family: 'Josefin Sans' , sans-serif;
+    box-sizing: border-box;
+    margin: 10;
+    padding: 50;
+    text-align:left;
+}
+
+body{
+    display:grid;
+    text-align: left;
+    align-items: center;
+    min-height: 500vh;
+    background-color: #2f3552;  
+}

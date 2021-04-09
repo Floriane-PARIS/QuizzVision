@@ -2,6 +2,6 @@
 
 <ng-container *ngIf="user">
     <h2>{{user.firstName}}</h2>
-    <app-user-form [quiz]="user"></app-user-form>
-    <app-user-list [quiz]="user"></app-user-list>
+    <app-user-form [user]="user"></app-user-form>
+    <app-user-list [user]="user"></app-user-list>
 </ng-container>

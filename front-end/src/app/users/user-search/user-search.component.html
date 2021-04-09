@@ -1,0 +1,24 @@
+
+<div class="card" p style="background-color: bisque;" p style="text-align: right;">
+    <h4 p style="font-family: cursive;">Search for an user</h4>
+    <form class="user-search">
+      <h6>
+      <label for="title">
+        <p style="color: #225597;">firstName
+          <input class="input-custom" type="text" id="name1" [(ngModel)] = "firstName" [ngModelOptions]="{standalone: true}">
+        </p>
+        <p style="color: #225597;">firstName
+          <select name="user-field" id="name2" [(ngModel)] = "firstName">
+            <option *ngFor="let user of users" [value]="user.firstName">
+              {{user.firstName}}
+            </option>
+          </select>
+        </p>
+      </label>
+      <button type="submit" class="button-card" (click)="searchUserName()">Search</button>
+    </h6>
+    </form>
+    <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
+  </div>
+  
+  
