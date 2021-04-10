@@ -33,8 +33,17 @@ body{
   }
 }
 .configuration {
-  transform: translateX(calc(var(--slider) * 5.5px));
+  //justify-content: flex-start;
+
+  //position: absolute;
+  //top: calc(var(--top) * 1px);
+  //left: calc(var(--left) * 1px);
+  //height: calc(var(--slider) * 1px);
+  //width: calc(var(--slider) * 1px);
+  transform: translateX(calc(var(--slider) * 1px));
   transition: transform 0.3s
+
+
 }
 
 
@@ -42,10 +51,10 @@ body{
   display: flex;
   //rectangle
   position: absolute;
-  top: 75px;
-  left: 600px;
-  height: 47rem;
-  width: 75rem;
+  top: calc(var(--top) * 1px);
+  left: calc(var(--left) * 1px);
+  height: calc(var(--height) * 1px);
+  width: calc(var(--width) * 1px);
   //bordure
   border-left: 5px solid black;
   border-right: 5px solid black;
