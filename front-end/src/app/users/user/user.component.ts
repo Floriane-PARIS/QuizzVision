@@ -13,20 +13,26 @@ export class UserComponent implements OnInit {
   user: User;
 
   @Output()
+  userSelected:EventEmitter<User> = new EventEmitter<User>();
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
-  editUser: EventEmitter<User> = new EventEmitter<User>();
+  userEdit: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectUser(): void {
+    this.userSelected.emit(this.user);
+  }
+
   delete() {
     this.deleteUser.emit(this.user);
   }
 
-  Modify(): void {
-    this.editUser.emit(this.user);
+  edit(): void {
+    this.userEdit.emit(this.user);
   }
+
 
 }

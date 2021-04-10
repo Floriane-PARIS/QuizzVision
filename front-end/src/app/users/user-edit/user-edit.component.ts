@@ -9,7 +9,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class UserEditComponent implements OnInit {
 
  /* public user: User;
   public userName: string;
@@ -41,7 +41,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
-  }
+}
 
 }
 
