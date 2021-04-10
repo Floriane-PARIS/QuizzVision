@@ -5,7 +5,6 @@ const manageAllErrors = require('../../utils/routes/error-management')
 
 
 const router = new Router({ mergeParams: true })
-
 //const router = new Router()
 
 router.get('/', (req, res) => {
