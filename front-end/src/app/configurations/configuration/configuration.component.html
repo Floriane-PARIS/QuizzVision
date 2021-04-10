@@ -1,4 +1,4 @@
-<div class = card>
+<div class = configuratio-self>
   <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <h2>Configuration choisie</h2>
     Texte: {{configuration.bold}}<br>
@@ -6,8 +6,8 @@
     Police du texte: {{configuration.police}}<br>
     Luminosité: {{configuration.bright}}<br>
     Contraste: {{configuration.contrast}}<br>
-    Décalage: {{configuration.shift}}<br>
-
+    Décalage: {{configuration.shift}}
+    <br>
     <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="delete()"> Back</button>
   </div>
 </div>

@@ -1,11 +1,11 @@
 @import '../../../styles/card.scss';
 
 * {
-    font-family: 'Josefin Sans' , sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-align:left;
+    //font-family: 'Josefin Sans' , sans-serif;
+    //box-sizing: border-box;
+    //margin: 0;
+    //padding: 0;
+    //text-align:left;
 }
 
 .myConfig {
@@ -14,27 +14,49 @@
 }
 
 body{
-    display:grid;
-    text-align: left;
-    align-items: left;
-    min-height: 500vh;
-    background-color: #2f3552;;
+    //display:grid;
+    //text-align: left;
+    //align-items: left;
+    //min-height: 500vh;
+    //background-color: #2f3552;;
 
   h1{
-      margin-bottom: 3rem;
-      text-decoration-line: underline;
-      text-transform: capitalize;
-      font-size: 3rem;
-      text-align: center;
+      //margin-bottom: 3rem;
+      //text-decoration-line: underline;
+      //text-transform: capitalize;
+      //font-size: 3rem;
+      //text-align: center;
 
       span, i{
-          color:chocolate;
+          //color:chocolate;
       }
   }
 }
+.configuration {
+  display: flex;
+
+  //movement by shift
+  width: calc(40% + var(--slider) * 1% );
+  height: calc(40% + var(--slider) * 1% );
+}
+
 
 .configuration-chose {
+  display: flex;
+  //rectangle
   position: absolute;
-  top: 55px;
-  left: 600px;
+  top: calc(var(--top) * 1px);
+  left: calc(var(--left) * 1px);
+  height: calc(var(--height) * 1px);
+  width: calc(var(--width) * 1px);
+  //bordure
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background: #D3D3D3;
+
+  //center
+  justify-content: center;
+  align-items: center;
 }
