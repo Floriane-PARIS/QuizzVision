@@ -1,11 +1,11 @@
 @import '../../../styles/card.scss';
 
 * {
-    font-family: 'Josefin Sans' , sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-align:left;
+    //font-family: 'Josefin Sans' , sans-serif;
+    //box-sizing: border-box;
+    //margin: 0;
+    //padding: 0;
+    //text-align:left;
 }
 
 .myConfig {
@@ -14,27 +14,42 @@
 }
 
 body{
-    display:grid;
-    text-align: left;
-    align-items: left;
-    min-height: 500vh;
-    background-color: #2f3552;;
+    //display:grid;
+    //text-align: left;
+    //align-items: left;
+    //min-height: 500vh;
+    //background-color: #2f3552;;
 
   h1{
-      margin-bottom: 3rem;
-      text-decoration-line: underline;
-      text-transform: capitalize;
-      font-size: 3rem;
-      text-align: center;
+      //margin-bottom: 3rem;
+      //text-decoration-line: underline;
+      //text-transform: capitalize;
+      //font-size: 3rem;
+      //text-align: center;
 
       span, i{
-          color:chocolate;
+          //color:chocolate;
       }
   }
 }
 
 .configuration-chose {
+  display: flex;
   position: absolute;
-  top: 55px;
+  top: 75px;
   left: 600px;
+  height: 47rem;
+  width: 75rem;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+  background: #D3D3D3;
+  border-radius: 0.1rem;
+
+  justify-content: center;
+  align-items: center;
+
+  transform: perspective(500px) rotateY( calc(var(--slider) * 1deg));
+  transition: transform 0.3s
 }
