@@ -40,14 +40,17 @@ body{
   border-bottom: 5px solid black;
   border-top: 5px solid black;
 
+  width: calc(40% + var(--slider) * 1% );
+  height: calc(40% + var(--slider) * 1% );
+
   //position: absolute;
-  //top: calc(var(--top) * 1px);
-  //left: calc(var(--left) * 1px);
+  //top: calc(950 - var(--slider) * 1px);
+  //left: calc(700 - var(--left) * 1px);
   //transform: scale(var(--slider));
-  transform: translateX(calc(var(--slider) * 1px));
-  transition: transform 0.3s
-
-
+  //transform: translateX(calc(var(--slider) * 1px));
+  //transform: matrix(1,1,1,1,1,1);
+  //transform: skewX(calc(var(--slider) * 1deg)) skewY(calc(var(--slider) * 1deg));
+  //transition: transform 0.3s
 }
 
 
@@ -65,7 +68,7 @@ body{
   border-bottom: 5px solid black;
   border-top: 5px solid black;
   background: #D3D3D3;
-  border-radius: 0.1rem;
+
   //center
   justify-content: center;
   align-items: center;
