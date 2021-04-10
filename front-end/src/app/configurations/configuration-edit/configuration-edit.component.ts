@@ -12,6 +12,7 @@ export class ConfigurationEditComponent implements OnInit {
 
   public configurationList: Configuration[] = [];
   public configuration: Configuration;
+  public root = document.documentElement;
 
   constructor(private configurationService: ConfigurationService) {
    this.configurationService.configurations$.subscribe((configurations) => {
@@ -19,6 +20,7 @@ export class ConfigurationEditComponent implements OnInit {
      this.configurationList = configurations;
      if(configurations.length>0){
         this.configuration = configurations[configurations.length-1];
+        this.handleSlider();
      } else {
         this.configuration = undefined;
      }
@@ -32,6 +34,12 @@ export class ConfigurationEditComponent implements OnInit {
   deleteConfiguration(configuration: Configuration): void{
     console.log("[Delete]configuration ", configuration);
     this.configurationService.deleteConfiguration(configuration);
+  }
+
+  handleSlider(): void {
+    const value = this.configuration.shift;
+    console.log('value', value);
+    this.root.style.setProperty('--slider', value.toString());
   }
 
 

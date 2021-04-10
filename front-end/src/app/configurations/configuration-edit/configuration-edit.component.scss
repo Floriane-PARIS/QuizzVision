@@ -32,24 +32,28 @@ body{
       }
   }
 }
+.configuration {
+  transform: translateX(calc(var(--slider) * 5.5px));
+  transition: transform 0.3s
+}
+
 
 .configuration-chose {
   display: flex;
+  //rectangle
   position: absolute;
   top: 75px;
   left: 600px;
   height: 47rem;
   width: 75rem;
+  //bordure
   border-left: 5px solid black;
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   border-top: 5px solid black;
   background: #D3D3D3;
   border-radius: 0.1rem;
-
+  //center
   justify-content: center;
   align-items: center;
-
-  transform: perspective(500px) rotateY( calc(var(--slider) * 1deg));
-  transition: transform 0.3s
 }
