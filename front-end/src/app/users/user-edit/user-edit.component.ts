@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class EditUserComponent implements OnInit {
 
-  public user: User;
+ /* public user: User;
   public userName: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
@@ -29,6 +29,18 @@ export class EditUserComponent implements OnInit {
     console.log("on a enregistré les modifications");
     const userToSearch: string = this.userName as string;
     this.userService.retrieveUserName(userToSearch);
+  }*/
+
+  
+  public user: User;
+
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    this.userService.userSelected$.subscribe((users) => this.user = users);
+  }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.setSelectedUser(id);
   }
 
 }
