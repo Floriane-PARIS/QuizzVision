@@ -33,24 +33,11 @@ body{
   }
 }
 .configuration {
-  //justify-content: flex-start;
+  display: flex;
 
-  border-left: 5px solid black;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
-  border-top: 5px solid black;
-
+  //movement by shift
   width: calc(40% + var(--slider) * 1% );
   height: calc(40% + var(--slider) * 1% );
-
-  //position: absolute;
-  //top: calc(950 - var(--slider) * 1px);
-  //left: calc(700 - var(--left) * 1px);
-  //transform: scale(var(--slider));
-  //transform: translateX(calc(var(--slider) * 1px));
-  //transform: matrix(1,1,1,1,1,1);
-  //transform: skewX(calc(var(--slider) * 1deg)) skewY(calc(var(--slider) * 1deg));
-  //transition: transform 0.3s
 }
 
 
