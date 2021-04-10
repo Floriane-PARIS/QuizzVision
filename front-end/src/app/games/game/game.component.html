@@ -15,15 +15,12 @@
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">
-      <app-game-question [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                         [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
+      <app-game-question [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
-      <app-game-response [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                         [answer]=answer ></app-game-response>
+      <app-game-response [answer]=answer ></app-game-response>
       <br>
         <div *ngIf = "isValided">
-      <app-game-result [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                       [message]=message ></app-game-result>
+      <app-game-result [message]=message ></app-game-result>
       <br><br>
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="next()">Question Suivante</button>
         </div>
