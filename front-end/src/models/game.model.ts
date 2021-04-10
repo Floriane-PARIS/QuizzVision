@@ -6,4 +6,5 @@ export interface Game {
   quizId: string;
   question: Question[];
   answers: Answer[];
+  score: number;
 }

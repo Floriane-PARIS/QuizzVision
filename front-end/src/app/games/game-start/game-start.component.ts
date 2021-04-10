@@ -50,7 +50,8 @@ export class GameStartComponent implements OnInit {
     if (quiz.questions.length > 0 ) {
       this.gameForm = this.formBuilder.group({
         quizId: [quiz.id],
-        question: [[quiz.questions[0]]]
+        question: [[quiz.questions[0]]],
+        score: [0]
       });
     }
   }
