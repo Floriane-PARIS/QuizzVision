@@ -35,11 +35,16 @@ body{
 .configuration {
   //justify-content: flex-start;
 
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+
   //position: absolute;
   //top: calc(var(--top) * 1px);
   //left: calc(var(--left) * 1px);
-  transform: scale(var(--slider));
-  //transform: translateX(calc(var(--slider) * 1px));
+  //transform: scale(var(--slider));
+  transform: translateX(calc(var(--slider) * 1px));
   transition: transform 0.3s
 
 
