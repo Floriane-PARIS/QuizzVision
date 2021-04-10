@@ -14,7 +14,7 @@ import {UserEditComponent}  from './users/user-edit/user-edit.component';
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
     {path: 'user-list', component: UserListComponent},
-    {path: 'user-edit', component: UserEditComponent},
+    {path: 'user-edit/:id', component: UserEditComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'configuration-edit', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
