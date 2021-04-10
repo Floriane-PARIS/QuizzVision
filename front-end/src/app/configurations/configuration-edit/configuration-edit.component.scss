@@ -38,9 +38,8 @@ body{
   //position: absolute;
   //top: calc(var(--top) * 1px);
   //left: calc(var(--left) * 1px);
-  //height: calc(var(--slider) * 1px);
-  //width: calc(var(--slider) * 1px);
-  transform: translateX(calc(var(--slider) * 1px));
+  transform: scale(var(--slider));
+  //transform: translateX(calc(var(--slider) * 1px));
   transition: transform 0.3s
 
 
