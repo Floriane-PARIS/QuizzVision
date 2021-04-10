@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/models/user.model';
-import { UserService } from 'src/services/user.service';
+import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
+
 
 @Component({
   selector: 'app-user-edit',
@@ -11,9 +12,12 @@ import { UserService } from 'src/services/user.service';
 export class EditUserComponent implements OnInit {
 
   public user: User;
+  public userName: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => this.user = user);
+    console.log(this.user);
+    this.userName = '';
   }
 
   ngOnInit(): void {
@@ -21,4 +25,12 @@ export class EditUserComponent implements OnInit {
     this.userService.setSelectedUser(id);
   }
 
+  modifUserComments(): void {
+    console.log("on a enregistré les modifications");
+    const userToSearch: string = this.userName as string;
+    this.userService.retrieveUserName(userToSearch);
+  }
+
 }
+
+

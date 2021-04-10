@@ -1,6 +1,5 @@
 
 <app-configuration-form></app-configuration-form>
-
 <div class = "configuration-edit">
   <div class="configuration-chose" *ngIf="configuration != undefined; else elseBlock">
     <!--div class = "configuration" *ngFor="let configuration of configurationList"-->
@@ -13,6 +12,8 @@
   <div>
     Vous n'avez pas encore choisi votre configuration préférée !
   </div>
+  <br>
+  <button class="button-card" routerLink="/user-list">Back</button>
 </ng-template>
 
 <!--br><br>(Supprimer ce qui est après cette phrase quand ce qui est avant marchera)

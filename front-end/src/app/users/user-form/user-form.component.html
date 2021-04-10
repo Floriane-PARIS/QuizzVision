@@ -45,6 +45,12 @@
       <button type="submit" class="button-card" routerLink="/configuration-edit" p style="text-align: center; position: relative;" >New configuration</button>
     </label>
       <br>
+      <!--changes-->
+      <ng-container *ngIf="user">
+        <h2>{{user.firstName}}</h2>
+        <app-configuration-form [user]="user"></app-configuration-form>
+        <app-configuration-list [user]="user"></app-user-list>
+    </ng-container>
       <br>
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>
     </form>

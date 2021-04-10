@@ -1,13 +1,12 @@
 const { Router } = require('express')
-
 const { User } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
-const ConfigurationsRouter = require('../configurations')// changes
+//const ConfigurationsRouter = require('../configurations')// changes
 
 const router = new Router()
 
-router.use('/configurations', ConfigurationsRouter)//changes
-//router.use('/:userId', UsersRouter)
+//router.use('/configurations', ConfigurationsRouter)//changes
+
 
 router.get('/', (req, res) => {
   try {

@@ -7,6 +7,6 @@ export interface User {
     encadreur: string;
     maladies: string;
     commentaires: string;
-    configuration: Configuration;
+    configuration: Configuration[];
     date: Date;
 }

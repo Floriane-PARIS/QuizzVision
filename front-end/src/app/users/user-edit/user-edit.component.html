@@ -1,7 +1,10 @@
-<button class="button-card" routerLink="/user-list">Back</button>
-
-<ng-container *ngIf="user">
-    <h2>{{user.firstName}}</h2>
-    <app-user-form [user]="user"></app-user-form>
-    <app-user-list [user]="user"></app-user-list>
 </ng-container>
+<ng-container *ngIf="user">
+    <h2>Edit the user : {{user.firstName}}</h2>
+    <h4 p style="font-family: cursive;">New name</h4>
+    <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userName" [ngModelOptions]="{standalone: true}">
+    <button type="submit" class="button-card" (click)="modifUserComments()">Save</button>
+  </ng-container>
+  <br>
+  <button class="button-card" routerLink="/theme-list">Back</button>
+  
