@@ -20,7 +20,7 @@
     </div>
 
       </div>
-      <div class="game-end" *ngIf = "(game.question[0] === null) && (game !== undefined)">
+      <div class="game-question" *ngIf = "(game.question[0] === null) && (game !== undefined)">
         <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [shift]=configuration.shift></app-game-result>
         {{score}} / {{length}}
         <br>

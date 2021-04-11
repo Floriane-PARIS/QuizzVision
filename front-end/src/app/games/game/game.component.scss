@@ -18,8 +18,8 @@
 .game-end {
   display: flex;
   flex-direction: column;
-  width: calc(40% + var(--slider) * 1%);;
-  height: calc(40% + var(--slider) * 1%);;
+  width: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
+  height: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
 
   border-color: black;
   border-left: 5px solid;
