@@ -24,4 +24,12 @@ export class UserListComponent implements OnInit {
   deleteUser(user: User): void {
     this.userService.deleteUser(user);
   }
+
+  //changes
+ /* editUser(user: User): void {
+    console.log('event received from child:', user.firstName);
+    this.router.navigate(['/edit-quiz/' + user.firstName]);
+  }*/ // a éditer***
+
+  
 }

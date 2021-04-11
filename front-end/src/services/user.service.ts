@@ -42,6 +42,7 @@ export class UserService {
   }
 
   retrieveUsers(): void {
+    console.log("retrieve");
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = userList;
       console.log(this.users);
@@ -85,8 +86,9 @@ export class UserService {
 
   }
 
+
   //changes
-  getConfiguration(userId: string, configurationId: string): void{
+  /*getConfiguration(userId: string, configurationId: string): void{
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath + '/' + configurationId;
     this.http.get<Configuration>(configurationUrl).subscribe((configurationNext) => {
       this.configurationNext$.next(configurationNext);
@@ -107,5 +109,5 @@ export class UserService {
     const configurationWrite = {police : configuration.police, bold : configuration.bold, bright : configuration.bright, contrast : configuration.contrast, size: configuration.size, shift : configuration.shift };
     const questionUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.put<Configuration>(questionUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
-  }
+  }*/
 }
