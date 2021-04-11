@@ -1,27 +1,15 @@
 <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
 
-
-<div class="game">
-
-  <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-    <div *ngIf = "game !== undefined" >
-    <div class="question">
-      <div *ngIf = "game.question[0] === null">
-        <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
-        <h1> Vous avez eu la note de {{score}} / {{length}} !</h1>
-        <button type="button" class="button-card"
-                [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                (click)="quitGame()">Quit</button>
-      </div>
-      <div *ngIf = "game.question[0] !== null">
+  <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+      <div class="game-question" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">
       <app-game-question [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
-      <app-game-response [answer]=answer ></app-game-response>
+      <app-game-response class="game-result" [answer]=answer ></app-game-response>
       <br>
-        <div *ngIf = "isValided">
+        <div class="game-result" *ngIf = "isValided">
       <app-game-result [message]=message ></app-game-result>
       <br><br>
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="next()">Question Suivante</button>
@@ -29,8 +17,11 @@
     </div>
 
       </div>
-    </div>
+      <div *ngIf = "(game.question[0] === null) && (game !== undefined)">
+        <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
+        <h1> Vous avez eu la note de {{score}} / {{length}} !</h1>
+        <button type="button" class="button-card"
+                [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+                (click)="quitGame()">Quit</button>
+      </div>
   </div>
-  </div>
-</div>
-

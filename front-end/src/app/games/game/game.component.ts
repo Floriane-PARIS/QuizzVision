@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
   public configuration: Configuration;
   public score: number;
   public length: number;
+  public root = document.documentElement;
 
 
   @Output()
@@ -34,6 +35,7 @@ export class GameComponent implements OnInit {
       console.log("TestFlo", game.id);
     });
     this.configuration = configurationService.lastConfiguration();
+    this.shift();
     this.isValided = false;
     this.score = 0;
   }
@@ -41,6 +43,12 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
+  }
+
+  shift(): void {
+    const value = this.configuration.shift;
+    console.log('value', value);
+    this.root.style.setProperty('--slider', value.toString());
   }
 
   valideAnswer(answer: Answer): void {
