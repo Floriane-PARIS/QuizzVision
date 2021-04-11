@@ -17,6 +17,8 @@ export class GameQuestionComponent implements OnInit {
   question: Question;
   @Input()
   isValided: boolean;
+  @Input()
+  answer: Answer;
 
   @Output()
   valideQuestion: EventEmitter<Question> = new EventEmitter<Question>();
@@ -40,6 +42,7 @@ export class GameQuestionComponent implements OnInit {
 
   choseAnswer(answer: Answer): void {
     this.valideAnswer.emit(answer);
+
   }
 
   valideQuestionAnswered(): void {

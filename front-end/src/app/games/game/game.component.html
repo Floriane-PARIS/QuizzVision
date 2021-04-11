@@ -1,17 +1,20 @@
 
 
   <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-    <div class="game-button-configuration">
+    <div class="game-button-configuration" *ngIf="configuration.shift <=40">
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
     </div>
+    <br>
     <div class="game-question" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">
-      <app-game-question [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
+      <app-game-question [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
+        <div *ngIf="configuration.shift <=40">
       <app-game-response class="game-result" [answer]=answer [shift]=configuration.shift ></app-game-response>
       <br>
+        </div>
         <div class="game-result" *ngIf = "isValided">
       <app-game-result [message]=message [shift]=configuration.shift ></app-game-result>
       <br><br>
@@ -22,6 +25,7 @@
       </div>
       <div class="game-question" *ngIf = "(game.question[0] === null) && (game !== undefined)">
         <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [shift]=configuration.shift></app-game-result>
+        <br>
         {{score}} / {{length}}
         <br>
         <div class="game-button">
@@ -30,7 +34,5 @@
                 (click)="quitGame()">Quit</button>
         </div>
       </div>
-    <div class="game-button">
-    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
-    </div>
   </div>
+    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
