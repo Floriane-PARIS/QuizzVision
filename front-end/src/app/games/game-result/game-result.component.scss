@@ -2,13 +2,9 @@
 
 .game-response-center {
   display: flex;
+  justify-content: center;
   width: 100%;
 
-  border-left: 5px solid;
-  border-right: 5px solid;
-  border-bottom: 5px solid;
-  border-top: 5px solid;
-  border-color: darkmagenta;
 }
 
 .game-response-border {
