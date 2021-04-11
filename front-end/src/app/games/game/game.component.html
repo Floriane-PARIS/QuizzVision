@@ -1,6 +1,9 @@
 
 
   <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+    <div class="game-button-configuration">
+      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
+    </div>
     <div class="game-question" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->

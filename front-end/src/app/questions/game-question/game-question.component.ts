@@ -10,7 +10,8 @@ import {ConfigurationService} from '../../../services/configuration.service';
 })
 export class GameQuestionComponent implements OnInit {
 
-public configuration: Configuration;
+  public configuration: Configuration;
+  public root = document.documentElement;
 
   @Input()
   question: Question;
@@ -25,9 +26,16 @@ public configuration: Configuration;
 
   constructor(private configurationService: ConfigurationService) {
     this.configuration = configurationService.lastConfiguration();
+    this.shift();
   }
 
   ngOnInit(): void {
+  }
+
+  shift(): void {
+    const value = this.configuration.shift;
+    console.log('value', value);
+    this.root.style.setProperty('--slider', value.toString());
   }
 
   choseAnswer(answer: Answer): void {
