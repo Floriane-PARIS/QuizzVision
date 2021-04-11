@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
   }
 
   selectUser(): void {
+    //console.log(this.user);
     this.userSelected.emit(this.user);
   }
 

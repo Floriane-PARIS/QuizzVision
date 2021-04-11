@@ -9,12 +9,12 @@ import { GameComponent } from './games/game/game.component';
 import { GameQuestionComponent } from './questions/game-question/game-question.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
-import {UserEditComponent}  from './users/user-edit/user-edit.component';
+//import {UserEditComponent}  from './users/user-edit/user-edit.component';
 
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
     {path: 'user-list', component: UserListComponent},
-    {path: 'user-edit/:id', component: UserEditComponent},
+    //{path: 'user-edit/:id', component: UserEditComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'configuration-edit', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},

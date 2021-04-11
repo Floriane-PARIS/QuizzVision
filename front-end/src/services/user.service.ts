@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from '../models/user.model';
+import { USER_LIST } from '../mocks/user-list.mock';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Configuration } from 'src/models/configuration.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,12 @@ export class UserService {
    The list of user.
    */
   private users: User[] = [];
+
+  /*
+   The list of users.
+   The list is retrieved from the mock.
+   */
+   //private users: User[] = USER_LIST;
 
   /*
    Observable which contains the list of the user.
@@ -35,6 +44,7 @@ export class UserService {
   retrieveUsers(): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = userList;
+      console.log(this.users);
       this.users$.next(this.users);
     });
   }
@@ -48,6 +58,7 @@ export class UserService {
         // tslint:disable-next-line:triple-equals
         if (userList[i].firstName == userName){
           this.users.push(userList[i]);
+          console.log(userList[i])
         }
       }
       this.users$.next(this.users);
@@ -57,6 +68,7 @@ export class UserService {
 
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
+    console.log("ajouter");
   }
 
   setSelectedUser(userId: string): void {
@@ -67,8 +79,10 @@ export class UserService {
   }
 
   deleteUser(user: User): void {
+    console.log("works");
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
+
   }
 
   //changes
