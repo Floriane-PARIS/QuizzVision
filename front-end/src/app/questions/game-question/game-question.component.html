@@ -1,7 +1,8 @@
-<div class="card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-  <h2>
+<div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+  <div class="game-question">
     Question : {{question.label}}
-  </h2>
+  </div>
+  <div class="game-answer">
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
     <div *ngIf="!isValided">
     <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
@@ -10,9 +11,10 @@
     <div *ngIf="isValided">
       {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
     </div>
-   </div>
-  <div *ngIf="!isValided">
+  </div>
+  </div>
+  <div class="game-button" *ngIf="!isValided">
   <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
           (click)="valideQuestionAnswered()">Valide</button>
- </div>
+  </div>
 </div>
