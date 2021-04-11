@@ -20,12 +20,15 @@
     </div>
 
       </div>
-      <div *ngIf = "(game.question[0] === null) && (game !== undefined)">
-        <h1> Vous avez fini le Quiz ! BRAVO ! </h1>
-        <h1> Vous avez eu la note de {{score}} / {{length}} !</h1>
+      <div class="game-end" *ngIf = "(game.question[0] === null) && (game !== undefined)">
+        <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [shift]=configuration.shift></app-game-result>
+        {{score}} / {{length}}
+        <br>
+        <div class="game-button">
         <button type="button" class="button-card"
                 [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
                 (click)="quitGame()">Quit</button>
+        </div>
       </div>
     <div class="game-button">
     <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
