@@ -5,9 +5,36 @@
   margin-bottom: 0.3em;
 }
 
-.game-question {
+.game-question-center {
   display: flex;
-  width: 30%;
+  width: 100%;
+  justify-content: center;
+
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-bottom: 5px solid;
+  border-top: 5px solid;
+  border-color: green;
+}
+
+.game-answer-center {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-bottom: 5px solid;
+  border-top: 5px solid;
+  border-color: orange;
+}
+
+.game-question-border {
+  display: flex;
+  width: calc(70% - var(--slider) * 1%);
   justify-content: flex-start;
 
   border-left: 5px solid;
@@ -17,7 +44,7 @@
   border-color: green;
 }
 
-.game-answer {
+.game-answer-border {
   display: flex;
   width: 100%;
 

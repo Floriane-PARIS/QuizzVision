@@ -10,10 +10,10 @@
       <div *ngIf = "game.question[0] !== undefined">
       <app-game-question [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
-      <app-game-response class="game-result" [answer]=answer ></app-game-response>
+      <app-game-response class="game-result" [answer]=answer [shift]=configuration.shift ></app-game-response>
       <br>
         <div class="game-result" *ngIf = "isValided">
-      <app-game-result [message]=message ></app-game-result>
+      <app-game-result [message]=message [shift]=configuration.shift ></app-game-result>
       <br><br>
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="next()">Question Suivante</button>
         </div>

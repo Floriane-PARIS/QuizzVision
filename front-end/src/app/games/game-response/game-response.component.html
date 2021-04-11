@@ -1,4 +1,11 @@
-<div class="game-response">
+<div class="game-response-center" *ngIf="(shift < 40)">
     <div *ngIf ="answer == undefined"> Cliquer sur une réponse</div>
   <div *ngIf ="answer !== undefined">Vous avez choisi la réponse "{{answer.value}}"</div>
 </div>
+
+<div class="game-response-border" *ngIf="(shift > 40)">
+    <div *ngIf ="answer == undefined"> Cliquer sur une réponse</div>
+    <div *ngIf ="answer !== undefined">Vous avez choisi la réponse "{{answer.value}}"</div>
+</div>
+
+

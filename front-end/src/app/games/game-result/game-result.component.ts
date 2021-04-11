@@ -10,6 +10,8 @@ export class GameResultComponent implements OnInit {
 
   @Input()
   message: string;
+  @Input()
+  shift: number;
 
   constructor() {
   }

@@ -1,3 +1,7 @@
-<div class="game-response">
+<div class="game-response-border" *ngIf="(shift > 40)">
     {{message}}
+</div>
+
+<div class="game-response-center" *ngIf="(shift < 40)">
+  {{message}}
 </div>
