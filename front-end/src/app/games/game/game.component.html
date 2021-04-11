@@ -11,6 +11,10 @@
       <div *ngIf = "game.question[0] !== undefined">
       <app-game-question [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
+        <div *ngIf="configuration.shift <=40">
+      <app-game-response class="game-result" [answer]=answer [shift]=configuration.shift ></app-game-response>
+      <br>
+        </div>
         <div class="game-result" *ngIf = "isValided">
       <app-game-result [message]=message [shift]=configuration.shift ></app-game-result>
       <br><br>
@@ -30,7 +34,7 @@
                 (click)="quitGame()">Quit</button>
         </div>
       </div>
-  </div>
-  <div class="game-button-configuration" *ngIf="configuration.shift <=40">
-  <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
+    <div class="game-button" *ngIf="configuration.shift <=40">
+      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
+    </div>
   </div>
