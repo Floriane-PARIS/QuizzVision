@@ -1,0 +1,7 @@
+<button class="button-card" routerLink="/user-list">Back</button>
+
+<ng-container *ngIf="user">
+    <h2>{{user.firstName}}</h2>
+    <app-configuration-form [user]="user"></app-configuration-form>
+    <app-configuration-edit [user]="user"></app-configuration-edit>
+</ng-container>

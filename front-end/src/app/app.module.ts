@@ -33,6 +33,7 @@ import { EditThemeComponent } from './themes/edit-theme/edit-theme.component';
 import { ThemeSearchComponent } from './themes/theme-search/theme-search.component';
 import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
     UserFormComponent,
     UserListComponent,
     UserSearchComponent,
+    UserEditComponent,
     ConfigurationComponent,
     ConfigurationFormComponent,
     ConfigurationEditComponent,
