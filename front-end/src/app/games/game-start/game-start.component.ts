@@ -87,5 +87,26 @@ export class GameStartComponent implements OnInit {
       }
       return "22px";
     }
-
+    getBright(){
+      if(this.configuration != undefined){
+        return this.configuration.bright+ "%";
+      }
+      return "20%"
+    }
+  
+    getContrast(){
+      if(this.configuration != undefined){
+        return this.configuration.bright+ "%";
+      }
+      return "20%"
+    }
+    getFiltre(){
+      return this.getBright() + " " + this.getContrast();
+    }
+    getOpacity(){
+      if(this.configuration != undefined){
+        return this.configuration.opacity+"px";
+      }
+      return "0.5px";
+    }
 }
