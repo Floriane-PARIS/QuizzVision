@@ -5,10 +5,10 @@
       <h6>
       <label for="title">
         <p style="color: #225597;">firstName
-          <input class="input-custom" type="text" id="name1" [(ngModel)] = "firstName" [ngModelOptions]="{standalone: true}">
+          <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
         </p>
         <p style="color: #225597;">firstName
-          <select name="user-field" id="name2" [(ngModel)] = "firstName">
+          <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
             <option *ngFor="let user of users" [value]="user.firstName">
               {{user.firstName}}
             </option>
