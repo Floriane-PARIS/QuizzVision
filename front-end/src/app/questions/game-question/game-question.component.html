@@ -47,8 +47,6 @@
   </div>
     <br>
     <div class="game-button" *ngIf="!isValided">
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
-
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
               (click)="valideQuestionAnswered()">Valide</button>
     </div>

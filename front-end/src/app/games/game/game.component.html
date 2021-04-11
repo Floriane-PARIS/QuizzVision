@@ -34,7 +34,5 @@
                 (click)="quitGame()">Quit</button>
         </div>
       </div>
-    <div class="game-button" *ngIf="configuration.shift <=40">
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
-    </div>
   </div>
+    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button>
