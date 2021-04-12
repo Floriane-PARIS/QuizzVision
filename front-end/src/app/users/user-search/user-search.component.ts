@@ -9,6 +9,7 @@ import {User} from '../../../models/user.model';
 })
 export class UserSearchComponent implements OnInit {
   public userFName: string;
+  public userTroubles: string;
   public users: User[];
 
   constructor(public userService: UserService) {
@@ -16,6 +17,7 @@ export class UserSearchComponent implements OnInit {
       this.users = users;
     });
     this.userFName = '';
+    this.userTroubles = '';
   }
 
   ngOnInit(): void {
@@ -27,5 +29,10 @@ export class UserSearchComponent implements OnInit {
   }
   annule(): void {
     this.userService.retrieveUsers();
+  }
+
+  searchUserTroubles(): void {
+    const troubleToSearch: string = this.userTroubles as string;
+    this.userService.retrieveUserTroubles(troubleToSearch);
   }
 }

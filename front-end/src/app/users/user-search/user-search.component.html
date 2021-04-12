@@ -1,23 +1,45 @@
 
-<div class="card" p style="background-color: bisque;" p style="text-align: right;">
-    <h4 p style="font-family: cursive;">Search for an user</h4>
+<div class="card" p style="text-align: right; position: absolute;  left: 28.5cm;">
+    <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Search for an user by his name</h5>
     <form class="user-search">
       <h6>
-      <label for="title">
-        <p style="color: #225597;">firstName
+      <label for="title">firstName
           <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
-        </p>
-        <p style="color: #225597;">firstName
+          
+        firstName
           <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
             <option *ngFor="let user of users" [value]="user.firstName">
               {{user.firstName}}
             </option>
           </select>
-        </p>
       </label>
+      <br>
       <button type="submit" class="button-card" (click)="searchUserName()">Search</button>
     </h6>
-    </form>
+    
+  </form>
+  <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
+</div>
+
+
+<div class="card" p style="text-align: right; position: absolute;  left: 17.5cm;">
+  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Search for an user by his sickness</h5>
+  <form class="user-search">
+    <h6>
+      <label for="title">maladies
+          <input class="input-custom" type="text" id="maladies" [(ngModel)] = "userTroubles" [ngModelOptions]="{standalone: true}">
+        
+        maladies
+          <select name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
+            <option *ngFor="let user of users" [value]="user.maladies">
+              {{user.maladies}}
+            </option>
+          </select>
+      </label>
+      <br>
+      <button type="submit" class="button-card" (click)="searchUserTroubles()">Search</button>
+    </h6>
+  </form>
     <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
   </div>
   
