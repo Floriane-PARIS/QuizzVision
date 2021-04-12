@@ -27,7 +27,14 @@ export class GameQuestionComponent implements OnInit {
   valideAnswer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
   constructor(private configurationService: ConfigurationService) {
-    this.configuration = configurationService.lastConfiguration();
+    this.configurationService.configurations$.subscribe((configurations) => {
+      // console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
+      if (configurations.length > 0){
+        this.configuration = configurations[configurations.length - 1];
+      } else {
+        this.configuration = undefined;
+      }
+    });
     this.shift();
   }
 

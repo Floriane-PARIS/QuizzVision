@@ -1,9 +1,8 @@
-
 <app-configuration-form></app-configuration-form>
 <div class = "configuration-edit">
   <div class="configuration-chose" *ngIf="configuration != undefined; else elseBlock">
     <!--div class = "configuration" *ngFor="let configuration of configurationList"-->
-      <app-configuration [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'" [configuration]="configuration" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration>
+      <app-configuration [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration>
     <!--/div-->
   </div>
 </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
-import {Validators} from "@angular/forms";
 import {Answer, Question} from "../../../models/question.model";
+import {ConfigurationService} from "../../../services/configuration.service";
 
 @Component({
   selector: 'app-configuration',
@@ -12,15 +12,21 @@ import {Answer, Question} from "../../../models/question.model";
 
 export class ConfigurationComponent implements OnInit {
 
-  @Input()
-  configuration: Configuration;
-
   @Output()
   deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
 
   public question: Question;
+  public configuration: Configuration;
 
-  constructor() {
+  constructor(private configurationService: ConfigurationService) {
+    this.configurationService.configurations$.subscribe((configurations) => {
+      // console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
+      if (configurations.length > 0){
+        this.configuration = configurations[configurations.length - 1];
+      } else {
+        this.configuration = undefined;
+      }
+    });
     this.question = this.createQuestionTemoin();
   }
 
