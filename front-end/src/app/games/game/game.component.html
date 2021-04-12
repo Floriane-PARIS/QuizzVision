@@ -1,7 +1,7 @@
 
 
   <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}">
-    <div class="game-button-configuration" *ngIf="configuration.shift <=40">
+    <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome'">
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}" >Configuration</button>
     </div>
     <br>
@@ -11,12 +11,12 @@
       <div *ngIf = "game.question[0] !== undefined">
       <app-game-question [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
-        <div *ngIf="configuration.shift <=40">
-      <app-game-response class="game-result" [answer]=answer [shift]=configuration.shift ></app-game-response>
+        <div *ngIf="configuration.handicap === 'Glaucome'">
+      <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
       <br>
         </div>
         <div class="game-result" *ngIf = "isValided">
-      <app-game-result [message]=message [shift]=configuration.shift ></app-game-result>
+      <app-game-result [message]=message [handicap]=configuration.handicap ></app-game-result>
       <br><br>
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}" (click)="next()">Question Suivante</button>
         </div>
@@ -24,7 +24,7 @@
 
       </div>
       <div class="game-question" *ngIf = "(game.question[0] === null) && (game !== undefined)">
-        <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [shift]=configuration.shift></app-game-result>
+        <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [handicap]=configuration.handicap></app-game-result>
         <br>
         {{score}} / {{length}}
         <br>

@@ -1,7 +1,4 @@
-<div class="game-response-border" *ngIf="(shift > 40)">
+<div [className]="(handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
     {{message}}
 </div>
 
-<div class="game-response-center" *ngIf="(shift < 40)">
-  {{message}}
-</div>
