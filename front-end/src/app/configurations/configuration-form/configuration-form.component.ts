@@ -15,6 +15,7 @@ export class ConfigurationFormComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, private configurationService: ConfigurationService) {
     this.configurationForm =  this.formBuilder.group({
+      handicap: ['Glaucome'],
       bold: ['normal'],
       size: ['22'],
       police: ['Arial'],
@@ -29,9 +30,9 @@ export class ConfigurationFormComponent implements OnInit {
   }
 
   addConfiguration(): void {
-    //ajouter une configuration
+    // ajouter une configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
-    console.log("[Add]configuration: ", configurationToCreate);
+    console.log('[Add]configuration: ', configurationToCreate);
     this.configurationService.addConfiguration(configurationToCreate);
   }
 }
