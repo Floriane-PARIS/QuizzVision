@@ -128,11 +128,5 @@ export class GameComponent implements OnInit {
   getFiltre(){
       return this.getBright() + " " + this.getContrast();
   }
-  getOpacity(){
-    if(this.configuration != undefined){
-      return this.configuration.opacity+"px";
-    }
-    return "0.5px";
-  }
 
 }

@@ -1,7 +1,7 @@
-<div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}">
+<div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <app-game-question  [question]=question [answer]=question.answers[0] [isValided]=false></app-game-question>
     <br>
     <button class="button-card"
-            [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}"
+            [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
             (click)="delete()"> Back Configuration</button>
 </div>

@@ -1,8 +1,8 @@
 
 
-  <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}">
+  <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome'">
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}" >Configuration</button>
+      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
     </div>
     <br>
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
@@ -30,7 +30,7 @@
         <br>
         <div class="game-button">
         <button type="button" class="button-card"
-                [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}"
+                [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
                 (click)="quitGame()">Quit</button>
         </div>
       </div>

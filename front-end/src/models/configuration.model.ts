@@ -7,5 +7,4 @@ export interface Configuration {
     bright: number;
     contrast: number;
     shift: number;
-    opacity: number;
 }
