@@ -19,10 +19,10 @@ export class ConfigurationFormComponent implements OnInit {
       bold: ['normal'],
       size: ['22'],
       police: ['Arial'],
-      bright: ['20'],
-      contrast: ['20'],
+      bright: ['100'],
+      contrast: ['100'],
       shift: ['60'],
-      opacity: ['0,5']
+      opacity: ['0.5']
     });
   }
 
