@@ -14,6 +14,17 @@
           </select>
       </label>
       <br>
+      <label for="title">lastName
+        <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
+        
+      lastName
+        <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
+          <option *ngFor="let user of users" [value]="user.lastName">
+            {{user.lastName}}
+          </option>
+        </select>
+    </label>
+      <br>
       <button type="submit" class="button-card" (click)="searchUserName()">Search</button>
     </h6>
     

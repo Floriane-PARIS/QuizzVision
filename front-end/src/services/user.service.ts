@@ -51,20 +51,22 @@ export class UserService {
   }
 
   //changes
-  retrieveUserName(userName: string): void {
+  retrieveUserName(userFName: string, userLName: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < userList.length; i++){
         // tslint:disable-next-line:triple-equals
-        if (userList[i].firstName == userName){
+        if (userList[i].firstName === userFName && userList[i].lastName === userLName){
           this.users.push(userList[i]);
-          console.log(userList[i])
+          console.log(userList[i]);
         }
       }
+      
       this.users$.next(this.users);
     });
   }
+
 
   retrieveUserTroubles(userTroubles: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
