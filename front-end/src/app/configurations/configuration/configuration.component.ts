@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
+import {Validators} from "@angular/forms";
+import {Answer, Question} from "../../../models/question.model";
 
 @Component({
   selector: 'app-configuration',
@@ -16,9 +18,37 @@ export class ConfigurationComponent implements OnInit {
   @Output()
   deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
 
-  constructor() { }
+  public question: Question;
+
+  constructor() {
+    this.question = this.createQuestionTemoin();
+    console.log(this.question);
+  }
 
   ngOnInit(): void {
+  }
+
+  createQuestionTemoin(): Question{
+    let answer1: Answer;
+    answer1 = {
+      id: '1',
+      value: 'Paris',
+      isCorrect: true,
+    };
+    let answer2: Answer;
+    answer2 = {
+      id: '2',
+      value: 'Marseille',
+      isCorrect: false,
+    };
+
+    let question: Question;
+    question = {
+      id: '0',
+      label: 'Quelle est la Capital de la France ?',
+      answers: [answer1, answer2],
+    };
+    return question;
   }
 
   delete(){
