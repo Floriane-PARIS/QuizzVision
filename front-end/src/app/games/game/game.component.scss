@@ -46,11 +46,18 @@
   //border: 5px solid blue;
 }
 
-.game-question {
+.game-question-center {
   display: flex;
   flex-direction: column;
   width: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
   height: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
 
+}
+
+.game-question-border {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 

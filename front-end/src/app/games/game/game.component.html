@@ -5,7 +5,7 @@
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}" >Configuration</button>
     </div>
     <br>
-    <div class="game-question" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">
@@ -23,7 +23,7 @@
     </div>
 
       </div>
-      <div class="game-question" *ngIf = "(game.question[0] === null) && (game !== undefined)">
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] === null) && (game !== undefined)">
         <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [handicap]=configuration.handicap></app-game-result>
         <br>
         {{score}} / {{length}}
