@@ -22,7 +22,6 @@ export class ConfigurationComponent implements OnInit {
 
   constructor() {
     this.question = this.createQuestionTemoin();
-    console.log(this.question);
   }
 
   ngOnInit(): void {

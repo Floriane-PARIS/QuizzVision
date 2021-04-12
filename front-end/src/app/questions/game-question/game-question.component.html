@@ -1,5 +1,5 @@
 <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-  <div *ngIf="configuration.shift <= 40">
+  <div *ngIf="configuration.handicap == 'Glaucome'">
   <div class="game-question-center">
     Question : {{question.label}}
   </div>
@@ -22,7 +22,7 @@
   </div>
   </div>
 
-  <div *ngIf="(configuration.shift <= 70) && (configuration.shift > 40)">
+  <div *ngIf="configuration.handicap == 'DMLA'">
     <div class="game-configuration-border">
     <div class="game-question-border">
       Question : {{question.label}}

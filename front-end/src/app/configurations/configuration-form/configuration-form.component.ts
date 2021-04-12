@@ -21,7 +21,7 @@ export class ConfigurationFormComponent implements OnInit {
       police: ['Arial'],
       bright: ['20'],
       contrast: ['20'],
-      shift: ['1'],
+      shift: ['60'],
       opacity: ['0,5']
     });
   }

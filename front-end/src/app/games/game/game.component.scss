@@ -14,8 +14,9 @@
 .game-end {
   display: flex;
   flex-direction: column;
-  width: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
-  height: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
+  width: max(calc(40% + var(--slider) * 1%));
+  height: max(calc(40% + var(--slider) * 1%));
+  border: 5px solid darkblue;
 }
 
 .game-button {

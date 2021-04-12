@@ -32,17 +32,30 @@ body{
       }
   }
 }
-.configuration {
+.configuration-center {
   display: flex;
-
-  //movement by shift
+  justify-content: center;
+  align-items: center;
   width: calc(40% + var(--slider) * 1% );
   height: calc(40% + var(--slider) * 1% );
+
+  border: 5px solid pink;
+}
+
+.configuration-border {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+
+  border: 5px solid mediumblue;
 }
 
 
 .configuration-chose {
   display: flex;
+  justify-content: center;
+  align-items: center;
   //rectangle
   position: absolute;
   top: calc(var(--top) * 1px);
@@ -52,7 +65,4 @@ body{
   //bordure
   border: 5px solid black;
 
-  //center
-  justify-content: center;
-  align-items: center;
 }

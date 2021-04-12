@@ -9,6 +9,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
+
+  border: 5px solid red;
 }
 
 .game-answer-center {
@@ -18,16 +20,22 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+
+  border: 5px solid red;
 }
 
 .game-configuration-border {
   display: flex;
   justify-content: space-between;
+
+  border: 5px solid yellow;
 }
+
 .game-question-border {
   display: flex;
-  width: calc(80% - var(--slider) * 1%);
+  width: calc(100% - var(--slider) * 1%);
 
+  border: 5px solid yellow;
 }
 
 .game-answer-border {
@@ -37,6 +45,8 @@
   justify-content: flex-end;
   align-items: flex-end;
   flex-direction: column;
+
+  border: 5px solid yellow;
 }
 
 .game-answer-response {
@@ -47,6 +57,8 @@
   justify-content: flex-end;
   align-items: flex-end;
   flex-direction: column;
+
+  border: 5px solid mediumspringgreen;
 
 }
 
@@ -63,4 +75,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  border: 5px solid yellow;
 }
