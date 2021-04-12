@@ -40,12 +40,8 @@ export class ConfigurationEditComponent implements OnInit {
   initCss(): void {
     const top = 75;
     const left =  600;
-    const height = 955;
-    const width = 1500;
     this.root.style.setProperty('--top', top.toString());
     this.root.style.setProperty('--left', left.toString());
-    this.root.style.setProperty('--height', height.toString());
-    this.root.style.setProperty('--width', width.toString());
   }
 
   shift(): void {
