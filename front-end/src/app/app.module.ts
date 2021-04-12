@@ -27,6 +27,7 @@ import { QuizSearchComponent } from './quizzes/quiz-search/quiz-search.component
 import { ConfigurationEditComponent } from './configurations/configuration-edit/configuration-edit.component';
 import { ConfigurationFormComponent } from './configurations/configuration-form/configuration-form.component';
 import { ConfigurationComponent } from './configurations/configuration/configuration.component';
+import { ConfigurationChoseComponent } from './configurations/configuration-chose/configuration-chose.component';
 import { ThemeComponent } from './themes/theme/theme.component';
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 import { EditThemeComponent } from './themes/edit-theme/edit-theme.component';
@@ -54,6 +55,7 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     UserSearchComponent,
     UserEditComponent,
     ConfigurationComponent,
+    ConfigurationChoseComponent,
     ConfigurationFormComponent,
     ConfigurationEditComponent,
     GameComponent,
