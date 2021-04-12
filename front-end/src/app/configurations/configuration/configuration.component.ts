@@ -12,8 +12,6 @@ import {ConfigurationService} from "../../../services/configuration.service";
 
 export class ConfigurationComponent implements OnInit {
 
-  @Output()
-  deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
 
   public question: Question;
   public configuration: Configuration;
@@ -56,10 +54,6 @@ export class ConfigurationComponent implements OnInit {
     return question;
   }
 
-  delete(){
-    this.deleteConfiguration.emit(this.configuration);
-  }
-
   getBold(){
       return this.configuration.bold;
   }
@@ -81,7 +75,7 @@ export class ConfigurationComponent implements OnInit {
   getFiltre(){
     return this.getBright() + " " + this.getContrast();
   }
-  
+
 
 }
 

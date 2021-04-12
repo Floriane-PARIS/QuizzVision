@@ -5,7 +5,7 @@ import {Answer, Question} from "../../../models/question.model";
 import {ConfigurationService} from "../../../services/configuration.service";
 
 @Component({
-  selector: 'app-configuration',
+  selector: 'app-configuration-chose',
   templateUrl: './configuration-chose.component.html',
   styleUrls: ['./configuration-chose.component.scss']
 })
@@ -55,9 +55,6 @@ export class ConfigurationChoseComponent implements OnInit {
   }
   getFiltre(){
     return this.getBright() + " " + this.getContrast();
-  }
-  getOpacity(){
-    return this.configuration.opacity+ "px";
   }
 
 }

@@ -1,5 +1,5 @@
-<div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}">
-  <h2>Configuration Choisie:</h2>
+<div class="card" *ngIf="configuration != undefined">
+  <h3>Configuration Choisie:</h3>
   handicap: {{configuration.handicap}} <br>
   Gras : {{configuration.bold}}<br>
   Police : {{configuration.police}}<br>
@@ -7,8 +7,5 @@
   Luminosité : {{configuration.bright}}<br>
   Contraste : {{configuration.contrast}}<br>
   Décalage : {{configuration.shift}}<br>
-  Opacité : {{configuration.opacity}}<br>
-    <button class="button-card"
-            [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre(), 'opacity': getOpacity()}"
-            (click)="delete()"> Back Configuration</button>
+    <button class="button-card" (click)="delete()"> Back Configuration</button>
 </div>

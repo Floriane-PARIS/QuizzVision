@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>Choisir une nouvelle configuration</h2>
+  <h3>Choisir une nouvelle configuration</h3>
   <form class="configuration-form" [formGroup]="configurationForm">
 
     <label for="police"> Handicap </label>
@@ -47,7 +47,6 @@
       <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
       <span class= "value">bordure</span>
     </div>
-    <br>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>
