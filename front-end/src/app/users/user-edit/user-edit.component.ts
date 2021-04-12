@@ -36,7 +36,7 @@ export class UserEditComponent implements OnInit {
 
   modifUserComments(): void {
     const commentsToSearch: string = this.comments as string;
-    this.userService.updateUserComments(this.user,commentsToSearch);
+    this.userService.updateUserComments(this.user, commentsToSearch);
   }
 
   /*edit(): void {

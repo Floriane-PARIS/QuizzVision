@@ -93,10 +93,20 @@ export class UserService {
 
   updateUserComments(user: User, comments: string): void {
 
-    const newComments = {commentaires : comments};
+    const commentsWrite = {firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies,
+       commentaires : comments, configuration: user.configuration, date: user.date};
     const userUrl = this.userUrl + '/' + user.id ;
-    this.http.put<User>(userUrl, newComments, this.httpOptions).subscribe((user: User) => this.userSelected$.next(user));
+    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
+
+  /*putQuestion(quiz: Quiz, question: Question): void {
+    const questionWrite = {label : question.label };
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
+    this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+    for (const answer of question.answers) {
+      this.putAnswer(quiz, question, answer);
+    }
+  }*/
 
 
   addUser(user: User): void {
