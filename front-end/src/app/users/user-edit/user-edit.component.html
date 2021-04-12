@@ -4,4 +4,7 @@
     <h2>{{user.firstName}}</h2>
     <app-configuration-form [user]="user"></app-configuration-form>
     <app-configuration-edit [user]="user"></app-configuration-edit>
+    <h4 p style="font-family: cursive;">Update Comments</h4>
+    <input class="input-custom" type="text" id="comments" [(ngModel)] = "themeSubject" [ngModelOptions]="{standalone: true}">
+    <button type="submit" class="button-card" (click)="modifUserComments()">Save</button>
 </ng-container>

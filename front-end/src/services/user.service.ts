@@ -66,6 +66,21 @@ export class UserService {
     });
   }
 
+  retrieveUserComments(userComments: string): void {
+    this.http.get<User[]>(this.userUrl).subscribe((userList) => {
+      this.users = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < userList.length; i++){
+        // tslint:disable-next-line:triple-equals
+        if (userList[i].commentaires == userComments){
+          this.users.push(userList[i]);
+          console.log(userList[i])
+        }
+      }
+      this.users$.next(this.users);
+    });
+  }
+
 
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());

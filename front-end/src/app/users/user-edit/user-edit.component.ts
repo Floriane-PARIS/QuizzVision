@@ -11,9 +11,11 @@ import { UserService } from 'src/services/user.service';
 export class UserEditComponent implements OnInit {
 
   public user: User;
+  public comments: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => this.user = user);
+    this.comments = '';
   }
 
   ngOnInit(): void {
@@ -21,4 +23,8 @@ export class UserEditComponent implements OnInit {
     this.userService.setSelectedUser(id);
   }
 
+  modifUserComments(): void {
+    const commentsToSearch: string = this.comments as string;
+    this.userService.retrieveUserComments(commentsToSearch);
+  }
 }
