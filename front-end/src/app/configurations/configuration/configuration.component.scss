@@ -1,13 +1,12 @@
 @import '../../../styles/card.scss';
 
-.configuratio-self {
-  margin: 0.3rem;
-  position: center;
+.configuration-self {
+  display: flex;
   height: 100%;
   width: 100%;
-  display: grid;
-  justify-content: start;
-  flex-direction: column;
+
+  //justify-content: start;
+  //flex-direction: column;
   background-color: #D3D3D3;
 
   border: 5px solid green;
