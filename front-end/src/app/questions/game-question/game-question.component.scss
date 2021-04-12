@@ -10,7 +10,7 @@
   width: 100%;
   justify-content: center;
 
-  border: 5px solid red;
+  //border: 5px solid red;
 }
 
 .game-answer-center {
@@ -21,14 +21,14 @@
   align-items: center;
   flex-direction: row;
 
-  border: 5px solid red;
+  //border: 5px solid red;
 }
 
 .game-configuration-border {
   display: flex;
   justify-content: space-between;
 
-  border: 5px solid indianred;
+  //border: 5px solid indianred;
 }
 
 .game-configuration-center {
@@ -38,7 +38,7 @@
   display: flex;
   width: calc(100% - var(--slider) * 1%);
 
-  border: 5px solid indigo;
+  border: 5px solid cadetblue;
 }
 
 .game-answer-border {
@@ -49,7 +49,7 @@
   align-items: flex-end;
   flex-direction: column;
 
-  border: 5px solid powderblue;
+  border: 5px solid cornflowerblue;
 }
 
 .game-answer-response {
@@ -61,7 +61,7 @@
   align-items: flex-end;
   flex-direction: column;
 
-  border: 5px solid mediumspringgreen;
+  //border: 5px solid mediumspringgreen;
 
 }
 
@@ -79,7 +79,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  border: 5px solid yellow;
+  //border: 5px solid yellow;
 }
 
 .game-center {
