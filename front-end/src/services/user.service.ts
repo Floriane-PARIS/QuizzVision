@@ -16,6 +16,7 @@ export class UserService {
    The list of user.
    */
   private users: User[] = [];
+  private res: User[] = []; // changes 
 
   /*
    The list of users.
@@ -54,15 +55,22 @@ export class UserService {
   retrieveUserName(userFName: string, userLName: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
+      this.res = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < userList.length; i++){
         // tslint:disable-next-line:triple-equals
         if (userList[i].firstName === userFName && userList[i].lastName === userLName){
+         // this.res.push(userList[i]);
           this.users.push(userList[i]);
           console.log(userList[i]);
         }
       }
-      
+      for (let i = this.users.length; i < 0; i--){
+        if (this.users[i].lastName !== userLName){
+          this.users.pop();
+          //console.log(this.res[i]);
+        }
+      }
       this.users$.next(this.users);
     });
   }
