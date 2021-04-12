@@ -66,7 +66,7 @@ export class UserService {
     });
   }
 
-  retrieveUserComments(userComments: string): void {
+ /* retrieveUserComments(userComments: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
       // tslint:disable-next-line:prefer-for-of
@@ -79,6 +79,13 @@ export class UserService {
       }
       this.users$.next(this.users);
     });
+  }*/
+
+  updateUserComments(user: User, comments: string): void {
+
+    const newComments = {commentaires : comments};
+    const userUrl = this.userUrl + '/' + user.id ;
+    this.http.put<User>(userUrl, newComments, this.httpOptions).subscribe((user: User) => this.userSelected$.next(user));
   }
 
 
