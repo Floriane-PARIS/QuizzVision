@@ -6,7 +6,7 @@
 </div>
 </div>
 <div class = "configuration-edit">
-  <div class="configuration-chose" *ngIf="configuration != undefined; else elseBlock">
+  <div class="configuration-chose" *ngIf="configuration != undefined">
     <!--div class = "configuration" *ngFor="let configuration of configurationList"-->
       <app-configuration [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
     <!--/div-->
