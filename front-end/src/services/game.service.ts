@@ -102,7 +102,7 @@ export class GameService {
 
     });
   }
- 
+
   nextQuestionGame(game: Game): void{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
@@ -117,6 +117,12 @@ export class GameService {
     const questionWrite = {question: [question]};
     const questionUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+  }
+
+  updateScore(game: Game): void {
+    const score = game.score +1;
+    const questionUrl = this.gameUrl + '/' + game.id ;
+    //this.http.put<Game>(questionUrl, score, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
   }
 
   // return index of Question in Quiz

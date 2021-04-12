@@ -33,7 +33,6 @@ export class GameComponent implements OnInit {
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
       this.length = game.score;
-      console.log("TestFlo", game.id);
     });
     this.configuration = configurationService.lastConfiguration();
     this.shift();
@@ -63,6 +62,7 @@ export class GameComponent implements OnInit {
       this.isValided = true;
     if (this.answer.isCorrect) {
       this.score = this.score+1;
+      this.gameService.updateScore(this.game);
       this.message = 'Bravo, bonne réponse';
     }
     else  {
