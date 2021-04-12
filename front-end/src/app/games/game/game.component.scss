@@ -8,7 +8,7 @@
 
   width: 100%;
   height: 90vh;
-  border: 5px solid red;
+  //border: 5px solid red;
 }
 
 .game-end {
@@ -16,7 +16,7 @@
   flex-direction: column;
   width: max(calc(40% + var(--slider) * 1%));
   height: max(calc(40% + var(--slider) * 1%));
-  border: 5px solid darkblue;
+  //border: 5px solid darkblue;
 }
 
 .game-button {
@@ -49,8 +49,10 @@
 .game-question-center {
   display: flex;
   flex-direction: column;
-  width: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
-  height: max(calc(40% + var(--slider) * 1%),calc(var(--sliderBorder) * 1%));
+  width: max(calc(40% + var(--slider) * 1%));
+  height: max(calc(40% + var(--slider) * 1%));
+
+  //border: 5px solid orange;
 
 }
 

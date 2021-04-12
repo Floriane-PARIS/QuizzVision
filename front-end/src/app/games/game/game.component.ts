@@ -49,12 +49,6 @@ export class GameComponent implements OnInit {
   shift(): void {
     const value = this.configuration.shift;
     console.log('value', value);
-    if (value > 40) {
-      this.root.style.setProperty('--sliderBorder', '100');
-      console.log(this.root.style.getPropertyValue('--sliderBorder'));
-    } else {
-      this.root.style.setProperty('--sliderBorder', '0');
-    }
     this.root.style.setProperty('--slider', value.toString());
   }
 
