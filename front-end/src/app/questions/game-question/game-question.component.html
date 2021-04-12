@@ -1,39 +1,14 @@
 <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-  <div *ngIf="configuration.handicap == 'Glaucome'">
-  <div class="game-question-center">
-    Question : {{question.label}}
-  </div>
-    <br>
-  <div class="game-answer-center">
-  <div class="answer" *ngFor="let answer of question.answers; let i=index">
-    <div *ngIf="!isValided">
-    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-            (click)="choseAnswer(answer)">{{i}} - {{answer.value}}</button>
-    </div>
-    <div *ngIf="isValided">
-      {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
-    </div>
-  </div>
-  </div>
-  <br>
-  <div class="game-button" *ngIf="!isValided">
-  <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-          (click)="valideQuestionAnswered()">Valide</button>
-  </div>
-  </div>
-
-  <div *ngIf="configuration.handicap == 'DMLA'">
-    <div class="game-configuration-border">
-    <div class="game-question-border">
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-configuration-border' : 'game-configuration-center'">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
       Question : {{question.label}}
     </div>
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
+    <div *ngIf="configuration.handicap === 'DMLA'">
+    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
     </div>
     <br>
-    <div class="game-border">
-      <app-game-response class="game-result" [answer]=answer [shift]=configuration.shift ></app-game-response>
-      <br>
-    <div class="game-answer-border">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'">
       <div class="answer" *ngFor="let answer of question.answers; let i=index">
         <div *ngIf="!isValided">
           <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
@@ -44,11 +19,13 @@
         </div>
       </div>
     </div>
-  </div>
     <br>
     <div class="game-button" *ngIf="!isValided">
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
               (click)="valideQuestionAnswered()">Valide</button>
     </div>
+    </div>
   </div>
 </div>
+
+
