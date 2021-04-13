@@ -120,9 +120,9 @@ export class GameService {
   }
 
   updateScore(game: Game): void {
-    const score = game.score +1;
+    const score = {score: game.score +1};
     const questionUrl = this.gameUrl + '/' + game.id ;
-    //this.http.put<Game>(questionUrl, score, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+    this.http.put<Game>(questionUrl, score, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
   }
 
   // return index of Question in Quiz

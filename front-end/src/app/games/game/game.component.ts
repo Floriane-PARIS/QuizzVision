@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
       this.isValided = true;
     if (this.answer.isCorrect) {
       this.score = this.score+1;
-      this.gameService.updateScore(this.game);
+      //this.gameService.updateScore(this.game);
       this.message = 'Bravo, bonne réponse';
     }
     else  {
@@ -78,7 +78,7 @@ export class GameComponent implements OnInit {
     this.answer = undefined;
     this.message = '';
     this.isValided = false;
-    // this.gameService.nextQuestion(this.game);
+    //this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
     console.log('Nous passons à la prochaine question^^!');
   }
