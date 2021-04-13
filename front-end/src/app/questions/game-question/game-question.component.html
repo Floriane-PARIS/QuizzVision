@@ -1,4 +1,4 @@
-<div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+<div class="game-question" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
   <div [className]="(configuration.handicap === 'DMLA') ? 'game-configuration-border' : 'game-configuration-center'">
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
       Question : {{question.label}}
