@@ -15,8 +15,7 @@ export class UserService {
   /*
    The list of user.
    */
-  private users: User[] = [];
-  private res: User[] = []; // changes 
+  private users: User[] = []; 
 
   /*
    The list of users.
@@ -55,7 +54,6 @@ export class UserService {
   retrieveUserName(userFName: string, userLName: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
-      this.res = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < userList.length; i++){
         // tslint:disable-next-line:triple-equals
@@ -92,21 +90,11 @@ export class UserService {
   }
 
   updateUserComments(user: User, comments: string): void {
-
-    const commentsWrite = {firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies,
-       commentaires : comments, configuration: user.configuration, date: user.date};
+    const commentsWrite = {commentaires : comments};
     const userUrl = this.userUrl + '/' + user.id ;
-    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
+    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => this.setSelectedUser(user.id));
+   
   }
-
-  /*putQuestion(quiz: Quiz, question: Question): void {
-    const questionWrite = {label : question.label };
-    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
-    for (const answer of question.answers) {
-      this.putAnswer(quiz, question, answer);
-    }
-  }*/
 
 
   addUser(user: User): void {

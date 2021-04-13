@@ -1,7 +1,5 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-//import { Component, OnInit } from '@angular/core';
-//import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
@@ -12,21 +10,17 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-
-    @Input()
-    user: User;
-  
-    @Output()
-    userEditDone: EventEmitter<User> = new EventEmitter<User>();
   
 
- // public user: User;
-  public comments: string;
+  public user: User;
+  public userComments: string;
   public userForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private userService: UserService, public formBuilder: FormBuilder) {
-    this.userService.userSelected$.subscribe((user) => this.user = user);
-    this.comments = '';
+    this.userService.userSelected$.subscribe((user) => {this.user = user;
+      console.log("user " + this.user);});
+
+    this.userComments = '';
   }
 
   ngOnInit(): void {
@@ -35,8 +29,10 @@ export class UserEditComponent implements OnInit {
   }
 
   modifUserComments(): void {
-    const commentsToSearch: string = this.comments as string;
-    this.userService.updateUserComments(this.user, commentsToSearch);
+    console.log("userComments:" + this.userComments);
+    console.log("user.comm " + this.user.commentaires);
+    this.userService.updateUserComments(this.user, this.userComments);
+
   }
 
   /*edit(): void {

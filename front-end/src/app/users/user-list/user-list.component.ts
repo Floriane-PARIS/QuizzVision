@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
@@ -10,9 +10,15 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserListComponent implements OnInit {
 
+  @Input()
+  user: User;
+  public editUserChose: string;
+
+
   public userList: User[] = [];
 
   constructor(private userService: UserService) {
+    this.editUserChose = '';
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
     });
@@ -25,6 +31,10 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(user);
   }
 
+  userEditDone(comments: string): void {
+    this.userService.updateUserComments(this.user, comments);
+    this.editUserChose = '';
+  }
   //changes
  /* editUser(user: User): void {
     console.log('event received from child:', user.firstName);
