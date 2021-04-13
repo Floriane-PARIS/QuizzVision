@@ -5,13 +5,6 @@
       Question :
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
       <br>
-      Audio
-      <br>
-        <button id="startRecordingButton" (click)="startRecord()">Start recording</button>
-        <br>
-        <button id="stopRecordingButton" (click)="stopRecord()">Stop recording</button>
-        <br>
-        <button id="playButton" (click)="playAudio()">Play</button>
     </label>
     <br>
     <div *ngIf="answers.length >= 4">
@@ -27,15 +20,6 @@
             Correct
             <input type="checkbox" [formControlName]="'isCorrect'">
             <br>
-            Audio
-            <br>
-            <button id="startRecordingButton"  (click)="startRecord()">Start recording</button>
-            <br>
-            <button id="stopRecordingButton" (click)="stopRecord()">Stop recording</button>
-            <br>
-            <button id="playButton" (click)="playAudio()">Play</button>
-            <br>
-            <button id="downloadButton" (click)="download()">Download</button>
           </label>
         </div>
       </div>
