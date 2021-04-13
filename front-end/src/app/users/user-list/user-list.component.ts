@@ -31,10 +31,6 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(user);
   }
 
-  userEditDone(comments: string): void {
-    this.userService.updateUserComments(this.user, comments);
-    this.editUserChose = '';
-  }
   //changes
  /* editUser(user: User): void {
     console.log('event received from child:', user.firstName);

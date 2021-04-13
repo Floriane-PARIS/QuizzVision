@@ -92,10 +92,12 @@ export class UserService {
   updateUserComments(user: User, comments: string): void {
     const commentsWrite = {commentaires : comments};
     const userUrl = this.userUrl + '/' + user.id ;
-    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => this.setSelectedUser(user.id));
+    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => {this.retrieveUsers();
+      this.setSelectedUser(user.id)});
    
   }
 
+  //faire une méthode updateUsers pour raffrachir la liste 
 
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
