@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Configuration } from '../../../models/configuration.model';
 import { ConfigurationService } from '../../../services/configuration.service';
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user.model";
+import {Question} from "../../../models/question.model";
 
 @Component({
   selector: 'app-configuration-form',
@@ -11,9 +14,11 @@ import { ConfigurationService } from '../../../services/configuration.service';
 
 export class ConfigurationFormComponent implements OnInit {
 
+  @Input()
+  user: User;
   public configurationForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private configurationService: ConfigurationService) {
+  constructor(public formBuilder: FormBuilder, private userService: UserService) {
     this.configurationForm =  this.formBuilder.group({
       handicap: ['Glaucome'],
       bold: ['normal'],
@@ -32,6 +37,6 @@ export class ConfigurationFormComponent implements OnInit {
     // ajouter une configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
     console.log('[Add]configuration: ', configurationToCreate);
-    this.configurationService.addConfiguration(configurationToCreate);
+    this.userService.addConfiguration(this.user, configurationToCreate);
   }
 }

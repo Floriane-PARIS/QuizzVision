@@ -16,12 +16,14 @@ const routes: Routes = [
     {path: 'user-list', component: UserListComponent},
     {path: 'user-edit/:id', component: UserEditComponent},
     {path: 'quiz-list', component: QuizListComponent},
-    {path: 'configuration-edit', component: ConfigurationEditComponent},
+    {path: 'quiz-list/:id', component: QuizListComponent},
+    // {path: 'configuration-edit', component: ConfigurationEditComponent},
+    {path: 'configuration-edit/:id', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
     {path: 'edit-theme/:id', component: EditThemeComponent},
-    {path: 'game-start/:id', component: GameStartComponent},
-    {path: 'game/:id', component: GameComponent},
-    //{path: 'game-question/:id', component: GameQuestionComponent},
+    {path: 'game-start/:idUser/:id', component: GameStartComponent},
+    {path: 'game/:idUser/:id', component: GameComponent},
+    // {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
 ];
 

@@ -7,6 +7,8 @@ import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
 import {ConfigurationService} from '../../../services/configuration.service';
 import {max} from "rxjs/operators";
+import {User} from "../../../models/user.model";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-game',
@@ -15,7 +17,10 @@ import {max} from "rxjs/operators";
 })
 export class GameComponent implements OnInit {
 
+
+
   public game: Game;
+  public user: User;
   public answer: Answer;
   public message: string;
   public isValided: boolean;
@@ -29,18 +34,27 @@ export class GameComponent implements OnInit {
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private configurationService: ConfigurationService) {
+  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private userService: UserService) {
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
       this.length = game.score;
     });
-    this.configuration = configurationService.lastConfiguration();
-    this.shift();
+
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+    });
+    this.userService.configurationNext$.subscribe((configuration) => {
+      this.configuration = configuration;
+      console.log('game', configuration);
+      this.shift();
+    });
     this.isValided = false;
     this.score = 0;
   }
 
   ngOnInit(): void {
+    const idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.getConfiguration(idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
   }
@@ -62,7 +76,7 @@ export class GameComponent implements OnInit {
       this.isValided = true;
     if (this.answer.isCorrect) {
       this.score = this.score+1;
-      //this.gameService.updateScore(this.game);
+      // this.gameService.updateScore(this.game);
       this.message = 'Bravo, bonne réponse';
     }
     else  {

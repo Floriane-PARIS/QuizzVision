@@ -5,6 +5,8 @@ import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Configuration } from 'src/models/configuration.model';
+import {Quiz} from "../models/quiz.model";
+import {Question} from "../models/question.model";
 
 
 
@@ -15,13 +17,13 @@ export class UserService {
   /*
    The list of user.
    */
-  private users: User[] = []; 
+  //private users: User[] = [];
 
   /*
    The list of users.
    The list is retrieved from the mock.
    */
-   //private users: User[] = USER_LIST;
+   private users: User[] = USER_LIST;
 
   /*
    Observable which contains the list of the user.
@@ -33,7 +35,7 @@ export class UserService {
   public configurationNext$: Subject<Configuration> = new Subject();
 
   private userUrl = serverUrl + '/users';
-  private configurationPath = 'configuration';
+  private configurationPath = 'configurations';
 
   private httpOptions = httpOptionsBase;
 
@@ -92,12 +94,20 @@ export class UserService {
   updateUserComments(user: User, comments: string): void {
     const commentsWrite = {commentaires : comments};
     const userUrl = this.userUrl + '/' + user.id ;
-    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => {this.retrieveUsers();
-      this.setSelectedUser(user.id)});
-   
+    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => {
+      this.retrieveUsers();
+      this.setSelectedUser(user.id);
+    });
+
   }
 
-  //faire une méthode updateUsers pour raffrachir la liste 
+  getlastUser(): User {
+    if (this.users.length > 0) {
+      return this.users[this.users.length - 1];
+    } else {
+      return undefined;
+    }
+  }
 
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
@@ -118,10 +128,17 @@ export class UserService {
 
   }
 
+  getConfiguration(userId: string): void{
+    const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
+    this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
+      if (configurationNext.length > 0 ) {
+        this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
+      }
+    });
+  }
 
-  //changes
-  /*getConfiguration(userId: string, configurationId: string): void{
-    const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath + '/' + configurationId;
+  nextConfiguration(user: User, configuration: Configuration): void{
+    const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.get<Configuration>(configurationUrl).subscribe((configurationNext) => {
       this.configurationNext$.next(configurationNext);
     });
@@ -129,7 +146,9 @@ export class UserService {
 
   addConfiguration(user: User, configuration: Configuration): void {
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath;
-    this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
+    this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe(() => {
+      this.setSelectedUser(user.id);
+     });
   }
 
   deleteConfiguration(user: User, configuration: Configuration): void {
@@ -138,8 +157,8 @@ export class UserService {
   }
 
   putQuestion(user: User, configuration: Configuration): void {
-    const configurationWrite = {police : configuration.police, bold : configuration.bold, bright : configuration.bright, contrast : configuration.contrast, size: configuration.size, shift : configuration.shift };
+    const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
     const questionUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.put<Configuration>(questionUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
-  }*/
+  }
 }

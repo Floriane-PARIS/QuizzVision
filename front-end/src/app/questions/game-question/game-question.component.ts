@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
 import {ConfigurationService} from '../../../services/configuration.service';
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-game-question',
@@ -10,11 +11,12 @@ import {ConfigurationService} from '../../../services/configuration.service';
 })
 export class GameQuestionComponent implements OnInit {
 
-  public configuration: Configuration;
   public root = document.documentElement;
 
   @Input()
   question: Question;
+  @Input()
+  configuration: Configuration;
   @Input()
   isValided: boolean;
   @Input()
@@ -26,16 +28,11 @@ export class GameQuestionComponent implements OnInit {
   @Output()
   valideAnswer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
-  constructor(private configurationService: ConfigurationService) {
-    this.configurationService.configurations$.subscribe((configurations) => {
-      // console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
-      if (configurations.length > 0){
-        this.configuration = configurations[configurations.length - 1];
-      } else {
-        this.configuration = undefined;
-      }
+  constructor(private userService: UserService) {
+    this.userService.configurationNext$.subscribe((configuration) => {
+      this.configuration = configuration;
+      this.shift();
     });
-    this.shift();
   }
 
   ngOnInit(): void {
@@ -43,7 +40,6 @@ export class GameQuestionComponent implements OnInit {
 
   shift(): void {
     const value = this.configuration.shift;
-    console.log('value', value);
     this.root.style.setProperty('--slider', value.toString());
   }
 

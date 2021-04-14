@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from 'src/services/configuration.service';
 import { Configuration } from '../../../models/configuration.model';
+import {ActivatedRoute} from "@angular/router";
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-configuration-edit',
@@ -13,28 +16,27 @@ export class ConfigurationEditComponent implements OnInit {
   public configurationList: Configuration[] = [];
   public configuration: Configuration;
   public root = document.documentElement;
+  public user: User;
 
-  constructor(private configurationService: ConfigurationService) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
     this.initCss();
-    this.configurationService.configurations$.subscribe((configurations) => {
-     // console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
-     this.configurationList = configurations;
-     if (configurations.length > 0){
-        this.configuration = configurations[configurations.length - 1];
-        this.shift();
-     } else {
-        this.configuration = undefined;
-     }
+    this.userService.userSelected$.subscribe((user) => {
+     this.user = user;
+     this.userService.getConfiguration(this.user.id);
      });
-
+    this.userService.configurationNext$.subscribe((configuration) => {
+      this.configuration = configuration;
+    });
   }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.setSelectedUser(id);
   }
 
   deleteConfiguration(configuration: Configuration): void{
     console.log('[Delete]configuration ', configuration);
-    this.configurationService.deleteConfiguration(configuration);
+    this.userService.deleteConfiguration(this.user, configuration);
   }
 
   initCss(): void {
@@ -46,7 +48,6 @@ export class ConfigurationEditComponent implements OnInit {
 
   shift(): void {
     const value = this.configuration.shift;
-    console.log('value', value);
     this.root.style.setProperty('--slider', value.toString());
   }
 

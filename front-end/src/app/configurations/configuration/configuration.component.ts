@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Configuration } from '../../../models/configuration.model';
 import {Answer, Question} from "../../../models/question.model";
 import {ConfigurationService} from "../../../services/configuration.service";
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-configuration',
@@ -13,18 +14,11 @@ import {ConfigurationService} from "../../../services/configuration.service";
 export class ConfigurationComponent implements OnInit {
 
 
+  @Input()
+  configuration: Configuration;
   public question: Question;
-  public configuration: Configuration;
 
   constructor(private configurationService: ConfigurationService) {
-    this.configurationService.configurations$.subscribe((configurations) => {
-      // console.log('[ConfigurationEditComponent] configurations into subscribe: ', configurations);
-      if (configurations.length > 0){
-        this.configuration = configurations[configurations.length - 1];
-      } else {
-        this.configuration = undefined;
-      }
-    });
     this.question = this.createQuestionTemoin();
   }
 
