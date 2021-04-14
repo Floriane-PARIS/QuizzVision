@@ -2,6 +2,7 @@ const Joi = require('joi')
 const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('Configuration', {
+  userId: Joi.number(),
   handicap: Joi.string().required(),
   bold: Joi.string().required(),
   size: Joi.number().required(),

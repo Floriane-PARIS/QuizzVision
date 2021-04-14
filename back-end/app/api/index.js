@@ -3,8 +3,7 @@ const QuizzesRouter = require('./quizzes')
 const UserRouter = require('./users')
 const GameRouter = require('./games')
 const ThemeRouter = require('./themes')
-const ConfigurationRouter = require('./configurations')
-//changes
+const ConfigurationRouter = require('./users/configurations')
 const GameQuestion = require('./quizzes/questions')
 
 
@@ -14,8 +13,7 @@ router.use('/quizzes', QuizzesRouter)
 router.use('/users', UserRouter)
 router.use('/games', GameRouter)
 router.use('/themes', ThemeRouter)
-router.use('/configurations', ConfigurationRouter)
-//changes
 router.use('/quizzes/questions', GameQuestion)
+router.use('/users/configurations', ConfigurationRouter)
 
 module.exports = router
