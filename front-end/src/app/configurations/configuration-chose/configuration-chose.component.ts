@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
 import {Answer, Question} from "../../../models/question.model";
-import {ConfigurationService} from "../../../services/configuration.service";
 import {User} from "../../../models/user.model";
 
 @Component({
@@ -19,7 +18,7 @@ export class ConfigurationChoseComponent implements OnInit {
   deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
 
 
-  constructor(private configurationService: ConfigurationService) {
+  constructor() {
     console.log('chose', this.configuration);
   }
 

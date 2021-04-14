@@ -5,7 +5,6 @@ import { GameService } from 'src/services/game.service';
 import { Game } from '../../../models/game.model';
 import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
-import {ConfigurationService} from '../../../services/configuration.service';
 import {max} from "rxjs/operators";
 import {User} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";

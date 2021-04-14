@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
 import {Answer, Question} from "../../../models/question.model";
-import {ConfigurationService} from "../../../services/configuration.service";
 import {User} from "../../../models/user.model";
 
 @Component({
@@ -18,7 +17,7 @@ export class ConfigurationComponent implements OnInit {
   configuration: Configuration;
   public question: Question;
 
-  constructor(private configurationService: ConfigurationService) {
+  constructor() {
     this.question = this.createQuestionTemoin();
   }
 

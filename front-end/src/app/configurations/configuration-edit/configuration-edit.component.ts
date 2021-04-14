@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigurationService } from 'src/services/configuration.service';
 import { Configuration } from '../../../models/configuration.model';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../services/user.service";

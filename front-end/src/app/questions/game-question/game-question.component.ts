@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
-import {ConfigurationService} from '../../../services/configuration.service';
 import {UserService} from "../../../services/user.service";
 
 @Component({

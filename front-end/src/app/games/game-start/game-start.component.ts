@@ -7,7 +7,6 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Question} from '../../../models/question.model';
 import {GameService} from '../../../services/game.service';
 import {Configuration} from '../../../models/configuration.model';
-import {ConfigurationService} from '../../../services/configuration.service';
 import {User} from '../../../models/user.model';
 import {UserService} from "../../../services/user.service";
 import {CommonModule} from "@angular/common";

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Configuration } from '../../../models/configuration.model';
-import { ConfigurationService } from '../../../services/configuration.service';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user.model";
 import {Question} from "../../../models/question.model";
