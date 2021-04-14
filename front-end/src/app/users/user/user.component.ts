@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectUser(): void {
+  select(): void {
     this.userSelected.emit(this.user);
   }
 

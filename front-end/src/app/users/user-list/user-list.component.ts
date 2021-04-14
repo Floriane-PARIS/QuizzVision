@@ -31,11 +31,16 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(user);
   }
 
+  selectUser(user: User): void {
+    this.userService.setSelectedUser(user.id);
+    this.userService.retrieveUsers();
+  }
+
   //changes
  /* editUser(user: User): void {
     console.log('event received from child:', user.firstName);
     this.router.navigate(['/edit-quiz/' + user.firstName]);
   }*/ // a éditer***
 
-  
+
 }
