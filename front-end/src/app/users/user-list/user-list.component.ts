@@ -4,6 +4,7 @@ import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
 import {Quiz} from "../../../models/quiz.model";
 import {Router} from "@angular/router";
+import {Question} from "../../../models/question.model";
 
 @Component({
   selector: 'app-user-list',
@@ -40,11 +41,14 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/quiz-list/' + user.id]);
   }
 
-  //changes
- /* editUser(user: User): void {
-    console.log('event received from child:', user.firstName);
-    this.router.navigate(['/edit-quiz/' + user.firstName]);
-  }*/ // a éditer***
+  editUser(user: User): void {
+    console.log('edit');
+    this.editUserChose = user.id;
+  }
 
+  editUserDone(user: User): void {
+    this.userService.updateUser(user);
+    this.editUserChose = '';
+  }
 
 }

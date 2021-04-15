@@ -1,17 +1,31 @@
-<button class="button-card" routerLink="/user-list">Back</button>
-
-<ng-container *ngIf="user">
-    <h2>{{user.firstName}}</h2>
-    <app-configuration-form [user]="user"></app-configuration-form>
-    <app-configuration-edit></app-configuration-edit> 
-
 <div class="card">
-    <h3> Modify Comments</h3>
-    <h2>
-        <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "userComments" [ngModelOptions]="{standalone: true}">
-    </h2>
-  
-      <button class="button-card" (click)="modifUserComments()">Edit</button>
-  </div>
-  
-</ng-container> 
+  <h2 >
+    <i class="fas fa-user"></i>
+    <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.firstName" [ngModelOptions]="{standalone: true}">
+    <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.lastName" [ngModelOptions]="{standalone: true}">
+
+  </h2>
+  <h4 p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: small;">
+    <p style="text-decoration: underline; font-style: italic;"> Encadré par: </p><select id = "encadreur" name="encadreur" [(ngModel)] = "user.encadreur" [ngModelOptions]="{standalone: true}">
+    <option value = "Sophie Dupont">Sophie Dupont</option>
+    <option value = "Paul Smith">Paul Smith</option>
+  </select>
+
+    <p style="text-decoration: underline; font-style: italic;"> Souffre du trouble: </p><select id = "maladies" name="maladies" [(ngModel)] = "user.maladies" [ngModelOptions]="{standalone: true}">
+    <option value = "Cataracte">Cataracte</option>
+    <option value = "DMLA">DMLA</option>
+    <option value = "Presbytie">Presbytie</option>
+    <option value = "Fatigue Visuelle">Fatigue Visuelle</option>
+    <option value = "Glaucome">Glaucome</option>
+  </select>
+    <p style="text-decoration: underline; font-style: italic;"> A savoir sur le patient: </p><input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.commentaires" [ngModelOptions]="{standalone: true}">
+
+    <p style="text-decoration: underline; font-style: italic;"> Date d'enregistrement: </p><input class="input-custom" type="date" ng-init="'nous" name="fre" [(ngModel)] = "user.date" [ngModelOptions]="{standalone: true}">
+
+
+
+  </h4>
+  <br>
+  <button class="button-card select" (click)="edit()">Edit</button>
+</div>
+

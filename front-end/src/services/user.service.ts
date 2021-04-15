@@ -7,6 +7,7 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Configuration } from 'src/models/configuration.model';
 import {Quiz} from "../models/quiz.model";
 import {Question} from "../models/question.model";
+import {Game} from "../models/game.model";
 
 
 
@@ -101,6 +102,13 @@ export class UserService {
 
   }
 
+  updateUser(user: User): void {
+    const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, date: user.date };
+    const userUrl = this.userUrl + '/' + user.id ;
+    this.http.put<User>(userUrl, userWrite, this.httpOptions).subscribe((user: User) => this.userSelected$.next(user));
+  }
+
+
   getlastUser(): User {
     if (this.users.length > 0) {
       return this.users[this.users.length - 1];
@@ -156,9 +164,9 @@ export class UserService {
     this.http.delete<Configuration>(configurationUrl, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
 
-  putQuestion(user: User, configuration: Configuration): void {
+  putConfiguration(user: User, configuration: Configuration): void {
     const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
-    const questionUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
-    this.http.put<Configuration>(questionUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
+    const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
+    this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
 }

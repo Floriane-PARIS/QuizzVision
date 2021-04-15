@@ -2,9 +2,14 @@
 <app-user-search></app-user-search>
 <div class="user-list">
     <div class="user" *ngFor="let user of userList">
-        <app-user [user]="user" (deleteUser)="deleteUser($event)" (userSelected)="selectUser($event)"></app-user>
+      <div *ngIf="editUserChose != user.id">
+        <app-user [user]=user (deleteUser)="deleteUser($event)" (userSelected)="selectUser($event)" (editUser)="editUser($event)"></app-user>
+      </div>
+      <div *ngIf="editUserChose == user.id">
+        <app-user-edit [user]=user (editUserDone)="editUserDone($event)"></app-user-edit>
+      </div>
     </div>
-  </div>
+</div>
   <!-- changes-->
   <ng-template #elseBlock>
     <div>
