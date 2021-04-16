@@ -42,12 +42,17 @@
       <span class= "value">200</span>
     </div>
     <ng-container >
+      <div *ngIf="handicap.value === 'Autres'; then contenu">
     <label for="decalage"> <br> Décalage </label>
-    <div class="range" *ngIf="handicap != 'Autres'"> <!--changes-->
+    <div class="range"> <!--changes-->
+     <ng-template #contenu>
       <span class= "value">centre</span>
       <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
       <span class= "value">bordure</span>
+     </ng-template> 
     </div>
+  </div>
+    
   </ng-container>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
