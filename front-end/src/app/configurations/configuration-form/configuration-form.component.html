@@ -3,9 +3,10 @@
   <form class="configuration-form" [formGroup]="configurationForm">
 
     <label for="police"> Handicap </label>
-    <select id = "handicap" name="handicap" [formControlName]="'handicap'" >
+    <select id = "handicap" name="handicap" [formControlName]="'handicap'" [value]="handicap" >
       <option value = "Glaucome">Glaucome</option>
       <option value = "DMLA">DMLA</option>
+      <option value = "Autres">Autres</option>
     </select>
     <br>
 
@@ -40,12 +41,14 @@
       <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
       <span class= "value">200</span>
     </div>
+    <ng-container >
     <label for="decalage"> <br> Décalage </label>
-    <div class="range">
+    <div class="range" *ngIf="handicap != 'Autres'"> <!--changes-->
       <span class= "value">centre</span>
       <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
       <span class= "value">bordure</span>
     </div>
+  </ng-container>
     <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
   </form>
 </div>

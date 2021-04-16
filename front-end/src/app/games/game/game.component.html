@@ -1,7 +1,7 @@
 
 
   <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-    <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome'">
+    <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome' || configuration.handicap === 'Autres'"><!--changes-->
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
     </div>
     <br>
@@ -11,7 +11,7 @@
       <div *ngIf = "game.question[0] !== undefined">
       <app-game-question [configuration]="configuration" [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
-        <div *ngIf="configuration.handicap === 'Glaucome'">
+        <div *ngIf="configuration.handicap === 'Glaucome'|| configuration.handicap === 'Autres'"> <!--changes-->
       <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
       <br>
         </div>
