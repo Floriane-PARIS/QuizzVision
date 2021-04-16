@@ -15,7 +15,7 @@
             <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
           </div>
         <!--br-->
-        <button class="button-card" (click)="setUndefined()"> Retour chez Admin </button>
+        <button class="button-card" (click)="retourAdmin()"> Retour chez Admin </button>
       </div> 
     </div>
     <ng-template #elseBlock>

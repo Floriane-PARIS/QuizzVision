@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
@@ -13,8 +13,14 @@ import {UserService} from "../../../services/user.service";
 
 export class QuizListComponent implements OnInit {
 
+  @Input()
+  user: User;
+
+  @Output()
+  editUserDone: EventEmitter<User> = new EventEmitter<User>();
+
   public quizList: Quiz[] = [];
-  public user: User;
+  //public user: User;
 
   constructor(private router: Router, private route: ActivatedRoute, public quizService: QuizService,  public userService: UserService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -44,9 +50,8 @@ export class QuizListComponent implements OnInit {
     this.quizService.deleteQuiz(quiz);
   }
 
-  setUndefined(): void{
-    this.user = undefined;
-    console.log(this.user);
-    this.router.navigate(['/user-list']);
+  retourAdmin(): void{
+    this.router.navigate(['/quiz-list']);
   }
+
 }

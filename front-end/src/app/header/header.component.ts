@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {User} from '../../models/user.model';
@@ -15,7 +15,14 @@ import { Game } from 'src/models/game.model';
 
 export class HeaderComponent implements OnInit {
 
-  public user: User;
+  @Input()
+  user: User;
+
+  @Output()
+  userSelected: EventEmitter<User> = new EventEmitter<User>();
+
+
+ // public user: User;
   public game: Game;
 
   constructor( public userService: UserService, public gameService: GameService) {
