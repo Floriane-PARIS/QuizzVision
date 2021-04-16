@@ -99,7 +99,7 @@ export class GameComponent implements OnInit {
 
   quitGame() {
     this.gameService.deleteGame(this.game);
-    this.router.navigate(['/quiz-list']);
+    //this.router.navigate(['/quiz-list']);
   }
 
   getBold(){
