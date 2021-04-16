@@ -11,6 +11,8 @@
     <div *ngIf="quiz.questions.length >= 1">
     <button class="button-card select" (click)="selectQuiz()">Play</button>
     </div>
+  <div *ngIf="user == undefined">
     <button class="button-card" (click)="delete()">Delete</button>
     <button class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+  </div>
 </div>
