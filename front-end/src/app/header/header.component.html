@@ -2,10 +2,10 @@
     <div class="header">
       Brocoli
     <a class="navigation" [routerLink]="['/quiz-list']">Mes Quiz</a>
-    <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>
+    <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>  
   </div>
 </div>
-<div *ngIf="user != undefined && game == undefined">
+<div *ngIf="user != undefined && game == undefined" >
     <div class="header1">
       Brocoli
     <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quiz</a>
@@ -14,9 +14,7 @@
     </div>
 </div>
 <div *ngIf="game != undefined && user != undefined">
-  <div class="header1">
+  <div class="header2">
     Amusez vous!!
-  <a class="navigation" routerLink="/quiz-list/{{user.id}}">Retourner aux Quiz</a>
-  <!--a class="navigation" routerLink="/configuration-edit/{{user.id}}">Changez la Configuration</a-->
   </div>
 </div>
