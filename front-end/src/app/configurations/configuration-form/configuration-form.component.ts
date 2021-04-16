@@ -16,7 +16,6 @@ export class ConfigurationFormComponent implements OnInit {
   @Input()
   user: User;
   public configurationForm: FormGroup;
-  public handicap: string;
 
   constructor(public formBuilder: FormBuilder, private userService: UserService) {
     this.configurationForm =  this.formBuilder.group({
@@ -28,7 +27,6 @@ export class ConfigurationFormComponent implements OnInit {
       contrast: ['100'],
       shift: ['60']
     });
-    this.handicap = 'Glaucome';
   }
 
   ngOnInit(): void {
