@@ -43,4 +43,10 @@ export class QuizListComponent implements OnInit {
   deleteQuiz(quiz: Quiz): void {
     this.quizService.deleteQuiz(quiz);
   }
+
+  setUndefined(): void{
+    this.user = undefined;
+    console.log(this.user);
+    this.router.navigate(['/user-list']);
+  }
 }

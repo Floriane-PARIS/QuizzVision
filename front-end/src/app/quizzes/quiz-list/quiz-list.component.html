@@ -7,21 +7,17 @@
       <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
-        <div *ngIf="user == undefined; else patientBlock">
+        <div *ngIf="user == undefined">
           <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
         </div>
-        <ng-template #patientBlock>
           <div>
             <app-quiz-play [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz-play>
             <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
           </div>
-        </ng-template>
         <!--br-->
-      </div>
-      
-  <button class="button-card" routerLink="/user-list"> Retour chez Admin </button>
+        <button class="button-card" (click)="setUndefined()"> Retour chez Admin </button>
+      </div> 
     </div>
-
     <ng-template #elseBlock>
       <div>
         No quizzes
