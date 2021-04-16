@@ -6,16 +6,19 @@
  */
 :host {
   color: $white;
+  font-family: fantasy;
+  font-size: 2em;
 }
 
 .header {
-  background: $blue;
+  background: rgba(23, 126, 3, 0.623);
   padding: 0.5em;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
 .navigation {
-  font-size: 0.7em;
-  padding-left: 0.5em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 0.75em;
+  padding-left: 1em;
   color: white;
 }
