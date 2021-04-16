@@ -1,16 +1,16 @@
 <div *ngIf="user == undefined">
     <div class="header">
       Brocoli
-    <a class="navigation" [routerLink]="['/quiz-list']">Quiz</a>
-    <a class="navigation" [routerLink]="['/configuration-edit']">Configuration</a>
-    <a class="navigation" [routerLink]="['/user-list']">Users</a>
+    <a class="navigation" [routerLink]="['/quiz-list']">Mes Quiz</a>
+    <!--a class="navigation" [routerLink]="['/configuration-edit']">Configuration</a-->
+    <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>  
   </div>
 </div>
 <div *ngIf="user != undefined">
     <div class="header">
       Brocoli
-    <a class="navigation" routerLink="/quiz-list/{{user.id}}">Quiz</a>
-    <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Configuration</a>
+    <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quiz</a>
+    <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
     <a class="navigation" [routerLink]="['/user-list']">Users</a>
     </div>
 </div>

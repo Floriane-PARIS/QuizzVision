@@ -10,14 +10,17 @@ import { GameQuestionComponent } from './questions/game-question/game-question.c
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
 import {UserEditComponent}  from './users/user-edit/user-edit.component';
+import { UserSearchComponent } from './users/user-search/user-search.component';
+import { UserComponent } from './users/user/user.component';
 
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
+    {path: 'user/:id', component: UserComponent},
     {path: 'user-list', component: UserListComponent},
     {path: 'user-edit/:id', component: UserEditComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'quiz-list/:id', component: QuizListComponent},
-    // {path: 'configuration-edit', component: ConfigurationEditComponent},
+    {path: 'user-search', component: UserSearchComponent},
     {path: 'configuration-edit/:id', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
     {path: 'edit-theme/:id', component: EditThemeComponent},

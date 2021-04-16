@@ -28,7 +28,7 @@ export class ConfigurationFormComponent implements OnInit {
       contrast: ['100'],
       shift: ['60']
     });
-    this.handicap = this.configurationForm['handicap'];
+    this.handicap = 'Glaucome';
   }
 
   ngOnInit(): void {
