@@ -1,0 +1,15 @@
+
+<div class="card">
+  <h2>
+    <i class="fab fa-leanpub"></i>
+    {{quiz.name}}
+  </h2>
+  <h5>
+    Thème: {{quiz.theme}}
+    <br>
+    Nb de Question : {{quiz.questions.length}}
+  </h5>
+  <div *ngIf="quiz.questions.length >= 1">
+    <button class="button-card select" (click)="selectQuiz()">Play</button>
+  </div>
+</div>
