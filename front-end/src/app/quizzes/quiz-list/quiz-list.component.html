@@ -1,11 +1,12 @@
 <app-quiz-form></app-quiz-form>
+<app-theme-form></app-theme-form>
 <app-quiz-search></app-quiz-search>
     <div *ngIf="quizList.length > 0; else elseBlock">
       <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
         <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
-        <br>
+        <!--br-->
       </div>
     </div>
     <ng-template #elseBlock>
