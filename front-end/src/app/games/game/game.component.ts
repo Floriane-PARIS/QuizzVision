@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
 
 
   public game: Game;
-  public user: User;
+  public idUser: string;
   public answer: Answer;
   public message: string;
   public isValided: boolean;
@@ -38,10 +38,6 @@ export class GameComponent implements OnInit {
       this.game = game;
       this.length = game.score;
     });
-
-    this.userService.userSelected$.subscribe((user) => {
-      this.user = user;
-    });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
       console.log('game', configuration);
@@ -52,8 +48,8 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const idUser = this.route.snapshot.paramMap.get('idUser');
-    this.userService.getConfiguration(idUser);
+    this.idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.getConfiguration(this.idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
   }
@@ -97,9 +93,13 @@ export class GameComponent implements OnInit {
   }
 
 
-  quitGame() {
+  quitGame(): void {
     this.gameService.deleteGame(this.game);
-    //this.router.navigate(['/quiz-list']);
+    this.router.navigate(['/quiz-list/' + this.idUser]);
+  }
+
+  backToQuizList(): void {
+    this.router.navigate(['/quiz-list/' + this.idUser ]);
   }
 
   getBold(){
