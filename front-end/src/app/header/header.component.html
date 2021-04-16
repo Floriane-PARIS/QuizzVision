@@ -1,4 +1,4 @@
-<div *ngIf="user  == undefined">
+<div *ngIf="user == undefined && game == undefined">
     <div class="header">
       Brocoli
     <a class="navigation" [routerLink]="['/quiz-list']">Mes Quiz</a>
@@ -10,10 +10,10 @@
       Brocoli
     <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quiz</a>
     <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
-    <a class="navigation" [routerLink]="['/user-list']">Users</a>
+    <!--a class="navigation" [routerLink]="['/user-list']">Users</a-->
     </div>
 </div>
-<div *ngIf="game != undefined">
+<div *ngIf="game != undefined && user != undefined">
   <div class="header1">
     Brocoli
   <a class="navigation" routerLink="/quiz-list/{{user.id}}">Retourner aux Quiz</a>
