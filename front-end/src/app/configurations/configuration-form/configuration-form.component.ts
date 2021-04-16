@@ -37,6 +37,5 @@ export class ConfigurationFormComponent implements OnInit {
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
     console.log('[Add]configuration: ', configurationToCreate);
     this.userService.addConfiguration(this.user, configurationToCreate);
-    console.log("handicap: " + this.configurationForm);
   }
 }
