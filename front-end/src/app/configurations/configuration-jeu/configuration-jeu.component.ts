@@ -66,10 +66,20 @@ export class ConfigurationJeuComponent implements OnInit {
   getFiltre(){
     return this.getBright() + ' ' + this.getContrast();
   }
+  getShift(){
+    return this.configuration.shift;
+  }
 
   addConfiguration(): void {
     // ajouter une configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
-    this.userService.addConfiguration(this.user, configurationToCreate);
+    if(this.user != undefined) {
+      this.userService.addConfiguration(this.user, configurationToCreate);
+    }
+    else
+    {
+      this.userService.addConfiguration1(configurationToCreate);
+    }
+    this.configuration = this.userService.currentConfiguration;
   }
 }

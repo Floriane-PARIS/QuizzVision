@@ -165,6 +165,10 @@ export class UserService {
     this.currentUser = user;
   }
 
+  addConfiguration1(configuration: Configuration): void {
+    this.addConfiguration(this.currentUser, configuration);
+  }
+
   deleteConfiguration(user: User, configuration: Configuration): void {
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.delete<Configuration>(configurationUrl, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
