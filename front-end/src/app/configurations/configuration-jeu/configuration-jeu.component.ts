@@ -18,16 +18,28 @@ export class ConfigurationJeuComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, private userService: UserService) {
     this.configuration = this.userService.currentConfiguration;
     this.user = this.userService.currentUser;
-
-    this.configurationForm =  this.formBuilder.group({
-      handicap: [this.configuration.handicap],
-      bold: [this.configuration.bold],
-      size: [this.configuration.size],
-      police: [this.configuration.police],
-      bright: [this.configuration.bright],
-      contrast: [this.configuration.contrast],
-      shift: [this.configuration.shift]
-    });
+    if (this.configuration != undefined) {
+      this.configurationForm =  this.formBuilder.group({
+        handicap: [this.configuration.handicap],
+        bold: [this.configuration.bold],
+        size: [this.configuration.size],
+        police: [this.configuration.police],
+        bright: [this.configuration.bright],
+        contrast: [this.configuration.contrast],
+        shift: [this.configuration.shift]
+      });
+    }
+    else {
+      this.configurationForm =  this.formBuilder.group({
+        handicap: ['Glaucome'],
+        bold: ['normal'],
+        size: ['22'],
+        police: ['Arial'],
+        bright: ['100'],
+        contrast: ['100'],
+        shift: ['60']
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -42,17 +54,17 @@ export class ConfigurationJeuComponent implements OnInit {
   }
 
   getSize(){
-    return this.configuration.size+"px";
+    return this.configuration.size + 'px';
   }
 
   getBright(){
-    return "brightness("+this.configuration.bright+"%)";
+    return 'brightness(' + this.configuration.bright + '%)';
   }
   getContrast(){
-    return "contrast("+this.configuration.contrast+"%)";
+    return 'contrast(' + this.configuration.contrast + '%)';
   }
   getFiltre(){
-    return this.getBright() + " " + this.getContrast();
+    return this.getBright() + ' ' + this.getContrast();
   }
 
   addConfiguration(): void {

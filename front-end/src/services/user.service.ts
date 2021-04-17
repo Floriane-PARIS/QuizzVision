@@ -156,7 +156,6 @@ export class UserService {
   addConfiguration(user: User, configuration: Configuration): void {
     if(configuration.handicap == 'Autres'){
       configuration.shift = 60;
-      console.log(configuration);
     }
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath;
     this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe(() => {
@@ -164,7 +163,6 @@ export class UserService {
      });
     this.currentConfiguration = configuration;
     this.currentUser = user;
-    console.log(this.currentConfiguration);
   }
 
   deleteConfiguration(user: User, configuration: Configuration): void {

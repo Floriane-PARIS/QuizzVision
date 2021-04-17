@@ -33,13 +33,13 @@
     <div class="range">
       <i class="fa fa-sun-o" aria-hidden="true"></i>
       <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-      <span class= "value">200</span>
+      <span class= "value">{{configuration.bright}}</span>
     </div>
     <label for="contrast"> <br> Contraste </label>
     <div class="range">
       <i class="fa fa-adjust" aria-hidden="true"></i>
       <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-      <span class= "value">200</span>
+      <span class= "value">{{configuration.contrast}}</span>
     </div>
     <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
       <label for="decalage"> <br> Décalage </label>
@@ -49,7 +49,7 @@
         <span class= "value">bordure</span>
       </div>
     </div>
-    <button type="submit" class="button-card" (click)="addConfiguration()">Create</button>
+    <button type="submit" class="game-button-configuration" (click)="addConfiguration()">Create</button>
   </form>
 </div>
 
@@ -89,13 +89,13 @@
       <div class="range">
         <i class="fa fa-sun-o" aria-hidden="true"></i>
         <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-        <span class= "value">200</span>
+        <span class= "value">{{configuration.bright}}</span>
       </div>
       <label for="contrast"> <br> Contraste </label>
       <div class="range">
         <i class="fa fa-adjust" aria-hidden="true"></i>
         <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-        <span class= "value">200</span>
+        <span class= "value">{{configuration.contrast}}</span>
       </div>
       <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
         <label for="decalage"> <br> Décalage </label>
