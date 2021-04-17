@@ -4,7 +4,7 @@
       Question : {{question.label}}
     </div>
     <div *ngIf="configuration.handicap === 'DMLA'">
-    <button class="button-card" routerLink="/configuration-jeu" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
+    <button class="button-card" routerLink="/configuration-jeu" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"  (click)="sendConfig()">Configuration</button>
     </div>
   </div>
   <br>

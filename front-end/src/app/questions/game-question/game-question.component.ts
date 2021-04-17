@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
-import {UserService} from "../../../services/user.service";
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-game-question',
@@ -45,6 +45,10 @@ export class GameQuestionComponent implements OnInit {
   choseAnswer(answer: Answer): void {
     this.valideAnswer.emit(answer);
 
+  }
+
+  sendConfig(): void {
+    this.userService.currentConfiguration = this.configuration;
   }
 
   valideQuestionAnswered(): void {

@@ -92,6 +92,10 @@ export class GameComponent implements OnInit {
     console.log('Nous passons à la prochaine question^^!');
   }
 
+  sendConfig(): void {
+    this.userService.currentConfiguration = this.configuration;
+    this.userService.setSelectedUser(this.idUser);
+  }
 
   quitGame(): void {
     this.gameService.deleteGame(this.game);

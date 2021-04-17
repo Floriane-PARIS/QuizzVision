@@ -2,7 +2,7 @@
 
   <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome' || configuration.handicap === 'Autres'"><!--changes-->
-      <button class="button-card" routerLink="/configuration-jeu" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" >Configuration</button>
+      <button class="button-card" routerLink="/configuration-jeu" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="sendConfig()">Configuration</button>
     </div>
     <br>
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
