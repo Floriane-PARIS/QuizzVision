@@ -15,6 +15,7 @@ import { UserComponent } from './users/user/user.component';
 import { ResultatListComponent } from './resultat/resultat-list.component';
 
 
+
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
     {path: 'user/:id', component: UserComponent},
