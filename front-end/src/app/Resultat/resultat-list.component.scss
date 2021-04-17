@@ -1,0 +1,28 @@
+@import '../../../styles/card.scss';
+
+* {
+    font-family: 'Josefin Sans' , sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+
+body{
+    display:grid;
+    text-align: center;
+    align-items: center;
+    min-height: 500vh;
+    background-color: #2f3552;;
+
+  h1{
+      margin-bottom: 3rem;
+      text-decoration-line: underline;
+      text-transform: capitalize;
+      font-size: 3rem;
+
+      span, i{
+          color:chocolate;
+      }
+  }
+}
