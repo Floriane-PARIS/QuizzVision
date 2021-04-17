@@ -13,6 +13,7 @@ import {UserEditComponent}  from './users/user-edit/user-edit.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserComponent } from './users/user/user.component';
 import { ResultatListComponent } from './resultat/resultat-list.component';
+import {ConfigurationJeuComponent} from './configurations/configuration-jeu/configuration-jeu.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path: 'game-start/:idUser/:id', component: GameStartComponent},
     {path: 'game/:idUser/:id', component: GameComponent},
     {path: 'resultat-list', component: ResultatListComponent},
+    {path: 'configuration-jeu', component: ConfigurationJeuComponent},
     // {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
 ];
