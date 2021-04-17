@@ -1,9 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Configuration } from '../../../models/configuration.model';
-import {UserService} from "../../../services/user.service";
-import {User} from "../../../models/user.model";
-import {Question} from "../../../models/question.model";
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/user.model';
 
 @Component({
   selector: 'app-configuration-form',
