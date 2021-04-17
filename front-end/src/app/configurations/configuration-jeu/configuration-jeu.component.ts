@@ -12,28 +12,52 @@ import {Configuration} from '../../../models/configuration.model';
 export class ConfigurationJeuComponent implements OnInit {
   @Input()
   user: User;
+  configuration: Configuration;
   public configurationForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, private userService: UserService) {
+    this.configuration = this.userService.currentConfiguration;
+    this.user = this.userService.currentUser;
+
     this.configurationForm =  this.formBuilder.group({
-      handicap: ['Glaucome'],
-      bold: ['normal'],
-      size: ['22'],
-      police: ['Arial'],
-      bright: ['100'],
-      contrast: ['100'],
-      shift: ['60']
+      handicap: [this.configuration.handicap],
+      bold: [this.configuration.bold],
+      size: [this.configuration.size],
+      police: [this.configuration.police],
+      bright: [this.configuration.bright],
+      contrast: [this.configuration.contrast],
+      shift: [this.configuration.shift]
     });
   }
 
   ngOnInit(): void {
   }
 
+  getBold(){
+    return this.configuration.bold;
+  }
+
+  getPolice(){
+    return this.configuration.police;
+  }
+
+  getSize(){
+    return this.configuration.size+"px";
+  }
+
+  getBright(){
+    return "brightness("+this.configuration.bright+"%)";
+  }
+  getContrast(){
+    return "contrast("+this.configuration.contrast+"%)";
+  }
+  getFiltre(){
+    return this.getBright() + " " + this.getContrast();
+  }
+
   addConfiguration(): void {
     // ajouter une configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
-    console.log('[Add]configuration: ', configurationToCreate);
     this.userService.addConfiguration(this.user, configurationToCreate);
   }
-
 }

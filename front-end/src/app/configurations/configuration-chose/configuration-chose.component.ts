@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
-import {Answer, Question} from "../../../models/question.model";
-import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-configuration-chose',

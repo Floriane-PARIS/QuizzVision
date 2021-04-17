@@ -29,9 +29,9 @@ export class UserService {
   /*
    Observable which contains the list of the user.
    */
-  public users$: BehaviorSubject<User[]>
-    = new BehaviorSubject([]);
-
+  public users$: BehaviorSubject<User[]> = new BehaviorSubject([]);
+  public currentUser: User;
+  public currentConfiguration: Configuration;
   public userSelected$: Subject<User> = new Subject();
   public configurationNext$: Subject<Configuration> = new Subject();
 
@@ -76,7 +76,6 @@ export class UserService {
     });
   }
 
-
   retrieveUserTroubles(userTroubles: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
@@ -108,7 +107,6 @@ export class UserService {
     this.http.put<User>(userUrl, userWrite, this.httpOptions).subscribe((user: User) => this.userSelected$.next(user));
   }
 
-
   getlastUser(): User {
     if (this.users.length > 0) {
       return this.users[this.users.length - 1];
@@ -125,6 +123,7 @@ export class UserService {
   setSelectedUser(userId: string): void {
     const urlWithId = this.userUrl + '/' + userId;
     this.http.get<User>(urlWithId).subscribe((user) => {
+      this.currentUser = user;
       this.userSelected$.next(user);
     });
   }
@@ -140,6 +139,8 @@ export class UserService {
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
     this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
       if (configurationNext.length > 0 ) {
+        this.setSelectedUser(userId);
+        this.currentConfiguration = configurationNext[configurationNext.length - 1];
         this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
       }
     });
@@ -161,6 +162,9 @@ export class UserService {
     this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe(() => {
       this.setSelectedUser(user.id);
      });
+    this.currentConfiguration = configuration;
+    this.currentUser = user;
+    console.log(this.currentConfiguration);
   }
 
   deleteConfiguration(user: User, configuration: Configuration): void {
@@ -169,8 +173,13 @@ export class UserService {
   }
 
   putConfiguration(user: User, configuration: Configuration): void {
+    this.currentConfiguration = configuration;
+    this.currentUser = user;
+    console.log(this.currentConfiguration);
+
     const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
+
     this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
 }
