@@ -12,6 +12,9 @@ import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
 import {UserEditComponent}  from './users/user-edit/user-edit.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserComponent } from './users/user/user.component';
+import { ResultatListComponent } from './resultat/resultat-list.component';
+
+
 
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
@@ -26,6 +29,7 @@ const routes: Routes = [
     {path: 'edit-theme/:id', component: EditThemeComponent},
     {path: 'game-start/:idUser/:id', component: GameStartComponent},
     {path: 'game/:idUser/:id', component: GameComponent},
+    {path: 'resultat-list', component: ResultatListComponent},
     // {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
 ];
