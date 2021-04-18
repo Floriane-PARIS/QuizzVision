@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = this.route.snapshot.paramMap.get('idUser');
-    this.userService.getConfiguration(this.idUser);
+    this.userService.setSelectedUser(this.idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
   }
@@ -93,7 +93,7 @@ export class GameComponent implements OnInit {
   }
 
   sendConfig(): void {
-    this.userService.currentConfiguration = this.configuration;
+    /*this.userService.currentConfiguration = this.configuration;*/
     this.userService.setSelectedUser(this.idUser);
   }
 

@@ -30,8 +30,8 @@ export class UserService {
    Observable which contains the list of the user.
    */
   public users$: BehaviorSubject<User[]> = new BehaviorSubject([]);
-  public currentUser: User;
-  public currentConfiguration: Configuration;
+  // public currentUser: User;
+  // public currentConfiguration: Configuration;
   public userSelected$: Subject<User> = new Subject();
   public configurationNext$: Subject<Configuration> = new Subject();
 
@@ -45,10 +45,10 @@ export class UserService {
   }
 
   retrieveUsers(): void {
-    console.log("retrieve");
+    // console.log('retrieve');
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = userList;
-      console.log(this.users);
+      // console.log(this.users);
       this.users$.next(this.users);
     });
   }
@@ -91,7 +91,7 @@ export class UserService {
     });
   }
 
-  updateUserComments(user: User, comments: string): void {
+  /*updateUserComments(user: User, comments: string): void {
     const commentsWrite = {commentaires : comments};
     const userUrl = this.userUrl + '/' + user.id ;
     this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => {
@@ -99,7 +99,7 @@ export class UserService {
       this.setSelectedUser(user.id);
     });
 
-  }
+  }*/
 
   updateUser(user: User): void {
     const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, age: user.age };
@@ -107,34 +107,45 @@ export class UserService {
     this.http.put<User>(userUrl, userWrite, this.httpOptions).subscribe();
   }
 
-  getlastUser(): User {
+  /*getlastUser(): User {
     if (this.users.length > 0) {
       return this.users[this.users.length - 1];
     } else {
       return undefined;
     }
-  }
+  }*/
 
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
-    console.log("ajouter");
+    // console.log("ajouter");
   }
 
   setSelectedUser(userId: string): void {
     if (userId === undefined) {
-      this.currentUser = undefined;
+      // this.currentUser = undefined;
       this.userSelected$.next(undefined);
     } else {
       const urlWithId = this.userUrl + '/' + userId;
       this.http.get<User>(urlWithId).subscribe((user) => {
-        this.currentUser = user;
+        // this.currentUser = user;
         this.userSelected$.next(user);
+        this.getConfiguration(user.id);
       });
     }
   }
 
+  /*setSelectedConfiguration(user: User): void {
+    if (user.configurations !== undefined) {
+      if (user.configurations.length > 0) {
+        this.configurationNext$.next(user.configurations[user.configurations.length - 1]);
+      } else {
+        this.configurationNext$.next(undefined);
+      }
+    }
+  }*/
+
   deleteUser(user: User): void {
-    console.log("works");
+    // console.log('works');
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
 
@@ -144,8 +155,12 @@ export class UserService {
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
     this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
       if (configurationNext.length > 0 ) {
-        this.currentConfiguration = configurationNext[configurationNext.length - 1];
+        // this.currentConfiguration = configurationNext[configurationNext.length - 1];
+        // console.log("more than 1");
         this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
+      } else {
+        // console.log('no conf');
+        this.configurationNext$.next(undefined);
       }
     });
   }
@@ -158,20 +173,22 @@ export class UserService {
   }
 
   addConfiguration(user: User, configuration: Configuration): void {
-    if(configuration.handicap == 'Autres'){
+    if (configuration.handicap === 'Autres') {
       configuration.shift = 60;
     }
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath;
-    this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe(() => {
+    this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe((configurationPut) => {
+      // console.log('add', configurationPut);
+      // this.configurationNext$.next(configurationPut);
       this.setSelectedUser(user.id);
      });
-    this.currentConfiguration = configuration;
-    this.currentUser = user;
+    // this.currentConfiguration = configuration;
+    // this.currentUser = user;
   }
 
-  addConfiguration1(configuration: Configuration): void {
+  /*addConfiguration1(configuration: Configuration): void {
     this.addConfiguration(this.currentUser, configuration);
-  }
+  }*/
 
   deleteConfiguration(user: User, configuration: Configuration): void {
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
@@ -179,14 +196,15 @@ export class UserService {
   }
 
   putConfiguration(user: User, configuration: Configuration): void {
-    this.currentConfiguration = configuration;
-    this.currentUser = user;
-    console.log(this.currentConfiguration);
+    // this.currentConfiguration = configuration;
+    // this.currentUser = user;
+    // console.log(this.currentConfiguration);
 
     const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
-
-    this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
+    this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => {
+      this.setSelectedUser(user.id);
+    });
   }
 
 }

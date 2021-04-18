@@ -10,17 +10,20 @@ import {Configuration} from '../../../models/configuration.model';
   styleUrls: ['./configuration-jeu.component.scss']
 })
 export class ConfigurationJeuComponent implements OnInit {
-  @Input()
-  user: User;
-  @Input()
-  configuration: Configuration;
-  @Input()
+
+  public user: User;
+  public configuration: Configuration;
   public configurationForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, private userService: UserService) {
-    this.configuration = this.userService.currentConfiguration;
-    this.user = this.userService.currentUser;
-    if (this.configuration != undefined) {
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+    });
+    this.userService.configurationNext$.subscribe((configuration) => {
+      this.configuration = configuration;
+    });
+
+    if (this.configuration !== undefined) {
       this.configurationForm =  this.formBuilder.group({
         handicap: [this.configuration.handicap],
         bold: [this.configuration.bold],
@@ -73,15 +76,9 @@ export class ConfigurationJeuComponent implements OnInit {
   }
 
   addConfiguration(): void {
-    // ajouter une configuration
+    // add a configuration
     const configurationToCreate: Configuration = this.configurationForm.getRawValue() as Configuration;
-    if(this.user != undefined) {
-      this.userService.addConfiguration(this.user, configurationToCreate);
-    }
-    else
-    {
-      this.userService.addConfiguration1(configurationToCreate);
-    }
-    this.configuration = this.userService.currentConfiguration;
+    console.log('[Add]configuration: ', configurationToCreate);
+    this.userService.addConfiguration(this.user, configurationToCreate);
   }
 }

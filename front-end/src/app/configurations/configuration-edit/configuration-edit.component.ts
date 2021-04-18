@@ -21,12 +21,17 @@ export class ConfigurationEditComponent implements OnInit {
     this.initCss();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      this.userService.getConfiguration(this.user.id);
+      this.userService.configurationNext$.subscribe((configuration) => {
+        // console.log('configuration', configuration);
+        this.configuration = configuration;
+        this.shift();
+      });
     });
-    this.userService.configurationNext$.subscribe((configuration) => {
+    /*this.userService.configurationNext$.subscribe((configuration) => {
+      console.log('configuration', configuration);
       this.configuration = configuration;
       this.shift();
-    });
+    });*/
   }
 
   ngOnInit(): void {

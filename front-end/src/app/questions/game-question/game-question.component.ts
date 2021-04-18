@@ -48,7 +48,7 @@ export class GameQuestionComponent implements OnInit {
   }
 
   sendConfig(): void {
-    this.userService.currentConfiguration = this.configuration;
+    /*this.userService.currentConfiguration = this.configuration;*/
   }
 
   valideQuestionAnswered(): void {
