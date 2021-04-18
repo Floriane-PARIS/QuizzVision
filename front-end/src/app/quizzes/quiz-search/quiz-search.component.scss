@@ -8,10 +8,9 @@
     text-align:left;
 }
 
-body{
-    display:grid;
-    text-align: left;
-    align-items: center;
-    min-height: 500vh;
-    background-color: #2f3552;  
+.button-card{
+    display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
 }

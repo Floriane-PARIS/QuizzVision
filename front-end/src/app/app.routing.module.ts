@@ -14,16 +14,22 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserComponent } from './users/user/user.component';
 import { ResultatListComponent } from './resultat/resultat-list.component';
 import {ConfigurationJeuComponent} from './configurations/configuration-jeu/configuration-jeu.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
+import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
+import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 
 
 
 const routes: Routes = [
     {path: 'theme-list', component: ThemeListComponent},
+    {path: 'theme-form', component: ThemeFormComponent},
     {path: 'user/:id', component: UserComponent},
     {path: 'user-list', component: UserListComponent},
     {path: 'user-edit/:id', component: UserEditComponent},
+    {path: 'user-form', component: UserFormComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'quiz-list/:id', component: QuizListComponent},
+    {path: 'quiz-form', component: QuizFormComponent},
     {path: 'user-search', component: UserSearchComponent},
     {path: 'configuration-edit/:id', component: ConfigurationEditComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},

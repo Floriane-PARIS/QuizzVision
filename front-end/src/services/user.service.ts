@@ -184,4 +184,5 @@ export class UserService {
 
     this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
+
 }

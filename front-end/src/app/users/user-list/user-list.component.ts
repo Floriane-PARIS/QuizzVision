@@ -50,5 +50,9 @@ export class UserListComponent implements OnInit {
     this.userService.updateUser(user);
     this.editUserChose = '';
   }
+  ajoutPatient(): void{
+    console.log('event received from child: new user');
+    this.router.navigate(['/user-form']);
+  }
 
 }
