@@ -102,7 +102,7 @@ export class UserService {
   }
 
   updateUser(user: User): void {
-    const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, date: user.date };
+    const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, age: user.age };
     const userUrl = this.userUrl + '/' + user.id ;
     this.http.put<User>(userUrl, userWrite, this.httpOptions).subscribe((user: User) => this.userSelected$.next(user));
   }

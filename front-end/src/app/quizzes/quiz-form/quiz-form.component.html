@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" p style="left: 0cm; position: absolute;">
   <h3 p style="font-family: cursive;">Create a new Quiz</h3>
   <form class="quiz-form" [formGroup]="quizForm">
     <h6>
@@ -10,19 +10,17 @@
 
       </label>
       <label for="theme">
-
-        <p>
           Theme:
           <select name="theme-field" id="theme" [formControlName]="'theme'">
           <option *ngFor="let theme of themes" [value]="theme.subject">
           {{theme.subject}}
           </option>
           </select>
-        </p>
       </label>
+      <br>
+      <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
     </h6>
   </form>
-      <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->

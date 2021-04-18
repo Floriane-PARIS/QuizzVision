@@ -11,14 +11,12 @@
     text-align:center;
 }
 
-body{
+.quiz{
     display:grid;
     text-align: center;
     align-items: center;
-    min-height: 500vh;
-    background-color: #2f3552;;
 
-  h1{
+  /*.quiz{
       margin-bottom: 3rem;
       text-decoration-line: underline;
       text-transform: capitalize;
@@ -27,7 +25,7 @@ body{
       span, i{
           color:chocolate;
       }
-  }
+  }*/
 }
 /*.edit {
     margin-left: 0.3em;

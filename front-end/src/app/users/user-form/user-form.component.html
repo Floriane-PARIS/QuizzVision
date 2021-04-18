@@ -1,5 +1,6 @@
 <div class="card">
-    <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Create a new user</h2>
+  
+    <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> <i class="fas fa-user-plus">Create a new user</i></h2>
     <form class="user-form" [formGroup]="userForm" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
       <label for="firstName">
         First name:
@@ -11,14 +12,11 @@
         <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
       </label>
       <br>
-      <label for="encadreur">
-        Encadreur:
-      <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
-        <option value = "Sophie Dupont">Sophie Dupont</option>
-        <option value = "Paul Smith">Paul Smith</option>
-      </select>
+      <label for="date">
+        Age
+      <input class="input-custom" type="number" id = "age" [formControlName]="'age'" >
     </label>
-      <br>
+    <br>
       <label for="maladies">
         Type de troubles:
       <select id = "maladies" name="maladies" [formControlName]="'maladies'">
@@ -35,10 +33,13 @@
         <input class="input-custom" type="text"  id = "commentaires" [formControlName]="'commentaires'">
       </label>
       <br>
-      <label for="date">
-        Date d'entrée:
-      <input class="input-custom" type="date" id = "date" [formControlName]="'date'" >
-    </label>
+    <label for="encadreur">
+      Encadreur:
+    <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
+      <option value = "Sophie Dupont">Sophie Dupont</option>
+      <option value = "Paul Smith">Paul Smith</option>
+    </select>
+  </label>
       <br>
       <br>
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>
