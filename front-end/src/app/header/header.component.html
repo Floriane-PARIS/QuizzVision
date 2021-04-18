@@ -11,12 +11,7 @@
       Brocoli
     <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quiz</a>
     <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
+      <a class="navigation" (click)="otherUsers()">Retour aux Patients</a>
     </div>
 </div>
 
-<div *ngIf="game != undefined && user != undefined">
-  <div class="header2">
-    Amusez vous!!
-  </div>
-
-</div>

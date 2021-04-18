@@ -4,7 +4,7 @@
   <app-quiz-search></app-quiz-search>
 </div>
 <ng-template #patientBlock>
-  
+
   <div>
     <app-quiz-search></app-quiz-search>
   </div>
@@ -16,9 +16,9 @@
         <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
         <!--br-->
       </div>
-      <div *ngIf="user != undefined">
+      <!--div *ngIf="user != undefined">
         <button class="button-card" (click)="retourAdmin()"> Retour chez Admin </button>
-      </div>
+      </div-->
     </div>
     <ng-template #elseBlock>
       <div>

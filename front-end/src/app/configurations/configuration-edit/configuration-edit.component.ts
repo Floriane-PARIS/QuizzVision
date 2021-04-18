@@ -20,9 +20,10 @@ export class ConfigurationEditComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) {
     this.initCss();
     this.userService.userSelected$.subscribe((user) => {
+      console.log('configurationUser', user);
      this.user = user;
      this.userService.getConfiguration(this.user.id);
-     });
+    });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
     });

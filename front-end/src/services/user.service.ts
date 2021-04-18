@@ -121,11 +121,16 @@ export class UserService {
   }
 
   setSelectedUser(userId: string): void {
-    const urlWithId = this.userUrl + '/' + userId;
-    this.http.get<User>(urlWithId).subscribe((user) => {
-      this.currentUser = user;
-      this.userSelected$.next(user);
-    });
+    if (userId === undefined) {
+      this.currentUser = undefined;
+      this.userSelected$.next(undefined);
+    } else {
+      const urlWithId = this.userUrl + '/' + userId;
+      this.http.get<User>(urlWithId).subscribe((user) => {
+        this.currentUser = user;
+        this.userSelected$.next(user);
+      });
+    }
   }
 
   deleteUser(user: User): void {

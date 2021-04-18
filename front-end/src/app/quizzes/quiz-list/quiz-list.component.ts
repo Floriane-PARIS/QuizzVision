@@ -44,8 +44,8 @@ export class QuizListComponent implements OnInit {
     this.quizService.deleteQuiz(quiz);
   }
 
-  retourAdmin(): void{
+  /*retourAdmin(): void{
     this.router.navigate(['/quiz-list']);
-  }
+  }*/
 
 }
