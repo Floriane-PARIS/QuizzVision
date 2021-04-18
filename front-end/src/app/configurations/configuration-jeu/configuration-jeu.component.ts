@@ -3,6 +3,7 @@ import {User} from '../../../models/user.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
 import {Configuration} from '../../../models/configuration.model';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-configuration-jeu',
@@ -12,10 +13,11 @@ import {Configuration} from '../../../models/configuration.model';
 export class ConfigurationJeuComponent implements OnInit {
 
   public user: User;
+  public gameId: string;
   public configuration: Configuration;
   public configurationForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
     });
@@ -48,6 +50,13 @@ export class ConfigurationJeuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.setSelectedUser(idUser);
+    this.gameId = this.route.snapshot.paramMap.get('id');
+  }
+
+  backToGame(): void {
+    this.router.navigate(['/game/' + this.user.id + '/' + this.gameId]);
   }
 
   getBold(){

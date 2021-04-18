@@ -87,14 +87,13 @@ export class GameComponent implements OnInit {
     this.answer = undefined;
     this.message = '';
     this.isValided = false;
-    //this.gameService.nextQuestion(this.game);
+    // this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
     console.log('Nous passons à la prochaine question^^!');
   }
 
   sendConfig(): void {
-    /*this.userService.currentConfiguration = this.configuration;*/
-    this.userService.setSelectedUser(this.idUser);
+    this.router.navigate(['/configuration-jeu/' + this.idUser + '/' + this.game.id]);
   }
 
   quitGame(): void {

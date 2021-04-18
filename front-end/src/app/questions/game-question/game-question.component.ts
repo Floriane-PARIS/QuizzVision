@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
 import {Configuration} from '../../../models/configuration.model';
 import {UserService} from '../../../services/user.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-game-question',
@@ -21,13 +22,16 @@ export class GameQuestionComponent implements OnInit {
   @Input()
   answer: Answer;
 
+  public userId: string;
+  public gameId: string;
+
   @Output()
   valideQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   @Output()
   valideAnswer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
-  constructor(private userService: UserService) {
+  constructor( private route: ActivatedRoute, private router: Router, private userService: UserService) {
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
       this.shift();
@@ -35,6 +39,8 @@ export class GameQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('idUser');
+    this.gameId = this.route.snapshot.paramMap.get('id');
   }
 
   shift(): void {
@@ -48,18 +54,19 @@ export class GameQuestionComponent implements OnInit {
   }
 
   sendConfig(): void {
-    /*this.userService.currentConfiguration = this.configuration;*/
+    this.router.navigate(['/configuration-jeu/' + this.userId + '/'+ this.gameId]);
   }
 
   valideQuestionAnswered(): void {
     this.valideQuestion.emit(this.question);
   }
 
-  getBold(){
-      if(this.configuration != undefined){
+  getBold(): string {
+      if (this.configuration !== undefined){
            return this.configuration.bold;
+      } else {
+        return 'normal';
       }
-       return 'normal';
   }
 
 
