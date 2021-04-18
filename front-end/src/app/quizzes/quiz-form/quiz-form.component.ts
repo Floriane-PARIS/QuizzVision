@@ -4,6 +4,7 @@ import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
@@ -21,7 +22,7 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService, public themeService: ThemeService) {
+  constructor(public formBuilder: FormBuilder, public quizService: QuizService, public themeService: ThemeService, private router: Router) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themes = themes;
     });
@@ -40,8 +41,12 @@ export class QuizFormComponent implements OnInit {
   addQuiz(): void {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-
     this.quizService.addQuiz(quizToCreate);
+    this.router.navigate(['/quiz-list']);
+  }
+
+  annule(): void {
+    this.router.navigate(['/quiz-list']);
   }
 
 }

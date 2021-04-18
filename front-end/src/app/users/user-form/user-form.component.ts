@@ -32,6 +32,9 @@ export class UserFormComponent implements OnInit {
     const userToCreate: User = this.userForm.getRawValue() as User;
     this.userService.addUser(userToCreate);
     this.router.navigate(['/user-list']);
+  }
 
+  annule(): void {
+    this.router.navigate(['/user-list']);
   }
 }

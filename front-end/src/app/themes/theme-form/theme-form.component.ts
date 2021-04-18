@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Theme} from '../../../models/theme.model';
 import {ThemeService} from '../../../services/theme.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-theme-form',
@@ -15,7 +16,7 @@ export class ThemeFormComponent implements OnInit {
    */
   public themeForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public themeService: ThemeService) {
+  constructor(public formBuilder: FormBuilder, public themeService: ThemeService, private router: Router) {
     this.themeForm = this.formBuilder.group({
       subject: ['']
     });
@@ -27,5 +28,11 @@ export class ThemeFormComponent implements OnInit {
   addTheme(): void {
     const themeToCreate: Theme = this.themeForm.getRawValue() as Theme;
     this.themeService.addTheme(themeToCreate);
+    this.router.navigate(['/theme-list']);
+    
+  }
+
+  annule(): void {
+    this.router.navigate(['/theme-list']);
   }
 }
