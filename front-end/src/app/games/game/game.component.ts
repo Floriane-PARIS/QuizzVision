@@ -104,6 +104,7 @@ export class GameComponent implements OnInit {
   }
 
   backToQuizList(): void {
+    this.gameService.setSelectedGame(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser ]);
   }
 
