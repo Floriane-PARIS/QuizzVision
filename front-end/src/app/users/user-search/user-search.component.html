@@ -1,12 +1,12 @@
 
 <div class="card" p style="text-align: right; position: absolute;  left: 28.5cm;">
-    <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Search for an user by his name</h5>
+    <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filter par nom</h5>
     <form class="user-search">
       <h6>
-      <label for="title">firstName
+      <label for="title">Prenom
           <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
           
-        firstName
+        Prenom
           <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
             <option *ngFor="let user of users" [value]="user.firstName">
               {{user.firstName}}
@@ -14,10 +14,10 @@
           </select>
       </label>
       <br>
-      <label for="title">lastName
+      <label for="title">Nom
         <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
         
-      lastName
+      Nom
         <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
           <option *ngFor="let user of users" [value]="user.lastName">
             {{user.lastName}}
@@ -25,7 +25,7 @@
         </select>
     </label>
       <br>
-      <button type="submit" class="button-card" (click)="searchUserName()">Search</button>
+      <button type="submit" class="button-card" (click)="searchUserName()">Filtrer</button>
     </h6>
     
   </form>
@@ -34,7 +34,7 @@
 
 
 <div class="card" p style="text-align: right; position: absolute;  left: 17.5cm;">
-  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Search for an user by his sickness</h5>
+  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filtrer par troubles</h5>
   <form class="user-search">
     <h6>
       <label for="title">maladies
@@ -48,7 +48,7 @@
           </select>
       </label>
       <br>
-      <button type="submit" class="button-card" (click)="searchUserTroubles()">Search</button>
+      <button type="submit" class="button-card" (click)="searchUserTroubles()">Filtrer</button>
     </h6>
   </form>
     <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
