@@ -51,7 +51,7 @@
                     <label for="decalage"> <br> Décalage </label>
                     <div class="range">
                       <span class= "value">centre</span>
-                      <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
+                      <input type="range" id="shift" min="{{min}}" max="{{max}}" value="{{min}}" [formControlName]="'shift'">
                       <span class= "value">bordure</span>
                     </div>
                   </div>
@@ -80,7 +80,7 @@
               <label for="decalage"> <br> Décalage </label>
               <div class="range">
                 <span class= "value">centre</span>
-                <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
+                <input type="range" id="shift" min="{{min}}" max="{{max}}" value="{{min}}" [formControlName]="'shift'">
                 <span class= "value">bordure</span>
               </div>
             </div>

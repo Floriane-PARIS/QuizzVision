@@ -3,7 +3,7 @@ import {User} from '../../../models/user.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
 import {Configuration} from '../../../models/configuration.model';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-configuration-jeu',
@@ -17,10 +17,22 @@ export class ConfigurationJeuComponent implements OnInit {
   public configuration: Configuration;
   public root = document.documentElement;
   public configurationForm: FormGroup;
+  public max: number;
+  public min: number;
 
   constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
+      if (this.user.maladies === 'DMLA'){
+        this.max = 30;
+        this.min = 0;
+      }else if (this.user.maladies === 'Glaucome'){
+        this.max = 30;
+        this.min = 0;
+      }else{
+        this.max = 30;
+        this.min = 0;
+      }
       this.userService.configurationNext$.subscribe((configuration) => {
         this.configuration = configuration;
         this.shift();
