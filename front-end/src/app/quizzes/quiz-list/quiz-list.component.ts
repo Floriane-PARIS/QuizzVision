@@ -47,16 +47,12 @@ export class QuizListComponent implements OnInit {
   /*retourAdmin(): void{
     this.router.navigate(['/quiz-list']);
 <<<<<<< HEAD
-  }
+  }*/
   ajoutQuizz(): void{
     console.log('event received from child: new quiz');
     this.router.navigate(['/quiz-form']);
     
   }
-=======
-  }*/
->>>>>>> 8f685a2cfb5ebffa97b76f0ab7c9508260deed53
-
   ajoutTheme(): void{
     console.log('event received from child: new theme');
     this.router.navigate(['/theme-form']);
