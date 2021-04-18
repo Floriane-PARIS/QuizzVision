@@ -1,20 +1,18 @@
 <div class="card" p style="position: absolute; left:0cm; top: 3cm;">
-  
+
   <form class="theme-form" [formGroup]="themeForm">
     <h6>
-      <h3 p style="font-family: cursive;">Create a new Theme</h3>
+      <h3 p style="font-family: cursive;">Ajouter un nouveau thème</h3>
       <label for="title">
         <p>
-          Subject:
+          Nom du thème:
           <input class="input-custom" type="text" id="subject" [formControlName]="'subject'">
         </p>
-        
-    <button type="submit" class="button-card" (click)="addTheme()">Create</button>
-    <button class="button-card" routerLink="/theme-list">Changer les thèmes</button>
-    <button type="submit" class="button-card" (click)="annule()" p style="text-align: center; position: relative;" >Annuler</button>
+
+    <button type="submit" class="button-card" (click)="addTheme()">Ajouter</button>
       </label>
     </h6>
   </form>
- 
+
 </div>
 

@@ -2,20 +2,19 @@
 <div *ngIf="quiz.questions.length >= 1 || user == undefined">
   <div class="card">
     <h2>
-      <i class="fab fa-leanpub"></i>
       {{quiz.name}}
     </h2>
     <h5>
       Thème: {{quiz.theme}}
       <br>
-      Nb de Question : {{quiz.questions.length}}
+      Nombre de Question : {{quiz.questions.length}}
     </h5>
     <div *ngIf="user != undefined">
-      <button class="button-card select" (click)="selectQuiz()">Play</button>
+      <button class="button-card select" (click)="selectQuiz()">Jouer</button>
     </div>
     <div *ngIf="user == undefined">
-      <button class="button-card" (click)="delete()">Delete</button>
-      <button class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
+      <button class="button-card" (click)="delete()">Supprimer</button>
+      <button class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Modifier</button>
     </div>
   </div>
 </div>

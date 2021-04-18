@@ -35,4 +35,6 @@
         </div>
       </div>
   </div>
-    <button class="button-card" (click)="backToQuizList()" >Retour</button>
+    <button class="button-card"
+            [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+            (click)="backToQuizList()" >Retour</button>

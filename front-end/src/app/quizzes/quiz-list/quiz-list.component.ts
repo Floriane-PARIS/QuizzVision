@@ -51,11 +51,11 @@ export class QuizListComponent implements OnInit {
   ajoutQuizz(): void{
     console.log('event received from child: new quiz');
     this.router.navigate(['/quiz-form']);
-    
+
   }
   ajoutTheme(): void{
     console.log('event received from child: new theme');
-    this.router.navigate(['/theme-form']);
-    
+    this.router.navigate(['/theme-list']);
+
   }
 }
