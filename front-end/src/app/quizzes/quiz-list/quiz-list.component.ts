@@ -13,14 +13,8 @@ import {UserService} from "../../../services/user.service";
 
 export class QuizListComponent implements OnInit {
 
-  @Input()
-  user: User;
-
-  @Output()
-  editUserDone: EventEmitter<User> = new EventEmitter<User>();
-
   public quizList: Quiz[] = [];
-  //public user: User;
+  public user: User;
 
   constructor(private router: Router, private route: ActivatedRoute, public quizService: QuizService,  public userService: UserService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {

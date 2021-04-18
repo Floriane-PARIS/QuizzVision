@@ -15,14 +15,8 @@ import { Game } from 'src/models/game.model';
 
 export class HeaderComponent implements OnInit {
 
-  @Input()
-  user: User;
 
-  @Output()
-  userSelected: EventEmitter<User> = new EventEmitter<User>();
-
-
- // public user: User;
+  public user: User;
   public game: Game;
 
   constructor( public userService: UserService, public gameService: GameService) {
