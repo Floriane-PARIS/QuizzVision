@@ -12,11 +12,12 @@ import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
 import {UserEditComponent}  from './users/user-edit/user-edit.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserComponent } from './users/user/user.component';
-import { ResultatListComponent } from './resultat/resultat-list.component';
 import {ConfigurationJeuComponent} from './configurations/configuration-jeu/configuration-jeu.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
+import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
+
 
 
 

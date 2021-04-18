@@ -27,11 +27,10 @@ export class GameStartComponent implements OnInit {
   constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
-      this.initializeGameForm(quiz);
-    });
-
-    this.userService.userSelected$.subscribe((user) => {
-      this.user = user;
+      this.userService.userSelected$.subscribe((user) => {
+        this.user = user;
+        this.initializeGameForm(quiz);
+      });
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
@@ -59,6 +58,7 @@ export class GameStartComponent implements OnInit {
   private initializeGameForm(quiz: Quiz): void {
     if (quiz.questions.length > 0 ) {
       this.gameForm = this.formBuilder.group({
+        userId: [this.user.id],
         quizId: [quiz.id],
         question: [[quiz.questions[0]]],
         score: [quiz.questions.length]

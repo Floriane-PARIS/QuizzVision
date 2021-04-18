@@ -35,8 +35,9 @@ import { ThemeSearchComponent } from './themes/theme-search/theme-search.compone
 import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
-import { ResultatListComponent } from './resultat/resultat-list.component';
 import { ConfigurationJeuComponent } from './configurations/configuration-jeu/configuration-jeu.component';
+import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
+
 
 
 
