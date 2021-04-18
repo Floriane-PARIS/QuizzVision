@@ -14,19 +14,35 @@ import {ActivatedRoute} from "@angular/router";
 export class ConfigurationFormComponent implements OnInit {
 
   public user: User;
+  public configuration: Configuration;
   public configurationForm: FormGroup;
 
   constructor(private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      this.configurationForm =  this.formBuilder.group({
-        handicap: [this.user.maladies],
-        bold: ['normal'],
-        size: ['22'],
-        police: ['Arial'],
-        bright: ['100'],
-        contrast: ['100'],
-        shift: ['60']
+      this.userService.configurationNext$.subscribe((configuration) => {
+        this.configuration = configuration;
+        if (this.configuration !== undefined) {
+          this.configurationForm = this.formBuilder.group({
+            handicap: [this.configuration.handicap],
+            bold: [this.configuration.bold],
+            size: [this.configuration.size],
+            police: [this.configuration.police],
+            bright: [this.configuration.bright],
+            contrast: [this.configuration.contrast],
+            shift: [this.configuration.shift]
+          });
+        } else {
+          this.configurationForm = this.formBuilder.group({
+            handicap: [this.user.maladies],
+            bold: ['normal'],
+            size: ['22'],
+            police: ['Arial'],
+            bright: ['100'],
+            contrast: ['100'],
+            shift: ['60']
+          });
+        }
       });
     });
     if (this.configurationForm === undefined) {
