@@ -22,9 +22,7 @@ export class HeaderComponent implements OnInit {
 
   constructor( private router: Router, public userService: UserService, public gameService: GameService) {
     this.userService.userSelected$.subscribe((user) => {
-      console.log('userBefore', this.user);
       this.user = user;
-      console.log('userAfter', this.user);
     });
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
@@ -35,9 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   otherUsers(): void {
-    // this.user = undefined;
     this.userService.setSelectedUser(undefined);
-    console.log('mise a JOUR', this.user);
     this.router.navigate(['/user-list']);
   }
 

@@ -144,7 +144,6 @@ export class UserService {
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
     this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
       if (configurationNext.length > 0 ) {
-        this.setSelectedUser(userId);
         this.currentConfiguration = configurationNext[configurationNext.length - 1];
         this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
       }
