@@ -1,22 +1,23 @@
-<div *ngIf="user == undefined">
+<div *ngIf="user == undefined; else patientBlock">
   <app-quiz-form></app-quiz-form>
   <app-theme-form></app-theme-form>
   <app-quiz-search></app-quiz-search>
 </div>
+<ng-template #patientBlock>
+  <div>
+    <app-quiz-search></app-quiz-search>
+  </div>
+</ng-template>
     <div *ngIf="quizList.length > 0; else elseBlock">
       <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
-        <div *ngIf="user == undefined">
-          <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
-        </div>
-          <div>
-            <app-quiz-play [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz-play>
-            <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
-          </div>
+        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
         <!--br-->
+      </div>
+      <div *ngIf="user != undefined">
         <button class="button-card" (click)="retourAdmin()"> Retour chez Admin </button>
-      </div> 
+      </div>
     </div>
     <ng-template #elseBlock>
       <div>
