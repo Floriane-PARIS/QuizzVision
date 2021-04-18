@@ -23,7 +23,7 @@
     </div>
 
       </div>
-      <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] === null) && (game !== undefined)">
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] === null) && (game !== undefined)">
         <app-game-result [message]="'Vous avez fini le Quiz !BRAVO ! \n Vous avez eu la note de :'" [handicap]=configuration.handicap></app-game-result>
         <br>
         {{score}} / {{length}}
