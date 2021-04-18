@@ -1,3 +1,34 @@
 @import '../../../styles/card.scss';
 @import '../../games/game/game.component.scss';
 @import '../../questions/game-question/game-question.component.scss';
+@import '../../games/game-result/game-result.component.scss';
+
+.configuration-play {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.configuration-play-slider {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.configuration {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  // border: 5px solid magenta;
+}
+
+.configuration-play-border {
+  display: flex;
+  justify-content: space-between;
+
+  // border: 5px solid lightcoral;
+}

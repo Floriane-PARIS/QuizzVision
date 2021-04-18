@@ -5,7 +5,7 @@
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="sendConfig()">Configuration</button>
     </div>
     <br>
-    <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">

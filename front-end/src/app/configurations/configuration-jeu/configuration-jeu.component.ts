@@ -15,29 +15,40 @@ export class ConfigurationJeuComponent implements OnInit {
   public user: User;
   public gameId: string;
   public configuration: Configuration;
+  public root = document.documentElement;
   public configurationForm: FormGroup;
 
   constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-    });
-    this.userService.configurationNext$.subscribe((configuration) => {
-      this.configuration = configuration;
-    });
-
-    if (this.configuration !== undefined) {
-      this.configurationForm =  this.formBuilder.group({
-        handicap: [this.configuration.handicap],
-        bold: [this.configuration.bold],
-        size: [this.configuration.size],
-        police: [this.configuration.police],
-        bright: [this.configuration.bright],
-        contrast: [this.configuration.contrast],
-        shift: [this.configuration.shift]
+      this.userService.configurationNext$.subscribe((configuration) => {
+        this.configuration = configuration;
+        this.shift();
+        if (this.configuration !== undefined) {
+          this.configurationForm = this.formBuilder.group({
+            handicap: [this.configuration.handicap],
+            bold: [this.configuration.bold],
+            size: [this.configuration.size],
+            police: [this.configuration.police],
+            bright: [this.configuration.bright],
+            contrast: [this.configuration.contrast],
+            shift: [this.configuration.shift]
+          });
+        } else {
+          this.configurationForm = this.formBuilder.group({
+            handicap: [this.user.maladies],
+            bold: ['normal'],
+            size: ['22'],
+            police: ['Arial'],
+            bright: ['100'],
+            contrast: ['100'],
+            shift: ['60']
+          });
+        }
       });
-    }
-    else {
-      this.configurationForm =  this.formBuilder.group({
+    });
+    if (this.configurationForm === undefined) {
+      this.configurationForm = this.formBuilder.group({
         handicap: ['Glaucome'],
         bold: ['normal'],
         size: ['22'],
@@ -53,6 +64,11 @@ export class ConfigurationJeuComponent implements OnInit {
     const idUser = this.route.snapshot.paramMap.get('idUser');
     this.userService.setSelectedUser(idUser);
     this.gameId = this.route.snapshot.paramMap.get('id');
+  }
+
+  shift(): void {
+    const value = this.configuration.shift;
+    this.root.style.setProperty('--slider', value.toString());
   }
 
   backToGame(): void {

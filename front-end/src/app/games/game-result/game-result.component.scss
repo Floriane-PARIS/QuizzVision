@@ -3,14 +3,18 @@
 .game-response-center {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
-
+  // border: 5px solid palegreen;
 }
 
 .game-response-border {
   display: flex;
 
   justify-content: flex-start;
+  flex-direction: column;
   width: calc(80% - var(--slider) * 1%);
+
+  border: 5px solid mediumblue;
 
 }

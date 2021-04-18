@@ -10,7 +10,7 @@
   width: 100%;
   justify-content: center;
 
-  //border: 5px solid red;
+  // border: 5px solid red;
 }
 .game-question{
   display: flex;
@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between;
 
-  //border: 5px solid indianred;
+  // border: 5px solid indianred;
 }
 
 .game-configuration-center {
@@ -44,7 +44,7 @@
   display: flex;
   width: calc(100% - var(--slider) * 1%);
 
-  border: 5px solid cadetblue;
+  // border: 5px solid cadetblue;
 }
 
 .game-answer-border {
@@ -55,7 +55,7 @@
   align-items: flex-end;
   flex-direction: column;
 
-  border: 5px solid cornflowerblue;
+   border: 5px solid cornflowerblue;
 }
 
 .game-answer-response {
