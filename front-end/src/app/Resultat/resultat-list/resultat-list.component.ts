@@ -20,6 +20,8 @@ import { UserService } from "src/services/user.service";
     public resultatList: FormGroup;
     public quizzes: Quiz[];
     public games: Game[];
+    public length: number;
+    public game:  Game;
     
  
 
@@ -39,6 +41,10 @@ import { UserService } from "src/services/user.service";
         });
         this.gameService.games$.subscribe((games: Game[]) => {
           this.games = games;
+        });
+        this.gameService.gameSelected$.subscribe((game) => {
+          this.game = game;
+          this.length = game.score;
         });
         
     }
