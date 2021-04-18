@@ -1,65 +1,10 @@
-<div class="card" *ngIf="configuration == undefined; else elseBlock">
-  <h3>Choisir une nouvelle configuration</h3>
-  <form class="configuration-form" [formGroup]="configurationForm">
-
-    <label for="police"> Handicap </label>
-    <select id = "handicap" name="handicap" [formControlName]="'handicap'" >
-      <option value = "Glaucome">Glaucome</option>
-      <option value = "DMLA">DMLA</option>
-      <option value = "Autres">Autres</option>
-    </select>
-    <br>
-
-    <label for="bold">Texte en gras ? </label>
-    <input type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
-    <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
-    <br>
-    <label for="size">Taille du texte </label>
-    <input class="input-custom" type="number" id="size" name="police-size" min="10" max="60" value = "26" step = "4" [formControlName]="'size'">
-
-    <label for="police"> <br>Police du texte  </label>
-    <select id = "police" name="police" [formControlName]="'police'">
-      <option value = "Arial">Arial</option>
-      <option value = "Arial Black">Arial Black</option>
-      <option value = "Comic Sans MS">Comic Sans MS</option>
-      <option value = "Georgia">Georgia</option>
-      <option value = "Impact">Impact</option>
-      <option value = "Times new Roman">Times new Roman</option>
-      <option value = "Trebuchet">Trebuchet</option>
-      <option value = "Verdana">Verdana</option>
-    </select>
-    <br>
-    <label for="bright"> <br> Luminosité </label>
-    <div class="range">
-      <i class="fa fa-sun-o" aria-hidden="true"></i>
-      <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-      <span class= "value">100</span>
-    </div>
-    <label for="contrast"> <br> Contraste </label>
-    <div class="range">
-      <i class="fa fa-adjust" aria-hidden="true"></i>
-      <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-      <span class= "value">100</span>
-    </div>
-    <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
-      <label for="decalage"> <br> Décalage </label>
-      <div class="range">
-        <span class= "value">centre</span>
-        <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
-        <span class= "value">bordure</span>
-      </div>
-    </div>
-    <button type="submit" class="game-button-configuration" (click)="addConfiguration()">Create</button>
-  </form>
-</div>
-
-<ng-template #elseBlock>
-  <div class="configuration-self"  [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-    <h3>Modifier ma configuration</h3>
+<div class="game">
+  <div class="card" *ngIf="configuration == undefined; else elseBlock">
+    <h3>Choisir une nouvelle configuration</h3>
     <form class="configuration-form" [formGroup]="configurationForm">
 
       <label for="police"> Handicap </label>
-      <select id = "handicap" name="handicap" [formControlName]="'handicap'">
+      <select id = "handicap" name="handicap" [formControlName]="'handicap'" >
         <option value = "Glaucome">Glaucome</option>
         <option value = "DMLA">DMLA</option>
         <option value = "Autres">Autres</option>
@@ -71,7 +16,7 @@
       <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
       <br>
       <label for="size">Taille du texte </label>
-      <input class="input-custom" type="number" id="size" name="police-size" min="10" max="60" value = "14" step = "4" [formControlName]="'size'">
+      <input class="input-custom" type="number" id="size" name="police-size" min="10" max="60" value = "26" step = "4" [formControlName]="'size'">
 
       <label for="police"> <br>Police du texte  </label>
       <select id = "police" name="police" [formControlName]="'police'">
@@ -89,13 +34,13 @@
       <div class="range">
         <i class="fa fa-sun-o" aria-hidden="true"></i>
         <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-        <span class= "value">{{configuration.bright}}</span>
+        <span class= "value">100</span>
       </div>
       <label for="contrast"> <br> Contraste </label>
       <div class="range">
         <i class="fa fa-adjust" aria-hidden="true"></i>
         <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-        <span class= "value">{{configuration.contrast}}</span>
+        <span class= "value">100</span>
       </div>
       <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
         <label for="decalage"> <br> Décalage </label>
@@ -105,8 +50,67 @@
           <span class= "value">bordure</span>
         </div>
       </div>
-      <button type="submit" class="button-card" (click)="addConfiguration()">Modifier</button>
+      <button type="submit" class="game-button-configuration" (click)="addConfiguration()">Create</button>
     </form>
-
   </div>
-</ng-template>
+
+  <ng-template #elseBlock>
+    <div [className]="(configuration.handicap === 'Autres') ? 'card' : 'game-question'"
+         [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+      <h3>Modifier ma configuration</h3>
+      <form class="configuration-form" [formGroup]="configurationForm">
+
+        <label for="police"> Handicap </label>
+        <select id = "handicap" name="handicap" [formControlName]="'handicap'">
+          <option value = "Glaucome">Glaucome</option>
+          <option value = "DMLA">DMLA</option>
+          <option value = "Autres">Autres</option>
+        </select>
+        <br>
+
+        <label for="bold">Texte en gras ? </label>
+        <input type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
+        <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
+        <br>
+        <label for="size">Taille du texte </label>
+        <input class="input-custom" type="number" id="size" name="police-size" min="10" max="60" value = "14" step = "4" [formControlName]="'size'">
+
+        <label for="police"> <br>Police du texte  </label>
+        <select id = "police" name="police" [formControlName]="'police'">
+          <option value = "Arial">Arial</option>
+          <option value = "Arial Black">Arial Black</option>
+          <option value = "Comic Sans MS">Comic Sans MS</option>
+          <option value = "Georgia">Georgia</option>
+          <option value = "Impact">Impact</option>
+          <option value = "Times new Roman">Times new Roman</option>
+          <option value = "Trebuchet">Trebuchet</option>
+          <option value = "Verdana">Verdana</option>
+        </select>
+        <br>
+        <label for="bright"> <br> Luminosité </label>
+        <div class="range">
+          <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
+          <span class= "value">{{configuration.bright}}</span>
+        </div>
+        <label for="contrast"> <br> Contraste </label>
+        <div class="range">
+          <i class="fa fa-adjust" aria-hidden="true"></i>
+          <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
+          <span class= "value">{{configuration.contrast}}</span>
+        </div>
+        <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
+          <label for="decalage"> <br> Décalage </label>
+          <div class="range">
+            <span class= "value">centre</span>
+            <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
+            <span class= "value">bordure</span>
+          </div>
+        </div>
+        <button type="submit" class="button-card" (click)="addConfiguration()">Modifier</button>
+      </form>
+
+    </div>
+  </ng-template>
+</div>
+

@@ -12,7 +12,9 @@ import {Configuration} from '../../../models/configuration.model';
 export class ConfigurationJeuComponent implements OnInit {
   @Input()
   user: User;
+  @Input()
   configuration: Configuration;
+  @Input()
   public configurationForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, private userService: UserService) {
