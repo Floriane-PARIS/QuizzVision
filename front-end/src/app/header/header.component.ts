@@ -6,6 +6,7 @@ import {UserService} from '../../services/user.service';
 import {GameService} from '../../services/game.service';
 import {Answer, Question} from "../../models/question.model";
 import { Game } from 'src/models/game.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
   public user: User;
   public game: Game;
 
-  constructor( public userService: UserService, public gameService: GameService) {
+  constructor( private router: Router, public userService: UserService, public gameService: GameService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
     });
@@ -29,6 +30,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  otherUsers(): void {
+    this.userService.setSelectedUser(undefined);
+    this.router.navigate(['/user-list']);
   }
 
 }

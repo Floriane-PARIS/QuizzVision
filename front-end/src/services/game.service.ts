@@ -67,10 +67,14 @@ export class GameService {
   }
 
   setSelectedGame(gameId: string): void {
-    const urlWithId = this.gameUrl + '/' + gameId;
-    this.http.get<Game>(urlWithId).subscribe((game) => {
-      this.gameSelected$.next(game);
-    });
+    if (gameId === undefined) {
+      this.gameSelected$.next(undefined);
+    } else {
+      const urlWithId = this.gameUrl + '/' + gameId;
+      this.http.get<Game>(urlWithId).subscribe((game) => {
+        this.gameSelected$.next(game);
+      });
+    }
   }
 
   deleteGame(game: Game): void {

@@ -121,11 +121,16 @@ export class UserService {
   }
 
   setSelectedUser(userId: string): void {
-    const urlWithId = this.userUrl + '/' + userId;
-    this.http.get<User>(urlWithId).subscribe((user) => {
-      this.currentUser = user;
-      this.userSelected$.next(user);
-    });
+    if (userId === undefined) {
+      this.currentUser = undefined;
+      this.userSelected$.next(undefined);
+    } else {
+      const urlWithId = this.userUrl + '/' + userId;
+      this.http.get<User>(urlWithId).subscribe((user) => {
+        this.currentUser = user;
+        this.userSelected$.next(user);
+      });
+    }
   }
 
   deleteUser(user: User): void {
@@ -139,7 +144,6 @@ export class UserService {
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
     this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
       if (configurationNext.length > 0 ) {
-        this.setSelectedUser(userId);
         this.currentConfiguration = configurationNext[configurationNext.length - 1];
         this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
       }
