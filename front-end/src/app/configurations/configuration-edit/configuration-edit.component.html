@@ -1,6 +1,6 @@
 <div class="configuration-page">
 <div class="configuration-text" >
- <app-configuration-form [user]="user"></app-configuration-form>
+ <app-configuration-form></app-configuration-form>
   <div *ngIf="configuration != undefined; else elseBlock">
  <app-configuration-chose [configuration]="configuration" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration-chose>
 </div>

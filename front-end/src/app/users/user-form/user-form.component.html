@@ -1,5 +1,5 @@
 <div class="card" mat-form-field appearance="fill">
-  
+
     <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> <i class="fas fa-user-plus">Ajouter un patient</i></h2>
     <form class="user-form" [formGroup]="userForm" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
       <label for="firstName">
@@ -8,7 +8,7 @@
       </label>
       <br>
       <label for="lastName">
-        Nom:* 
+        Nom:*
         <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
       </label>
       <br>
@@ -20,10 +20,8 @@
       <label for="maladies">
         Type de troubles:*
       <select id = "maladies" name="maladies" [formControlName]="'maladies'">
-        <option value = "Cataracte">Cataracte</option>
+        <option value = "Autres">Autres</option>
         <option value = "DMLA">DMLA</option>
-        <option value = "Presbytie">Presbytie</option>
-        <option value = "Fatigue Visuelle">Fatigue Visuelle</option>
         <option value = "Glaucome">Glaucome</option>
       </select>
     </label>
@@ -45,7 +43,7 @@
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>
       <button type="submit" class="button-card" (click)="annule()" p style="text-align: center; position: relative;" >Annuler</button>
     </form>
-   
+
   </div>
 
   <!--<br><br>{{userForm.getRawValue() | json}} -->

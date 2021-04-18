@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Configuration } from '../../../models/configuration.model';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-configuration-form',
@@ -12,23 +13,38 @@ import {User} from '../../../models/user.model';
 
 export class ConfigurationFormComponent implements OnInit {
 
-  @Input()
-  user: User;
+  public user: User;
   public configurationForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private userService: UserService) {
-    this.configurationForm =  this.formBuilder.group({
-      handicap: ['Glaucome'],
-      bold: ['normal'],
-      size: ['22'],
-      police: ['Arial'],
-      bright: ['100'],
-      contrast: ['100'],
-      shift: ['60']
+  constructor(private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+      this.configurationForm =  this.formBuilder.group({
+        handicap: [this.user.maladies],
+        bold: ['normal'],
+        size: ['22'],
+        police: ['Arial'],
+        bright: ['100'],
+        contrast: ['100'],
+        shift: ['60']
+      });
     });
+    if (this.configurationForm === undefined) {
+      this.configurationForm = this.formBuilder.group({
+        handicap: ['Glaucome'],
+        bold: ['normal'],
+        size: ['22'],
+        police: ['Arial'],
+        bright: ['100'],
+        contrast: ['100'],
+        shift: ['60']
+      });
+    }
   }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.setSelectedUser(id);
   }
 
   addConfiguration(): void {

@@ -12,10 +12,8 @@
   </select>
 
     <p style="text-decoration: underline; font-style: italic;"> Souffre du trouble: </p><select id = "maladies" name="maladies" [(ngModel)] = "user.maladies" [ngModelOptions]="{standalone: true}">
-    <option value = "Cataracte">Cataracte</option>
+    <option value = "Autres">Autres</option>
     <option value = "DMLA">DMLA</option>
-    <option value = "Presbytie">Presbytie</option>
-    <option value = "Fatigue Visuelle">Fatigue Visuelle</option>
     <option value = "Glaucome">Glaucome</option>
   </select>
     <p style="text-decoration: underline; font-style: italic;"> A savoir sur le patient: </p><input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.commentaires" [ngModelOptions]="{standalone: true}">
