@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>Create a new question</h2>
+  <h2>Ajouter une nouvelle question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
       Question :
@@ -14,7 +14,7 @@
       <div *ngFor="let address of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
           <label>
-            Answer {{i}} -
+            Réponse {{i}} -
             <input type="text" [formControlName]="'value'">
             <br>
             Correct

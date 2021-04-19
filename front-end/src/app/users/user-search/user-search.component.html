@@ -5,7 +5,7 @@
       <h6>
       <label for="title">Prenom
           <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
-          
+
         Prenom
           <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
             <option *ngFor="let user of users" [value]="user.firstName">
@@ -16,7 +16,7 @@
       <br>
       <label for="title">Nom
         <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
-        
+
       Nom
         <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
           <option *ngFor="let user of users" [value]="user.lastName">
@@ -27,20 +27,20 @@
       <br>
       <button type="submit" class="button-card" (click)="searchUserName()">Filtrer</button>
     </h6>
-    
+
   </form>
   <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
 </div>
 
 
 <div class="card" p style="text-align: right; position: absolute;  left: 17.5cm;">
-  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filtrer par troubles</h5>
+  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filtrer par trouble</h5>
   <form class="user-search">
     <h6>
-      <label for="title">maladies
+      <label for="title">Handicap
           <input class="input-custom" type="text" id="maladies" [(ngModel)] = "userTroubles" [ngModelOptions]="{standalone: true}">
-        
-        maladies
+
+        Handicap
           <select name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
             <option *ngFor="let user of users" [value]="user.maladies">
               {{user.maladies}}
@@ -53,5 +53,4 @@
   </form>
     <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
   </div>
-  
-  
+

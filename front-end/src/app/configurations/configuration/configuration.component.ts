@@ -41,7 +41,7 @@ export class ConfigurationComponent implements OnInit {
     let question: Question;
     question = {
       id: '0',
-      label: 'Quelle est la Capital de la France ?',
+      label: 'Quelle est la capitale de la France ?',
       answers: [answer1, answer2],
     };
     return question;

@@ -14,7 +14,7 @@
       <br>
       <label for="date">
         Age
-      <input class="input-custom" type="number" id = "age" [formControlName]="'age'" >
+      <input class="input-custom" type="number" id = "age" min="0" [formControlName]="'age'" >
     </label>
     <br>
       <label for="maladies">
@@ -30,14 +30,6 @@
         Commentaires:
         <input class="input-custom" type="text"  id = "commentaires" [formControlName]="'commentaires'">
       </label>
-      <br>
-    <label for="encadreur">
-      Encadreur:
-    <select id = "encadreur" name="encadreur" [formControlName]="'encadreur'">
-      <option value = "Sophie Dupont">Sophie Dupont</option>
-      <option value = "Paul Smith">Paul Smith</option>
-    </select>
-  </label>
       <br>
       <br>
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Create</button>

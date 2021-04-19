@@ -1,11 +1,11 @@
 <div class="card" *ngIf="configuration != undefined">
   <h3>Configuration Choisie:</h3>
-  handicap: {{configuration.handicap}} <br>
+  Handicap: {{configuration.handicap}} <br>
   Gras : {{configuration.bold}}<br>
   Police : {{configuration.police}}<br>
   Taille : {{configuration.size}}<br>
   Luminosité : {{configuration.bright}}<br>
   Contraste : {{configuration.contrast}}<br>
   Décalage : {{configuration.shift}}<br>
-  <button class="button-card" (click)="delete()">Back Configuration</button>
+  <button class="button-card" (click)="delete()">Retour à la configuration précédente</button>
 </div>
