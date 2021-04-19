@@ -27,8 +27,10 @@ export class GameStartComponent implements OnInit {
   constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
+      console.log('gamQuiz', quiz);
       this.userService.userSelected$.subscribe((user) => {
         this.user = user;
+        console.log('gamUser', user);
         this.initializeGameForm(quiz);
       });
     });
@@ -49,10 +51,10 @@ export class GameStartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const idUser = this.route.snapshot.paramMap.get('idUser');
-    this.userService.setSelectedUser(idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
+    const idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.setSelectedUser(idUser);
   }
 
   private initializeGameForm(quiz: Quiz): void {
