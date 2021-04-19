@@ -24,7 +24,10 @@ export class ConfigurationEditComponent implements OnInit {
       this.userService.configurationNext$.subscribe((configuration) => {
         // console.log('configuration', configuration);
         this.configuration = configuration;
-        this.shift();
+        // console.log('confi', this.configuration !== undefined);
+        if (this.configuration !== undefined) {
+          this.shift();
+        }
       });
     });
     /*this.userService.configurationNext$.subscribe((configuration) => {

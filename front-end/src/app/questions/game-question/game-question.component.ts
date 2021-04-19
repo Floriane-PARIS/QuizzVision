@@ -34,7 +34,9 @@ export class GameQuestionComponent implements OnInit {
   constructor( private route: ActivatedRoute, private router: Router, private userService: UserService) {
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
-      this.shift();
+      if (this.configuration !== undefined) {
+        this.shift();
+      }
     });
   }
 
