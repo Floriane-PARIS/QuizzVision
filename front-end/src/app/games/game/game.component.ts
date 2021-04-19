@@ -34,12 +34,15 @@ export class GameComponent implements OnInit {
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
-    this.length = 0;
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
       if (this.length === 0) {
         this.length = this.game.score;
       }
+    });
+    this.quizService.quizSelected$.subscribe( (quiz) => {
+      console.log('QUIZ LENGTH', quiz.questions.length);
+      this.length = quiz.questions.length;
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;

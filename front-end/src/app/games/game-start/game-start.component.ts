@@ -27,11 +27,11 @@ export class GameStartComponent implements OnInit {
   constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
-      console.log('gamQuiz', quiz);
+      // console.log('gamQuiz', quiz);
       // this.initializeGameForm(quiz);
       this.userService.userSelected$.subscribe((user) => {
         this.user = user;
-        console.log('gamUser1', user);
+        // console.log('gamUser1', user);
         this.initializeGameForm(quiz);
       });
     });
@@ -84,6 +84,7 @@ export class GameStartComponent implements OnInit {
   }
 
   startGame(string: string): void {
+    this.quizService.setSelectedQuiz(this.quiz.id);
     console.log('event received from child:', string);
     this.router.navigate(['/game/' + this.user.id + '/' + string  ]);
   }

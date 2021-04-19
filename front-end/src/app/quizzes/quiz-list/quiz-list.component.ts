@@ -32,6 +32,7 @@ export class QuizListComponent implements OnInit {
   }
 
   quizSelected(quiz: Quiz): void {
+    this.quizService.setSelectedQuiz(quiz.id);
     console.log('event received from child:', quiz.id);
     this.router.navigate(['/game-start/' + this.user.id + '/' + quiz.id]);
   }

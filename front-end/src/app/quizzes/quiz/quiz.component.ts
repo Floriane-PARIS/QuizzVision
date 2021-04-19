@@ -52,11 +52,13 @@ export class QuizComponent implements OnInit {
   }
 
   reDoQuiz(game: Game): void {
+    this.quizServide.setSelectedQuiz(this.quiz.id);
     this.gameService.deleteGame(game);
     this.quizSelected.emit(this.quiz);
   }
 
   continueQuiz(game: Game): void {
+    this.quizServide.setSelectedQuiz(this.quiz.id);
     this.gameSelected.emit(game);
   }
 
