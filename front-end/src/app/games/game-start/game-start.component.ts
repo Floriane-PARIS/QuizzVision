@@ -63,7 +63,7 @@ export class GameStartComponent implements OnInit {
         userId: [this.user.id],
         quizId: [quiz.id],
         question: [[quiz.questions[0]]],
-        score: [quiz.questions.length]
+        score: [0]
       });
     }
   }

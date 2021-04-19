@@ -25,7 +25,6 @@ export class GameComponent implements OnInit {
   public isValided: boolean;
   public gameQuestion: Question;
   public configuration: Configuration;
-  public score: number;
   public length: number;
   public root = document.documentElement;
 
@@ -44,7 +43,6 @@ export class GameComponent implements OnInit {
       this.shift();
     });
     this.isValided = false;
-    this.score = 0;
   }
 
   ngOnInit(): void {
@@ -70,8 +68,7 @@ export class GameComponent implements OnInit {
     if(this.answer !== undefined){
       this.isValided = true;
     if (this.answer.isCorrect) {
-      this.score = this.score+1;
-      // this.gameService.updateScore(this.game);
+      this.gameService.updateScore(this.game);
       this.message = 'Bravo, bonne réponse';
     }
     else  {
