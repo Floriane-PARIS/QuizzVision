@@ -25,10 +25,10 @@
       </div>
     </div>
     <div *ngIf="answers.length < 4">
-      <button class="button-card" (click)="addAnswer()">Add Answer</button>
+      <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
     </div>
     <div *ngIf="answers.length >= 2 && answers.length <= 4">
-    <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+    <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
     </div>
     <div *ngIf="answers.length < 2">
       <br>
