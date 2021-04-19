@@ -1,4 +1,4 @@
-<div class="game">
+<div class="game" *ngIf="configuration !== undefined">
       <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
         <form [formGroup]="configurationForm" class="configuration">
             <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
