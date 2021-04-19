@@ -1,6 +1,6 @@
 <div *ngIf="user == undefined && game == undefined">
     <div class="header">
-      BrocoliQuiz
+      BrocoliQuiz |
     <a class="navigation" [routerLink]="['/quiz-list']">Mes Quiz</a>
     <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>
     <a class ="navigation" [routerLink]="['/resultat-list']">Mes Résultats</a>
@@ -8,7 +8,8 @@
 </div>
 <div *ngIf="user != undefined && game == undefined && quiz == undefined" >
     <div class="header1">
-      BrocoliQuiz
+      BrocoliQuiz |
+      <a class="navigation"> Bonjour {{user.firstName}} {{user.lastName}} |</a>
     <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quiz</a>
     <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
       <a class="navigation" (click)="otherUsers()">Retour aux Patients</a>
