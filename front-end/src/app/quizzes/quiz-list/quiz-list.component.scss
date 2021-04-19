@@ -15,18 +15,20 @@
     display:grid;
     text-align: center;
     align-items: center;
-
-  /*.quiz{
-      margin-bottom: 3rem;
-      text-decoration-line: underline;
-      text-transform: capitalize;
-      font-size: 3rem;
-
-      span, i{
-          color:chocolate;
-      }
-  }*/
 }
+    .button-card {
+        display:block;
+        width:400px;
+        line-height:20px;
+        text-align:center;
+        vertical-align:middle;
+        background:rgba(23, 126, 3, 0.623);;
+        color:white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-radius: 0.3cm;
+    }
+
+
 /*.edit {
     margin-left: 0.3em;
 }*/

@@ -8,4 +8,21 @@
   margin-left: 8px;
   min-width: 120px;
 }
+
+.user-list {
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  text-align: center;
+}
   
+.button-card {
+  display:block;
+  width:400px;
+  line-height:10px;
+  text-align:center;
+  vertical-align:middle;
+  background:rgba(23, 126, 3, 0.623);;
+  color:white;
+  text-decoration:none;
+  border-radius: 0.3cm;
+  }

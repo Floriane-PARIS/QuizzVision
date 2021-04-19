@@ -3,9 +3,9 @@
   <form class="quiz-search">
   <h4 p style="font-family: cursive;">Rechercher un quiz</h4>
     <h6>
-    <label for="title" p style="color: #225597;">
+    <label for="title">
       Titre
-        <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}" p style="color: #225597;">
+        <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
       Titre
         <select name="quiz-field" id="name2" [(ngModel)] = "quizName">
           <option *ngFor="let quiz of quizzes" [value]="quiz.name">
@@ -15,7 +15,7 @@
     <button type="submit" class="button-card" (click)="searchQuizName()">Rechercher</button>
     </label>
     <br>
-    <label for="theme" p style="color: #225597;">
+    <label for="theme">
       Theme
         <select name="theme-field" id="theme" [(ngModel)] = "quizTheme">
           <option *ngFor="let theme of themes" [value]="theme.subject">

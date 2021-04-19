@@ -1,11 +1,11 @@
 @import '../../../styles/card.scss';
 
 
-body{
-    h2: {
-        background-color: #ee4561;
-        text-align: justify;
-        text-transform: uppercase;
-    }
-   
+.button-card{
+    display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+  border-radius: 0.3cm;
+  border-width: 0.08cm;
 }
