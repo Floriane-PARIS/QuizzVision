@@ -33,8 +33,12 @@ export class GameComponent implements OnInit {
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private userService: UserService) {
+    this.length = 0;
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
+      if (this.length === 0) {
+        this.length = this.game.score;
+      }
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
@@ -67,10 +71,10 @@ export class GameComponent implements OnInit {
     if(this.answer !== undefined){
       this.isValided = true;
     if (this.answer.isCorrect) {
-      this.gameService.updateScore(this.game);
       this.message = 'Bravo, bonne réponse';
     }
     else  {
+      this.gameService.updateScore(this.game);
       this.message = 'Hoooooooo, mauvaise réponse';
     }
     }
