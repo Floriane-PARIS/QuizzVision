@@ -85,7 +85,10 @@ export class GameService {
   addAnswer(game: Game, answer: Answer): void {
     const answerWrite = {answers: [answer]};
     const answerUrl = this.gameUrl + '/' + game.id ;
-    this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+    this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => {
+      this.gameSelected$.next(game);
+      this.retrieveGames();
+    });
   }
 
   addQuestion(game: Game, question: Question): void {
@@ -103,7 +106,7 @@ export class GameService {
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((gameList) => {
       this.gameQuestion = gameList;
       this.gameQuestion$.next(gameList);
-
+      this.retrieveGames();
     });
   }
 
@@ -129,7 +132,10 @@ export class GameService {
   updateGameQuestion(game: Game, question: Question): void {
     const questionWrite = {question: [question]};
     const questionUrl = this.gameUrl + '/' + game.id ;
-    this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
+    this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => {
+      this.gameSelected$.next(game);
+      this.retrieveGames();
+    });
   }
 
   updateScore(game: Game): void {

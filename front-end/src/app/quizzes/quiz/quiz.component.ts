@@ -38,7 +38,7 @@ export class QuizComponent implements OnInit {
     });
     this.gameService.games$.subscribe((games: Game[]) => {
       this.isAlreadyStart = false;
-      // console.log("GAME", games);
+      console.log("GAME", games.length);
       this.games = games;
     });
     /*this.quizService.quizSelected$.subscribe(quiz => this.quiz = quiz);*/
