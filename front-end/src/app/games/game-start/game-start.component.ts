@@ -28,15 +28,16 @@ export class GameStartComponent implements OnInit {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       console.log('gamQuiz', quiz);
+      // this.initializeGameForm(quiz);
       this.userService.userSelected$.subscribe((user) => {
         this.user = user;
-        console.log('gamUser', user);
+        console.log('gamUser1', user);
         this.initializeGameForm(quiz);
       });
     });
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      console.log('gamUser', user);
+      console.log('gamUser2', user);
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
