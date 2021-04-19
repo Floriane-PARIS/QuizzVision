@@ -41,7 +41,7 @@ export class ThemeService {
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < themeList.length; i++){
         // tslint:disable-next-line:triple-equals
-        if (themeList[i].subject == themeSubject){
+        if (themeList[i].subject.includes(themeSubject)){
           this.themes.push(themeList[i]);
         }
       }
