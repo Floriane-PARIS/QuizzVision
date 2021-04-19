@@ -8,6 +8,7 @@ import {Configuration} from '../../../models/configuration.model';
 import {max} from "rxjs/operators";
 import {User} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-game',
@@ -32,7 +33,7 @@ export class GameComponent implements OnInit {
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
     this.length = 0;
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
@@ -99,11 +100,13 @@ export class GameComponent implements OnInit {
   quitGame(): void {
     // this.gameService.deleteGame(this.game);
     this.gameService.setSelectedGame(undefined);
+    this.quizService.setSelectedQuiz(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser]);
   }
 
   backToQuizList(): void {
     this.gameService.setSelectedGame(undefined);
+    this.quizService.setSelectedQuiz(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser ]);
   }
 

@@ -97,10 +97,15 @@ export class QuizService {
   }
 
   setSelectedQuiz(quizId: string): void {
-    const urlWithId = this.quizUrl + '/' + quizId;
-    this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
-      this.quizSelected$.next(quiz);
-    });
+    if (quizId === undefined) {
+      // this.currentUser = undefined;
+      this.quizSelected$.next(undefined);
+    } else {
+      const urlWithId = this.quizUrl + '/' + quizId;
+      this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
+        this.quizSelected$.next(quiz);
+      });
+    }
   }
 
   nextQuestion(quiz: Quiz, question: Question): void{

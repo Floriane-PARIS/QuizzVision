@@ -5,6 +5,7 @@ import { UserService } from '../../../services/user.service';
 import {Quiz} from "../../../models/quiz.model";
 import {Router} from "@angular/router";
 import {Question} from "../../../models/question.model";
+import {QuizService} from "../../../services/quiz.service";
 
 @Component({
   selector: 'app-user-list',
@@ -20,7 +21,7 @@ export class UserListComponent implements OnInit {
 
   public userList: User[] = [];
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private quizService: QuizService) {
     this.editUserChose = '';
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
@@ -35,6 +36,7 @@ export class UserListComponent implements OnInit {
   }
 
   selectUser(user: User): void {
+    this.quizService.setSelectedQuiz(undefined);
     this.userService.setSelectedUser(user.id);
     this.userService.retrieveUsers();
     console.log('event received from child:', user.id);
