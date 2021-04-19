@@ -8,8 +8,9 @@
           Nom du thème:
           <input class="input-custom" type="text" id="subject" [formControlName]="'subject'">
         </p>
-
-    <button type="submit" class="button-card" (click)="addTheme()">Ajouter</button>
+        <span class="error" id="errorname"></span>
+        <br>
+        <button type="submit" class="button-card" (click)="addTheme()">Ajouter</button>
       </label>
     </h6>
   </form>

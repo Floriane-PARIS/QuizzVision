@@ -29,7 +29,6 @@ export class ThemeFormComponent implements OnInit {
     const themeToCreate: Theme = this.themeForm.getRawValue() as Theme;
     this.themeService.addTheme(themeToCreate);
     this.router.navigate(['/theme-list']);
-    
   }
 
   annule(): void {

@@ -49,8 +49,38 @@ export class ThemeService {
     });
   }
 
+  retrieveThemeSubject2(themeSubject: string): void {
+    this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
+      this.themes = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < themeList.length; i++){
+        // tslint:disable-next-line:triple-equals
+        if (themeList[i].subject == themeSubject){
+          this.themes.push(themeList[i]);
+          console.log(this.themes);
+        }
+      }
+      this.themes$.next(this.themes);
+    });
+  }
+
   addTheme(theme: Theme): void {
-    this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
+    let count = 0;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.themes.length; i++){
+      if (this.themes[i].subject === theme.subject){
+        count ++ ;
+      }
+    }
+    if (count > 0){
+      console.log(this.themes);
+      document.getElementById('errorname').innerHTML = 'thème exite déjà !';
+      this.retrieveThemes();
+    }
+    else{
+      this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => this.retrieveThemes());
+      document.getElementById('errorname').innerHTML = '';
+    }
   }
 
   setSelectedTheme(themeId: string): void {
