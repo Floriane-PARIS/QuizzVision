@@ -41,6 +41,11 @@ export class QuizFormComponent implements OnInit {
   addQuiz(): void {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+    console.log(quizToCreate);
+    if (quizToCreate.theme === '')
+    {
+      quizToCreate.theme = 'pas de thème';
+    }
     this.quizService.addQuiz(quizToCreate);
     this.router.navigate(['/quiz-list']);
   }
