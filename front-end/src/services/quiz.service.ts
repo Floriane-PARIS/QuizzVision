@@ -50,13 +50,27 @@ export class QuizService {
     });
   }
 
-  retrieveQuizzeName(quizName: string): void {
+  retrieveQuizzeName2(quizName: string): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < quizList.length; i++){
         // tslint:disable-next-line:triple-equals
         if (quizList[i].name == quizName){
+          this.quizzes.push(quizList[i]);
+        }
+      }
+      this.quizzes$.next(this.quizzes);
+    });
+  }
+
+  retrieveQuizzeName(quizName: string): void {
+    this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
+      this.quizzes = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < quizList.length; i++){
+        // tslint:disable-next-line:triple-equals
+        if (quizList[i].name.includes(quizName)){
           this.quizzes.push(quizList[i]);
         }
       }
