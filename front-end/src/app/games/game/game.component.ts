@@ -35,7 +35,6 @@ export class GameComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private userService: UserService) {
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
-      this.length = game.score;
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
@@ -105,7 +104,7 @@ export class GameComponent implements OnInit {
   }
 
   getResultat(){
-      return this.game.score +" / "+this.gameService.getLengthGame(this.game);
+      return this.game.score +" / "+this.length;
   }
 
   getBold(){
