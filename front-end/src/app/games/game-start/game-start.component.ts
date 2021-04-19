@@ -34,6 +34,10 @@ export class GameStartComponent implements OnInit {
         this.initializeGameForm(quiz);
       });
     });
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+      console.log('gamUser', user);
+    });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
       console.log('gamMe', configuration);
