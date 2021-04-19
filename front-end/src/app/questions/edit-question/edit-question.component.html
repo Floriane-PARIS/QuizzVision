@@ -7,7 +7,7 @@
     {{i}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
     <input type="checkbox" [(ngModel)] = "answer.isCorrect">
     <div *ngIf="question.answers.length > 2">
-      <button class="button-card" (click)="delete(answer)">Delete</button>
+      <button class="button-card" (click)="delete(answer)">Supprimer</button>
     </div>
     <br>
   </div>
@@ -22,9 +22,9 @@
     </div>
     </div>
     </div>
-    <button class="button-card" (click)="addAnswer()">Add an Answer</button>
+    <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
   </div>
-    <button class="button-card" (click)="edit()">Edit</button>
+    <button class="button-card" (click)="edit()">Modifier</button>
 </div>
 
 <!-- Uncomment below to see your form structure and how it changes-->
