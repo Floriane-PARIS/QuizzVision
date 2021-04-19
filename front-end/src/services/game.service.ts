@@ -114,6 +114,7 @@ export class GameService {
       if (index >= 0 ) {
         this.updateGameQuestion(game, this.getQuestionWithIndexInQuiz(index + 1, quiz));
       }
+      this.retrieveGames();
     });
   }
 

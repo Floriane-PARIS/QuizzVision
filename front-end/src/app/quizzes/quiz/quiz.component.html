@@ -10,7 +10,18 @@
       Nombre de Question : {{quiz.questions.length}}
     </h5>
     <div *ngIf="user != undefined">
+      <div *ngFor="let game of games;">
+        <div *ngIf="(game.quizId == quiz.id) && (game.userId == user.id) && (game.question[0] != null)">
+          {{alreadyStart()}}
+          <h5>Quiz en Cours :
+          <button class="button-card select" (click)="continueQuiz(game)">Continuer le Quiz</button>
+          <button class="button-card select" (click)="reDoQuiz(game)">Recommencer</button>
+          </h5>
+        </div>
+      </div>
+      <div *ngIf="!isAlreadyStart">
       <button class="button-card select" (click)="selectQuiz()">Jouer</button>
+      </div>
     </div>
     <div *ngIf="user == undefined">
       <button class="button-card" (click)="delete()">Supprimer</button>

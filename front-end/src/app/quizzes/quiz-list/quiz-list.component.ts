@@ -4,6 +4,7 @@ import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import {User} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";
+import {Game} from "../../../models/game.model";
 
 @Component({
   selector: 'app-quiz-list',
@@ -33,6 +34,11 @@ export class QuizListComponent implements OnInit {
   quizSelected(quiz: Quiz): void {
     console.log('event received from child:', quiz.id);
     this.router.navigate(['/game-start/' + this.user.id + '/' + quiz.id]);
+  }
+
+  gameSelected(game: Game): void {
+    console.log('event received from child:', game.id);
+    this.router.navigate(['/game/' + this.user.id + '/' + game.id]);
   }
 
   editQuiz(quiz: Quiz): void {
