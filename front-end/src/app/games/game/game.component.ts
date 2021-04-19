@@ -104,6 +104,10 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/quiz-list/' + this.idUser ]);
   }
 
+  getResultat(){
+      return this.game.score +" / "+this.gameService.getLengthGame(this.game);
+  }
+
   getBold(){
       if(this.configuration != undefined){
            return this.configuration.bold;

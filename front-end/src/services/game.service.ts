@@ -117,6 +117,14 @@ export class GameService {
     });
   }
 
+  getLengthGame(game: Game): number{
+      const quizUrl = this.quizUrl + '/' + game.quizId ;
+      this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
+        return quiz.questions.length;
+      });
+      return 0;
+  }
+
   updateGameQuestion(game: Game, question: Question): void {
     const questionWrite = {question: [question]};
     const questionUrl = this.gameUrl + '/' + game.id ;
