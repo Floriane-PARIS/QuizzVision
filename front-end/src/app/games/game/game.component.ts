@@ -97,7 +97,7 @@ export class GameComponent implements OnInit {
   }
 
   quitGame(): void {
-    this.gameService.deleteGame(this.game);
+    // this.gameService.deleteGame(this.game);
     this.gameService.setSelectedGame(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser]);
   }
