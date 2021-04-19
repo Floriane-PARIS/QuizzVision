@@ -1,4 +1,4 @@
-<div class="game" *ngIf="configuration !== undefined">
+<div class="game" *ngIf="(configuration !== undefined) && (user !== undefined)">
       <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
         <form [formGroup]="configurationForm" class="configuration">
             <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
@@ -51,7 +51,7 @@
                     <label for="decalage"> <br> Décalage </label>
                     <div class="range">
                       <span class= "value">centre</span>
-                      <input type="range" id="shift" min="{{min}}" max="{{max}}" value="{{min}}" [formControlName]="'shift'">
+                      <input type="range" id="shift" min="{{min}}" max="{{max}}" value="100" [formControlName]="'shift'">
                       <span class= "value">bordure</span>
                     </div>
                   </div>

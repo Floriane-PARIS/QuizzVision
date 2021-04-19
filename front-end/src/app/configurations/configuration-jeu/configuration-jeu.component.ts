@@ -23,20 +23,17 @@ export class ConfigurationJeuComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      if (this.user.maladies === 'DMLA'){
-        this.max = 30;
-        this.min = 0;
-      }else if (this.user.maladies === 'Glaucome'){
-        this.max = 30;
-        this.min = 0;
-      }else{
-        this.max = 30;
-        this.min = 0;
-      }
       this.userService.configurationNext$.subscribe((configuration) => {
         this.configuration = configuration;
-        this.shift();
         if (this.configuration !== undefined) {
+          if (this.configuration.handicap === 'Glaucome'){
+            this.max = this.configuration.shift + 1 + (this.configuration.shift * 10 / 100);
+            this.min = 0;
+          }else{
+            this.max = 60;
+            this.min = 0;
+          }
+          this.shift();
           this.configurationForm = this.formBuilder.group({
             handicap: [this.configuration.handicap],
             bold: [this.configuration.bold],
