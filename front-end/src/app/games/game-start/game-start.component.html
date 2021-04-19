@@ -1,5 +1,5 @@
 <!--button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button-->
-<ng-container *ngIf="quiz">
+<ng-container *ngIf="quiz && (configuration !== undefined)">
   <div class="start">
     <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
       <br>
@@ -9,5 +9,8 @@
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="addGame()">Commencer</button>
     </div>
   </div>
+</ng-container>
 
+<ng-container *ngIf="(configuration === undefined)">
+  Vous devez choisir une Configuration pour le Patient, dans la rubrique "Ma Configuration"
 </ng-container>

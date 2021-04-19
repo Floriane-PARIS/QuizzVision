@@ -181,6 +181,7 @@ export class UserService {
       // console.log('add', configurationPut);
       // this.configurationNext$.next(configurationPut);
       this.setSelectedUser(user.id);
+      this.retrieveUsers();
      });
     // this.currentConfiguration = configuration;
     // this.currentUser = user;
