@@ -1,4 +1,7 @@
 @import '../../../styles/card.scss';
+@import '../../games/game/game.component.scss';
+@import '../../questions/game-question/game-question.component.scss';
+@import '../../games/game-result/game-result.component.scss';
 
 .start {
   font-size: 30px;

@@ -1,15 +1,17 @@
 <!--button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button-->
-<ng-container *ngIf="quiz && (configuration !== undefined)">
-  <div class="start">
-    <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+<div class="game" *ngIf="quiz && (configuration !== undefined)">
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
       <br>
-      <h1>Vous avez choisi le Quiz "{{quiz.name}}"
+      Vous avez choisi le Quiz "{{quiz.name}}"
         <br>
-        dans le theme "{{quiz.theme}}"</h1>
+        dans le theme "{{quiz.theme}}"
+    </div>
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="addGame()">Commencer</button>
     </div>
   </div>
-</ng-container>
+</div>
 
 <ng-container *ngIf="(configuration === undefined)">
   Vous devez choisir une Configuration pour le Patient, dans la rubrique "Ma Configuration"
