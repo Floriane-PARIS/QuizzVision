@@ -41,9 +41,9 @@
 
         Handicap
           <select name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
-            <option *ngFor="let user of users" [value]="user.maladies">
-              {{user.maladies}}
-            </option>
+            <option value = "Autres">Autres</option>
+            <option value = "DMLA">DMLA</option>
+            <option value = "Glaucome">Glaucome</option>
           </select>
       </label>
       <br>
