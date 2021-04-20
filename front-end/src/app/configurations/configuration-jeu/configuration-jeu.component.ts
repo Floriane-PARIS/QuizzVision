@@ -4,6 +4,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
 import {Configuration} from '../../../models/configuration.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {GameService} from "../../../services/game.service";
+import {QuizService} from "../../../services/quiz.service";
+import {Game} from "../../../models/game.model";
 
 @Component({
   selector: 'app-configuration-jeu',
@@ -13,14 +16,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ConfigurationJeuComponent implements OnInit {
 
   public user: User;
-  public gameId: string;
+  public game: Game;
   public configuration: Configuration;
   public root = document.documentElement;
   public configurationForm: FormGroup;
   public max: number;
   public min: number;
 
-  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService, private gameService: GameService, private quizService: QuizService) {
+    this.gameService.gameSelected$.subscribe((game) => {
+      this.game = game;
+    });
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
       this.userService.configurationNext$.subscribe((configuration) => {
@@ -72,7 +78,8 @@ export class ConfigurationJeuComponent implements OnInit {
   ngOnInit(): void {
     const idUser = this.route.snapshot.paramMap.get('idUser');
     this.userService.setSelectedUser(idUser);
-    this.gameId = this.route.snapshot.paramMap.get('id');
+    const idGame = this.route.snapshot.paramMap.get('id');
+    this.gameService.setSelectedGame(idGame);
   }
 
   shift(): void {
@@ -81,7 +88,8 @@ export class ConfigurationJeuComponent implements OnInit {
   }
 
   backToGame(): void {
-    this.router.navigate(['/game/' + this.user.id + '/' + this.gameId]);
+    this.quizService.setSelectedQuiz(this.game.quizId);
+    this.router.navigate(['/game/' + this.user.id + '/' + this.game.id]);
   }
 
   getBold(){
