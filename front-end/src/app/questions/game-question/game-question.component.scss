@@ -43,8 +43,13 @@
 }
 
 .game-question-border {
-  display: flex;
-  width: calc(100% - var(--slider) * 1%);
+ // display: flex;
+ margin: auto;
+ padding: 10px;
+  //width: calc(100% - var(--slider) * 1%);
+  width: 25cm;
+  word-wrap: break-word;
+
 
   // border: 5px solid cadetblue;
 }
