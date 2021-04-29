@@ -15,7 +15,25 @@
     <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
 <br>
     <label for="size">Taille du texte </label>
-      <input class="input-custom" type="number" id="size" name="police-size" min="26" max="60" value = "14" step = "4" [formControlName]="'size'">
+      <div *ngIf="configuration.handicap == 'DMLA' && configuration.shift<=37">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="56" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <div *ngIf="configuration.handicap == 'DMLA' && configuration.shift>37 ">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="30" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <div *ngIf="configuration.handicap == 'Glaucome' && configuration.shift<=37">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="30" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <div *ngIf="configuration.handicap == 'Glaucome' && configuration.shift>37 ">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="56" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <div *ngIf="configuration.handicap == 'Autres' && configuration.shift<=37">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="30" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <div *ngIf="configuration.handicap == 'Autres' && configuration.shift>37 ">
+        <input class="input-custom" type="number" id="size" name="police-size" min="26" max="56" value = "14" step = "2" [formControlName]="'size'">
+      </div>
+      <!--input class="input-custom" type="number" id="size" name="police-size" min="26" max="60" value = "14" step = "4" [formControlName]="'size'"-->
 
     <label for="police"> <br>Police du texte  </label>
       <select id = "police" name="police" [formControlName]="'police'">
