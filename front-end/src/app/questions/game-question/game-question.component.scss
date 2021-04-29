@@ -9,6 +9,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  word-wrap: break-word;
 
    // border: 5px solid red;
 }
@@ -17,6 +18,7 @@
   height: 100%;
   width: 100%;
   flex-direction: column;
+  word-wrap: break-word;
 }
 
 .game-answer-center {
