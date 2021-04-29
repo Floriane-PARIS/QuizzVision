@@ -3,7 +3,7 @@
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
       Question :
-      <textarea matInput class="text" type="text" id="label" placeholder="Pas plus de 5 mots par ligne!" [formControlName]="'label'"></textarea>
+      <textarea matInput class="text" type="text" id="label" placeholder="Pas plus de 5 mots par ligne!" maxlength="86" aria-placeholder="Vous avez un maximum de 86 caractères" [formControlName]="'label'"></textarea>
       <br>
     </label>
     <br>
