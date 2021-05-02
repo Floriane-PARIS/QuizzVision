@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: 350px 350px 350px;
   text-align: center;
+  background: transparent;
 }
   
 .button-card {
@@ -16,7 +17,7 @@
   line-height:10px;
   text-align:center;
   vertical-align:middle;
-  background:rgba(23, 126, 3, 0.623);;
+  background:rgba(23, 126, 3, 0.623);
   color:white;
   text-decoration:none;
   border-radius: 0.3cm;
@@ -30,7 +31,7 @@
   $thick : 3px;
   $pad : 0.7em;
   $extra : calc(#{$pad} * 1.2);
-  $color :rgba(219, 206, 15, 0.623);
+  $color :rgba(23, 126, 3, 0.623);
   
   
   .portfolio-experiment {
@@ -162,3 +163,4 @@
   
     }
   }
+

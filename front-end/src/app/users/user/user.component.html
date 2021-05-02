@@ -4,15 +4,16 @@
         {{user.firstName}} {{user.lastName}}
 
     </h2>
-    <h4 p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: small;">
-        <p style="text-decoration: underline; font-style: italic;"> Souffre du trouble: </p>{{user.maladies}}
-        <p style="text-decoration: underline; font-style: italic;"> A savoir sur le patient: </p>{{user.commentaires}}
-        <p style="text-decoration: underline; font-style: italic;"> Age du patient </p>{{user.age}}
-
-
+    <h4>
+        Souffre du trouble: {{user.maladies}}
+        <br>
+        A savoir sur le patient: {{user.commentaires}}
+        <br>
+        Age du patient: {{user.age}}
     </h4>
-    <button class="button-card" (click)="delete()">Supprimer</button>
-    <button class="button-card edit" (click)="edit()">Modifier</button>
-    <button class="button-card select" (click)="select()">Selectionner</button>
+    
+    <button class="button-card draw-border" (click)="delete()">Supprimer</button>
+    <button class="button-card draw-border edit" (click)="edit()">Modifier</button>
+    <button class="button-card draw-border select" (click)="select()">Selectionner</button>
 </div>
 
