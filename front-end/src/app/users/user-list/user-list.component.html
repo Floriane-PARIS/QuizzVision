@@ -1,8 +1,17 @@
 <div *ngIf="user == undefined">
 <app-user-search></app-user-search>
 </div>
-<button type="submit" class="button-card" (click)="ajoutPatient()" p style=" position: absolute; top: 8.5cm;"><h2 > <i class="fas fa-user-plus">Ajouter un nouveau patient</i></h2>
+<button type="submit" class="button-card1" (click)="ajoutPatient()" p style=" position: absolute; top: 2cm;"><h2 >
+  <section class="portfolio-experiment"><a>
+    <span class="text"><i class="fas fa-user-plus"></i></span>
+    <span class="line -right"></span>
+    <span class="line -top"></span>
+    <span class="line -left"></span>
+    <span class="line -bottom"></span>
+  </a></section>
+</h2>
 </button>
+
 
 <div class="user-list" p style=" position:absolute; top: 10cm;">
     <div class="user" *ngFor="let user of userList">
