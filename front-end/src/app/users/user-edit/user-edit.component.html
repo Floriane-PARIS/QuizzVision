@@ -1,6 +1,5 @@
 <div class="card">
   <h2 >
-    <i class="fas fa-user"></i>
     <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.firstName" [ngModelOptions]="{standalone: true}">
     <input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.lastName" [ngModelOptions]="{standalone: true}">
 
@@ -14,9 +13,6 @@
     <p style="text-decoration: underline; font-style: italic;"> A savoir sur le patient: </p><input class="input-custom" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.commentaires" [ngModelOptions]="{standalone: true}">
 
     <p style="text-decoration: underline; font-style: italic;"> Age du patient </p><input class="input-custom" type="number" ng-init="'nous" name="fre" [(ngModel)] = "user.age" [ngModelOptions]="{standalone: true}">
-
-
-
   </h4>
   <br>
   <button class="button-card select" (click)="edit()">Modifier</button>

@@ -21,6 +21,7 @@ export class UserFormComponent implements OnInit {
       maladies: [''],
       commentaires:[''],
       age : [''],
+      //photo: [''],
     });
   }
 

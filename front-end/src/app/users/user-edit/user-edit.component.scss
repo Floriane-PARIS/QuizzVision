@@ -1,10 +1,104 @@
 @import '../../../styles/card.scss';
 
-.button-card{
+/*.button-card{
     display: table-cell;
   font-size: 14px;
   margin-left: 8px;
   min-width: 120px;
   border-radius: 0.3cm;
   border-width: 0.08cm;
+}*/
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+.card {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Baloo Paaji 2', cursive;
+}
+
+.card {
+  background: rgba(23, 126, 3, 0.623);
+  border: transparent;
+  height: max-content;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: transparent;
+  color: white;
+}
+
+.draw-border {
+  box-shadow: inset 0 0 0 4px rgba(23, 126, 3, 0.623);
+  color: rgba(23, 126, 3, 0.623);
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+}
+
+.draw-border::before,
+.draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0rem;
+  height: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.draw-border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.draw-border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw-border:hover {
+  color: rgba(145, 6, 87, 0.623);
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+  border-color: rgba(145, 6, 87, 0.623);
+  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+.draw-border:hover::before {
+  -webkit-transition-delay: 0s, 0s, 0.25s;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+  -webkit-transition-delay: 0s, 0.25s, 0s;
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.button-card {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  //line-height: 1;
+  font: 7 0.8rem 'Roboto Slab', sans-serif;
+  padding: 0.75em 1em;
+  letter-spacing: 0.05rem;
+  margin: 0em;
+  width: 9rem;
+}
+
+.button-card:focus {
+  outline: 2px dotted white;
 }
