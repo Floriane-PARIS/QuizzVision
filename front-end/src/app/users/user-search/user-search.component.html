@@ -1,10 +1,10 @@
 
 <div class="card" p style="text-align: right; position: absolute;  left: 29.5cm;">
-    <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filter par nom</h5>
     <form class="user-search">
       <h6>
       <label for="title">Prenom
           <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
+          <button type="submit" class="button-card" (click)="searchUserName()"></button>
 
         Prenom
           <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
@@ -25,19 +25,19 @@
         </select>
     </label>
       <br>
-      <button type="submit" class="button-card" (click)="searchUserName()">Filtrer</button>
+      
     </h6>
 
   </form>
-  <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
+  <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
 </div>
 
 <div class="card" p style="text-align: right; position: absolute;  left: 17.5cm;">
-  <h5 p style="font-family: cursive; color: rgb(107, 16, 100);">Filtrer par trouble</h5>
   <form class="user-search">
     <h6>
       <label for="title">Handicap
           <input class="input-custom" type="text" id="maladies" [(ngModel)] = "userTroubles" [ngModelOptions]="{standalone: true}">
+          <button type="submit" class="button-card" (click)="searchUserTroubles()"></button>
 
         Handicap
           <select name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
@@ -47,9 +47,10 @@
           </select>
       </label>
       <br>
-      <button type="submit" class="button-card" (click)="searchUserTroubles()">Filtrer</button>
+      
     </h6>
   </form>
-    <button type="submit" class="button-card" (click)="annule()">Tous les patients</button>
+    <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
   </div>
 
+  
