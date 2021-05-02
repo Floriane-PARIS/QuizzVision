@@ -1,43 +1,46 @@
 
-<div class="card" p style="text-align: right; position: absolute;  left: 29.5cm;">
+<div class="card" p style="text-align: right; position: absolute;  left: 21.5cm;">
     <form class="user-search">
       <h6>
-      <label for="title">Prenom
-          <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
-          <button type="submit" class="button-card" (click)="searchUserName()"></button>
-
-        Prenom
-          <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
-            <option *ngFor="let user of users" [value]="user.firstName">
-              {{user.firstName}}
+        <label for="title"> Nom
+          <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
+        
+        Nom
+          <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
+            <option *ngFor="let user of users" [value]="user.lastName">
+              {{user.lastName}}
             </option>
           </select>
       </label>
+     
       <br>
-      <label for="title">Nom
-        <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
-
-      Nom
-        <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
-          <option *ngFor="let user of users" [value]="user.lastName">
-            {{user.lastName}}
+      <label for="title">Prenom
+        <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
+        <button type="submit" class="button-card" (click)="searchUserName()"></button>
+      Prenom
+        <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
+          <option *ngFor="let user of users" [value]="user.firstName">
+            {{user.firstName}}
           </option>
         </select>
+          
+        <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
     </label>
       <br>
       
     </h6>
 
   </form>
-  <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
 </div>
 
-<div class="card" p style="text-align: right; position: absolute;  left: 17.5cm;">
+<div class="card" p style="text-align: right; position: absolute;  left: 8.5cm;">
   <form class="user-search">
     <h6>
       <label for="title">Handicap
           <input class="input-custom" type="text" id="maladies" [(ngModel)] = "userTroubles" [ngModelOptions]="{standalone: true}">
           <button type="submit" class="button-card" (click)="searchUserTroubles()"></button>
+          <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
+          <br>
 
         Handicap
           <select name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
@@ -50,7 +53,6 @@
       
     </h6>
   </form>
-    <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
   </div>
 
   

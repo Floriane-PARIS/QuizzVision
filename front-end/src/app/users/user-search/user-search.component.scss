@@ -1,12 +1,12 @@
 @import '../../../styles/card.scss';
 
-* {
+/* {
     font-family: 'Josefin Sans' , sans-serif;
     box-sizing: border-box;
     margin: 10;
     padding: 50;
     text-align:left;
-}
+}*/
 
 .button-card{
    /* display: table-cell;
@@ -40,7 +40,7 @@ display: table-cell;
   }
 
 .card input[type= "text"] {
-  background: url(http://2.bp.blogspot.com/-xpzxYc77ack/VDpdOE5tzMI/AAAAAAAAAeQ/TyXhIfEIUy4/s1600/search-dark.png) no-repeat 10px 13px #f2f2f2;
+  background: url(http://2.bp.blogspot.com/-xpzxYc77ack/VDpdOE5tzMI/AAAAAAAAAeQ/TyXhIfEIUy4/s1600/search-dark.png) no-repeat 10px 13px white;
   border: 2px solid #f2f2f2;
   font: bold 12px Arial,Helvetica,Sans-serif;
   color: #6A6F75;
@@ -57,7 +57,10 @@ transition: all 0.7s ease 0s;
 }
 
 .card {
-  width: 280px;
+  width: 440px;
+  background: transparent ;
+  border-color: transparent;
+  box-shadow: none;
   }
  .card input {
   outline: none;
