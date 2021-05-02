@@ -15,15 +15,15 @@ import { UserService } from "src/services/user.service";
     styleUrls: ['./resultat-list.component.scss']
   })
   export class ResultatListComponent implements OnInit {
-    
+
     public users: User[];
     public resultatList: FormGroup;
     public quizzes: Quiz[];
     public games: Game[];
     public length: number;
     public game:  Game;
-    
- 
+
+
 
     constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService) {
         this.resultatList = this.formBuilder.group({
@@ -46,9 +46,15 @@ import { UserService } from "src/services/user.service";
           this.game = game;
           this.length = game.score;
         });
-        
+
     }
   ngOnInit(): void {
-  } 
+  }
+
+  dateGame(gameDate: Date): Date {
+      const date = new Date(gameDate);
+      console.log('date');
+      return date;
+  }
 
 }

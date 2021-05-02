@@ -23,7 +23,9 @@
                         <tr>
                             <td>{{user.firstName}} {{user.lastName}}</td>
                             <td>{{user.maladies}}</td>
-                            <td>{{game.date}}</td>
+                            <td>{{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
+                                {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
+                            </td>
                             <td>{{quiz.name}}</td>
                             <td>{{game.score}} / {{quiz.questions.length}} </td>
                         </tr>
