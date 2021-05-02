@@ -7,4 +7,5 @@ module.exports = new BaseModel('Game', {
   question: Joi.array(),
   answers: Joi.array(),
   score: Joi.number(),
+  date: Joi.date(),
 })

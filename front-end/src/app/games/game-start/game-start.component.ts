@@ -68,12 +68,19 @@ export class GameStartComponent implements OnInit {
         userId: [this.user.id],
         quizId: [quiz.id],
         question: [[quiz.questions[0]]],
-        score: [quiz.questions.length]
+        score: [quiz.questions.length],
+        date: [this.currentDate()],
       });
     }
   }
 
+  currentDate(): Date {
+    const currentDate = new Date();
+    return currentDate;
+  }
+
   addGame(): void {
+    console.log(this.gameForm.getRawValue());
     const gameToCreate = this.gameForm.getRawValue() as Game;
     this.gameService.addGame(gameToCreate);
   }
