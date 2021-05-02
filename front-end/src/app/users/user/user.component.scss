@@ -18,7 +18,7 @@
 .card {
   display: grid;
   grid-template-columns: 300px 300px 300px;
-  grid-gap: 50px;
+  grid-gap: 5px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -26,24 +26,24 @@
 }
 
 .card {
-  background: transparent;
+  background: rgba(23, 126, 3, 0.623);
   border: transparent;
-  height: 37rem;
+  height: max-content;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: transparent;
-  color: black;
+  color: white;
 }
 
 .card__image {
   height: 160px;
   width: 160px;
   border-radius: 50%;
-  border: 5px solid #272133;
+  border: 5px  white;
   margin-top: 20px;
-  box-shadow: 0 10px 50px rgba(23, 126, 3, 0.623);
+  box-shadow: 0 10px 50px rgba(145, 6, 87, 0.623);
 }
 
 
@@ -105,8 +105,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  line-height: 1;
-  font: 70 0.8rem 'Roboto Slab', sans-serif;
+  //line-height: 1;
+  font: 7 0.8rem 'Roboto Slab', sans-serif;
   padding: 0.75em 1em;
   letter-spacing: 0.05rem;
   margin: 0em;
@@ -114,5 +114,5 @@
 }
 
 .button-card:focus {
-  outline: 2px dotted rgba(23, 126, 3, 0.623);
+  outline: 2px dotted white;
 }

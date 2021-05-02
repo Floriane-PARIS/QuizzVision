@@ -1,17 +1,19 @@
 <div class="card">
     <h2 >
-        <i class="fas fa-user"></i>
+        <img src="https://lh3.googleusercontent.com/ytP9VP86DItizVX2YNA-xTYzV09IS7rh4WexVp7eilIcfHmm74B7odbcwD5DTXmL0PF42i2wnRKSFPBHlmSjCblWHDCD2oD1oaM1CGFcSd48VBKJfsCi4bS170PKxGwji8CPmehwPw=w200-h247-no" alt="Person" class="card__image">
+        <br>
+        <br>
         {{user.firstName}} {{user.lastName}}
 
     </h2>
     <h4>
-        Souffre du trouble: {{user.maladies}}
+        Souffre du trouble: <br> {{user.maladies}}
         <br>
-        A savoir sur le patient: {{user.commentaires}}
+        A savoir sur le patient: <br> {{user.commentaires}}
         <br>
-        Age du patient: {{user.age}}
+        Age du patient: <br>{{user.age}}
     </h4>
-    
+
     <button class="button-card draw-border" (click)="delete()">Supprimer</button>
     <button class="button-card draw-border edit" (click)="edit()">Modifier</button>
     <button class="button-card draw-border select" (click)="select()">Selectionner</button>
