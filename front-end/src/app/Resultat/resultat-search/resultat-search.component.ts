@@ -23,6 +23,7 @@ export class ResultatSearchComponent implements OnInit {
   public gameDateDay: number;
   public quizName: string;
   public gameNote: number;
+  public gameNoteOperation: number;
   public users: User[];
   public quizzes: Quiz[];
   public games: Game[];
@@ -46,6 +47,7 @@ export class ResultatSearchComponent implements OnInit {
     this.gameDateDay = 0;
     this.quizName = '';
     this.gameNote = 0;
+    this.gameNoteOperation = 0;
   }
 
   ngOnInit(): void {
@@ -96,10 +98,15 @@ export class ResultatSearchComponent implements OnInit {
     this.gameDateDay = 0;
   }
 
+  allQuizzes(): void {
+    this.quizService.retrieveQuizzes();
+    this.quizName = '';
+  }
+
   annule(): void {
     this.allUsers();
-    this.userService.retrieveUsers();
-    this.quizName = '';
+    this.allGames();
+    this.allQuizzes();
   }
 
   dateGame(gameDate: Date): Date {

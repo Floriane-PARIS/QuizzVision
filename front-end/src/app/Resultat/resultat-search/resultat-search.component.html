@@ -84,21 +84,27 @@
             {{quiz.name}}
           </option>
         </select>
-    <button type="submit" class="button-card" (click)="searchQuizName()">Rechercher</button>
+      <br>
+      <button type="submit" class="button-card" (click)="searchQuizName()">Rechercher</button>
+     <button type="submit" class="button-card" (click)="allQuizzes()">Tous les quiz</button>
     </label>
-    <br>
+      <br>
+      <br>
 
-    <label for="gameNote">
-      Note
+      <label for="gameNote">
+        Score du Quiz
+        <select name="user-field" id="note" [(ngModel)] = "gameNoteOperation">
+          <option value = 0> égale </option>
+          <option value = 1 > superieure </option>
+          <option value = 2 > inférieure </option>
+        </select>
+        à :
         <select name="theme-field" id="theme" [(ngModel)] = "gameNote">
           <option *ngFor="let game of games" [value]="game.score">
             {{game.score}}
           </option>
         </select>
-    <button type="submit" class="button-card"  (click)="searchGameNote()"> Rechercher</button>
-    </label>
-    <br>
-  <button type="submit" class="button-card" (click)="annule()">Tous les quiz</button>
+      </label>
     </h6>
   </form>
 </div>
