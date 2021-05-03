@@ -14,7 +14,8 @@ import {Game} from "../../../models/game.model";
   styleUrls: ['./resultat-search.component.scss']
 })
 export class ResultatSearchComponent implements OnInit {
-  public userName: string;
+  public userFName: string;
+  public userLName: string;
   public userHandicap: string;
   public date: Date;
   public quizName: string;
@@ -33,7 +34,8 @@ export class ResultatSearchComponent implements OnInit {
     this.gameService.games$.subscribe((games: Game[]) => {
       this.games = games;
     });
-    this.userName = '';
+    this.userFName = '';
+    this.userLName = '';
     this.userHandicap = '';
     this.date = new Date();
     this.quizName = '';
@@ -48,17 +50,28 @@ export class ResultatSearchComponent implements OnInit {
     this.quizService.retrieveQuizzeName(quizToSearch);
   }
 
-  searchQuizNote(): void {
+  searchUserName(): void {
+    const userToSearch1: string = this.userFName as string;
+    const userToSearch2: string = this.userLName as string;
+    this.userService.retrieveUserName(userToSearch1, userToSearch2);
+  }
+
+  searchGameNote(): void {
     const gameToSearch: number = this.gameNote as number;
     this.gameService.retrieveGameNote(gameToSearch);
   }
 
+  allUsers(): void {
+    this.userService.retrieveUsers();
+    this.userFName = '';
+    this.userLName = '';
+    this.userHandicap = '';
+  }
+
   annule(): void {
-    this.quizService.retrieveQuizzes();
+    this.allUsers();
     this.userService.retrieveUsers();
     this.gameService.retrieveGames();
-    this.userName = '';
-    this.userHandicap = '';
     this.date = new Date();
     this.quizName = '';
     this.gameNote = 0;

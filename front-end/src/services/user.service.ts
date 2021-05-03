@@ -60,7 +60,9 @@ export class UserService {
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < userList.length; i++){
         // tslint:disable-next-line:triple-equals
-        if (userList[i].firstName === userFName && userList[i].lastName === userLName){
+        if ((userList[i].firstName === userFName && userList[i].lastName === userLName)
+        || (userList[i].firstName === userFName && '' === userLName)
+          || ('' === userFName && userList[i].lastName === userLName)) {
          // this.res.push(userList[i]);
           this.users.push(userList[i]);
           console.log(userList[i]);

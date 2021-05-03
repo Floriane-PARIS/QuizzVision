@@ -3,10 +3,37 @@
   <form class="quiz-search">
   <h4 p style="font-family: cursive;">Trier les Résultats</h4>
     <h6>
-    <label for="userName">
+        <label for="title">
+          Nom du Patient
+          <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
+          <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
+            <option *ngFor="let user of users" [value]="user.lastName">
+              {{user.lastName}}
+            </option>
+          </select>
+        </label>
+        <br>
+
+        <label for="title">
+          Prenom du Patient
+          <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
+          <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
+            <option *ngFor="let user of users" [value]="user.firstName">
+              {{user.firstName}}
+            </option>
+          </select>
+          <br>
+          <button type="submit" class="button-card" (click)="searchUserName()">Rechercher Patient</button>
+          <button type="submit" class="button-card" (click)="allUsers()">Tous les Patient</button>
+
+        </label>
+      <br>
+      <br>
+
+    <label for="quizName">
       Nom du Quiz
-        <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
-        <select name="quiz-field" id="name2" [(ngModel)] = "quizName">
+        <input class="input-custom" type="text" id="quizName" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+        <select name="quiz-field" id="quizName1" [(ngModel)] = "quizName">
           <option *ngFor="let quiz of quizzes" [value]="quiz.name">
             {{quiz.name}}
           </option>
@@ -14,18 +41,19 @@
     <button type="submit" class="button-card" (click)="searchQuizName()">Rechercher</button>
     </label>
     <br>
-    <label for="theme">
-      Theme
+
+    <label for="gameNote">
+      Note
         <select name="theme-field" id="theme" [(ngModel)] = "gameNote">
           <option *ngFor="let game of games" [value]="game.score">
             {{game.score}}
           </option>
         </select>
-    <button type="submit" class="button-card"  (click)="searchQuizNote()"> Rechercher</button>
+    <button type="submit" class="button-card"  (click)="searchGameNote()"> Rechercher</button>
     </label>
     <br>
   <button type="submit" class="button-card" (click)="annule()">Tous les quiz</button>
-  </h6>
+    </h6>
   </form>
 </div>
 
