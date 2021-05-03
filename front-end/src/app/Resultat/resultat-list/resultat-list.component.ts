@@ -53,7 +53,6 @@ import { UserService } from "src/services/user.service";
 
   dateGame(gameDate: Date): Date {
       const date = new Date(gameDate);
-      console.log('date');
       return date;
   }
 

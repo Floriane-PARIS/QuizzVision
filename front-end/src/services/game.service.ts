@@ -67,19 +67,14 @@ export class GameService {
     });
   }
 
-  retrieveGameDate(dateOperation: number, dateYear: number, dateMonth: number, dateDay: number): void {
+  retrieveGameDate(isDateEqual: boolean, dateYear: number, dateMonth: number, dateDay: number): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < gameList.length; i++){
         const date = new Date(gameList[i].date);
-        console.log(gameList[i]);
-        console.log(dateYear);
-        console.log(date.getFullYear());
-        // @ts-ignore
-        console.log(dateYear == date.getFullYear());
-        if (((dateOperation === 0) && (this.isGameDateIsParametre(gameList[i], dateYear, dateMonth, dateDay)))
-        || ((dateOperation === 1) && (this.isGameDateMoreThanParametre(gameList[i], dateYear, dateMonth, dateDay)))){
+        if (((isDateEqual) && (this.isGameDateIsParametre(gameList[i], dateYear, dateMonth, dateDay)))
+        || ((isDateEqual.toString() === 'false') && (this.isGameDateMoreThanParametre(gameList[i], dateYear, dateMonth, dateDay)))){
           this.games.push(gameList[i]);
         }
       }
