@@ -6,6 +6,7 @@ import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import {Answer, Question} from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Game} from '../models/game.model';
+import {Theme} from "../models/Theme.model";
 
 @Injectable({
   providedIn: 'root'
@@ -161,6 +162,12 @@ export class QuizService {
   addAnswer(quiz: Quiz, questionId: string, answer: Answer): void {
     const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + questionId + '/' + this.answersPath ;
     this.http.post<Answer>(answerUrl, answer, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
+  renameQuiz(quiz: Quiz, newNameQuiz: string): void {
+    const newName = {name: newNameQuiz, id: quiz.id};
+    const urlWithId = this.quizUrl + '/' + quiz.id;
+    this.http.put<Quiz>(urlWithId, newName, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
   // recuperer l'id de la question
