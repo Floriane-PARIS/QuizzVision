@@ -67,6 +67,46 @@ export class GameService {
     });
   }
 
+  retrieveGameDate(dateOperation: number, dateYear: number, dateMonth: number, dateDay: number): void {
+    this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
+      this.games = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < gameList.length; i++){
+        const date = new Date(gameList[i].date);
+        console.log(gameList[i]);
+        console.log(dateYear);
+        console.log(date.getFullYear());
+        // @ts-ignore
+        console.log(dateYear == date.getFullYear());
+        if (((dateOperation === 0) && (this.isGameDateIsParametre(gameList[i], dateYear, dateMonth, dateDay)))
+        || ((dateOperation === 1) && (this.isGameDateMoreThanParametre(gameList[i], dateYear, dateMonth, dateDay)))){
+          this.games.push(gameList[i]);
+        }
+      }
+      this.games$.next(this.games);
+    });
+  }
+
+  isGameDateIsParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+    const date = new Date(game.date);
+    if ((date.getFullYear() == dateYear)
+      && (date.getMonth() == dateMonth)
+      && (date.getDay() == dateDay)) {
+      return true;
+    }
+    return false;
+  }
+
+  isGameDateMoreThanParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+    const date = new Date(game.date);
+    if ((date.getFullYear() > dateYear)
+      || (date.getMonth() > dateMonth)
+      || (!(date.getFullYear() < dateYear) && !(date.getMonth() < dateMonth) && !(date.getDay() < dateDay))) {
+      return true;
+    }
+    return false;
+  }
+
   islastGame(): string {
     console.log('log:', this.games.length);
     if (this.games.length < 1) {
@@ -200,18 +240,18 @@ export class GameService {
     console.log('index', ind);
     const indexNext = ind + 2 ;
     console.log('nextindex', indexNext);
-    if(this.gameQuiz.questions.length > indexNext){
+    if (this.gameQuiz.questions.length > indexNext){
     const nextQuestionId = this.gameQuiz.questions[indexNext].id;
     console.log(nextQuestionId);
     const questionWrite = {questions: [this.nextQuestion]};
     console.log(this.nextQuestion);
-    const questionUrl = this.quizUrl + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' +nextQuestionId ;
+    const questionUrl = this.quizUrl + '/' + this.gameQuiz.id + '/' + this.questionsPath + '/' + nextQuestionId ;
     this.http.get<Question>(questionUrl, this.httpOptions).subscribe((question) => {
       console.log(this.gameQuestion);
       this.gameQuestion = question;
       this.gameQuestion$.next(question);
     });
-    console.log("on change de question");
+    console.log('on change de question');
     this.http.put<Game>(this.gameUrl + '/' + game.id, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
     }
   }

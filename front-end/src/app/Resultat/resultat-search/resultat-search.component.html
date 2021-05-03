@@ -46,7 +46,12 @@
       <br>
 
       <label for="date">
-        Quiz fait le : Année
+        Quiz
+        <select name="user-field" id="date" [(ngModel)] = "gameDateOperation">
+          <option value = 0> fait le </option>
+          <option value = 1> fait à partir du </option>
+        </select>
+        : Année
         <select name="user-field" id="dateYears" [(ngModel)] = "gameDateYear">
           <option *ngFor="let game of games" [value]="dateGame(game.date).getFullYear()">
             {{dateGame(game.date).getFullYear()}}

@@ -18,6 +18,7 @@ export class ResultatSearchComponent implements OnInit {
   public userLName: string;
   public userHandicap: string;
   public gameDateYear: number;
+  public gameDateOperation: number;
   public gameDateMonth: number;
   public gameDateDay: number;
   public quizName: string;
@@ -40,6 +41,7 @@ export class ResultatSearchComponent implements OnInit {
     this.userLName = '';
     this.userHandicap = '';
     this.gameDateYear = 0;
+    this.gameDateOperation = 0;
     this.gameDateMonth = 0;
     this.gameDateDay = 0;
     this.quizName = '';
@@ -72,10 +74,11 @@ export class ResultatSearchComponent implements OnInit {
   }
 
   searchGameDate(): void {
-    const gameToSearchYear: number = this.gameDateYear as number;
-    const gameToSearchMonth: number = this.gameDateMonth as number;
-    const gameToSearchDay: number = this.gameDateDay as number;
-    //this.gameService.retrieveGameDate(gameToSearchYear, gameToSearchMonth, gameToSearchDay);
+    let gameToSearchYear: number = this.gameDateYear as number;
+    let gameToSearchMonth: number = this.gameDateMonth as number;
+    let gameToSearchDay: number = this.gameDateDay as number;
+    const gameToSearchOperation: number = this.gameDateOperation as number;
+    this.gameService.retrieveGameDate(gameToSearchOperation, gameToSearchYear, gameToSearchMonth, gameToSearchDay);
   }
 
   allUsers(): void {
@@ -101,7 +104,6 @@ export class ResultatSearchComponent implements OnInit {
 
   dateGame(gameDate: Date): Date {
     const date = new Date(gameDate);
-    console.log('date');
     return date;
   }
 }
