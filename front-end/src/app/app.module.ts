@@ -37,8 +37,7 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { ConfigurationJeuComponent } from './configurations/configuration-jeu/configuration-jeu.component';
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
-
-
+import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-search.component';
 
 
 @NgModule({
@@ -76,6 +75,7 @@ import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.co
     ThemeSearchComponent,
     ThemeFormComponent,
     ResultatListComponent,
+    ResultatSearchComponent,
     ConfigurationJeuComponent,
   ],
     imports: [

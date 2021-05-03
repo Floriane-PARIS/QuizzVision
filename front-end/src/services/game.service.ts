@@ -54,6 +54,19 @@ export class GameService {
     });
   }
 
+  retrieveGameNote(gameNote: number): void {
+    this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
+      this.games = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < gameList.length; i++){
+        if (gameList[i].score >= gameNote){
+          this.games.push(gameList[i]);
+        }
+      }
+      this.games$.next(this.games);
+    });
+  }
+
   islastGame(): string {
     console.log('log:', this.games.length);
     if (this.games.length < 1) {

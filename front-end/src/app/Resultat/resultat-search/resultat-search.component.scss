@@ -1,0 +1,18 @@
+@import '../../../styles/card.scss';
+
+* {
+    font-family: 'Josefin Sans' , sans-serif;
+    box-sizing: border-box;
+    margin: 10;
+    padding: 50;
+    text-align:left;
+}
+
+.button-card{
+    display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+  border-radius: 0.3cm;
+  border-width: 0.08cm;
+}
