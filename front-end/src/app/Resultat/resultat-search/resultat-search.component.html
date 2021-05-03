@@ -3,7 +3,7 @@
   <form class="quiz-search">
   <h4 p style="font-family: cursive;">Trier les Résultats</h4>
     <h6>
-        <label for="title">
+        <label for="userFName">
           Nom du Patient
           <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
           <select name="user-field" id="lastName1" [(ngModel)] = "userLName">
@@ -14,7 +14,7 @@
         </label>
         <br>
 
-        <label for="title">
+        <label for="userLName">
           Prenom du Patient
           <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
           <select name="user-field" id="firstName1" [(ngModel)] = "userFName">
@@ -25,8 +25,49 @@
           <br>
           <button type="submit" class="button-card" (click)="searchUserName()">Rechercher Patient</button>
           <button type="submit" class="button-card" (click)="allUsers()">Tous les Patient</button>
-
         </label>
+      <br>
+      <br>
+
+
+      <label for="userHandicap">
+        Handicap du Patient
+        <input class="input-custom" type="text" id="handicap" [(ngModel)] = "userHandicap" [ngModelOptions]="{standalone: true}">
+        <select name="user-field" id="handicap1" [(ngModel)] = "userHandicap">
+          <option *ngFor="let user of users" [value]="user.maladies">
+            {{user.maladies}}
+          </option>
+        </select>
+        <br>
+        <button type="submit" class="button-card" (click)="searchUserHandicap()">Rechercher Handicap</button>
+        <button type="submit" class="button-card" (click)="allUsers()">Tous les Handicap</button>
+      </label>
+      <br>
+      <br>
+
+      <label for="date">
+        Quiz fait le : Année
+        <select name="user-field" id="dateYears" [(ngModel)] = "gameDateYear">
+          <option *ngFor="let game of games" [value]="dateGame(game.date).getFullYear()">
+            {{dateGame(game.date).getFullYear()}}
+          </option>
+        </select>
+         Mois
+        <select name="user-field" id="dateMonth" [(ngModel)] = "gameDateMonth">
+          <option *ngFor="let game of games" [value]="dateGame(game.date).getMonth()">
+            {{dateGame(game.date).getMonth()}}
+          </option>
+        </select>
+         Jour
+        <select name="user-field" id="dateDay" [(ngModel)] = "gameDateDay">
+          <option *ngFor="let game of games" [value]="dateGame(game.date).getDay()">
+            {{dateGame(game.date).getDay()}}
+          </option>
+        </select>
+        <br>
+        <button type="submit" class="button-card" (click)="searchGameDate()">Rechercher Date</button>
+        <button type="submit" class="button-card" (click)="allGames()">Tous les Dates</button>
+      </label>
       <br>
       <br>
 

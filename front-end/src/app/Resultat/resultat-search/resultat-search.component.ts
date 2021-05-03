@@ -17,7 +17,9 @@ export class ResultatSearchComponent implements OnInit {
   public userFName: string;
   public userLName: string;
   public userHandicap: string;
-  public date: Date;
+  public gameDateYear: number;
+  public gameDateMonth: number;
+  public gameDateDay: number;
   public quizName: string;
   public gameNote: number;
   public users: User[];
@@ -37,7 +39,9 @@ export class ResultatSearchComponent implements OnInit {
     this.userFName = '';
     this.userLName = '';
     this.userHandicap = '';
-    this.date = new Date();
+    this.gameDateYear = 0;
+    this.gameDateMonth = 0;
+    this.gameDateDay = 0;
     this.quizName = '';
     this.gameNote = 0;
   }
@@ -56,9 +60,22 @@ export class ResultatSearchComponent implements OnInit {
     this.userService.retrieveUserName(userToSearch1, userToSearch2);
   }
 
+  searchUserHandicap(): void {
+    const userToSearch1: string = this.userFName as string;
+    const userToSearch2: string = this.userLName as string;
+    this.userService.retrieveUserName(userToSearch1, userToSearch2);
+  }
+
   searchGameNote(): void {
     const gameToSearch: number = this.gameNote as number;
     this.gameService.retrieveGameNote(gameToSearch);
+  }
+
+  searchGameDate(): void {
+    const gameToSearchYear: number = this.gameDateYear as number;
+    const gameToSearchMonth: number = this.gameDateMonth as number;
+    const gameToSearchDay: number = this.gameDateDay as number;
+    //this.gameService.retrieveGameDate(gameToSearchYear, gameToSearchMonth, gameToSearchDay);
   }
 
   allUsers(): void {
@@ -68,12 +85,23 @@ export class ResultatSearchComponent implements OnInit {
     this.userHandicap = '';
   }
 
+  allGames(): void {
+    this.gameService.retrieveGames();
+    this.gameNote = 0;
+    this.gameDateYear = 0;
+    this.gameDateMonth = 0;
+    this.gameDateDay = 0;
+  }
+
   annule(): void {
     this.allUsers();
     this.userService.retrieveUsers();
-    this.gameService.retrieveGames();
-    this.date = new Date();
     this.quizName = '';
-    this.gameNote = 0;
+  }
+
+  dateGame(gameDate: Date): Date {
+    const date = new Date(gameDate);
+    console.log('date');
+    return date;
   }
 }
