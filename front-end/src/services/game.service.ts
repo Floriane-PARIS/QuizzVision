@@ -54,12 +54,14 @@ export class GameService {
     });
   }
 
-  retrieveGameNote(gameNote: number): void {
+  retrieveGameNote(gameNote: number, noteOperation: number): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < gameList.length; i++){
-        if (gameList[i].score >= gameNote){
+        if (((noteOperation == 0) && (gameList[i].score == gameNote))
+        || ((noteOperation == 1) && (gameList[i].score >= gameNote))
+        || ((noteOperation == 2) && (gameList[i].score <= gameNote))){
           this.games.push(gameList[i]);
         }
       }

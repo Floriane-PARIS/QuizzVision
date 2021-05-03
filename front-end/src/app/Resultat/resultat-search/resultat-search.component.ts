@@ -72,7 +72,8 @@ export class ResultatSearchComponent implements OnInit {
 
   searchGameNote(): void {
     const gameToSearch: number = this.gameNote as number;
-    this.gameService.retrieveGameNote(gameToSearch);
+    const gameToSearchOperation: number = this.gameNoteOperation as number;
+    this.gameService.retrieveGameNote(gameToSearch, gameToSearchOperation);
   }
 
   searchGameDate(): void {
