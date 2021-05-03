@@ -1,7 +1,12 @@
 <button class="button-card" routerLink="/quiz-list">Retour</button>
 
 <ng-container *ngIf="quiz">
-    <h2>{{quiz.name}}</h2>
+    <h2>le nom du quiz : {{quiz.name}}</h2>
+    <div>
+      <p style="font-family: cursive;">Nouveau nom de quiz</p>
+      <input class="input-custom" type="text" id="subject" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+      <button type="submit" class="button-card" (click)="modifQuizName()">Modifier</button>
+    </div><br>
     <app-question-form [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
