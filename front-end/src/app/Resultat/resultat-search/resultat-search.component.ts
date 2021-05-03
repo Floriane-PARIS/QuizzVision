@@ -65,9 +65,8 @@ export class ResultatSearchComponent implements OnInit {
   }
 
   searchUserHandicap(): void {
-    const userToSearch1: string = this.userFName as string;
-    const userToSearch2: string = this.userLName as string;
-    this.userService.retrieveUserName(userToSearch1, userToSearch2);
+    const userToSearch: string = this.userHandicap as string;
+    this.userService.retrieveUserTroubles(userToSearch);
   }
 
   searchGameNote(): void {

@@ -46,7 +46,7 @@
       <br>
 
       <label for="date">
-        Quiz
+        Date du Quiz
         <select name="user-field" id="date" [(ngModel)] = "gameDateOperation">
           <option value = true> fait le </option>
           <option value = false > fait à partir du </option>
@@ -108,6 +108,10 @@
         <button type="submit" class="button-card" (click)="searchGameNote()">Rechercher</button>
         <button type="submit" class="button-card" (click)="allGames()">Tous les scores</button>
       </label>
+      <br>
+      <br>
+      <button type="submit" class="button-card" (click)="annule()">Tous les Résultats</button>
+
     </h6>
   </form>
 </div>
