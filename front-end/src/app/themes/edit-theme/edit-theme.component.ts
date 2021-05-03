@@ -23,7 +23,7 @@ export class EditThemeComponent implements OnInit {
   }
 
   modifThemeSubject(): void {
-    const themeToSearch: string = this.themeSubject as string;
-    this.themeService.retrieveThemeSubject(themeToSearch);
+    const newName: string = this.themeSubject as string;
+    this.themeService.renameTheme(this.theme, newName);
   }
 }
