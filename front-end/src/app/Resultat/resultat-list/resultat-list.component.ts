@@ -21,7 +21,7 @@ import { UserService } from "src/services/user.service";
     public quizzes: Quiz[];
     public games: Game[];
     public length: number;
-    public game:  Game;
+    public game: Game;
 
 
 
