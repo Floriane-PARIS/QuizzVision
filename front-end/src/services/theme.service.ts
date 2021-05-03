@@ -94,4 +94,10 @@ export class ThemeService {
     const urlWithId = this.themeUrl + '/' + theme.id;
     this.http.delete<Theme>(urlWithId, this.httpOptions).subscribe(() => this.retrieveThemes());
   }
+
+  renameTheme(theme: Theme, name: string): void {
+    const newTheme = {subject: name, id: theme.id};
+    const urlWithId = this.themeUrl + '/' + theme.id;
+    this.http.put<Theme>(urlWithId, newTheme, this.httpOptions).subscribe(() => this.retrieveThemes());
+  }
 }
