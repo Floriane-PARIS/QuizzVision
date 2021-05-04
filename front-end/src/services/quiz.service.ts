@@ -170,6 +170,12 @@ export class QuizService {
     this.http.put<Quiz>(urlWithId, newName, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  changeQuizTheme(quiz: Quiz, newTheme: string): void {
+    const newName = {theme: newTheme, id: quiz.id};
+    const urlWithId = this.quizUrl + '/' + quiz.id;
+    this.http.put<Quiz>(urlWithId, newName, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
   // recuperer l'id de la question
   getQuestionIdQuiz(quiz: Quiz, index: number): string {
     return quiz.questions[index].id;
