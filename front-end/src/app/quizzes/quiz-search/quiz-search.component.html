@@ -10,11 +10,11 @@
           </select>
           <button type="submit" class="button-card"  (click)="searchQuizTheme()"> </button>
       </label>
+      <br>
     <label for="title">
       Titre
         <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
         <button type="submit" class="button-card" (click)="searchQuizName()"></button>
-        <br>
       Titre
         <select name="quiz-field" id="name2" [(ngModel)] = "quizName">
           <option *ngFor="let quiz of quizzes" [value]="quiz.name">
