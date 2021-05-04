@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
@@ -10,6 +10,7 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class EditQuizComponent implements OnInit {
 
+  public quizName: string;
   public quiz: Quiz;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) {
@@ -24,4 +25,8 @@ export class EditQuizComponent implements OnInit {
     this.quizService.setSelectedQuiz(id);
   }
 
+  modifQuizName(): void {
+    const newName: string = this.quizName as string;
+    this.quizService.renameQuiz(this.quiz, newName);
+  }
 }

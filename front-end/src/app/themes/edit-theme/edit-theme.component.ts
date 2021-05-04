@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Theme} from '../../../models/theme.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ThemeService} from '../../../services/theme.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class EditThemeComponent implements OnInit {
   public theme: Theme;
   public themeSubject: string;
 
-  constructor(private route: ActivatedRoute, private themeService: ThemeService) {
+  constructor(private router: Router, private route: ActivatedRoute, private themeService: ThemeService) {
     this.themeService.themeSelected$.subscribe((theme) => this.theme = theme);
     this.themeSubject = '';
   }
@@ -23,7 +23,8 @@ export class EditThemeComponent implements OnInit {
   }
 
   modifThemeSubject(): void {
-    const themeToSearch: string = this.themeSubject as string;
-    this.themeService.retrieveThemeSubject(themeToSearch);
+    const newName: string = this.themeSubject as string;
+    this.themeService.renameTheme(this.theme, newName);
+    this.router.navigate(['/theme-list']);
   }
 }
