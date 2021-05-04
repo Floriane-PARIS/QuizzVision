@@ -16,6 +16,9 @@ export class QuizComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
+  @Input()
+  user: User;
+
   @Output()
   quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
@@ -29,7 +32,7 @@ export class QuizComponent implements OnInit {
   deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
   public isAlreadyStart: boolean;
-  public user: User;
+  // public user: User;
   public games: Game[];
 
   constructor( public userService: UserService, public gameService: GameService, public quizServide: QuizService) {
@@ -38,7 +41,7 @@ export class QuizComponent implements OnInit {
     });
     this.gameService.games$.subscribe((games: Game[]) => {
       this.isAlreadyStart = false;
-      console.log("GAME", games.length);
+      console.log('GAME', games.length);
       this.games = games;
     });
     /*this.quizService.quizSelected$.subscribe(quiz => this.quiz = quiz);*/
