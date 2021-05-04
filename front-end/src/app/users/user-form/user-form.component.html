@@ -1,6 +1,6 @@
 <div class="card" mat-form-field appearance="fill">
 
-    <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> <i class="fas fa-user-plus">Ajouter un patient</i></h2>
+    <h2 class="title" p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> <i class="fas fa-user-plus">Ajouter un patient</i></h2>
     <form class="user-form" [formGroup]="userForm" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
       <label for="firstName">
         Prenom:
@@ -19,7 +19,7 @@
     <br>
       <label for="maladies">
         Type de troubles:
-      <select id = "maladies" name="maladies" [formControlName]="'maladies'">
+      <select class="input-custom" id = "maladies" name="maladies" [formControlName]="'maladies'">
         <option value = "Autres">Autres</option>
         <option value = "DMLA">DMLA</option>
         <option value = "Glaucome">Glaucome</option>

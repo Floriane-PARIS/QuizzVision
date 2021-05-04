@@ -16,3 +16,77 @@
     align-items: flex-start;
   }
 
+
+.card {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  background: transparent;
+  border: transparent;
+  box-shadow: none;
+
+}
+.card .title {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 2.2em;
+  line-height: 48px;
+  padding-bottom: 48px;
+     color: #078518;
+    background: #078518;
+    background: -moz-linear-gradient(left,#f4524d  0%,#078518 100%) !important;
+    background: -webkit-linear-gradient(left,#f4524d  0%,#078518 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#078518  100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.user-form .form-field {
+  position: relative;
+  margin: 32px 0;
+}
+.user-form .input-custom {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #078518;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.user-form .input-custom:focus {
+  outline: none;
+}
+.user-form .input-custom:focus + .label,
+.user-form .input-custom.not-empty + .label {
+  -webkit-transform: translateY(-24px);
+          transform: translateY(-24px);
+}
+.user-form .label {
+  position: absolute;
+  left: 20px;
+  bottom: 11px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #078518;
+  cursor: text;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, 
+  -webkit-transform .2s ease-in-out;
+}
+.user-form .button-card {
+  display: inline-block;
+  background-color: #000;
+   background-image: linear-gradient(125deg,#a72879,#078518);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  width:200px;
+  cursor: pointer;
+}
