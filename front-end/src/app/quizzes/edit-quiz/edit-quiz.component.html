@@ -3,10 +3,12 @@
 <ng-container *ngIf="quiz">
     <h2>le nom du quiz : {{quiz.name}}</h2>
     <div>
-      <p style="font-family: cursive;">Nouveau nom de quiz</p>
-      <input class="input-custom" type="text" id="subject" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
-      <button type="submit" class="button-card" (click)="modifQuizName()">Modifier</button>
-    </div><br>
+      <label>
+        Nouveau nom de quiz
+        <input class="input-custom" type="text" id="subject" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+        <button type="submit" class="button-card" (click)="modifQuizName()">Modifier</button>
+      </label>
+    </div>
     <app-question-form [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
