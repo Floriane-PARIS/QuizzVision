@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
-import {User} from "../../../models/user.model";
-import {UserService} from "../../../services/user.service";
-import {Game} from "../../../models/game.model";
+import {User} from '../../../models/user.model';
+import {UserService} from '../../../services/user.service';
+import {Game} from '../../../models/game.model';
 
 @Component({
   selector: 'app-quiz-list',
@@ -55,11 +55,13 @@ export class QuizListComponent implements OnInit {
     this.router.navigate(['/quiz-list']);
 <<<<<<< HEAD
   }*/
+
   ajoutQuizz(): void{
     console.log('event received from child: new quiz');
     this.router.navigate(['/quiz-form']);
 
   }
+
   ajoutTheme(): void{
     console.log('event received from child: new theme');
     this.router.navigate(['/theme-list']);
