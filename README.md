@@ -28,3 +28,9 @@ dans le dossier back-end :
     
     
 Chrome : http://localhost:4200
+
+## Utiliser le site
+
+C'est l'animateur qui arrive sur la page d'accueil, et qui est le seul à pouvoir créer/modifier/supprimer des quizs et utilisateurs.
+Quand il sélectionne un utilisateur, il arrive que la page de celui-vi et peut changer la configuration selon ce que voit l'utilisateur.
+C'est seulement lorsque l'écran affiche le bouton "Commencer" que l'animateur passe l'appareil au patient qui peut ensuite se débrouiller seul jusqu'à la fin du quiz.
