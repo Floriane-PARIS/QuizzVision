@@ -1,8 +1,6 @@
-
 <div class="card" p style="background-color: bisque;" p style="text-align: right; position: absolute; right: 3cm;">
   <form class="quiz-search">
     <h6>
-
       <label for="theme">
         Theme
           <select name="theme-field" id="theme" [(ngModel)] = "quizTheme">
@@ -12,8 +10,6 @@
           </select>
           <button type="submit" class="button-card"  (click)="searchQuizTheme()"> </button>
       </label>
-
-
     <label for="title">
       Titre
         <input class="input-custom" type="text" id="name1" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
@@ -25,6 +21,7 @@
             {{quiz.name}}
           </option>
         </select>
+      <button type="submit" class="button-card" (click)="searchQuizName()"></button>
     </label>
     <br>
   <button type="submit" class="button-card1" (click)="annule()">Tous les quizs</button>
