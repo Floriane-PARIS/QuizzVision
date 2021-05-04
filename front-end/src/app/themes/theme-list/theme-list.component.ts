@@ -30,4 +30,10 @@ export class ThemeListComponent implements OnInit {
     this.themeService.deleteTheme(theme);
   }
 
+  ajoutQuizz(): void{
+    console.log('event received from child: new quiz');
+    this.router.navigate(['/quiz-form']);
+
+  }
+
 }

@@ -8,7 +8,7 @@
     <br>
   </h2>
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
-    {{i}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
+    {{i+1}} - <input class="input-custom" type="text" [(ngModel)] = "answer.value" [ngModelOptions]="{standalone: true}">
     <input type="checkbox" [(ngModel)] = "answer.isCorrect">
     <div *ngIf="question.answers.length > 2">
       <button class="button-card" (click)="delete(answer)">Supprimer</button>
@@ -28,7 +28,7 @@
     </div>
     <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
   </div>
-    <button class="button-card" (click)="edit()">Modifier</button>
+    <button class="button-card" (click)="edit()">Enregistrer</button>
 </div>
 
 <!-- Uncomment below to see your form structure and how it changes-->

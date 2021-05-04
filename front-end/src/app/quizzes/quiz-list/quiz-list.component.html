@@ -11,19 +11,11 @@
       <span class="line -bottom"></span>
     </a></section>
  </button>
- <br>
- <br>
- <br>
-  <button type="submit" class="button-card1"  p style="  position: absolute; left: 0.3cm;" (click)="ajoutTheme()" >
-    <section class="portfolio-experiment"><a>
-      <span class="text"><i class="fas fa-plus fa-3x"></i>Nouveau theme</span>
-      <span class="line -right"></span>
-      <span class="line -top"></span>
-      <span class="line -left"></span>
-      <span class="line -bottom"></span>
-    </a></section>
-  </button>
+ 
 </div>
+<div *ngIf="user.configuration == undefined && user != undefined">
+  <h3 class="alerte">Vous n'avez pas de configuration, créez en une dans MaConfiguration</h3> 
+ </div>
 
 <ng-template #patientBlock>
   <div> <app-quiz-search></app-quiz-search> </div>

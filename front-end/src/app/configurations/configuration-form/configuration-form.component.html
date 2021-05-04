@@ -1,5 +1,5 @@
 <div class="card">
-  <h3>Choisir une nouvelle configuration</h3>
+  <h3 class="title">Choisir une nouvelle configuration</h3>
   <form class="configuration-form" [formGroup]="configurationForm">
 
     <label for="police"> Handicap </label>
@@ -35,7 +35,7 @@
       </div>
       <!--input class="input-custom" type="number" id="size" name="police-size" min="26" max="60" value = "14" step = "4" [formControlName]="'size'"-->
 
-    <label for="police"> <br>Police du texte  </label>
+    <label class="input-custom" for="police"> <br>Police du texte  </label>
       <select id = "police" name="police" [formControlName]="'police'">
         <option value = "Arial">Arial</option>
         <option value = "Arial Black">Arial Black</option>
@@ -47,20 +47,20 @@
         <option value = "Verdana">Verdana</option>
       </select>
     <br>
-    <label for="bright"> <br> Luminosité </label>
+    <label class="input-custom" for="bright"> <br> Luminosité </label>
     <div class="range">
       <i class="fa fa-sun-o" aria-hidden="true"></i>
       <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
       <span class= "value">200</span>
     </div>
-    <label for="contrast"> <br> Contraste </label>
+    <label class="input-custom" for="contrast"> <br> Contraste </label>
     <div class="range">
       <i class="fa fa-adjust" aria-hidden="true"></i>
       <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
       <span class= "value">200</span>
     </div>
       <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
-    <label for="decalage"> <br> Décalage </label>
+    <label class="input-custom" for="decalage"> <br> Décalage </label>
     <div class="range"> <!--changes-->
       <span class= "value">centre</span>
       <input type="range" id="shift" min="0" max="60" value="100" [formControlName]="'shift'">
