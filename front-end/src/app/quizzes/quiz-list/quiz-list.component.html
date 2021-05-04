@@ -1,5 +1,8 @@
 <div *ngIf="user == undefined; else patientBlock">
-  <app-quiz-search></app-quiz-search>
+  <div>
+    <app-quiz-search></app-quiz-search>
+  </div>
+  
   <button type="submit" class="button-card"  p style="border-style: dotted;  position: absolute; top: 2.5cm; left: 0.3cm;" (click)="ajoutQuizz()"><h2 >Ajouter un nouveau quiz</h2>
  </button>
   <button type="submit" class="button-card"  p style="border-style: dotted;  position: absolute; top: 4.5cm; left: 0.3cm;" (click)="ajoutTheme()" ><h2 >Ajouter un nouveau theme</h2>
@@ -11,8 +14,7 @@
     <app-quiz-search></app-quiz-search>
   </div-->
 </ng-template>
-    <div *ngIf="quizList.length > 0; else elseBlock">
-
+    <div *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm;">
       <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
