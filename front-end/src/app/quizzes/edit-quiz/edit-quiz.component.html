@@ -14,7 +14,11 @@
   <div>
     <label>
       Nouveau nom de thème
-      <input class="input-custom" type="text" id="quizTheme" [(ngModel)] = "quizTheme" [ngModelOptions]="{standalone: true}">
+      <select name="theme-field" id="theme" [(ngModel)] = "quizTheme">
+        <option *ngFor="let theme of themes" [value]="theme.subject">
+          {{theme.subject}}
+        </option>
+      </select>
       <button type="submit" class="button-card" (click)="modifQuizTheme()">Modifier</button>
     </label>
   </div>
