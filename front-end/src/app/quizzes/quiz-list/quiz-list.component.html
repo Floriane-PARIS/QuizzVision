@@ -25,9 +25,6 @@
   <!--div *ngIf="user != undefined">
     <button class="button-card" (click)="retourAdmin()"> Retour chez Admin </button>
   </div-->
-  <div *ngIf="user.configuration == undefined && user != undefined">
-  <h3 class="alerte">Vous n'avez pas de configuration, créez en une dans MaConfiguration</h3> 
- </div>
 </div>
 
 <ng-template #elseBlock>
