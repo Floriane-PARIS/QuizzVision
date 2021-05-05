@@ -50,6 +50,23 @@ text-shadow: 0 2px 3px #fff;
 transition: all 0.7s ease 0s;
 }
 
+.input-custom{
+  background: url(http://2.bp.blogspot.com/-xpzxYc77ack/VDpdOE5tzMI/AAAAAAAAAeQ/TyXhIfEIUy4/s1600/search-dark.png) no-repeat 10px 13px white;
+  border: 2px solid #f2f2f2;
+  font: bold 12px Arial,Helvetica,Sans-serif;
+  color:#030303;
+  width: 160px;
+  padding: 14px 17px 12px 30px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+-moz-border-radius: 5px 0px 0px 5px;
+border-radius: 5px 0px 0px 5px;
+text-shadow: 0 2px 3px #fff;
+-webkit-transition: all 0.7s ease 0s;
+-moz-transition: all 0.7s ease 0s;
+-o-transition: all 0.7s ease 0s;
+transition: all 0.7s ease 0s;
+}
+
 .card {
   width: 440px;
   background: transparent ;

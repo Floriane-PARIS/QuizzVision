@@ -12,13 +12,13 @@
             <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
             <br>
               </div>
-              <div class="configuration-play">
-            <label for="size">Taille du texte </label>
-            <input class="input-custom" type="number" id="size" name="police-size" min="10" max="60" value = "14" step = "4" [formControlName]="'size'">
-              </div>
-              <div class="configuration-play">
-            <label for="police"> <br>Police du texte  </label>
-            <select id = "police" name="police" [formControlName]="'police'">
+            <div class="configuration-play">
+            <label for="size">Taille du texte</label>  
+            <input class="config-select" type="number" id="size" name="police-size" min="10" max="60" value = "14" step = "4" [formControlName]="'size'">
+            </div>
+              <!--div class="configuration-play"-->
+            <label for="police">Police du texte</label>
+            <select class="config-select" id = "police" name="police" [formControlName]="'police'">
               <option value = "Arial">Arial</option>
               <option value = "Arial Black">Arial Black</option>
               <option value = "Comic Sans MS">Comic Sans MS</option>
@@ -29,7 +29,7 @@
               <option value = "Verdana">Verdana</option>
             </select>
               </div>
-            </div>
+            <!--/div-->
             <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'" *ngIf="configuration.handicap === 'DMLA'">
 
                   <label for="bright"> <br> Luminosité </label>

@@ -26,6 +26,13 @@
   // border: 5px solid magenta;
 }
 
+.config-select {
+  box-sizing: content-box;
+  height: fit-content;
+  width: fit-content;
+  font-size: x-large;
+}
+
 .configuration-play-border {
   display: flex;
   justify-content: space-between;

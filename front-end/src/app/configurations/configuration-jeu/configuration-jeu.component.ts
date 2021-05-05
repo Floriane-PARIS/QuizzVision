@@ -20,6 +20,7 @@ export class ConfigurationJeuComponent implements OnInit {
   public configuration: Configuration;
   public root = document.documentElement;
   public configurationForm: FormGroup;
+  public size: number;
   public max: number;
   public min: number;
 
@@ -35,9 +36,11 @@ export class ConfigurationJeuComponent implements OnInit {
           if (this.configuration.handicap === 'Glaucome'){
             this.max = this.configuration.shift + 1 + (this.configuration.shift * 10 / 100);
             this.min = 0;
+            this.size = this.configuration.size;
           }else{
             this.max = 60;
             this.min = 0;
+            this.size = 23;
           }
           this.shift();
           this.configurationForm = this.formBuilder.group({
