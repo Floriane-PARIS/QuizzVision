@@ -1,8 +1,11 @@
 <div *ngIf="user == undefined; else patientBlock">
 
+  <div>
+    <button-card routerLink="/resultat-quiz" class="button-card">Voir Résultats par quiz</button-card>
+  </div>
   <div class="card">
       <br>
-      <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Résultat par patient:</h2>
+      <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Résultats par patient:</h2>
       <br>
     <app-resultat-search></app-resultat-search>
 

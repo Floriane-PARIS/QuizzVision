@@ -17,6 +17,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
+import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
     {path: 'edit-theme/:id', component: EditThemeComponent},
     {path: 'game-start/:idUser/:id', component: GameStartComponent},
     {path: 'game/:idUser/:id', component: GameComponent},
+    {path: 'resultat-quiz', component: ResultatQuizComponent},
     {path: 'resultat-list', component: ResultatListComponent},
     {path: 'resultat-list/:id', component: ResultatListComponent},
     {path: 'configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
