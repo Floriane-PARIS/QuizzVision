@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import {ActivatedRoute, Router} from '@angular/router';
 import { Game } from "src/models/game.model";
 import { Quiz } from "src/models/quiz.model";
 import { Resultat } from "src/models/Resultat.model";
@@ -22,10 +23,11 @@ import { UserService } from "src/services/user.service";
     public games: Game[];
     public length: number;
     public game: Game;
+    public user: User;
 
 
 
-    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService) {
+    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
         this.resultatList = this.formBuilder.group({
           firstName: [''],
           lastName: [''],
@@ -46,9 +48,13 @@ import { UserService } from "src/services/user.service";
           this.game = game;
           this.length = game.score;
         });
-
+        this.userService.userSelected$.subscribe((user) => {
+              this.user = user;
+            });
     }
   ngOnInit(): void {
+  const id = this.route.snapshot.paramMap.get('id');
+      this.userService.setSelectedUser(id);
   }
 
   dateGame(gameDate: Date): Date {
