@@ -23,6 +23,7 @@
                               <th>Date</th>
                               <th>Quiz fait</th>
                               <th>Note</th>
+                               <th>Details (ne vous inquietez pas, je vais modifier ;) )</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -34,6 +35,9 @@
                               </td>
                               <td>{{quiz.name}}</td>
                               <td>{{game.score}} / {{quiz.questions.length}} </td>
+                            <div *ngFor="let answer of game.answers">
+                              <td>Rép : {{answer}} </td>
+                            </div>
                           </tr>
                       </tbody>
                   </table>
