@@ -87,8 +87,6 @@ export class GameComponent implements OnInit {
 
   // changes
   next(): void {
-    console.log(this.game.question);
-    console.log(this.game.question[this.game.question.length-1]);
     this.answer = undefined;
     this.message = '';
     this.isValided = false;

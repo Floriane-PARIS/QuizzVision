@@ -5,11 +5,11 @@
       <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="sendConfig()">Configuration</button>
     </div>
     <br>
-    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[game.question.length-1] !== null) && (game !== undefined)">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
-      <div *ngIf = "game.question[game.question.length-1] !== undefined">
-      <app-game-question [configuration]="configuration" [answer]=answer [question]=game.question[game.question.length-1] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
+      <div *ngIf = "game.question[0] !== undefined">
+      <app-game-question [configuration]="configuration" [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
         <div *ngIf="configuration.handicap === 'Glaucome'|| configuration.handicap === 'Autres'">
       <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
@@ -23,7 +23,7 @@
     </div>
 
       </div>
-      <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[game.question.length-1] === null) && (game !== undefined)">
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] === null) && (game !== undefined)">
         <app-game-result [message]="'Vous avez fini le Quiz ! BRAVO ! \n Vous avez obtenu :'" [handicap]=configuration.handicap></app-game-result>
         <br>
         {{getResultat()}}

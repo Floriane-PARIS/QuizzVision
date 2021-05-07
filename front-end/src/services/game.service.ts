@@ -134,12 +134,13 @@ export class GameService {
 
   addAnswer(game: Game, answer: Answer): void {
     let answerWrite;
-    if (game.answers === undefined) {
-      answerWrite = {answers: [answer]};
-    } else {
-      game.answers.push(answer);
+    if (game.answers == undefined) {
+      answerWrite = {answers: [answer.id]};
+    }else {
+      game.answers.push(answer.id);
       answerWrite = {answers: game.answers};
     }
+    console.log(answerWrite);
     const answerUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => {
       this.gameSelected$.next(game);
@@ -187,9 +188,7 @@ export class GameService {
   }*/
 
   updateGameQuestion(game: Game, question: Question): void {
-    game.question.push(question);
-    console.log("Service Q" + game.question);
-    const questionWrite = {question: game.question};
+    const questionWrite = {question: [question]};
     const questionUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => {
       this.gameSelected$.next(game);

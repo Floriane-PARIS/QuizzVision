@@ -13,7 +13,7 @@
       <div class="user" *ngFor="let user of users">
           <div class="quiz" *ngFor="let quiz of quizzes">
               <div class="game" *ngFor="let game of games">
-                  <div *ngIf = "(game.quizId == quiz.id) && (game.question[game.question.length - 1] == null)">
+                  <div *ngIf = "(game.quizId == quiz.id) && (game.question[0] == null)">
                     <div *ngIf = "game.userId == user.id">
                   <table class="tableau-style">
                       <thead>
