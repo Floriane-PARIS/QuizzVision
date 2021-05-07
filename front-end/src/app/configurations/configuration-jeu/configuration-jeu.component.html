@@ -2,14 +2,14 @@
       <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
         <form [formGroup]="configurationForm" class="configuration">
             <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
-            <h3>Modifier ma configuration</h3>
+            <h3>Modifier votre configuration</h3>
             </div>
           <div class="configuration-play-border">
             <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
               <div class="configuration-play">
             <label for="bold">Texte en gras ? </label>
-            <input type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
-            <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
+            <input class="config-select" type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
+            <input class="config-select" type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
             <br>
               </div>
             <div class="configuration-play">
@@ -87,8 +87,8 @@
             </div>
             </div>
             <div class="game-button">
-            <button type="submit" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" class="button-card" (click)="addConfiguration()">Modifier</button>
-              <button [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"  class="button-card" (click)="backToGame()" >Quiz</button>
+            <button type="submit" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" class="button-card" (click)="addConfiguration()">Visualiser</button>
+              <button [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"  class="button-card" (click)="backToGame()" >Enregistrer</button>
            </div>
           </form>
       </div>
