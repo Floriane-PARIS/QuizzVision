@@ -25,7 +25,7 @@ import { UserService } from "src/services/user.service";
   }
 
     backToResultatList(): void {
-      this.router.navigate(['/resultat-list/']);
+      this.router.navigate(['/resultat-list']);
     }
 
 }
