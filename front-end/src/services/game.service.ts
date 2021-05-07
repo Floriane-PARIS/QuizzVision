@@ -133,7 +133,13 @@ export class GameService {
   }
 
   addAnswer(game: Game, answer: Answer): void {
-    const answerWrite = {answers: [answer]};
+    let answerWrite;
+    if (game.answers === undefined) {
+      answerWrite = {answers: [answer]};
+    } else {
+      game.answers.push(answer);
+      answerWrite = {answers: game.answers};
+    }
     const answerUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => {
       this.gameSelected$.next(game);
@@ -164,6 +170,7 @@ export class GameService {
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
       const index = this.getIndexQuestionInQuiz(game, quiz);
+      console.log(index);
       if (index >= 0 ) {
         this.updateGameQuestion(game, this.getQuestionWithIndexInQuiz(index + 1, quiz));
       }
@@ -180,7 +187,9 @@ export class GameService {
   }*/
 
   updateGameQuestion(game: Game, question: Question): void {
-    const questionWrite = {question: [question]};
+    game.question.push(question);
+    console.log("Service Q" + game.question);
+    const questionWrite = {question: game.question};
     const questionUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(questionUrl, questionWrite, this.httpOptions).subscribe((game: Game) => {
       this.gameSelected$.next(game);
@@ -201,7 +210,7 @@ export class GameService {
   getIndexQuestionInQuiz(game: Game, quiz: Quiz): number{
     let index = 0;
     for (const question of quiz.questions) {
-      if (question.id === game.question[0].id) {
+      if (question.id === game.question[game.question.length - 1].id) {
         return index;
       }
       index++;
@@ -228,7 +237,7 @@ export class GameService {
       this.gameQuiz$.next(quiz);
     });
   }
-
+  /*
   // faire une méthode pour update l'id de la question
   nextQuestion(game: Game): void {
     this.getQuestion(game);
@@ -251,7 +260,7 @@ export class GameService {
     console.log('on change de question');
     this.http.put<Game>(this.gameUrl + '/' + game.id, questionWrite, this.httpOptions).subscribe((game: Game) => this.gameSelected$.next(game));
     }
-  }
+  } */
 
 
 
