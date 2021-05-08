@@ -1,12 +1,17 @@
-<br>
-<h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Résultats du game:</h2>
-<br>
 
+<div class="resultat-game" *ngIf="game != undefined && quiz != undefined">
+  Patient "NOM" et "PRENOM"
+  <div class="litle">
+    Resultats du Quiz "{{quiz.name}}" dans le thème "{{quiz.theme}}", fait le {{dateGame(game.date)}}, avec une note de {{game.score}}/{{quiz.questions.length}}
+  </div>
+</div>
+<br>
+<br>
 <div class="container" *ngIf="game != undefined && quiz != undefined">
 
   <div class="container-onglets">
     <div *ngFor="let question of quiz.questions; let i=index">
-    <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())">Question {{i + 1}}</div>
+    <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"> Question {{i + 1}} </div>
     </div>
   </div>
 
