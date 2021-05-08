@@ -63,6 +63,10 @@ import { UserService } from "src/services/user.service";
       return date;
   }
 
+  getUser(): String {
+    return this.user.id;
+  }
+
   details(game: Game): void {
     this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId ]);
   }
