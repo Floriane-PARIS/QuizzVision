@@ -9,6 +9,7 @@ import { GameService } from 'src/services/game.service';
 import { QuizService } from 'src/services/quiz.service';
 import { UserService } from 'src/services/user.service';
 import {Question} from "../../../models/question.model";
+import {Configuration} from "../../../models/configuration.model";
 
 
 @Component({
@@ -21,14 +22,20 @@ import {Question} from "../../../models/question.model";
     public user: User;
     public game: Game;
     public quiz: Quiz;
+    public configuration: Configuration;
     public onglets = document.querySelectorAll('.onglets');
     public contenu = document.querySelectorAll('.contenu');
 
     constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
         this.gameService.gameSelected$.subscribe((game: Game) => {
           this.game = game;
-          this.user = this.gameService.getUserForGame(game);
+          console.log('confii', game.configuration[0].id);
+          this.configuration = game.configuration[0];
+          this.gameService.getUserForGame(game);
         });
+      this.gameService.gameUser$.subscribe((user: User) => {
+        this.user = user;
+      });
       this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
         this.quiz = quiz;
       });

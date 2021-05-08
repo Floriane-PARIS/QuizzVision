@@ -1,8 +1,12 @@
-
-<div class="resultat-game" *ngIf="game != undefined && quiz != undefined">
-  Patient "NOM" et "PRENOM"
-  <div class="litle">
-    Resultats du Quiz "{{quiz.name}}" dans le thème "{{quiz.theme}}", fait le {{dateGame(game.date)}}, avec une note de {{game.score}}/{{quiz.questions.length}}
+<br>
+<div class="resultat-game" *ngIf="game != undefined && quiz != undefined && user != null">
+  Joueur:  {{user.firstName}} {{user.lastName}}
+  <div>
+    Resultats du Quiz "{{quiz.name}}" dans le thème "{{quiz.theme}}", fait le {{dateGame(game.date).getDay()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
+    à {{dateGame(game.date).getHours()}}h{{dateGame(game.date).getMinutes()}}, avec une note de {{game.score}}/{{quiz.questions.length}}
+  </div>
+    <div>
+    <button-card routerLink="/edit-quiz/{{quiz.id}}" class="button-card">Modifier le quiz "{{quiz.name}}"</button-card>
   </div>
 </div>
 <br>
@@ -10,14 +14,15 @@
 <div class="container" *ngIf="game != undefined && quiz != undefined">
 
   <div class="container-onglets">
+    <div class="onglets conf"   id="ongl0" (click)="ongletChange('0')">Configuration</div>
     <div *ngFor="let question of quiz.questions; let i=index">
       <div *ngFor="let answer of quiz.questions[i].answers; let j=index">
         <div *ngIf="(game.answers[i] == answer.id)">
         <div *ngIf="answer.isCorrect">
-          <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"><i class="fas fa-check"></i> -Question {{i + 1}} </div>
+          <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i class="fas fa-check"></i> -Question {{i + 1}} </div>
         </div>
         <div *ngIf="(answer.isCorrect != true)">
-          <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"><i class="fas fa-times"></i> -  Question {{i + 1}} </div>
+          <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i class="fas fa-times"></i> -  Question {{i + 1}} </div>
         </div>
       </div>
       </div>
@@ -25,7 +30,7 @@
   </div>
 
   <div *ngFor="let question of quiz.questions; let i=index">
-  <div class="contenu" id="{{'cont'+i}}">
+  <div class="contenu" id="{{'cont'+(i+1)}}">
     <br>
     <h3>Question {{i + 1}}: {{question.label}}</h3>
     <br>
@@ -53,5 +58,15 @@
   </div>
 
   </div>
+    <div class="contenu" id="{{'cont'+(0)}}">
+      EN COURS! Pour l'instant mauvaise Configuration
+      <div class="configuration-app" *ngIf="configuration != undefined">
+        <br>
+      <div class="configuration-chose">
+      <app-configuration  [configuration]="configuration" [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
+      </div>
+        <app-configuration-chose [configuration]="configuration" ></app-configuration-chose>
+      </div>
+    </div>
   </div>
 </div>

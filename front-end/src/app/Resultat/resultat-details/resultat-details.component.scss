@@ -23,17 +23,19 @@ body{
     height: 100vh;
 }
 
-.litle {
-  font-size: 15px;
+.conf {
+  border-bottom: 2px solid #333;
 }
 
 .resultat-game {
   position: absolute;
-  height: 20%;
+  height: 10%;
+  width: 90%;
   border-radius: 2px;
   display: flex;
   font-size: 20px;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   //box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
@@ -72,12 +74,14 @@ body{
 }
 
 .contenu{
-  height: 70%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   position: absolute;
-  margin: 10px;
+  margin: 20px;
   opacity: 0;
+  //border: 2px solid #0a0a0a;
 }
+
 
 .contenu h3{
   padding: 20px;
@@ -97,6 +101,25 @@ body{
   animation: fade 0.5s forwards;
 }
 
+.configuration-chose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //rectangle
+  position: absolute;
+  height: 60vh;
+  width: 50vw;
+  //bordure
+  border: 5px solid gray;
+
+}
+
+.configuration-app {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @keyframes  fade {
   from {
     opacity: 0;
@@ -106,5 +129,20 @@ body{
   }
 }
 
+.configuration-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(40% + var(--slider) * 1% );
+  height: calc(40% + var(--slider) * 1% );
 
+  border: 5px solid pink;
+}
+
+.configuration-border {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+}
 

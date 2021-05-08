@@ -8,4 +8,5 @@ module.exports = new BaseModel('Game', {
   answers: Joi.array(),
   score: Joi.number(),
   date: Joi.date(),
+  configuration: Joi.array(),
 })

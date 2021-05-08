@@ -6,6 +6,7 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Answer, Question} from '../models/question.model';
 import {Quiz} from '../models/quiz.model';
 import {User} from "../models/user.model";
+import {Configuration} from "../models/configuration.model";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class GameService {
   // public gameQuiz$: Subject<Quiz> = new Subject();
 
   public selectedGameId$: Subject<string> = new Subject();
+  public gameUser$: Subject<User> = new Subject();
 
   private gameUrl = serverUrl + '/games';
   private quizUrl = serverUrl + '/quizzes';
@@ -250,12 +252,21 @@ export class GameService {
     return null;
   }
 
-  getUserForGame(game: Game): User{
+  getUserForGame(game: Game): void {
     const userUrl = this.userUrl + '/' + game.userId ;
     this.http.get<User>(userUrl, this.httpOptions).subscribe((user) => {
-      return user;
+      this.gameUser$.next(user);
     });
-    return null;
+  }
+
+  updateGameConfiguration(game: Game, configuration: Configuration): void {
+    console.log('confi', configuration);
+    const configurationWrite = {configuration: [configuration]};
+    const configurationUrl = this.gameUrl + '/' + game.id ;
+    this.http.put<Game>(configurationUrl, configurationWrite, this.httpOptions).subscribe((game: Game) => {
+      this.gameSelected$.next(game);
+      this.retrieveGames();
+    });
   }
 
 
