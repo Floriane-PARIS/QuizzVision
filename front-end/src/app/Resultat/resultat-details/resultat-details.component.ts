@@ -8,6 +8,7 @@ import { User } from 'src/models/user.model';
 import { GameService } from 'src/services/game.service';
 import { QuizService } from 'src/services/quiz.service';
 import { UserService } from 'src/services/user.service';
+import {Question} from "../../../models/question.model";
 
 
 @Component({
@@ -31,6 +32,7 @@ import { UserService } from 'src/services/user.service';
       this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
         this.quiz = quiz;
       });
+
     }
 
   ngOnInit(): void {
@@ -45,7 +47,9 @@ import { UserService } from 'src/services/user.service';
       return date;
   }
 
-  ongletChange(data: string): void {
+  ongletChange(dataNumber: string): void {
+    this.contenuChange('cont' + dataNumber);
+    const data = 'ongl' + dataNumber;
       this.onglets = document.querySelectorAll('.onglets');
       this.onglets.forEach(onglet => {
         if (onglet.classList.contains('active')) {
@@ -55,12 +59,11 @@ import { UserService } from 'src/services/user.service';
         }
         // tslint:disable-next-line:prefer-for-of
         for (let n = 0; n < this.onglets.length; n++) {
-          if (this.onglets[n].getAttribute('data-anim') != data) {
+          if (this.onglets[n].getAttribute('id') != data) {
             this.onglets[n].classList.remove('active');
           }
         }
     });
-      this.contenuChange(data);
   }
 
   contenuChange(data: string): void {
@@ -73,7 +76,7 @@ import { UserService } from 'src/services/user.service';
       }
       // tslint:disable-next-line:prefer-for-of
       for (let n = 0; n < this.onglets.length; n++) {
-        if (this.onglets[n].getAttribute('data-anim') != data) {
+        if (this.onglets[n].getAttribute('id') != data) {
           this.onglets[n].classList.remove('activeContenu');
         }
       }
