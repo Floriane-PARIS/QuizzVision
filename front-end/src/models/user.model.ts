@@ -9,5 +9,6 @@ export interface User {
     commentaires: string;
     configurations: Configuration[];
     age: number;
-   // photo: string;
+    sexe: string;
+   // photoDeProfile: string;
 }

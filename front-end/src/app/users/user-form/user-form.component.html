@@ -31,10 +31,13 @@
         <input class="input-custom" type="text"  id = "commentaires" [formControlName]="'commentaires'">
       </label>
       <br>
-      <!--label for="photo">
-        Ajouter une photo:
-      <input class="input-custom" type="text" id = "photo" placeholder="veuillez rentrez le chemin vers l'image" [formControlName]="'photo'" >
-    </label-->
+      <label for="sexe">
+        Sexe
+        <select class="input-custom" id = "sexe" name="sexe" [formControlName]="'sexe'">
+          <option value = "Homme">Homme</option>
+          <option value = "Femme">Femme</option>
+        </select>
+    </label>
     
       <br>
       <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Ajouter</button>

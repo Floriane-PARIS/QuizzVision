@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SystemJsNgModuleLoader} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
@@ -50,11 +50,6 @@ export class QuizListComponent implements OnInit {
   deleteQuiz(quiz: Quiz): void {
     this.quizService.deleteQuiz(quiz);
   }
-
-  /*retourAdmin(): void{
-    this.router.navigate(['/quiz-list']);
-<<<<<<< HEAD
-  }*/
 
   ajoutQuizz(): void{
     console.log('event received from child: new quiz');
