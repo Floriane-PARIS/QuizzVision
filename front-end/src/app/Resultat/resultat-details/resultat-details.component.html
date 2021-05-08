@@ -2,44 +2,30 @@
 <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Résultats du game:</h2>
 <br>
 
-<div class="container" *ngIf="game != undefined">
+<div class="container" *ngIf="game != undefined && quiz != undefined">
 
   <div class="container-onglets">
-    <div class="onglets active" data-anim=1 (click)="ongletChange('1')">Question 1</div>
-    <div class="onglets" data-anim=2 (click)="ongletChange('2')">Question 2</div>
-
+    <div *ngFor="let question of quiz.questions; let i=index">
+    <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())">Question {{i + 1}}</div>
+    </div>
   </div>
 
-  <div class="contenu activeContenu" data-anim=1>
+  <div *ngFor="let question of quiz.questions; let i=index">
+  <div class="contenu" id="{{'cont'+i}}">
     <br>
-    Question: {{quiz.questions[0].label}}
+    Question: {{question.label}}
     <br>
-    <div *ngFor="let answer of quiz.questions[0].answers; let i=index">
-      <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[0]">
-    Réponse {{i+1}}: {{answer.value}}
+    <div *ngFor="let answer of question.answers; let j=index">
+      <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
+    Réponse {{j+1}}: {{answer.value}}
     <br>
       </div>
-      <div *ngIf="answer.id != game.answers[0]">
-        Réponse {{i+1}}: {{answer.value}}
+      <div *ngIf="answer.id != game.answers[i]">
+        Réponse {{j+1}}: {{answer.value}}
         <br>
       </div>
   </div>
 
   </div>
-
-  <div class="contenu" data-anim=2>
-    <br>
-    Question: {{quiz.questions[1].label}}
-    <br>
-    <div *ngFor="let answer of quiz.questions[1].answers; let i=index">
-      <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[1]">
-        Réponse {{i+1}}: {{answer.value}}
-        <br>
-      </div>
-      <div *ngIf="answer.id != game.answers[1]">
-        Réponse {{i+1}}: {{answer.value}}
-        <br>
-      </div>
   </div>
-
 </div>
