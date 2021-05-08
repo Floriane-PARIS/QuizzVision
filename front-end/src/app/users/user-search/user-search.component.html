@@ -1,20 +1,12 @@
 
-<div class="card" p style="text-align: right; position: absolute;  left: 25.5cm; top: 2cm; box-sizing: content-box;">
+<div class="card" p style="text-align: right; position: absolute;  left: 26.5cm; top: 2cm; box-sizing: content-box;">
     <form class="user-search">
       <h6>
         Nom
-          <select class="input-custom"  name="user-field" id="lastName1" [(ngModel)] = "userLName">
-            <option *ngFor="let user of users" [value]="user.lastName">
-              {{user.lastName}}
-            </option>
-          </select>
+          <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
         
           Prenom
-        <select class="input-custom" name="user-field" id="firstName1" [(ngModel)] = "userFName">
-          <option *ngFor="let user of users" [value]="user.firstName">
-            {{user.firstName}}
-          </option>
-        </select>
+        <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
         <button type="submit" class="button-card" (click)="searchUserName()"></button>
           
         <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>

@@ -18,13 +18,15 @@
   <div> <app-quiz-search></app-quiz-search> </div>
 </ng-template>
 
-<div  class="list" *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm;">
+<div  class="list" *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm">
   <div class="quiz" *ngFor="let quiz of quizList">
-    <app-quiz [user]="user" [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)" (gameSelected)="gameSelected($event)"></app-quiz>
-  </div>
-  <!--div *ngIf="user != undefined">
-    <button class="button-card" (click)="retourAdmin()"> Retour chez Admin </button>
-  </div-->
+    <div class="front">
+      {{quiz.name}}
+     </div>
+    <div class="back">
+      <app-quiz [user]="user" [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)" (gameSelected)="gameSelected($event)"></app-quiz>
+    </div>
+   </div>
 </div>
 
 <ng-template #elseBlock>
