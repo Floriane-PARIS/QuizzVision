@@ -21,6 +21,12 @@
     background: transparent;
 }
 
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 
 //bouton animé
     .button-card {

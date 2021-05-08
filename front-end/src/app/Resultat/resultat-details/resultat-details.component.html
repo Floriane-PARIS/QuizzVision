@@ -11,23 +11,44 @@
 
   <div class="container-onglets">
     <div *ngFor="let question of quiz.questions; let i=index">
-    <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"> Question {{i + 1}} </div>
+      <div *ngFor="let answer of quiz.questions[i].answers; let j=index">
+        <div *ngIf="(game.answers[i] == answer.id)">
+        <div *ngIf="answer.isCorrect">
+          <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"><i class="fas fa-check"></i> -Question {{i + 1}} </div>
+        </div>
+        <div *ngIf="(answer.isCorrect != true)">
+          <div class="onglets" id="{{'ongl'+i}}" (click)="ongletChange(i.toString())"><i class="fas fa-times"></i> -  Question {{i + 1}} </div>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 
   <div *ngFor="let question of quiz.questions; let i=index">
   <div class="contenu" id="{{'cont'+i}}">
     <br>
-    Question: {{question.label}}
+    <h3>Question {{i + 1}}: {{question.label}}</h3>
     <br>
     <div *ngFor="let answer of question.answers; let j=index">
+      <div *ngIf="answer.isCorrect">
       <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
-    Réponse {{j+1}}: {{answer.value}}
+        <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
     <br>
       </div>
       <div *ngIf="answer.id != game.answers[i]">
-        Réponse {{j+1}}: {{answer.value}}
+        <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
         <br>
+      </div>
+      </div>
+      <div *ngIf="answer.isCorrect != true">
+        <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
+          <i class="fas fa-times"></i> Réponse {{j+1}}: {{answer.value}}
+          <br>
+        </div>
+        <div *ngIf="answer.id != game.answers[i]">
+          <i class="fas fa-times"></i>  Réponse {{j+1}}: {{answer.value}}
+          <br>
+        </div>
       </div>
   </div>
 

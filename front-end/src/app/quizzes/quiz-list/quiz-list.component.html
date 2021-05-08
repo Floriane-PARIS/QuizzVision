@@ -1,7 +1,7 @@
 <div *ngIf="user == undefined; else patientBlock">
 
     <app-quiz-search></app-quiz-search>
-  
+
   <button type="submit" class="button-card1"  p style="  position: absolute; top: 2.5cm; left: 0.3cm;" (click)="ajoutQuizz()">
     <section class="portfolio-experiment"><a>
       <span class="text"><i class="fas fa-plus fa-3x"></i>Nouveau quiz</span>
@@ -11,14 +11,14 @@
       <span class="line -bottom"></span>
     </a></section>
  </button>
- 
+
 </div>
 
 <ng-template #patientBlock>
   <div> <app-quiz-search></app-quiz-search> </div>
 </ng-template>
 
-<div *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm;">
+<div  class="list" *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm;">
   <div class="quiz" *ngFor="let quiz of quizList">
     <app-quiz [user]="user" [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)" (gameSelected)="gameSelected($event)"></app-quiz>
   </div>

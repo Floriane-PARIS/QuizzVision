@@ -1,4 +1,4 @@
-<div class="question-list">
+<div class="list">
     <div class="question" *ngFor="let question of quiz.questions">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
@@ -8,6 +8,5 @@
       <div *ngIf="editQuestionChose != question.id">
         <app-question [question]="question" (nextQuestion)="nextQuestion($event)" (deleteQuestion)="deleteQuestion($event)" (editQuestion)="editQuestion($event)"></app-question>
       </div>
-
     </div>
   </div>
