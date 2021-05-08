@@ -18,6 +18,7 @@ import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
 import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
+import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 
 
 
@@ -40,7 +41,7 @@ const routes: Routes = [
     {path: 'game/:idUser/:id', component: GameComponent},
     {path: 'resultat-quiz', component: ResultatQuizComponent},
     {path: 'resultat-list', component: ResultatListComponent},
-    {path: 'resultat-list/:id', component: ResultatListComponent},
+    {path: 'resultat-details/:gameId', component: ResultatDetailsComponent},
     {path: 'configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
     // {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },

@@ -24,10 +24,11 @@ import { UserService } from "src/services/user.service";
     public length: number;
     public game: Game;
     public user: User;
+    public gameChose: boolean;
 
 
 
-    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
+    constructor(private router: Router, public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
         this.resultatList = this.formBuilder.group({
           firstName: [''],
           lastName: [''],
@@ -61,5 +62,10 @@ import { UserService } from "src/services/user.service";
       const date = new Date(gameDate);
       return date;
   }
+
+  details(game: Game): void {
+    this.router.navigate(['/resultat-details/' + game.id  ]);
+  }
+
 
 }

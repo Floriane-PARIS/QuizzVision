@@ -1,0 +1,83 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import { Game } from 'src/models/game.model';
+import { Quiz } from 'src/models/quiz.model';
+import { Resultat } from 'src/models/Resultat.model';
+import { User } from 'src/models/user.model';
+import { GameService } from 'src/services/game.service';
+import { QuizService } from 'src/services/quiz.service';
+import { UserService } from 'src/services/user.service';
+
+
+@Component({
+    selector: ' app-resultat-details',
+    templateUrl: './resultat-details.component.html',
+    styleUrls: ['./resultat-details.component.scss']
+  })
+  export class ResultatDetailsComponent implements OnInit {
+
+    public users: User;
+    public game: Game;
+    public quiz: Quiz;
+    public onglets = document.querySelectorAll('.onglets');
+    public contenu = document.querySelectorAll('.contenu');
+
+    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
+        this.userService.userSelected$.subscribe((user: User) => {
+          this.users = user;
+        });
+        this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
+          this.quiz = quiz;
+        });
+        this.gameService.gameSelected$.subscribe((game: Game) => {
+          this.game = game;
+        });
+    }
+
+  ngOnInit(): void {
+      const id = this.route.snapshot.paramMap.get('gameId');
+      this.gameService.setSelectedGame(id);
+  }
+
+  dateGame(gameDate: Date): Date {
+      const date = new Date(gameDate);
+      return date;
+  }
+
+  ongletChange(data: string): void {
+      this.onglets = document.querySelectorAll('.onglets');
+      this.onglets.forEach(onglet => {
+        if (onglet.classList.contains('active')) {
+          return;
+        } else {
+          onglet.classList.add('active');
+        }
+        // tslint:disable-next-line:prefer-for-of
+        for (let n = 0; n < this.onglets.length; n++) {
+          if (this.onglets[n].getAttribute('data-anim') != data) {
+            this.onglets[n].classList.remove('active');
+          }
+        }
+    });
+      this.contenuChange(data);
+  }
+
+  contenuChange(data: string): void {
+    this.onglets = document.querySelectorAll('.contenu');
+    this.onglets.forEach(onglet => {
+      if (onglet.classList.contains('activeContenu')) {
+        return;
+      } else {
+        onglet.classList.add('activeContenu');
+      }
+      // tslint:disable-next-line:prefer-for-of
+      for (let n = 0; n < this.onglets.length; n++) {
+        if (this.onglets[n].getAttribute('data-anim') != data) {
+          this.onglets[n].classList.remove('activeContenu');
+        }
+      }
+    });
+  }
+
+}
