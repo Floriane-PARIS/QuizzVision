@@ -21,7 +21,7 @@ export class UserFormComponent implements OnInit {
       maladies: [''],
       commentaires:[''],
       age : [''],
-      //photo: [''],
+      sexe: [''],
     });
   }
 
@@ -37,5 +37,17 @@ export class UserFormComponent implements OnInit {
 
   annule(): void {
     this.router.navigate(['/user-list']);
+  }
+
+  Homme(): void {
+    const userToCreate: User = this.userForm.getRawValue() as User;
+    userToCreate.sexe = "Homme";
+    this.userService.updateUser(userToCreate);
+  }
+
+  Femme(): void {
+    const userToCreate: User = this.userForm.getRawValue() as User;
+    userToCreate.sexe = "Femme";
+    this.userService.updateUser(userToCreate);
   }
 }

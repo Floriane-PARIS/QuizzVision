@@ -15,10 +15,6 @@ import {Game} from "../models/game.model";
   providedIn: 'root'
 })
 export class UserService {
-  /*
-   The list of user.
-   */
-  //private users: User[] = [];
 
   /*
    The list of users.
@@ -93,15 +89,6 @@ export class UserService {
     });
   }
 
-  /*updateUserComments(user: User, comments: string): void {
-    const commentsWrite = {commentaires : comments};
-    const userUrl = this.userUrl + '/' + user.id ;
-    this.http.put<User>(userUrl, commentsWrite, this.httpOptions).subscribe((user) => {
-      this.retrieveUsers();
-      this.setSelectedUser(user.id);
-    });
-
-  }*/
 
   updateUser(user: User): void {
     const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, age: user.age };
@@ -167,6 +154,24 @@ export class UserService {
     });
   }
 
+  getConfiguration2(userId: string): Boolean{
+    const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
+    this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
+      if (configurationNext.length > 0 ) {
+        // this.currentConfiguration = configurationNext[configurationNext.length - 1];
+        // console.log("more than 1");
+        this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
+        return true;
+      } else {
+        // console.log('no conf');
+        this.configurationNext$.next(undefined);
+        return false;
+      }
+    });
+    return false;
+  }
+
+
   nextConfiguration(user: User, configuration: Configuration): void{
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.get<Configuration>(configurationUrl).subscribe((configurationNext) => {
@@ -210,4 +215,7 @@ export class UserService {
     });
   }
 
+
 }
+
+

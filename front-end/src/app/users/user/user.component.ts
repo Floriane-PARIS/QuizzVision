@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +21,7 @@ export class UserComponent implements OnInit {
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor() {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +37,13 @@ export class UserComponent implements OnInit {
 
   delete(): void {
     this.deleteUser.emit(this.user);
+  }
+
+  hasConfiguration(): Boolean{
+    if(this.userService.getConfiguration(this.user.id) == undefined){
+      return true;
+    }
+    return false;
   }
 }
 

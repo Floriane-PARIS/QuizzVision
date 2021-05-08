@@ -66,6 +66,7 @@ export class QuizComponent implements OnInit {
   }
 
   selectQuiz(): void {
+    this.hasConfiguration();
     this.quizSelected.emit(this.quiz);
   }
 
@@ -75,5 +76,13 @@ export class QuizComponent implements OnInit {
 
   delete(): void {
     this.deleteQuiz.emit(this.quiz);
+  }
+
+  hasConfiguration(): Boolean{
+    if(this.user.configurations == undefined){
+      console.log("créer une configuration!!!");
+      return true;
+    }
+    return false;
   }
 }

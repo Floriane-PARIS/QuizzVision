@@ -8,5 +8,6 @@ module.exports = new BaseModel('User', {
   maladies: Joi.string().required(),
   commentaires: Joi.string(),
   age: Joi.number().required(),
-  //photo: Joi.string(),
+  sexe: Joi.string(),
+  //photoDeProfile: Joi.string(),
 })
