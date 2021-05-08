@@ -64,7 +64,7 @@ import { UserService } from "src/services/user.service";
   }
 
   details(game: Game): void {
-    this.router.navigate(['/resultat-details/' + game.id  ]);
+    this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId ]);
   }
 
 

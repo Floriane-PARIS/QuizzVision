@@ -41,7 +41,7 @@ const routes: Routes = [
     {path: 'game/:idUser/:id', component: GameComponent},
     {path: 'resultat-quiz', component: ResultatQuizComponent},
     {path: 'resultat-list', component: ResultatListComponent},
-    {path: 'resultat-details/:gameId', component: ResultatDetailsComponent},
+    {path: 'resultat-details/:gameId/:quizId', component: ResultatDetailsComponent},
     {path: 'configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
     // {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },

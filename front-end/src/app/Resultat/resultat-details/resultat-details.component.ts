@@ -17,27 +17,27 @@ import { UserService } from 'src/services/user.service';
   })
   export class ResultatDetailsComponent implements OnInit {
 
-    public users: User;
+    public user: User;
     public game: Game;
     public quiz: Quiz;
     public onglets = document.querySelectorAll('.onglets');
     public contenu = document.querySelectorAll('.contenu');
 
     constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
-        this.userService.userSelected$.subscribe((user: User) => {
-          this.users = user;
-        });
-        this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
-          this.quiz = quiz;
-        });
         this.gameService.gameSelected$.subscribe((game: Game) => {
           this.game = game;
+          this.user = this.gameService.getUserForGame(game);
         });
+      this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
+        this.quiz = quiz;
+      });
     }
 
   ngOnInit(): void {
       const id = this.route.snapshot.paramMap.get('gameId');
       this.gameService.setSelectedGame(id);
+      const quizId = this.route.snapshot.paramMap.get('quizId');
+      this.quizService.setSelectedQuiz(quizId);
   }
 
   dateGame(gameDate: Date): Date {
