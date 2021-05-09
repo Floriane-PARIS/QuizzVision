@@ -154,23 +154,6 @@ export class UserService {
     });
   }
 
-  getConfiguration2(userId: string): Boolean{
-    const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
-    this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
-      if (configurationNext.length > 0 ) {
-        // this.currentConfiguration = configurationNext[configurationNext.length - 1];
-        // console.log("more than 1");
-        this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
-        return true;
-      } else {
-        // console.log('no conf');
-        this.configurationNext$.next(undefined);
-        return false;
-      }
-    });
-    return false;
-  }
-
 
   nextConfiguration(user: User, configuration: Configuration): void{
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;

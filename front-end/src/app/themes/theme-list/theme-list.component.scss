@@ -8,8 +8,10 @@
   border: none;
 }
 
-listTheme{
-  display: inline;
-  text-align: center;
+.listTheme{
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  width: 12cm;
+  height: max-content;
 }
 

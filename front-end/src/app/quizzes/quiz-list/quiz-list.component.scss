@@ -184,10 +184,11 @@
 //presentation grille quizz
 
 .list {
- display: inline-block;
+ //display: inline-block;
  direction: ltr;
- //display: -moz-grid-line;
-  perspective: 5000px;
+perspective: 5000px;
+display: grid;
+grid-template-columns: 400px 400px 400px;
 
   //--------------------------------------------------
   // CARD FLIP RIGHT
@@ -231,12 +232,12 @@
         transform: rotateY(180deg);
       }
     }
-  }
+  }}
 
   //--------------------------------------------------
   // CARD FLIP LEFT
   //--------------------------------------------------
-  &.flip-left {
+  /*&.flip-left {
     .quiz {
       .back {
         transform: rotateY(-180deg);
@@ -282,12 +283,12 @@
         transform: rotateX(-180deg);
       }
     }
-  }
+  }*/
 
   //--------------------------------------------------
   // DIAGONAL RIGHT
   //--------------------------------------------------
-  &.flip-diagonal-right {
+ /* &.flip-diagonal-right {
     .quiz {
       .back {
         transform: rotate3d(1, 1, 0, 180deg);
@@ -316,12 +317,12 @@
         transform: rotate3d(1, 1, 0, -180deg);
       }
     }
-  }
+  }*/
 
   //--------------------------------------------------
   // INVERTED DIAGONAL RIGHT
   //--------------------------------------------------
-  &.flip-inverted-diagonal-right {
+ /* &.flip-inverted-diagonal-right {
     .quiz {
       .back {
         transform: rotate3d(-1, 1, 0, 180deg);
@@ -334,11 +335,11 @@
       }
     }
   }
-
+*/
   //--------------------------------------------------
   // INVERTED DIAGONAL LEFT
   //--------------------------------------------------
-  &.flip-inverted-diagonal-left {
+ /* &.flip-inverted-diagonal-left {
     .quiz {
       .back {
         transform: rotate3d(1, -1, 0, 180deg);
@@ -350,8 +351,8 @@
         transform: rotate3d(1, -1, 0, 180deg);
       }
     }
-  }
-}
+  }*/
+//}
 
 
 /* DEMO */

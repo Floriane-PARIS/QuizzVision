@@ -39,11 +39,5 @@ export class UserComponent implements OnInit {
     this.deleteUser.emit(this.user);
   }
 
-  hasConfiguration(): Boolean{
-    if(this.userService.getConfiguration(this.user.id) == undefined){
-      return true;
-    }
-    return false;
-  }
 }
 

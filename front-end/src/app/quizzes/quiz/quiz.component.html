@@ -18,10 +18,10 @@
           </h5>
         </div>
       </div>
+      <div *ngIf="hasConfiguration() == true && user!=undefined">
+        <h3>Créer une configuration avant de commencer!!!</h3>
+      </div>
       <div *ngIf="!isAlreadyStart">
-        <div *ngIf="hasConfiguration() == true">
-          <h3>Créer une configuration avant de commencer!!!</h3>
-        </div>
         <button class="button-card select" (click)="selectQuiz()">Jouer</button>
       </div>
     </div>
