@@ -6,9 +6,31 @@
 
 .button-card{
     display: table-cell;
+    background-color: transparent;
   font-size: 14px;
   margin-left: 8px;
   min-width: 120px;
   border-radius: 0.3cm;
   border-width: 0.08cm;
+  color: black;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 6px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Baloo Paaji 2', cursive;
+}
+
+.card {
+  background: linear-gradient(125deg,rgba(145, 6, 87, 0.623),rgba(23, 126, 3, 0.623));
+  border: white;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }

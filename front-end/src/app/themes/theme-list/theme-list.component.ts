@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import {Theme} from '../../../models/Theme.model';
 import {Router} from '@angular/router';
 import {ThemeService} from '../../../services/theme.service';
@@ -10,9 +10,14 @@ import {ThemeService} from '../../../services/theme.service';
 })
 export class ThemeListComponent implements OnInit {
 
+  @Input()
+  theme: Theme;
+  public editThemeChose: string;
+
   public themeList: Theme[] = [];
 
   constructor(private router: Router, public themeService: ThemeService) {
+    this.editThemeChose = '';
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
     });
@@ -21,10 +26,6 @@ export class ThemeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editTheme(theme: Theme): void {
-    console.log('event received from child:', theme.subject);
-    this.router.navigate(['/edit-theme/' + theme.subject]);
-  }
 
   deleteTheme(theme: Theme): void {
     this.themeService.deleteTheme(theme);
@@ -36,4 +37,19 @@ export class ThemeListComponent implements OnInit {
 
   }
 
+  //changes
+
+  editTheme(theme: Theme): void {
+    console.log('edit');
+    this.editThemeChose = theme.id;
+  }
+
+  editThemeDone(theme: Theme): void {
+    console.log("doneeee")
+    this.themeService.updateTheme(theme);
+    this.editThemeChose = '';
+  }
+
 }
+
+

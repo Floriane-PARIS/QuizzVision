@@ -100,4 +100,11 @@ export class ThemeService {
     const urlWithId = this.themeUrl + '/' + theme.id;
     this.http.put<Theme>(urlWithId, newTheme, this.httpOptions).subscribe(() => this.retrieveThemes());
   }
+
+  //changes
+  updateTheme(theme: Theme): void {
+    const themeWrite = { Subject: theme.subject };
+    const themeUrl = this.themeUrl + '/' + theme.id ;
+    this.http.put<Theme>(themeUrl, themeWrite, this.httpOptions).subscribe();
+  }
 }

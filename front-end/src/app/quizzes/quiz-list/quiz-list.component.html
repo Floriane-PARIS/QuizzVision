@@ -19,13 +19,14 @@
 </ng-template>
 
 <div  class="list" *ngIf="quizList.length > 0; else elseBlock" p style=" position:absolute; top: 10cm">
-  <div class="quiz" *ngFor="let quiz of quizList">
-    <div class="front">
-      {{quiz.name}}
-     </div>
-    <div class="back">
+  <div class="quiz element-card" *ngFor="let quiz of quizList">
+    <div class="front-facing">
+			<h1 class="abr">
+        {{quiz.label}}
+      </h1>
+		</div>
+    <div class="back-facing">
       <app-quiz [user]="user" [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)" (gameSelected)="gameSelected($event)"></app-quiz>
-    </div>
    </div>
 </div>
 

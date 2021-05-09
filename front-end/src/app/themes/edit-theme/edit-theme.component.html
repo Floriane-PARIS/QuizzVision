@@ -1,8 +1,9 @@
-<ng-container *ngIf="theme">
-  <h2>Modifier le theme : {{theme.subject}}</h2>
-  <h4 p style="font-family: cursive;">Nouveau nom de thème</h4>
+
+<div class="card">
+  theme : {{theme.subject}}
+  Nouveau nom de thème
   <input class="input-custom" type="text" id="subject" [(ngModel)] = "themeSubject" [ngModelOptions]="{standalone: true}">
-  <button type="submit" class="button-card" (click)="modifThemeSubject()">Sauvegarder</button>
-</ng-container>
-<br>
-<button class="button-card" routerLink="/theme-list">Retour</button>
+  <br>
+  <button class="button-card select" (click)="edit()">Sauvegarder</button>
+
+</div>

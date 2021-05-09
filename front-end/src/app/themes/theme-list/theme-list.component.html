@@ -4,7 +4,12 @@
 <app-theme-search></app-theme-search>
 <div class="listTheme" *ngIf="themeList.length > 0; else elseBlock" p style="position: relative; top: 5cm; left: 12cm; right: 2cm;">
   <div class="theme" *ngFor="let theme of themeList">
-    <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
+    <div *ngIf="editThemeChose != theme.id">
+      <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (themeSelected)="selectTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
+    </div>
+    <div *ngIf="editThemeChose == theme.id">
+      <app-edit-theme [theme]=theme (editUserDone)="editThemeDone($event)"></app-edit-theme>
+    </div>
   </div>
 </div>
 <ng-template #elseBlock>

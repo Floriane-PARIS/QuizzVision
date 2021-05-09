@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Theme} from '../../../models/theme.model';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-theme',
@@ -12,15 +13,22 @@ export class ThemeComponent implements OnInit {
   theme: Theme;
 
   @Output()
+  themeSelected: EventEmitter<Theme> = new EventEmitter<Theme>();
+
+  @Output()
   editTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
 
   @Output()
   deleteTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
 
-  constructor() {
+  constructor(public themeService: ThemeService) {
   }
 
   ngOnInit(): void {
+  }
+
+  select(): void {
+    this.themeSelected.emit(this.theme);
   }
 
   edit(): void {
@@ -31,3 +39,8 @@ export class ThemeComponent implements OnInit {
     this.deleteTheme.emit(this.theme);
   }
 }
+
+
+
+
+

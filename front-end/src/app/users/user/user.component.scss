@@ -26,7 +26,7 @@
 }
 
 .card {
-  background: rgba(23, 126, 3, 0.623);
+  background: linear-gradient(125deg,rgba(23, 126, 3, 0.623),rgba(145, 6, 87, 0.623));
   border: transparent;
   height: max-content;
   border-radius: 5px;
@@ -103,12 +103,14 @@
 
 .button-card {
   background: transparent;
-  border: none;
+ // border: none;
   cursor: pointer;
   //line-height: 1;
   font: 7 0.8rem 'Roboto Slab', sans-serif;
   padding: 0.75em 1em;
   letter-spacing: 0.05rem;
+  color: white;
+  border-color: white;
   margin: 0em;
   width: 9rem;
 }
