@@ -1,14 +1,8 @@
 <div class="card">
-  <h3 class="title">Choisir une nouvelle configuration</h3>
+  <h3 class="title">Choisir une nouvelle configuration
+  </h3>
   <form class="configuration-form" [formGroup]="configurationForm">
 
-    <label for="police"> Handicap </label>
-    <select id = "handicap" name="handicap" [formControlName]="'handicap'" >
-      <option value = "Glaucome">Glaucome</option>
-      <option value = "DMLA">DMLA</option>
-      <option value = "Autres">Autres</option>
-    </select>
-    <br>
     <label for="bold">Texte en gras ? </label>
     <input type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
     <input type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
