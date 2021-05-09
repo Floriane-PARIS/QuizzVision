@@ -1,7 +1,7 @@
 /*.quiz-list {
   display: flex;
 }*/
-//@import '../../../styles/card.scss';
+@import '../../../styles/card.scss';
 
 
 /*.quiz{
@@ -181,13 +181,6 @@
 }
 
 //presentation grille quizz
-
-@backgroundColor: #E7BDD6;
-@cardFrontBackgroundColor: #FFFFFF;
-@cardFrontForegroundColor: #FC545E;
-@cardBackBackgroundColor: @cardFrontForegroundColor;
-@cardBackForegroundColor: @cardFrontBackgroundColor;
-@cardBorderColor: #FC545E;
 
 .list {
  // display: inline-block;
