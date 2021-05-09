@@ -1,6 +1,7 @@
 <button class="button-card" routerLink="/quiz-list">Retour</button>
 
 <ng-container *ngIf="quiz">
+  <br>
   <h2>le nom du quiz : {{quiz.name}}</h2>
   <div>
     <label>
@@ -10,7 +11,7 @@
     </label>
   </div>
 
-  <h2>le thème du quiz : {{quiz.theme}}</h2>
+  <h3>le thème du quiz : {{quiz.theme}}</h3>
   <div>
     <label>
       Nouveau nom de thème

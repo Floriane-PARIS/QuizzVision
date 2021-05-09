@@ -3,6 +3,8 @@
 .answer-form {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+    background: transparent;
+  background-color: transparent;
 }
 .button-card{
     display: table-cell;
@@ -11,4 +13,10 @@
   min-width: 120px;
   border-radius: 0.3cm;
   border-width: 0.08cm;
+}
+
+.card{
+  background: transparent;
+  background-color: transparent;
+  border-color: transparent;
 }

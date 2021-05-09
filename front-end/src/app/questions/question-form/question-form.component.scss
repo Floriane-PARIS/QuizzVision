@@ -23,3 +23,20 @@
   width: 100%;
 }
 
+.card{
+  background: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: green;
+}
+
+.title {
+  font-size: 1em;
+     color: #078518;
+    background: #078518;
+    background: -moz-linear-gradient(left,#f4524d  0%,#078518 100%) !important;
+    background: -webkit-linear-gradient(left,#f4524d  0%,#078518 100%) !important;
+    background: linear-gradient(to right,#f4524d  0%,#078518  100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
