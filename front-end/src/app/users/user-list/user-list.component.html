@@ -21,12 +21,12 @@
       <div *ngIf="editUserChose == user.id">
         <app-user-edit [user]=user (editUserDone)="editUserDone($event)"></app-user-edit>
       </div>
-    </div>    
+    </div>
 </div>
 
   <!-- changes-->
   <ng-template #elseBlock>
     <div>
-      Aucun patients
+      Aucun patient
     </div>
   </ng-template>

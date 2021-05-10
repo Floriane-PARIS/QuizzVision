@@ -8,17 +8,30 @@ import { User } from "src/models/user.model";
 import { GameService } from "src/services/game.service";
 import { QuizService } from "src/services/quiz.service";
 import { UserService } from "src/services/user.service";
-
+import { CommonModule } from "@angular/common";
 
 @Component({
     selector: ' app-resultat-quiz',
     templateUrl: './resultat-quiz.component.html',
     styleUrls: ['./resultat-quiz.component.scss']
   })
+
   export class ResultatQuizComponent implements OnInit {
 
+    public quizzes: Quiz[];
+    public resultatList: FormGroup;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService) {
+      this.resultatList = this.formBuilder.group({
+              firstName: [''],
+              lastName: [''],
+              handicap: [''],
+              note: [''],
+      });
+
+      this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+        this.quizzes = quizzes;
+      });
 
     }
   ngOnInit(): void {
