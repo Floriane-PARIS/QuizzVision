@@ -1,0 +1,22 @@
+<head>
+    <link ref="stylesheet" href="style.css">
+    <link ref="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+</head>
+
+
+<body>
+    <form>
+        <h1>Se connecter</h1>
+
+        <div class="inputs">
+            <i class="fa fa-user" style="color: forestgreen;"></i><input type="name" placeholder="Nom de l'utilisateur">
+            <i class="fa fa-lock" style="color: forestgreen;"></i><input type="password" placeholder="Mot de passe">
+        </div>
+
+        <p class="inscription">Je n'ai pas de <span>compte</span>. Je m'en <span>crée</span> un.</p>
+        <div align="center">
+            <button type="submit" (click)="otherUsers()">Se connecter</button>
+        </div>
+    </form>
+</body>

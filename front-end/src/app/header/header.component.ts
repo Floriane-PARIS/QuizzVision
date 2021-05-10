@@ -9,6 +9,8 @@ import { Game } from 'src/models/game.model';
 import {Router} from "@angular/router";
 import {QuizService} from "../../services/quiz.service";
 import {Quiz} from "../../models/quiz.model";
+import { Animateur } from 'src/models/animateur.model';
+import { AnimateurService } from 'src/services/animateur.service';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
   public user: User;
   public game: Game;
   public quiz: Quiz;
+  //public animateur: Animateur;
 
   constructor( private router: Router, public userService: UserService, public gameService: GameService, public quizService: QuizService) {
     this.userService.userSelected$.subscribe((user) => {
@@ -34,6 +37,9 @@ export class HeaderComponent implements OnInit {
       console.log('QUIZ', quiz);
       this.quiz = quiz;
     });
+   // this.animateurService.animateurSelected$.subscribe((animateur) => {
+   //   this.animateur = animateur;
+   // });
   }
 
   ngOnInit(): void {

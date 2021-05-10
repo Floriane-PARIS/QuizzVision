@@ -39,6 +39,8 @@ import { ConfigurationJeuComponent } from './configurations/configuration-jeu/co
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-search.component';
+import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 @NgModule({
@@ -79,6 +81,8 @@ import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-sear
     ResultatDetailsComponent,
     ResultatSearchComponent,
     ConfigurationJeuComponent,
+   // ConnexionFormComponent,
+   // InscriptionComponent,
   ],
     imports: [
         BrowserModule,
