@@ -8,6 +8,16 @@
   border: none;
 }
 
+.button-card{
+  display: table-cell;
+  font-size: 0.95em;
+  color:#078518 ;
+  margin-left: -144px;
+  min-width: 120px;
+  background: transparent;
+  border: none;
+}
+
 .listTheme{
   display: grid;
   grid-template-columns: 300px 300px 300px;
