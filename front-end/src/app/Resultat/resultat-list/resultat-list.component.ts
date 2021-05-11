@@ -72,5 +72,41 @@ import { UserService } from "src/services/user.service";
     this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId ]);
   }
 
+  getUserName(game: Game): String {
+      for (const user of this.users) {
+                 if (game.userId == user.id) {
+                       return user.firstName+" "+user.lastName;
+                 }
+      }
+      return "";
+  }
+
+  getUserMaladie(game: Game): String {
+        for (const user of this.users) {
+                   if (game.userId == user.id) {
+                         return user.maladies;
+                   }
+        }
+        return "";
+  }
+
+  getQuizName(game: Game): String {
+          for (const quiz of this.quizzes) {
+                     if (game.quizId == quiz.id) {
+                           return quiz.name;
+                     }
+          }
+          return "";
+   }
+
+  getQuizLength(game: Game): number {
+             for (const quiz of this.quizzes) {
+                        if (game.quizId == quiz.id) {
+                              return quiz.questions.length;
+                        }
+             }
+             return 0;
+  }
+
 
 }
