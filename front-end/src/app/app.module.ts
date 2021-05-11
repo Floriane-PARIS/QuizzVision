@@ -37,6 +37,7 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { ConfigurationJeuComponent } from './configurations/configuration-jeu/configuration-jeu.component';
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
+import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-search.component';
 import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
@@ -78,6 +79,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
     ThemeSearchComponent,
     ThemeFormComponent,
     ResultatListComponent,
+    ResultatQuizComponent,
     ResultatDetailsComponent,
     ResultatSearchComponent,
     ConfigurationJeuComponent,

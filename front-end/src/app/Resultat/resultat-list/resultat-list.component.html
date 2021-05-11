@@ -27,6 +27,7 @@
                       </thead>
                       <tbody>
                           <tr>
+
                               <td>{{user.firstName}} {{user.lastName}}</td>
                               <td>{{user.maladies}}</td>
                               <td>{{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
@@ -37,6 +38,7 @@
                               <td>
                                 <button class="button-card" (click)="details(game)">details</button>
                               </td>
+
                           </tr>
                       </tbody>
                   </table>
