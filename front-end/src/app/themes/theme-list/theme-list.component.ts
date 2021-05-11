@@ -11,16 +11,12 @@ import {ThemeService} from '../../../services/theme.service';
 export class ThemeListComponent implements OnInit {
 
   @Input()
-  origin: boolean;
-
-  @Input()
   theme: Theme;
   public editThemeChose: string;
 
   public themeList: Theme[] = [];
 
   constructor(private router: Router, public themeService: ThemeService) {
-    this.origin = false;
     this.editThemeChose = '';
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;
@@ -35,10 +31,14 @@ export class ThemeListComponent implements OnInit {
     this.themeService.deleteTheme(theme);
   }
 
-  ajoutQuizz(): void{
+  navigate(): void{
     console.log('event received from child: new quiz');
-    this.router.navigate(['/quiz-form']);
-
+    if (this.themeService.origin){
+      this.router.navigate(['/quiz-form']);
+    }
+    else {
+      this.router.navigate(['/quiz-list']);
+    }
   }
 
   //changes

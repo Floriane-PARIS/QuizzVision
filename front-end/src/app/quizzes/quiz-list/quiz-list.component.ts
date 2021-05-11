@@ -5,6 +5,7 @@ import { Quiz } from '../../../models/quiz.model';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
 import {Game} from '../../../models/game.model';
+import {ThemeService} from "../../../services/theme.service";
 
 @Component({
   selector: 'app-quiz-list',
@@ -17,7 +18,7 @@ export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
   public user: User;
 
-  constructor(private router: Router, private route: ActivatedRoute, public quizService: QuizService,  public userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, public quizService: QuizService,  public userService: UserService, public themeService: ThemeService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
@@ -59,6 +60,7 @@ export class QuizListComponent implements OnInit {
 
   ajoutTheme(): void{
     console.log('event received from child: new theme');
+    this.themeService.origin = false;
     this.router.navigate(['/theme-list']);
   }
 }
