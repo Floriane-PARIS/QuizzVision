@@ -4,6 +4,7 @@
       <h6>
         Nom
           <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
+          <button type="submit" class="button-card" (click)="searchUserName()"></button>
         
           Prenom
         <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
