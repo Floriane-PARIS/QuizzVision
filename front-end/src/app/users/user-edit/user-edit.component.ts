@@ -29,5 +29,9 @@ export class UserEditComponent implements OnInit {
   edit(): void {
     this.editUserDone.emit(this.user);
   }
+
+  retour(): void{
+    location.reload();
+  }
 }
 
