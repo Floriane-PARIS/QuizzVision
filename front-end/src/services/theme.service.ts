@@ -76,7 +76,7 @@ export class ThemeService {
     }
     if (count > 0){
       console.log(this.themes);
-      document.getElementById('errorname').innerHTML = 'thème exite déjà !';
+      document.getElementById('errorname').innerHTML = 'Ce thème existe déjà !';
       this.retrieveThemes();
     }
     else{
