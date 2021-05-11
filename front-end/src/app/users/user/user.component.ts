@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import {GameService} from '../../../services/game.service';
 
 @Component({
   selector: 'app-user',
@@ -21,13 +22,15 @@ export class UserComponent implements OnInit {
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public gameService: GameService) {
   }
 
   ngOnInit(): void {
   }
 
   select(): void {
+    this.gameService.origin = true;
+    console.log(this.gameService.origin);
     this.userSelected.emit(this.user);
   }
 

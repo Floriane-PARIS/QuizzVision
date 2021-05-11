@@ -1,3 +1,4 @@
+<button class="button-card" (click)="navigate1()">Retour</button>
 <br>
 <div class="resultat-game" *ngIf="game != undefined && quiz != undefined && user != null">
   Joueur:  {{user.firstName}} {{user.lastName}}
@@ -6,7 +7,7 @@
     à {{dateGame(game.date).getHours()}}h{{dateGame(game.date).getMinutes()}}, avec une note de {{game.score}}/{{quiz.questions.length}}
   </div>
     <div>
-    <button-card routerLink="/edit-quiz/{{quiz.id}}" class="button-card">Modifier le quiz "{{quiz.name}}"</button-card>
+    <button-card (click)="modifQuiz()" class="button-card">Modifier le quiz "{{quiz.name}}"</button-card>
   </div>
 </div>
 <br>

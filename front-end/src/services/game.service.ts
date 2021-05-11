@@ -16,6 +16,7 @@ export class GameService {
    The list of game.
    */
   private games: Game[] = [];
+  public origin: boolean;
   // public gameQuestion: Question;  // changes
   // public gameQuiz: Quiz; // changes
 
@@ -43,6 +44,7 @@ export class GameService {
 
   constructor(private http: HttpClient) {
     this.retrieveGames();
+    this.origin = false;
   }
 
   retrieveGames(isSetSelectedGame: boolean = false): void {

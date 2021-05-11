@@ -54,7 +54,7 @@ export class EditQuizComponent implements OnInit {
   }
 
   navigate(): void{
-    console.log('event received from child: new quiz');
+    console.log('event received from child: new quiz'+ this.quizService.origin);
     if (this.quizService.origin){
       this.router.navigate(['/quiz-list']);
     }

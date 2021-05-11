@@ -26,7 +26,7 @@ import {Configuration} from "../../../models/configuration.model";
     public onglets = document.querySelectorAll('.onglets');
     public contenu = document.querySelectorAll('.contenu');
 
-    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
+    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute, public router: Router) {
         this.gameService.gameSelected$.subscribe((game: Game) => {
           this.game = game;
           console.log('confii', game.configuration[0].id);
@@ -90,4 +90,20 @@ import {Configuration} from "../../../models/configuration.model";
     });
   }
 
+  
+  navigate1(): void{
+    console.log('event received from child: new result' + this.gameService.origin);
+    if (this.gameService.origin == true){
+      this.router.navigate(['/quiz-list/'+ this.user.id]);
+
+    }
+    else {
+      this.router.navigate(['/resultat-list']); 
+    }
+  }
+
+  modifQuiz(): void{
+    this.quizService.origin = false;
+    this.router.navigate(['/edit-quiz/' + this.quiz.id]);
+  }
 }

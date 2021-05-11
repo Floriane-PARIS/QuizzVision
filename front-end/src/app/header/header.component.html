@@ -1,4 +1,4 @@
-<div *ngIf="user == undefined ">
+<div *ngIf="user == undefined || resultat-list != undefined && user == undefined ">
     <div class="header">
       BrocoliQuiz |
     <a class="navigation" [routerLink]="['/quiz-list']">Mes Quizs</a>
@@ -16,15 +16,18 @@
       <a class="navigation" (click)="otherUsers()">Retour aux Patients</a>
     </div>
 </div>
-<!--div *ngIf="user != undefined && game == undefined && configuration == undefined  || user != undefined  && configuration == undefined" >
+
+<!--div *ngIf="user != undefined  && resultat-details != undefined && game == undefined && quiz == undefined " >
   <div class="header1">
     BrocoliQuiz |
     <a class="navigation"> Bonjour {{user.firstName}} {{user.lastName}} |</a>
-  <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quizs</a>
-  <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
+    <a class="navigation" routerLink="/quiz-list/{{user.id}}">Les Quizs</a>
+    <a class="navigation" routerLink="/configuration-edit/{{user.id}}">Ma Configuration</a>
+    <a class="navigation" routerLink="/resultat-list/{{user.id}}">Mes Résultats</a>
     <a class="navigation" (click)="otherUsers()">Retour aux Patients</a>
   </div>
 </div-->
+
 
 <!--div *ngIf="user == undefined && game == undefined && quiz == undefined && animateur==undefined" >
     <div class="header3">
