@@ -89,6 +89,11 @@ export class GameStartComponent implements OnInit {
     this.router.navigate(['/quiz-list/' + this.user.id]);
   }
 
+  backToConfiguration(): void {
+    this.quizService.setSelectedQuiz(undefined);
+    this.router.navigate(['/configuration-edit/' + this.user.id]);
+  }
+
   startGame(string: string): void {
     this.quizService.setSelectedQuiz(this.quiz.id);
     console.log('event received from child:', string);
