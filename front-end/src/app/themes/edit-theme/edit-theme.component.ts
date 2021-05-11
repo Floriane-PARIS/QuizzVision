@@ -10,8 +10,6 @@ import {ThemeService} from '../../../services/theme.service';
 })
 export class EditThemeComponent implements OnInit {
 
-  //changes
-  
   @Input()
   theme: Theme;
 
@@ -30,9 +28,8 @@ export class EditThemeComponent implements OnInit {
   }
 
   retour(): void{
-    this.router.navigate(['/theme-list']);
+    location.reload();
   }
-
 }
 
 
