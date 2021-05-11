@@ -6,7 +6,7 @@ import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
 import {GameService} from '../../../services/game.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { userInfo } from 'os';
+//import { userInfo } from 'os';
 
 @Component({
   selector: 'app-quiz-form',
