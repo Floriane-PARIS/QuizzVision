@@ -4,7 +4,6 @@ import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
-import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-quiz',
@@ -18,7 +17,7 @@ export class EditQuizComponent implements OnInit {
   public quiz: Quiz;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private dialog: MatDialogModule, private route: ActivatedRoute, private quizService: QuizService, public themeService: ThemeService) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, public themeService: ThemeService) {
     this.quizService.quizSelected$.subscribe((quiz) =>  {
       this.quiz = quiz;
       this.quizService.retrieveQuizzes();
