@@ -26,8 +26,6 @@ export class UserService {
    Observable which contains the list of the user.
    */
   public users$: BehaviorSubject<User[]> = new BehaviorSubject([]);
-  // public currentUser: User;
-  // public currentConfiguration: Configuration;
   public userSelected$: Subject<User> = new Subject();
   public configurationNext$: Subject<Configuration> = new Subject();
 
@@ -67,7 +65,6 @@ export class UserService {
       for (let i = this.users.length; i < 0; i--){
         if (this.users[i].lastName !== userLName){
           this.users.pop();
-          //console.log(this.res[i]);
         }
       }
       this.users$.next(this.users);
@@ -123,21 +120,10 @@ export class UserService {
     }
   }
 
-  /*setSelectedConfiguration(user: User): void {
-    if (user.configurations !== undefined) {
-      if (user.configurations.length > 0) {
-        this.configurationNext$.next(user.configurations[user.configurations.length - 1]);
-      } else {
-        this.configurationNext$.next(undefined);
-      }
-    }
-  }*/
-
   deleteUser(user: User): void {
     // console.log('works');
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
-
   }
 
   getConfiguration(userId: string): void{
@@ -177,20 +163,12 @@ export class UserService {
     // this.currentUser = user;
   }
 
-  /*addConfiguration1(configuration: Configuration): void {
-    this.addConfiguration(this.currentUser, configuration);
-  }*/
-
   deleteConfiguration(user: User, configuration: Configuration): void {
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.delete<Configuration>(configurationUrl, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
 
   putConfiguration(user: User, configuration: Configuration): void {
-    // this.currentConfiguration = configuration;
-    // this.currentUser = user;
-    // console.log(this.currentConfiguration);
-
     const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.put<Configuration>(configurationUrl, configurationWrite, this.httpOptions).subscribe(() => {
