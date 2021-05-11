@@ -5,7 +5,9 @@ const GameRouter = require('./games')
 const ThemeRouter = require('./themes')
 const ConfigurationRouter = require('./users/configurations')
 const GameQuestion = require('./quizzes/questions')
-
+const AnimateurRouter = require('./animateurs')
+const InscriptionRouter = require('./animateurs/inscriptions')
+const ConnexionRouter = require('./animateurs/inscriptions/connexions')
 
 const router = new Router()
 router.get('/status', (req, res) => res.status(200).json('ok'))
@@ -15,5 +17,8 @@ router.use('/games', GameRouter)
 router.use('/themes', ThemeRouter)
 router.use('/quizzes/questions', GameQuestion)
 router.use('/users/configurations', ConfigurationRouter)
+router.use('/animateurs', AnimateurRouter)
+router.use('/animateurs/inscriptions', InscriptionRouter)
+router.use('/animateurs/connexions', ConnexionRouter)
 
 module.exports = router

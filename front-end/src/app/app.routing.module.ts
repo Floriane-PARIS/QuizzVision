@@ -46,9 +46,9 @@ const routes: Routes = [
     {path: 'resultat-list/:id', component: ResultatListComponent},
     {path: 'resultat-details/:gameId/:quizId', component: ResultatDetailsComponent},
     {path: 'configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
-   // {path: 'inscription', component: InscriptionComponent},
-   // {path: 'connexion-form', component: ConnexionFormComponent},
-    // {path: 'game-question/:id', component: GameQuestionComponent},
+    {path: 'inscription', component: InscriptionComponent},
+    {path: 'connexion-form', component: ConnexionFormComponent},
+    {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
 ];
 

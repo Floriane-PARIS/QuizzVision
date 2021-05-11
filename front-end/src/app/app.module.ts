@@ -81,8 +81,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     ResultatDetailsComponent,
     ResultatSearchComponent,
     ConfigurationJeuComponent,
-   // ConnexionFormComponent,
-   // InscriptionComponent,
+    ConnexionFormComponent,
+    InscriptionComponent,
   ],
     imports: [
         BrowserModule,

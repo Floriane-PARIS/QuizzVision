@@ -24,9 +24,9 @@ export class HeaderComponent implements OnInit {
   public user: User;
   public game: Game;
   public quiz: Quiz;
-  //public animateur: Animateur;
+  public animateur: Animateur;
 
-  constructor( private router: Router, public userService: UserService, public gameService: GameService, public quizService: QuizService) {
+  constructor( private router: Router, public userService: UserService, public gameService: GameService, public quizService: QuizService, public animateurService: AnimateurService) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
     });
@@ -37,9 +37,10 @@ export class HeaderComponent implements OnInit {
       console.log('QUIZ', quiz);
       this.quiz = quiz;
     });
-   // this.animateurService.animateurSelected$.subscribe((animateur) => {
-   //   this.animateur = animateur;
-   // });
+    this.animateurService.animateurSelected$.subscribe((animateur) => {
+      console.log('ANIMATEUR', animateur);
+      this.animateur = animateur;
+    });
   }
 
   ngOnInit(): void {
