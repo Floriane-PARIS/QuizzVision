@@ -13,8 +13,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class QuizFormComponent implements OnInit {
   public themes: Theme[];
-  // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
-  // avoid TemplateDrivenForm (another type of form)
 
   /**
    * QuizForm: Object which manages the form in our component.
@@ -30,9 +28,6 @@ export class QuizFormComponent implements OnInit {
       name: [''],
       theme: ['']
     });
-    // You can also add validators to your inputs such as required, maxlength or even create your own validator!
-    // More information: https://angular.io/guide/reactive-forms#simple-form-validation
-    // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
   }
 
   ngOnInit(): void {
@@ -57,7 +52,6 @@ export class QuizFormComponent implements OnInit {
   ajoutTheme(): void{
     console.log('event received from child: new theme');
     this.router.navigate(['/theme-list']);
-
   }
 
 }

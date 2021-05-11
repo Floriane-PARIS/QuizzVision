@@ -57,5 +57,8 @@ export class QuizListComponent implements OnInit {
 
   }
 
-
+  ajoutTheme(): void{
+    console.log('event received from child: new theme');
+    this.router.navigate(['/theme-list']);
+  }
 }

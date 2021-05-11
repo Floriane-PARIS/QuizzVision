@@ -11,12 +11,16 @@ import {ThemeService} from '../../../services/theme.service';
 export class ThemeListComponent implements OnInit {
 
   @Input()
+  origin: boolean;
+
+  @Input()
   theme: Theme;
   public editThemeChose: string;
 
   public themeList: Theme[] = [];
 
   constructor(private router: Router, public themeService: ThemeService) {
+    this.origin = false;
     this.editThemeChose = '';
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themeList = themes;

@@ -4,6 +4,7 @@ import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-quiz',
@@ -16,7 +17,8 @@ export class EditQuizComponent implements OnInit {
   public themes: Theme[];
   public quiz: Quiz;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, public themeService: ThemeService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private dialog: MatDialogModule, private route: ActivatedRoute, private quizService: QuizService, public themeService: ThemeService) {
     this.quizService.quizSelected$.subscribe((quiz) =>  {
       this.quiz = quiz;
       this.quizService.retrieveQuizzes();
@@ -33,7 +35,17 @@ export class EditQuizComponent implements OnInit {
 
   modifQuizName(): void {
     const newName: string = this.quizName as string;
-    this.quizService.renameQuiz(this.quiz, newName);
+    // tslint:disable-next-line:triple-equals
+    if (newName.trim() == '') {
+      console.log('erreur');
+      /*const dialogRef = this.dialog.open(EditQuizComponent, {
+        height: '400px',
+        width: '600px',
+      });*/
+    }
+    else {
+      this.quizService.renameQuiz(this.quiz, newName);
+    }
   }
 
   modifQuizTheme(): void {
