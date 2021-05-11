@@ -29,6 +29,10 @@ export class EditThemeComponent implements OnInit {
     this.editThemeDone.emit(this.theme);
   }
 
+  retour(): void{
+    this.router.navigate(['/theme-list']);
+  }
+
 }
 
 

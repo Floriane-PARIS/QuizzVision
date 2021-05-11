@@ -5,10 +5,10 @@
 <div class="listTheme" *ngIf="themeList.length > 0; else elseBlock" p style="position: relative; top: 5cm; left: 12cm; right: 2cm;">
   <div class="theme" *ngFor="let theme of themeList">
     <div *ngIf="editThemeChose != theme.id">
-      <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (themeSelected)="selectTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
+      <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
     </div>
     <div *ngIf="editThemeChose == theme.id">
-      <app-edit-theme [theme]=theme (editUserDone)="editThemeDone($event)"></app-edit-theme>
+      <app-edit-theme [theme]=theme (editThemeDone)="editThemeDone($event)"></app-edit-theme>
     </div>
   </div>
 </div>
@@ -17,3 +17,4 @@
     Vous n'avez pas crée de thèmes !
   </div>
 </ng-template>
+

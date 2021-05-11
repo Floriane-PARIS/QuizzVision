@@ -105,8 +105,8 @@ export class ThemeService {
 
   //changes
   updateTheme(theme: Theme): void {
-    const themeWrite = { Subject: theme.subject };
+    const themeWrite = { subject: theme.subject, id: theme.id };
     const themeUrl = this.themeUrl + '/' + theme.id ;
-    this.http.put<Theme>(themeUrl, themeWrite, this.httpOptions).subscribe();
+    this.http.put<Theme>(themeUrl, themeWrite, this.httpOptions).subscribe(() => this.retrieveThemes);
   }
 }

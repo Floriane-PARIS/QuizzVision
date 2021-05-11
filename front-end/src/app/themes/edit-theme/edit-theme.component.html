@@ -1,8 +1,8 @@
 <div class="card">
-  Modifier le theme : {{theme.subject}}
+  {{theme.subject}}
+  <br>
   Nouveau nom de thème
-  <input class="input-custom" type="text" id="subject" [(ngModel)] = "themeSubject" [ngModelOptions]="{standalone: true}">
-  <button type="submit" class="button-card" (click)="modifThemeSubject()">Sauvegarder</button>
-<br>
-<button class="button-card" routerLink="/theme-list">Annuler</button>
+  <input class="input-custom" type="text" id="subject" [(ngModel)] = "theme.subject" [ngModelOptions]="{standalone: true}">
+  <button type="submit" class="button-card" (click)="edit()">Sauvegarder</button>
+  <button class="button-card" (click)="retour()">Annuler</button>
 </div>
