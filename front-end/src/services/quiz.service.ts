@@ -22,6 +22,7 @@ export class QuizService {
    The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = QUIZ_LIST;
+  public origin: Boolean;
 
   /*
    Observable which contains the list of the quiz.
@@ -42,6 +43,7 @@ export class QuizService {
 
   constructor(private http: HttpClient) {
     this.retrieveQuizzes();
+    this.origin=false;
   }
 
   retrieveQuizzes(): void {

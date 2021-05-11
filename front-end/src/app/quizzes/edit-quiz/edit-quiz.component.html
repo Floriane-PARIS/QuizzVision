@@ -1,5 +1,5 @@
-<button class="button-card" routerLink="/quiz-list">Retour</button>
-
+<button class="button-card" (click)="navigate()">Retour</button>
+<!--routerLink="/quiz-list"-->
 <ng-container *ngIf="quiz">
   <br>
   <h2>le nom du quiz : {{quiz.name}}</h2>

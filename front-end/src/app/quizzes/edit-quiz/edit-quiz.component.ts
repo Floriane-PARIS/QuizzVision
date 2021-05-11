@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import {Theme} from '../../../models/Theme.model';
@@ -17,7 +18,7 @@ export class EditQuizComponent implements OnInit {
   public quiz: Quiz;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private quizService: QuizService, public themeService: ThemeService) {
+  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, public themeService: ThemeService) {
     this.quizService.quizSelected$.subscribe((quiz) =>  {
       this.quiz = quiz;
       this.quizService.retrieveQuizzes();
@@ -50,5 +51,15 @@ export class EditQuizComponent implements OnInit {
   modifQuizTheme(): void {
     const newName: string = this.quizTheme as string;
     this.quizService.changeQuizTheme(this.quiz, newName);
+  }
+
+  navigate(): void{
+    console.log('event received from child: new quiz');
+    if (this.quizService.origin){
+      this.router.navigate(['/quiz-list']);
+    }
+    else {
+      this.router.navigate(['/resultat-list']);
+    }
   }
 }
