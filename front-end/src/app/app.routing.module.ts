@@ -21,6 +21,7 @@ import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.co
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
+import { ConfigurationComponent } from './configurations/configuration/configuration.component';
 
 
 

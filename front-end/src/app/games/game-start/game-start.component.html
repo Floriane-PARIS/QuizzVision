@@ -15,8 +15,16 @@
     </div>
   </div>
 </div>
-<button class="button-card" (click)="backToQuizList()" >Retour</button>
+<br>
+<button class="button" (click)="backToQuizList()" >Retour</button>
+<br>
+<br>
 
 <ng-container *ngIf="(configuration === undefined)">
-  Vous devez choisir une Configuration pour le Patient, dans la rubrique "Ma Configuration"
+  <p [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+    Vous devez choisir une Configuration pour le Patient, dans la rubrique "Ma Configuration"
+  </p> 
+  <button type="button" class="button-card1" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="backToConfiguration()">
+    MaConfiguration
+  </button>
 </ng-container>
