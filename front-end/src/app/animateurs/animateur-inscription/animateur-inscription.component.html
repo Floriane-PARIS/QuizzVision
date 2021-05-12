@@ -1,0 +1,16 @@
+<body>
+    <form class="animateur-inscription" [formGroup]="inscriptionForm">
+        <h1>Inscription</h1>
+
+        <div class="inputs">
+            <i class="fa fa-user" style="color: forestgreen;"></i><input type="name" placeholder="Nom*" id="name" [formControlName]="'name'">
+            <i class= "fa fa-envelope" style="color: forestgreen;"></i><input type="mail" placeholder="Adresse mail*" id="mail" [formControlName]="'mail'">
+            <i class="fa fa-lock" style="color: forestgreen;"></i><input type="password" placeholder="Mot de passe*" id="password" [formControlName]="'password'">
+            <i class="fa fa-lock" style="color: forestgreen;"></i><input type="password" placeholder="Confirmer le mot de passe*" id="passwordconfirm" [formControlName]="'passwordconfirm'">
+        </div>
+
+        <div>
+            <button type="submit" (click)="ajoutAnimateur()">Valider</button>
+        </div>
+    </form>
+</body>

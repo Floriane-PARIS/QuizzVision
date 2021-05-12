@@ -41,12 +41,14 @@ import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.co
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-search.component';
 import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
-import { InscriptionComponent } from './inscription/inscription.component';
+import { InscriptionComponent } from './animateurs/animateur-inscription/animateur-inscription.component';
+import { AnimateurComponent } from './animateurs/animateur/animateur.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AnimateurComponent,
     QuizListComponent,
     QuizSearchComponent,
     QuizComponent,

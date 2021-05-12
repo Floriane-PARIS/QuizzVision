@@ -10,9 +10,9 @@ import { UserService } from "src/services/user.service";
 
 
 @Component({
-    selector: ' app-inscription',
-    templateUrl: './inscription.component.html',
-    styleUrls: ['./inscription.component.scss']
+    selector: ' app-animateur-inscription',
+    templateUrl: './animateur-inscription.component.html',
+    styleUrls: ['./animateur-inscription.component.scss']
   })
   export class InscriptionComponent implements OnInit {
 

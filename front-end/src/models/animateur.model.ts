@@ -5,5 +5,4 @@ export interface Animateur {
     password: string;
     users: User[];
     id: string;
-   
 }
