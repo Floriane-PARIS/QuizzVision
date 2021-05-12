@@ -1,5 +1,7 @@
 export interface Inscription {
     name: string;
-    password: number;
+    mail: string;
+    password: string;
+    passwordConfirmed: string;
 
 }

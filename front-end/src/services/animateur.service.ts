@@ -12,6 +12,7 @@ import { ANIMATEUR_LIST } from 'src/mocks/animateur-list.mock';
   providedIn: 'root'
 })
 export class AnimateurService {
+ 
   /*
    The list of animateur.
    */
@@ -38,10 +39,10 @@ export class AnimateurService {
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    this.retrieveUsers();
+    this.retrieveAnimateurs();
   }
 
-  retrieveUsers(): void {
+  retrieveAnimateurs(): void {
     // console.log('retrieve');
     this.http.get<Animateur[]>(this.animateurUrl).subscribe((animateurList) => {
       this.animateurs = animateurList;
@@ -50,7 +51,7 @@ export class AnimateurService {
   }
 
   //changes
-  retrieveUserName(animateurFName: string): void {
+  retrieveAnimateurName(animateurFName: string): void {
     this.http.get<Animateur[]>(this.animateurUrl).subscribe((animateurList) => {
       this.animateurs = [];
       // tslint:disable-next-line:prefer-for-of
@@ -72,6 +73,21 @@ export class AnimateurService {
     const animateurWrite = { name: animateur.name, password: animateur.password};
     const animateurUrl = this.animateurUrl + '/' + animateur.id ;
     this.http.put<Animateur>(animateurUrl, animateurWrite, this.httpOptions).subscribe();
+  }
+
+  addAnimateur(animateur: Animateur): void {
+    this.http.post<Animateur>(this.animateurUrl, animateur, this.httpOptions).subscribe(() => this.retrieveAnimateurs());
+  }
+
+  setSelectedAnimateur(animateurId: string): void {
+    if (animateurId === undefined) {
+      this.animateurSelected$.next(undefined);
+    } else {
+      const urlWithId = this.animateurUrl + '/' + animateurId;
+      this.http.get<Animateur>(urlWithId).subscribe((animateur) => {
+        this.animateurSelected$.next(animateur);
+      });
+    }
   }
 
 
