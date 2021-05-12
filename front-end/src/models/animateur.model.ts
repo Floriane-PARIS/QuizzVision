@@ -3,6 +3,8 @@ import { User } from "./user.model";
 export interface Animateur {
     name: string;
     password: string;
-    users: User[];
+    mail:string;
+    passwordConfirmed: string;
+    //users: User[];
     id: string;
 }

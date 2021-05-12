@@ -16,20 +16,20 @@ import { UserService } from "src/services/user.service";
   })
   export class InscriptionComponent implements OnInit {
 
-    public animateurForm: FormGroup;
+   // public animateurForm: FormGroup;
     public inscriptionForm: FormGroup;
-    public users: User[];
+  /*  public users: User[];
     public animateur: Animateur;
     public name: string;
     public mail: string;
     public password: string;
-    public passwordConfirmed: string;
+    public passwordConfirmed: string;*/
 
-    constructor(private router: Router,public formBuilder: FormBuilder, public userService: UserService, public animateurService: AnimateurService){
-        this.animateurForm = this.formBuilder.group({
+    constructor(private router: Router,public formBuilder: FormBuilder, public animateurService: AnimateurService){
+       /* this.animateurForm = this.formBuilder.group({
             name: [''],
             password: [''], 
-        });
+        });*/
 
         this.inscriptionForm = this.formBuilder.group({
           name: [''],
@@ -38,7 +38,7 @@ import { UserService } from "src/services/user.service";
           passwordConfirmed: [''],
       });
 
-        this.name = '';
+       /* this.name = '';
         this.mail = '';
         this.password = '';
         this.passwordConfirmed = '';
@@ -49,7 +49,7 @@ import { UserService } from "src/services/user.service";
         this.animateurService.animateurSelected$.subscribe((animateur) => {
           console.log('ANIMATEUR', animateur);
           this.animateur = animateur;
-        });
+        });*/
         
     }
     
@@ -57,14 +57,11 @@ import { UserService } from "src/services/user.service";
     }
 
     ajoutAnimateur(): void {
-        if(this.password == this.passwordConfirmed ){
           const animateurToCreate: Animateur = this.inscriptionForm.getRawValue() as Animateur;
           this.animateurService.addAnimateur(animateurToCreate);
-          this.router.navigate(['/connexion-form']);
+          this.router.navigate(['/animateur-connexion']);
           console.log("ajouter");
-        }
-        else{
-          console.log('The password is not the same');
-        }//this.router.navigate(['/inscription']);
+        
     }
 }
+

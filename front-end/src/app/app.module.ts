@@ -40,7 +40,7 @@ import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.co
 import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { ResultatSearchComponent} from './Resultat/resultat-search/resultat-search.component';
-import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
+import { ConnexionFormComponent } from './animateurs/animateur-connexion/animateur-connexion.component';
 import { InscriptionComponent } from './animateurs/animateur-inscription/animateur-inscription.component';
 import { AnimateurComponent } from './animateurs/animateur/animateur.component';
 

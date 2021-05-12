@@ -20,7 +20,7 @@ import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.co
 import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { InscriptionComponent } from './animateurs/animateur-inscription/animateur-inscription.component';
-import { ConnexionFormComponent } from './connexion/connexion-form/connexion-form.component';
+import { ConnexionFormComponent } from './animateurs/animateur-connexion/animateur-connexion.component';
 import { ConfigurationComponent } from './configurations/configuration/configuration.component';
 import {AnimateurComponent} from './animateurs/animateur/animateur.component';
 
@@ -49,7 +49,7 @@ const routes: Routes = [
     {path: 'resultat-details/:gameId/:quizId', component: ResultatDetailsComponent},
     {path: 'configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
     {path: 'animateur-inscription', component: InscriptionComponent},
-    {path: 'connexion-form', component: ConnexionFormComponent},
+    {path: 'animateur-connexion', component: ConnexionFormComponent},
     {path: 'game-question/:id', component: GameQuestionComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
     {path:'animateur', component: AnimateurComponent},

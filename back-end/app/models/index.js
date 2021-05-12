@@ -6,7 +6,7 @@ const Game = require('./game.model.js')
 const Theme = require('./theme.model.js')
 const Configuration = require('./configuration.model.js')
 const Animateur = require('./animateur.model.js')
-const Inscription = require('./inscription.model.js')
+//const Inscription = require('./inscription.model.js')
 const Connexion = require('./connexion.model.js')
 
 module.exports = {
@@ -18,6 +18,6 @@ module.exports = {
   Theme,
   Configuration,
   Animateur,
-  Inscription,
+ // Inscription,
   Connexion,
 }

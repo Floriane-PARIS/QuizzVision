@@ -11,9 +11,9 @@ import { UserService } from "src/services/user.service";
 
 
 @Component({
-    selector: ' app-connexion-form',
-    templateUrl: './connexion-form.component.html',
-    styleUrls: ['./connexion-form.component.scss']
+    selector: ' app-animateur-connexion',
+    templateUrl: './animateur-connexion.component.html',
+    styleUrls: ['./animateur-connexion.component.scss']
   })
   export class ConnexionFormComponent implements OnInit {
 
@@ -48,13 +48,15 @@ import { UserService } from "src/services/user.service";
     ngOnInit(): void {
     }
     ajoutAnimateur(): void {
-        if(this.checkData()){
+      
+      this.router.navigate(['/user-list']);
+       /* if(this.checkData()){
           console.log('event received from child: new animateur');
            this.router.navigate(['/user-list']);
         }
         else{
           console.log('Name incorrect or password incorrect');  
-        }
+        }*/
     }
     checkData(): boolean{
       if(this.inscription.name == this.name && this.inscription.password == this.password){
