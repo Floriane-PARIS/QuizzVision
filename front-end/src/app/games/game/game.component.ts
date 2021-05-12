@@ -92,6 +92,7 @@ export class GameComponent implements OnInit {
     this.isValided = false;
     // this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
+    this.gameService.updateGameConfiguration(this.game, this.configuration);
     console.log('Nous passons à la prochaine question^^!');
   }
 
@@ -99,14 +100,15 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/configuration-jeu/' + this.idUser + '/' + this.game.id]);
   }
 
-  quitGame(): void {
+  /*quitGame(): void {
     // this.gameService.deleteGame(this.game);
 
     this.gameService.updateGameConfiguration(this.game, this.configuration);
-    this.gameService.setSelectedGame(undefined);
+    this.backToQuizList();
+    /*this.gameService.setSelectedGame(undefined);
     this.quizService.setSelectedQuiz(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser]);
-  }
+  }*/
 
   backToQuizList(): void {
     this.gameService.setSelectedGame(undefined);

@@ -32,7 +32,7 @@ export class ThemeListComponent implements OnInit {
   }
 
   navigate(): void{
-    console.log('event received from child: new quiz');
+    console.log('event received from child: new quiz' + this.themeService.origin);
     if (this.themeService.origin){
       this.router.navigate(['/quiz-form']);
     }
@@ -40,8 +40,6 @@ export class ThemeListComponent implements OnInit {
       this.router.navigate(['/quiz-list']);
     }
   }
-
-  //changes
 
   editTheme(theme: Theme): void {
     console.log('edit');

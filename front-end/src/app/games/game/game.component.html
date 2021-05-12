@@ -17,7 +17,7 @@
         </div>
         <div class="game-result" *ngIf = "isValided">
       <app-game-result [message]=message [handicap]=configuration.handicap ></app-game-result>
-      <br><br>
+      <br>
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="next()">Question Suivante</button>
         </div>
     </div>
@@ -28,11 +28,11 @@
         <br>
         {{getResultat()}}
         <br>
-        <h3>Passez la main à votre animateur pour sortir du quiz</h3>
+        <h3 p style="color: lightcoral;">Passez la main à votre animateur pour sortir du quiz</h3>
         <div class="game-button">
-        <button type="button" class="button-card"
+        <!--button type="button" class="button-card"
                 [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                (click)="quitGame()">Sortir du Jeu</button>
+                (click)="quitGame()">Sortir du Jeu</button-->
         </div>
       </div>
   </div>

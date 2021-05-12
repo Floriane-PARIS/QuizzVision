@@ -5,6 +5,7 @@ import {UserService} from '../../../services/user.service';
 import {Game} from "../../../models/game.model";
 import {GameService} from "../../../services/game.service";
 import {QuizService} from "../../../services/quiz.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz',
@@ -35,7 +36,7 @@ export class QuizComponent implements OnInit {
   // public user: User;
   public games: Game[];
 
-  constructor( public userService: UserService, public gameService: GameService, public quizServide: QuizService) {
+  constructor( public userService: UserService, public gameService: GameService, public quizService: QuizService, public router: Router) {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
     });
@@ -55,13 +56,13 @@ export class QuizComponent implements OnInit {
   }
 
   reDoQuiz(game: Game): void {
-    this.quizServide.setSelectedQuiz(this.quiz.id);
+    this.quizService.setSelectedQuiz(this.quiz.id);
     this.gameService.deleteGame(game);
     this.quizSelected.emit(this.quiz);
   }
 
   continueQuiz(game: Game): void {
-    this.quizServide.setSelectedQuiz(this.quiz.id);
+    this.quizService.setSelectedQuiz(this.quiz.id);
     this.gameSelected.emit(game);
   }
 
@@ -84,5 +85,10 @@ export class QuizComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  modif(): void{
+    this.quizService.origin = true;
+    this.router.navigate(['/edit-quiz/' + this.quiz.id]);
   }
 }

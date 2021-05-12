@@ -12,11 +12,17 @@
       <thead>
       <tr>
         <th>Quiz</th>
+        <th>Moyenne</th>
+        <th>Nombre de parties faites</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let quiz of quizzes">
-        <td>{{quiz.name}}</td>
+        <td> {{quiz.name}} </td>
+        <td> {{moyenneQuiz(quiz)}} / {{quiz.questions.length}} </td>
+        <td> {{nbJeuQuiz(quiz)}} </td>
+        <td><button class="button-card" (click)="editQuiz(quiz)">Modifier</button></td>
       </tr>
       </tbody>
     </table>

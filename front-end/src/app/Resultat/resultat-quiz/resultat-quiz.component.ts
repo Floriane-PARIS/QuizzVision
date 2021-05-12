@@ -20,8 +20,9 @@ import { CommonModule } from "@angular/common";
 
     public quizzes: Quiz[];
     public resultatList: FormGroup;
+    public games: Game[];
 
-    constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService) {
+    constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService, private gameService: GameService) {
       this.resultatList = this.formBuilder.group({
               firstName: [''],
               lastName: [''],
@@ -33,12 +34,46 @@ import { CommonModule } from "@angular/common";
         this.quizzes = quizzes;
       });
 
+      this.gameService.games$.subscribe((games: Game[]) => {
+                this.games = games;
+      });
+
     }
-  ngOnInit(): void {
-  }
+
+    ngOnInit(): void {
+    }
 
     backToResultatList(): void {
       this.router.navigate(['/resultat-list']);
     }
+
+    editQuiz(quiz: Quiz): void {
+        //console.log(quiz);
+        this.router.navigate(['/edit-quiz/' + quiz.id ]);
+    }
+
+    nbJeuQuiz(quiz: Quiz): number {
+        let index = 0;
+            for (const game of this.games) {
+              if (game.quizId == quiz.id) {
+                index++;
+              }
+            }
+        return index;
+    }
+
+    moyenneQuiz(quiz: Quiz): number {
+            let index = 0;
+                for (const game of this.games) {
+                  if (game.quizId == quiz.id) {
+                    index = index + game.score;
+                  }
+                }
+            if(this.nbJeuQuiz(quiz) ==0){
+                return 0;
+            }
+            index = index/this.nbJeuQuiz(quiz);
+            return Math.round(index*100)/100;
+        }
 
 }
