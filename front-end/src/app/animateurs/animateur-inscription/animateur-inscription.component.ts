@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Animateur } from "src/models/animateur.model";
-import { User } from "src/models/user.model";
+//import { User } from "src/models/user.model";
 import { AnimateurService } from "src/services/animateur.service";
-import { UserService } from "src/services/user.service";
+//import { UserService } from "src/services/user.service";
 
 
 
@@ -25,7 +25,7 @@ import { UserService } from "src/services/user.service";
     public password: string;
     public passwordConfirmed: string;*/
 
-    constructor(private router: Router,public formBuilder: FormBuilder, public animateurService: AnimateurService){
+    constructor(private router: Router, public formBuilder: FormBuilder, public animateurService: AnimateurService){
        /* this.animateurForm = this.formBuilder.group({
             name: [''],
             password: [''], 
@@ -63,5 +63,10 @@ import { UserService } from "src/services/user.service";
           console.log("ajouter");
         
     }
+
+    
+  annule(): void {
+    this.router.navigate(['/animateur-connexion']);
+  }
 }
 
