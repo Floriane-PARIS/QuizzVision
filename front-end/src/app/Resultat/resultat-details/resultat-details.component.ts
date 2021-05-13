@@ -19,6 +19,7 @@ import {Configuration} from "../../../models/configuration.model";
   })
   export class ResultatDetailsComponent implements OnInit {
 
+    public admin: boolean;
     public user: User;
     public game: Game;
     public quiz: Quiz;
@@ -27,9 +28,10 @@ import {Configuration} from "../../../models/configuration.model";
     public contenu = document.querySelectorAll('.contenu');
 
     constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute, public router: Router) {
+        this.admin = false;
         this.gameService.gameSelected$.subscribe((game: Game) => {
           this.game = game;
-          console.log('confii', game.configuration[0].id);
+          //console.log('confii', game.configuration[0].id);
           this.configuration = game.configuration[0];
           this.gameService.getUserForGame(game);
         });
@@ -39,7 +41,6 @@ import {Configuration} from "../../../models/configuration.model";
       this.quizService.quizSelected$.subscribe((quiz: Quiz) => {
         this.quiz = quiz;
       });
-
     }
 
   ngOnInit(): void {
@@ -47,6 +48,11 @@ import {Configuration} from "../../../models/configuration.model";
       this.gameService.setSelectedGame(id);
       const quizId = this.route.snapshot.paramMap.get('quizId');
       this.quizService.setSelectedQuiz(quizId);
+      const userId = this.route.snapshot.paramMap.get('userId');
+      this.userService.setSelectedUser(userId);
+      if(userId == undefined){
+          this.admin = true;
+      }
   }
 
   dateGame(gameDate: Date): Date {
@@ -90,7 +96,7 @@ import {Configuration} from "../../../models/configuration.model";
     });
   }
 
-  
+
   navigate1(): void{
     console.log('event received from child: new result' + this.gameService.origin);
     if (this.gameService.origin == true){
@@ -98,8 +104,20 @@ import {Configuration} from "../../../models/configuration.model";
 
     }
     else {
-      this.router.navigate(['/resultat-list']); 
+      this.router.navigate(['/resultat-list']);
     }
+  }
+
+  navigate(): void {
+      if(this.admin){
+          this.router.navigate(['/resultat-list']);
+      } else {
+          this.router.navigate(['/resultat-list/'+ this.user.id]);
+      }
+  }
+
+  isAdmin(): boolean{
+      return this.admin;
   }
 
   modifQuiz(): void{

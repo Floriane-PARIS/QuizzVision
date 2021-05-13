@@ -69,7 +69,14 @@ import { UserService } from "src/services/user.service";
 
   details(game: Game): void {
    // this.userService.setSelectedUser(undefined);
-    this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId ]);
+   if(this.user == undefined){
+      this.userService.setSelectedUser(undefined);
+      this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId]);
+   } else {
+          this.userService.setSelectedUser(this.user.id);
+          this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId + '/' + this.user.id]);
+       }
+
   }
 
   getUserName(game: Game): String {

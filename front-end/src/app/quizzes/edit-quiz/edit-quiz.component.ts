@@ -59,7 +59,7 @@ export class EditQuizComponent implements OnInit {
       this.router.navigate(['/quiz-list']);
     }
     else {
-      this.router.navigate(['/resultat-list']);
+      this.router.navigate(['/resultat-quiz']);
     }
   }
 }
