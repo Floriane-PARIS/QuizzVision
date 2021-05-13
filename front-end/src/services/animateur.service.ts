@@ -43,12 +43,14 @@ export class AnimateurService {
   }
 
   retrieveAnimateurs(): void {
-    // console.log('retrieve');
+    console.log('retrieve');
     this.http.get<Animateur[]>(this.animateurUrl).subscribe((animateurList) => {
       this.animateurs = animateurList;
       this.animateurs$.next(this.animateurs);
     });
+    console.log(this.animateurs);
   }
+
 
   //changes
   retrieveAnimateurName(animateurFName: string): void {

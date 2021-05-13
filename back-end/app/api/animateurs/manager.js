@@ -1,6 +1,6 @@
 const { Animateur } = require('../../models')
-const { filterInscriptionsFromAnimateur } = require('./inscriptions/manager')
-const { filterConnexionsFromInscription } = require('./inscriptions/connexions/manager')
+/*const { filterInscriptionsFromAnimateur } = require('./inscriptions/manager')
+const { filterConnexionsFromInscription } = require('./inscriptions/connexions/manager')*/
 
 /**
  * Function buildAnimateur.
@@ -9,12 +9,13 @@ const { filterConnexionsFromInscription } = require('./inscriptions/connexions/m
  */
 const buildAnimateur = (animateurId) => {
   const animateur = Animateur.getById(animateurId)
-  const inscriptions = filterInscriptionsFromAnimateur(animateur.id)
+  /*const inscriptions = filterInscriptionsFromAnimateur(animateur.id)
   const inscriptionWithConnexions = inscriptions.map((inscription) => {
     const connexions = filterConnexionsFromInscription(inscription.id)
     return { ...inscription, connexions }
   })
-  return { ...animateur, inscriptions: inscriptionWithConnexions }
+  return { ...animateur, inscriptions: inscriptionWithConnexions }*/
+  return { ...animateur}
 }
 
 /**

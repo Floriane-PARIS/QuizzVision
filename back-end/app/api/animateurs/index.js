@@ -2,12 +2,11 @@ const { Router } = require('express')
 
 const { Animateur } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
-const InscriptionsRouter = require('./inscriptions')
 const { buildAnimateur, buildAnimateurs } = require('./manager')
 
 const router = new Router()
 
-router.use('/:animateurId/inscriptions', InscriptionsRouter)
+//router.use('/:animateurId/inscriptions', InscriptionsRouter)
 
 router.get('/', (req, res) => {
   try {
@@ -22,10 +21,12 @@ router.get('/:animateurId', (req, res) => {
   try {
     const animateur = buildAnimateur(req.params.animateurId)
     res.status(200).json(animateur)
+    //res.status(200).json(animateur.getById(req.params.animateurId))
   } catch (err) {
     manageAllErrors(res, err)
   }
 })
+
 
 router.post('/', (req, res) => {
   try {
@@ -54,32 +55,5 @@ router.delete('/:animateurId', (req, res) => {
 })
 
 module.exports = router
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

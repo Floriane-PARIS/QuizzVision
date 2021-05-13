@@ -33,6 +33,7 @@ const routes: Routes = [
     {path: 'user/:id', component: UserComponent},
     {path: 'user-list', component: UserListComponent},
     {path: 'user-edit/:id', component: UserEditComponent},
+    {path: 'user-list/:idAnimateur/:id', component:ConnexionFormComponent},
     {path: 'user-form', component: UserFormComponent},
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'quiz-list/:id', component: QuizListComponent},

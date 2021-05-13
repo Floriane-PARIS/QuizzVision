@@ -16,20 +16,11 @@ import { AnimateurService } from "src/services/animateur.service";
   })
   export class InscriptionComponent implements OnInit {
 
-   // public animateurForm: FormGroup;
     public inscriptionForm: FormGroup;
-  /*  public users: User[];
-    public animateur: Animateur;
-    public name: string;
-    public mail: string;
-    public password: string;
-    public passwordConfirmed: string;*/
+
 
     constructor(private router: Router, public formBuilder: FormBuilder, public animateurService: AnimateurService){
-       /* this.animateurForm = this.formBuilder.group({
-            name: [''],
-            password: [''], 
-        });*/
+       
 
         this.inscriptionForm = this.formBuilder.group({
           name: [''],
@@ -38,19 +29,6 @@ import { AnimateurService } from "src/services/animateur.service";
           passwordConfirmed: [''],
       });
 
-       /* this.name = '';
-        this.mail = '';
-        this.password = '';
-        this.passwordConfirmed = '';
-
-        this.userService.users$.subscribe((users: User[]) => {
-          this.users = users;
-        });
-        this.animateurService.animateurSelected$.subscribe((animateur) => {
-          console.log('ANIMATEUR', animateur);
-          this.animateur = animateur;
-        });*/
-        
     }
     
     ngOnInit(): void {
