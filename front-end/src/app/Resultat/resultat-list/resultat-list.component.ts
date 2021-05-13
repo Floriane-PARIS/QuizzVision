@@ -64,7 +64,7 @@ import { UserService } from "src/services/user.service";
   }
 
   getUser(): String {
-    return this.user.id;
+    return this.user.firstName+" "+this.user.lastName;
   }
 
   details(game: Game): void {
@@ -78,7 +78,7 @@ import { UserService } from "src/services/user.service";
                        return user.firstName+" "+user.lastName;
                  }
       }
-      return "";
+      return null;
   }
 
   getUserMaladie(game: Game): String {
@@ -87,7 +87,7 @@ import { UserService } from "src/services/user.service";
                          return user.maladies;
                    }
         }
-        return "";
+        return null;
   }
 
   getQuizName(game: Game): String {
@@ -96,7 +96,7 @@ import { UserService } from "src/services/user.service";
                            return quiz.name;
                      }
           }
-          return "";
+          return null;
    }
 
   getQuizLength(game: Game): number {
