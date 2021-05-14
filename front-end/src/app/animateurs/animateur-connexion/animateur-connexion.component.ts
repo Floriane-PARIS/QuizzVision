@@ -82,7 +82,7 @@ import { UserService } from "src/services/user.service";
       this.animateurService.setSelectedAnimateur(animateur.id);
       this.animateurService.retrieveAnimateurs();
       console.log('event received from child:', animateur.id);
-      this.router.navigate(['/user-list/' + animateur.id]);
+      this.router.navigate(['/quiz-list']);;
     }
 
   }
