@@ -52,4 +52,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/user-list']);
   }
 
+  otherAnimateurs(): void {
+    this.animateurService.setSelectedAnimateur(undefined);
+  }
+
 }

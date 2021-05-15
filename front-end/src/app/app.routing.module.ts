@@ -53,8 +53,8 @@ const routes: Routes = [
     {path: 'animateur-inscription', component: InscriptionComponent},
     {path: 'animateur-connexion', component: ConnexionFormComponent},
     {path: 'game-question/:id', component: GameQuestionComponent},
-    { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
-    {path:'animateur', component: AnimateurComponent},
+    { path: '', redirectTo: '/animateur', pathMatch: 'full' },
+    {path: 'animateur', component: AnimateurComponent},
 ];
 
 @NgModule({
