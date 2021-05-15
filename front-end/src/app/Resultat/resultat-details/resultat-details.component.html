@@ -61,14 +61,19 @@
 
   </div>
     <div class="contenu activeContenu" id="{{'cont'+(0)}}">
-      EN COURS! Pour l'instant mauvaise Configuration
-      <div class="configuration-app" *ngIf="configuration != undefined">
+      CONFIGURATION
+      <select name="user-field" id="note" [(ngModel)] = "configurationChose">
+      <option value = 0 (click)="shift()"> au début </option>
+      <option value = 1 (click)="shift()"> à la fin </option>
+    </select>
+      du Quiz:
+      <div class="configuration-app" *ngIf="game.configuration.length != 0">
         <br>
       <div class="configuration-chose">
-      <app-configuration  [configuration]="configuration" [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
+      <app-configuration  [configuration]="game.configuration[configurationChose]" [className]="(game.configuration[configurationChose].handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
       </div>
-        <app-configuration-chose [configuration]="configuration" ></app-configuration-chose>
-      </div>
+        <app-configuration-chose [configuration]="game.configuration[configurationChose]" [user]="undefined" ></app-configuration-chose>
+       </div>
     </div>
   </div>
 </div>

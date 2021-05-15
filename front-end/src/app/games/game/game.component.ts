@@ -41,12 +41,10 @@ export class GameComponent implements OnInit {
       }
     });
     this.quizService.quizSelected$.subscribe( (quiz) => {
-      console.log('QUIZ LENGTH', quiz.questions.length);
       this.length = quiz.questions.length;
     });
     this.userService.configurationNext$.subscribe((configuration) => {
       this.configuration = configuration;
-      console.log('game', configuration);
       this.shift();
     });
     this.isValided = false;
@@ -61,14 +59,12 @@ export class GameComponent implements OnInit {
 
   shift(): void {
     const value = this.configuration.shift;
-    console.log('value', value);
     this.root.style.setProperty('--slider', value.toString());
   }
 
   valideAnswer(answer: Answer): void {
     this.gameService.addAnswer(this.game, answer);
     this.answer = answer;
-    console.log('answer', this.answer);
   }
 
   isValideAnswer(question: Question): void {
@@ -92,7 +88,6 @@ export class GameComponent implements OnInit {
     this.isValided = false;
     // this.gameService.nextQuestion(this.game);
     this.gameService.nextQuestionGame(this.game);
-    this.gameService.updateGameConfiguration(this.game, this.configuration);
     console.log('Nous passons à la prochaine question^^!');
   }
 
@@ -111,16 +106,20 @@ export class GameComponent implements OnInit {
   }*/
 
   backToQuizList(): void {
-    this.gameService.setSelectedGame(undefined);
+    if (this.game.question[0] === null) {
+      this.gameService.updateGameConfiguration(this.game, this.configuration);
+    } else {
+      this.gameService.setSelectedGame(undefined);
+    }
     this.quizService.setSelectedQuiz(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser ]);
   }
 
-  getResultat(){
+  getResultat(): string {
       return this.game.score +" / "+this.length;
   }
 
-  getBold(){
+  getBold(): string{
       if(this.configuration != undefined){
            return this.configuration.bold;
       }
@@ -128,35 +127,35 @@ export class GameComponent implements OnInit {
   }
 
 
-  getPolice(){
+  getPolice(): string{
       if(this.configuration != undefined){
          return this.configuration.police;
       }
       return 'Arial';
   }
 
-  getSize(){
+  getSize(): string{
       if(this.configuration != undefined){
         return this.configuration.size+"px";
       }
       return "22px";
   }
 
-  getBright(){
+  getBright(): string{
     if(this.configuration != undefined){
       return this.configuration.bright+ "%";
     }
-    return "20%"
+    return "20%";
   }
 
-  getContrast(){
+  getContrast(): string{
     if(this.configuration != undefined){
       return this.configuration.bright+ "%";
     }
-    return "20%"
+    return "20%";
   }
 
-  getFiltre(){
+  getFiltre(): string{
       return this.getBright() + " " + this.getContrast();
   }
 

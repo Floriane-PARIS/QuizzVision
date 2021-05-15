@@ -31,8 +31,9 @@ export class GameStartComponent implements OnInit {
       // this.initializeGameForm(quiz);
       this.userService.userSelected$.subscribe((user) => {
         this.user = user;
-        // console.log('gamUser1', user);
-        this.initializeGameForm(quiz);
+        this.userService.configurationNext$.subscribe((configuration) => {
+          this.initializeGameForm(quiz, configuration);
+        });
       });
     });
     this.userService.userSelected$.subscribe((user) => {
@@ -62,7 +63,7 @@ export class GameStartComponent implements OnInit {
     this.userService.setSelectedUser(idUser);
   }
 
-  private initializeGameForm(quiz: Quiz): void {
+  private initializeGameForm(quiz: Quiz, configuration: Configuration): void {
     if (quiz.questions.length > 0 ) {
       this.gameForm = this.formBuilder.group({
         userId: [this.user.id],
@@ -70,6 +71,7 @@ export class GameStartComponent implements OnInit {
         question: [[quiz.questions[0]]],
         score: [quiz.questions.length],
         date: [this.currentDate()],
+        configuration: [[configuration]],
       });
     }
   }

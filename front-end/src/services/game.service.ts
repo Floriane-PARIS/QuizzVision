@@ -263,10 +263,16 @@ export class GameService {
 
   updateGameConfiguration(game: Game, configuration: Configuration): void {
     console.log('confi', configuration);
-    const configurationWrite = {configuration: [configuration]};
+    let configurationWrite;
+    if (game.configuration.length === 0) {
+      configurationWrite = {configuration: [configuration]};
+    } else {
+      game.configuration.push(configuration);
+      configurationWrite = {configuration: game.configuration};
+    }
     const configurationUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(configurationUrl, configurationWrite, this.httpOptions).subscribe((game: Game) => {
-      this.gameSelected$.next(game);
+      this.gameSelected$.next(undefined);
       this.retrieveGames();
     });
   }

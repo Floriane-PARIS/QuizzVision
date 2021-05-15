@@ -115,8 +115,8 @@ export class UserService {
       this.http.get<User>(urlWithId).subscribe((user) => {
         // this.currentUser = user;
         this.userSelected$.next(user);
+        console.log('USER', user);
         this.getConfiguration(user.id);
-        this.retrieveUsers();
       });
     }
   }

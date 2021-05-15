@@ -2,7 +2,7 @@
 <div class="configuration-text" >
  <app-configuration-form></app-configuration-form>
   <div *ngIf="configuration != undefined; else elseBlock">
- <app-configuration-chose [configuration]="configuration" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration-chose>
+ <app-configuration-chose [configuration]="configuration" [user]="user" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration-chose>
 </div>
 </div>
 <div class = "configuration-edit">

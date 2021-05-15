@@ -14,14 +14,12 @@ export class ConfigurationChoseComponent implements OnInit {
 
   @Input()
   configuration: Configuration;
+  @Input()
+  user: User;
   @Output()
   deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
-  public user: User;
 
-  constructor( public userService: UserService) {
-    this.userService.userSelected$.subscribe((user: User) => {
-      this.user = user;
-    });
+  constructor() {
     console.log('chose', this.configuration);
   }
 

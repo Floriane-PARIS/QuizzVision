@@ -23,17 +23,18 @@ import {Configuration} from "../../../models/configuration.model";
     public user: User;
     public game: Game;
     public quiz: Quiz;
-    public configuration: Configuration;
+    public configurationChose: number;
+    public root = document.documentElement;
     public onglets = document.querySelectorAll('.onglets');
     public contenu = document.querySelectorAll('.contenu');
 
     constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute, public router: Router) {
         this.admin = false;
+        this.configurationChose = 0;
         this.gameService.gameSelected$.subscribe((game: Game) => {
           this.game = game;
-          //console.log('confii', game.configuration[0].id);
-          this.configuration = game.configuration[0];
           this.gameService.getUserForGame(game);
+          this.shift();
         });
       this.gameService.gameUser$.subscribe((user: User) => {
         this.user = user;
@@ -123,5 +124,11 @@ import {Configuration} from "../../../models/configuration.model";
   modifQuiz(): void{
     this.quizService.origin = false;
     this.router.navigate(['/edit-quiz/' + this.quiz.id]);
+  }
+
+  shift(): void {
+      console.log(this.game.configuration[this.configurationChose].shift);
+    const value = this.game.configuration[this.configurationChose].shift;
+    this.root.style.setProperty('--slider', value.toString());
   }
 }
