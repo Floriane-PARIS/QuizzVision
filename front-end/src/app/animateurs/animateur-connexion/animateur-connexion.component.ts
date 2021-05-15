@@ -23,7 +23,8 @@ import { UserService } from "src/services/user.service";
     public connexionForm: FormGroup;
     public name: string;
     public password: string;
-  
+    public messageError: string;
+
     constructor(private router: Router,public userService: UserService,public animateurService: AnimateurService, public formBuilder: FormBuilder){
         /*this.name ='';
         this.password= '';
@@ -36,24 +37,25 @@ import { UserService } from "src/services/user.service";
           console.log('ANIMATEUR', animateur);
           this.animateur = animateur;
         });*/
+      this.messageError = '';
         this.animateurService.animateurs$.subscribe((animateurs: Animateur[]) => {
           this.animateurs = animateurs;
         });
 
         this.connexionForm = this.formBuilder.group({
           name: [''],
-          password: [''], 
+          password: [''],
           mail:[''],
           passwordConfirmed: [''],
       });
-        
+
     }
-    
+
     ngOnInit(): void {
     }
-   
+
     checkData(): void{
-     
+
       const tempAnimateur = this.connexionForm.getRawValue() as Animateur;
       console.log(tempAnimateur);
       this.animateurService.retrieveAnimateurs();
@@ -63,12 +65,15 @@ import { UserService } from "src/services/user.service";
           console.log(true);
           this.animateur = animateur;
           this.selectAdmin(animateur);
+          return;
         }
       });
-     // console.log("erreur sur nom ou mot de passe");
+      this.messageError = "erreur sur le NOM ou sur le MOT DE PASSE";
+      return
+      //console.log("erreur sur nom ou mot de passe");
      //Pascal Nug Tsamo
-    
-     
+
+
       /*if(this.inscription.name == this.name && this.inscription.password == this.password){
         return true;
       }
