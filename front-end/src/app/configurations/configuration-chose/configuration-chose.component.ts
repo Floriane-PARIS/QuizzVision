@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Configuration } from '../../../models/configuration.model';
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-configuration-chose',
@@ -14,9 +16,12 @@ export class ConfigurationChoseComponent implements OnInit {
   configuration: Configuration;
   @Output()
   deleteConfiguration: EventEmitter<Configuration> = new EventEmitter();
+  public user: User;
 
-
-  constructor() {
+  constructor( public userService: UserService) {
+    this.userService.userSelected$.subscribe((user: User) => {
+      this.user = user;
+    });
     console.log('chose', this.configuration);
   }
 

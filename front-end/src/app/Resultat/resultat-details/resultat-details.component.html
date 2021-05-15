@@ -16,7 +16,7 @@
 <div class="container" *ngIf="game != undefined && quiz != undefined">
 
   <div class="container-onglets">
-    <div class="onglets conf"   id="ongl0" (click)="ongletChange('0')">Configuration</div>
+    <div class="onglets active conf"   id="ongl0" (click)="ongletChange('0')">Configuration</div>
     <div *ngFor="let question of quiz.questions; let i=index">
       <div *ngFor="let answer of quiz.questions[i].answers; let j=index">
         <div *ngIf="(game.answers[i] == answer.id)">
@@ -60,7 +60,7 @@
   </div>
 
   </div>
-    <div class="contenu" id="{{'cont'+(0)}}">
+    <div class="contenu activeContenu" id="{{'cont'+(0)}}">
       EN COURS! Pour l'instant mauvaise Configuration
       <div class="configuration-app" *ngIf="configuration != undefined">
         <br>

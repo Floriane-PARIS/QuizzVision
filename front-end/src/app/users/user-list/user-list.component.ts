@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
   selectUser(user: User): void {
     this.quizService.setSelectedQuiz(undefined);
     this.userService.setSelectedUser(user.id);
-    this.userService.retrieveUsers();
+    // this.userService.retrieveUsers();
     console.log('event received from child:', user.id);
     this.router.navigate(['/quiz-list/' + user.id]);
   }

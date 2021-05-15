@@ -7,5 +7,7 @@
   Luminosité : {{configuration.bright}}<br>
   Contraste : {{configuration.contrast}}<br>
   Décalage : {{configuration.shift}}<br>
-  <button class="button-card" (click)="delete()">Retour à la configuration précédente</button>
+  <div *ngIf="user != undefined">
+    <button class="button-card" (click)="delete()">Retour à la configuration précédente</button>
+  </div>
 </div>

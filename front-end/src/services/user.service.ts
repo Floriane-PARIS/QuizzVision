@@ -116,6 +116,7 @@ export class UserService {
         // this.currentUser = user;
         this.userSelected$.next(user);
         this.getConfiguration(user.id);
+        this.retrieveUsers();
       });
     }
   }
