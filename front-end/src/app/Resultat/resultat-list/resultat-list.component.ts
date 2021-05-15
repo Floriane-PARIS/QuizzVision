@@ -79,6 +79,12 @@ import { UserService } from "src/services/user.service";
 
   }
 
+  delete(game: Game): void {
+    // this.userService.setSelectedUser(undefined);
+    this.gameService.deleteGame(game);
+
+  }
+
   getUserName(game: Game): String {
       for (const user of this.users) {
                  if (game.userId == user.id) {

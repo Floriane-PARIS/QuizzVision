@@ -77,7 +77,8 @@
           <td>{{getQuizName(game)}}</td>
           <td>{{game.score}} / {{getQuizLength(game)}}</td>
           <td>
-            <button class="button-card" (click)="details(game)">details</button>
+            <button class="button-card" (click)="details(game)">Details</button>
+            <button class="button-card" (click)="delete(game)">Effacer</button>
           </td>
 
         </tr>
