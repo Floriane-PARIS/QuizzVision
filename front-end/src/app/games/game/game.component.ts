@@ -27,6 +27,7 @@ export class GameComponent implements OnInit {
   public gameQuestion: Question;
   public configuration: Configuration;
   public length: number;
+  public newGame: Quiz;
   public root = document.documentElement;
 
 
@@ -39,6 +40,10 @@ export class GameComponent implements OnInit {
       if (this.length === 0) {
         this.length = this.game.score;
       }
+      this.quizService.quizzes$.subscribe((quizList) => {
+        this.newGame = null;
+        this.findNewQuiz(quizList);
+        });
     });
     this.quizService.quizSelected$.subscribe( (quiz) => {
       this.length = quiz.questions.length;
@@ -55,6 +60,23 @@ export class GameComponent implements OnInit {
     this.userService.setSelectedUser(this.idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
+  }
+
+  findNewQuiz(quizList: Quiz[]): void {
+    if (quizList.length < 2) {
+      return;
+    } else {
+      const i = Math.floor(Math.random() * quizList.length - 1);
+      if (quizList[i] == undefined) {
+        this.findNewQuiz(quizList);
+      }
+      if ((this.game.quizId != quizList[i].id) && (quizList[i].questions.length > 0)) {
+        this.newGame = quizList[i];
+        console.log('NEW4' + this.newGame.name);
+      } else {
+        this.findNewQuiz(quizList);
+      }
+    }
   }
 
   shift(): void {
@@ -119,6 +141,13 @@ export class GameComponent implements OnInit {
     }
     this.quizService.setSelectedQuiz(undefined);
     this.router.navigate(['/quiz-list/' + this.idUser ]);
+  }
+
+  otherGames(): void {
+    this.gameService.updateGameConfiguration(this.game, this.configuration);
+    this.quizService.setSelectedQuiz(this.newGame.id);
+    console.log('event received from child:', this.newGame.id);
+    this.router.navigate(['/game-start/' + this.idUser + '/' + this.newGame.id]);
   }
 
   getResultat(): string {

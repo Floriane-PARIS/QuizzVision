@@ -7,8 +7,8 @@
         <br>
         dans le theme "{{quiz.theme}}"
         <br>
-        <h4 p style="color: lightcoral;">PS: Si vous souhaitez quitter le jeu en cours de route, passez la main à votre animateur </h4>
-        
+        <h4 p style="color: firebrick;">PS: Si vous souhaitez quitter le jeu en cours de route, passez la main à votre animateur </h4>
+
     </div>
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="addGame()">Commencer</button>
@@ -23,7 +23,7 @@
 <ng-container *ngIf="(configuration === undefined)">
   <p [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     Vous devez choisir une Configuration pour le Patient, dans la rubrique "Ma Configuration"
-  </p> 
+  </p>
   <button type="button" class="button-card1" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="backToConfiguration()">
     MaConfiguration
   </button>

@@ -28,11 +28,13 @@
         <br>
         {{getResultat()}}
         <br>
-        <h3 p style="color: lightcoral;">Passez la main à votre animateur pour sortir du quiz</h3>
-        <div class="game-button">
-        <!--button type="button" class="button-card"
+        <h3 p style="color: firebrick;">Passez la main à votre animateur pour sortir du quiz</h3>
+        <div class="game-button" *ngIf="newGame != null">
+          Vous pouvez
+        <button type="button" class="button-card"
                 [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                (click)="quitGame()">Sortir du Jeu</button-->
+                (click)="otherGames()"> Jouer </button>
+          au Quiz {{newGame.name}} du theme {{newGame.theme}}
         </div>
       </div>
   </div>
