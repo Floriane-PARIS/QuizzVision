@@ -12,7 +12,7 @@
       <app-game-question [configuration]="configuration" [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
         <div *ngIf="configuration.handicap === 'Glaucome'|| configuration.handicap === 'Autres'">
-      <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
+      <app-game-response class="game-result" [isValide]="isValided" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
       <br>
         </div>
         <div class="game-result" *ngIf = "isValided">

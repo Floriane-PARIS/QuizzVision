@@ -12,6 +12,8 @@ export class GameResponseComponent implements OnInit {
   answer: Answer;
   @Input()
   handicap: string;
+  @Input()
+  isValide: boolean;
 
   constructor() {
   }

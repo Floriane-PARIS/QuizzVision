@@ -71,12 +71,18 @@ export class GameComponent implements OnInit {
     if(this.answer !== undefined){
       this.isValided = true;
     if (this.answer.isCorrect) {
-      this.message = 'Bravo, bonne réponse';
+      this.message = 'Bravo, bonne réponse !';
     }
     else  {
       this.gameService.updateScore(this.game);
-      this.message = 'Hoooooooo, mauvaise réponse';
+      this.message = 'Hoooooooo, mauvaise réponse !';
+      for (const answer of this.game.question[0].answers) {
+        if (answer.isCorrect) {
+          this.message = this.message + ' Une bonne réponse est "' + answer.value + '".';
+        }
+      }
     }
+    this.message = this.message + ' Cliquer sur Question Suivante';
     }
 
   }
