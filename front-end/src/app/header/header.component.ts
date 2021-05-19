@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
     this.gameService.origin = false;
     this.animateurService.setSelectedAnimateur(this.animateur.id);
     this.userService.setSelectedUser(undefined);
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['/' + this.animateur.id + '/user-list']);
   }
 
   otherAnimateurs(): void {

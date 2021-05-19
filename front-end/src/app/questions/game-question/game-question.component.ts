@@ -21,6 +21,8 @@ export class GameQuestionComponent implements OnInit {
   isValided: boolean;
   @Input()
   answer: Answer;
+  @Input()
+  animateurId: string;
 
   public userId: string;
   public gameId: string;
@@ -56,7 +58,7 @@ export class GameQuestionComponent implements OnInit {
   }
 
   sendConfig(): void {
-    this.router.navigate(['/configuration-jeu/' + this.userId + '/'+ this.gameId]);
+    this.router.navigate(['/' + this.animateurId + '/configuration-jeu/' + this.userId + '/'+ this.gameId]);
   }
 
   valideQuestionAnswered(): void {

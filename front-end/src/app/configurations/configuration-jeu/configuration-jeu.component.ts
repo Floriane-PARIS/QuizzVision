@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from "../../../services/game.service";
 import {QuizService} from "../../../services/quiz.service";
 import {Game} from "../../../models/game.model";
+import {AnimateurService} from "../../../services/animateur.service";
 
 @Component({
   selector: 'app-configuration-jeu',
@@ -23,8 +24,9 @@ export class ConfigurationJeuComponent implements OnInit {
   public size: number;
   public max: number;
   public min: number;
+  public animateurId: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private userService: UserService, private gameService: GameService, private quizService: QuizService) {
+  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder,  private animateurService: AnimateurService, private userService: UserService, private gameService: GameService, private quizService: QuizService) {
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
     });
@@ -83,6 +85,8 @@ export class ConfigurationJeuComponent implements OnInit {
     this.userService.setSelectedUser(idUser);
     const idGame = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(idGame);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   shift(): void {
@@ -92,7 +96,7 @@ export class ConfigurationJeuComponent implements OnInit {
 
   backToGame(): void {
     this.quizService.setSelectedQuiz(this.game.quizId);
-    this.router.navigate(['/game/' + this.user.id + '/' + this.game.id]);
+    this.router.navigate(['/' + this.animateurId + '/game/' + this.user.id + '/' + this.game.id]);
   }
 
   getBold(){

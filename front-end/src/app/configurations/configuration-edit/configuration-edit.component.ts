@@ -3,6 +3,7 @@ import { Configuration } from '../../../models/configuration.model';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
+import {AnimateurService} from '../../../services/animateur.service';
 
 @Component({
   selector: 'app-configuration-edit',
@@ -16,8 +17,9 @@ export class ConfigurationEditComponent implements OnInit {
   public configuration: Configuration;
   public root = document.documentElement;
   public user: User;
+  public animateurId: string;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private animateurService: AnimateurService, private route: ActivatedRoute) {
     this.initCss();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
@@ -40,6 +42,8 @@ export class ConfigurationEditComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   deleteConfiguration(configuration: Configuration): void{

@@ -9,7 +9,7 @@
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
       <div *ngIf = "game.question[0] !== undefined">
-      <app-game-question [configuration]="configuration" [answer]=answer [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
+      <app-game-question [configuration]="configuration" [answer]=answer [animateurId]="animateurId" [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
       <br>
         <div *ngIf="configuration.handicap === 'Glaucome'|| configuration.handicap === 'Autres'">
       <app-game-response class="game-result" [isValide]="isValided" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
