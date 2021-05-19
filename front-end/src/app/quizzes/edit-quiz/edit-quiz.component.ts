@@ -5,6 +5,7 @@ import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
+import {AnimateurService} from "../../../services/animateur.service";
 
 @Component({
   selector: 'app-edit-quiz',
@@ -18,7 +19,7 @@ export class EditQuizComponent implements OnInit {
   public quiz: Quiz;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, public themeService: ThemeService) {
+  constructor(private route: ActivatedRoute, private router: Router,  public animateurService: AnimateurService, private quizService: QuizService, public themeService: ThemeService) {
     this.quizService.quizSelected$.subscribe((quiz) =>  {
       this.quiz = quiz;
       this.quizService.retrieveQuizzes();
@@ -31,6 +32,8 @@ export class EditQuizComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
+    const animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(animateurId);
   }
 
   modifQuizName(): void {

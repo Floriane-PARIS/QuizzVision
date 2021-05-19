@@ -9,16 +9,16 @@ import {THEME_LIST} from '../mocks/theme-list.mock';
   providedIn: 'root'
 })
 export class ThemeService {
-  /*
-   The list of theme.
-   The list is retrieved from the mock.
+  /**
+   * The list of theme.
+   * The list is retrieved from the mock.
    */
   public themes: Theme[] = THEME_LIST;
   public origin: boolean;
 
-  /*
-   Observable which contains the list of the theme.
-   Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
+  /**
+   * Observable which contains the list of the theme.
+   * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public themes$: BehaviorSubject<Theme[]> = new BehaviorSubject(this.themes);
   public themeSelected$: Subject<Theme> = new Subject();
@@ -30,6 +30,9 @@ export class ThemeService {
     this.origin = false;
   }
 
+  /**
+   * retrieve all themes from the back-end
+   */
   retrieveThemes(): void {
     this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
       this.themes = themeList;
@@ -37,13 +40,17 @@ export class ThemeService {
     });
   }
 
+  /**
+   * retrieve all themes from the back-end with option about the Subject
+   * @param themeSubject
+   */
   retrieveThemeSubject(themeSubject: string): void {
     this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
       this.themes = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < themeList.length; i++){
         // tslint:disable-next-line:triple-equals
-        if (themeList[i].subject.includes(themeSubject)){
+        if ((themeList[i].subject.includes(themeSubject) || (themeList[i].subject == themeSubject))){
           this.themes.push(themeList[i]);
         }
       }
@@ -51,21 +58,10 @@ export class ThemeService {
     });
   }
 
-  retrieveThemeSubject2(themeSubject: string): void {
-    this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
-      this.themes = [];
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < themeList.length; i++){
-        // tslint:disable-next-line:triple-equals
-        if (themeList[i].subject == themeSubject){
-          this.themes.push(themeList[i]);
-          console.log(this.themes);
-        }
-      }
-      this.themes$.next(this.themes);
-    });
-  }
-
+  /**
+   * add theme in the back-end
+   * @param theme
+   */
   addTheme(theme: Theme): void {
     let count = 0;
     // tslint:disable-next-line:prefer-for-of
@@ -85,6 +81,10 @@ export class ThemeService {
     }
   }
 
+  /**
+   * select theme that we want to observe
+   * @param themeId
+   */
   setSelectedTheme(themeId: string): void {
     const urlWithId = this.themeUrl + '/' + themeId;
     this.http.get<Theme>(urlWithId).subscribe((theme) => {
@@ -92,18 +92,19 @@ export class ThemeService {
     });
   }
 
+  /**
+   * delete theme in the back-end
+   * @param theme
+   */
   deleteTheme(theme: Theme): void {
     const urlWithId = this.themeUrl + '/' + theme.id;
     this.http.delete<Theme>(urlWithId, this.httpOptions).subscribe(() => this.retrieveThemes());
   }
 
-  renameTheme(theme: Theme, name: string): void {
-    const newTheme = {subject: name, id: theme.id};
-    const urlWithId = this.themeUrl + '/' + theme.id;
-    this.http.put<Theme>(urlWithId, newTheme, this.httpOptions).subscribe(() => this.retrieveThemes());
-  }
-
-  //changes
+  /**
+   * update theme's name
+   * @param theme
+   */
   updateTheme(theme: Theme): void {
     const themeWrite = { subject: theme.subject, id: theme.id };
     const themeUrl = this.themeUrl + '/' + theme.id ;

@@ -6,6 +6,7 @@ import {Theme} from '../../../models/Theme.model';
 import {ThemeService} from '../../../services/theme.service';
 import {GameService} from '../../../services/game.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AnimateurService} from "../../../services/animateur.service";
 //import { userInfo } from 'os';
 
 @Component({
@@ -14,7 +15,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./quiz-form.component.scss']
 })
 export class QuizFormComponent implements OnInit {
+
   public themes: Theme[];
+  public animateurId: string;
 
   /**
    * QuizForm: Object which manages the form in our component.
@@ -22,7 +25,7 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService, public themeService: ThemeService, public gameService: GameService, private router: Router) {
+  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, public animateurService: AnimateurService, public quizService: QuizService, public themeService: ThemeService, public gameService: GameService, private router: Router) {
     this.themeService.themes$.subscribe((themes: Theme[]) => {
       this.themes = themes;
     });
@@ -33,6 +36,8 @@ export class QuizFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   addQuiz(): void {
@@ -44,17 +49,17 @@ export class QuizFormComponent implements OnInit {
       quizToCreate.theme = 'pas de thème';
     }
     this.quizService.addQuiz(quizToCreate);
-    this.router.navigate(['/quiz-list']);
+    this.router.navigate(['/' + this.animateurId + '/quiz-list']);
   }
 
   annule(): void {
-    this.router.navigate(['/quiz-list']);
+    this.router.navigate(['/' + this.animateurId + '/quiz-list']);
   }
 
   ajoutTheme(): void{
     console.log('event received from child: new theme');
     this.themeService.origin = true;
-    this.router.navigate(['/theme-list']);
+    this.router.navigate(['/' + this.animateurId + '/theme-list']);
   }
 
 }

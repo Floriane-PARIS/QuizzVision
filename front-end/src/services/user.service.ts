@@ -5,10 +5,6 @@ import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Configuration } from 'src/models/configuration.model';
-import {Quiz} from "../models/quiz.model";
-import {Question} from "../models/question.model";
-import {Game} from "../models/game.model";
-
 
 
 @Injectable({
@@ -16,13 +12,13 @@ import {Game} from "../models/game.model";
 })
 export class UserService {
 
-  /*
+  /**
    The list of users.
    The list is retrieved from the mock.
    */
    private users: User[] = USER_LIST;
 
-  /*
+  /**
    Observable which contains the list of the user.
    */
   public users$: BehaviorSubject<User[]> = new BehaviorSubject([]);
@@ -38,16 +34,21 @@ export class UserService {
     this.retrieveUsers();
   }
 
+  /**
+   * retrieve all users from the back-end
+   */
   retrieveUsers(): void {
-    // console.log('retrieve');
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = userList;
-      // console.log(this.users);
       this.users$.next(this.users);
     });
   }
 
-  //changes
+  /**
+   * retrieve all users with option about user' name from the back-end
+   * @param userFName
+   * @param userLName
+   */
   retrieveUserName(userFName: string, userLName: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
@@ -71,6 +72,10 @@ export class UserService {
     });
   }
 
+  /**
+   * retrieve all users with option about user' trouble from the back-end
+   * @param userTroubles
+   */
   retrieveUserTroubles(userTroubles: string): void {
     this.http.get<User[]>(this.userUrl).subscribe((userList) => {
       this.users = [];
@@ -86,62 +91,71 @@ export class UserService {
     });
   }
 
-
+  /**
+   * update user in back-end
+   * @param user
+   */
   updateUser(user: User): void {
     const userWrite = { firstName: user.firstName, lastName: user.lastName, encadreur: user.encadreur, maladies: user.maladies, commentaires: user.commentaires, age: user.age };
     const userUrl = this.userUrl + '/' + user.id ;
     this.http.put<User>(userUrl, userWrite, this.httpOptions).subscribe();
   }
 
-  /*getlastUser(): User {
-    if (this.users.length > 0) {
-      return this.users[this.users.length - 1];
-    } else {
-      return undefined;
-    }
-  }*/
-
+  /**
+   * add user in the back-end
+   * @param user
+   */
   addUser(user: User): void {
     this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.retrieveUsers());
     // console.log("ajouter");
   }
 
+  /**
+   * select user that we want to observe
+   * @param userId
+   */
   setSelectedUser(userId: string): void {
     if (userId === undefined) {
-      // this.currentUser = undefined;
       this.userSelected$.next(undefined);
     } else {
       const urlWithId = this.userUrl + '/' + userId;
       this.http.get<User>(urlWithId).subscribe((user) => {
-        // this.currentUser = user;
         this.userSelected$.next(user);
-        console.log('USER', user);
         this.getConfiguration(user.id);
       });
     }
   }
 
+  /**
+   * delete user in the back-end
+   * @param user
+   */
   deleteUser(user: User): void {
     // console.log('works');
     const urlWithId = this.userUrl + '/' + user.id;
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.retrieveUsers());
   }
 
+  /**
+   * select the configuration that we want to observe
+   * @param userId
+   */
   getConfiguration(userId: string): void{
     const configurationUrl = this.userUrl + '/' + userId + '/' + this.configurationPath;
     this.http.get<Configuration[]>(configurationUrl).subscribe((configurationNext: Configuration[]) => {
       if (configurationNext.length > 0 ) {
-        // this.currentConfiguration = configurationNext[configurationNext.length - 1];
-        // console.log("more than 1");
         this.configurationNext$.next(configurationNext[configurationNext.length - 1]);
       } else {
-        // console.log('no conf');
         this.configurationNext$.next(undefined);
       }
     });
   }
 
-
+  /**
+   * select the configuration that we want to observe
+   * @param user
+   * @param configuration
+   */
   nextConfiguration(user: User, configuration: Configuration): void{
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.get<Configuration>(configurationUrl).subscribe((configurationNext) => {
@@ -149,26 +163,37 @@ export class UserService {
     });
   }
 
+  /**
+   * add a configuration in back-end
+   * @param user
+   * @param configuration
+   */
   addConfiguration(user: User, configuration: Configuration): void {
     if (configuration.handicap === 'Autres') {
       configuration.shift = 60;
     }
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath;
     this.http.post<Configuration>(configurationUrl, configuration, this.httpOptions).subscribe((configurationPut) => {
-      // console.log('add', configurationPut);
-      // this.configurationNext$.next(configurationPut);
       this.setSelectedUser(user.id);
       this.retrieveUsers();
      });
-    // this.currentConfiguration = configuration;
-    // this.currentUser = user;
   }
 
+  /**
+   * delete configuration in back-end
+   * @param user
+   * @param configuration
+   */
   deleteConfiguration(user: User, configuration: Configuration): void {
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;
     this.http.delete<Configuration>(configurationUrl, this.httpOptions).subscribe(() => this.setSelectedUser(user.id));
   }
 
+  /**
+   * update configuration in back-end
+   * @param user
+   * @param configuration
+   */
   putConfiguration(user: User, configuration: Configuration): void {
     const configurationWrite = { handicap : configuration.handicap, bold : configuration.bold, size: configuration.size, police : configuration.police, bright : configuration.bright, contrast : configuration.contrast, shift : configuration.shift };
     const configurationUrl = this.userUrl + '/' + user.id + '/' + this.configurationPath + '/' + configuration.id;

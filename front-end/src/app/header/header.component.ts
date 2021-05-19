@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
       this.quiz = quiz;
     });
     this.animateurService.animateurSelected$.subscribe((animateur) => {
-      console.log('ANIMATEUR', animateur);
       this.animateur = animateur;
     });
   }

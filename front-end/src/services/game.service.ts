@@ -105,7 +105,7 @@ export class GameService {
    * @param dateMonth
    * @param dateDay
    */
-  isGameDateIsParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+  private isGameDateIsParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
     const date = new Date(game.date);
     if ((date.getFullYear() == dateYear)
       && (date.getMonth() == dateMonth)
@@ -122,7 +122,7 @@ export class GameService {
    * @param dateMonth
    * @param dateDay
    */
-  isGameDateMoreThanParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+  private isGameDateMoreThanParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
     const date = new Date(game.date);
     if ((date.getFullYear() > dateYear)
       || (date.getMonth() > dateMonth)
@@ -135,7 +135,7 @@ export class GameService {
   /**
    * return the id of the last game of the games' list
    */
-  islastGame(): string {
+  private islastGame(): string {
     console.log('log:', this.games.length);
     if (this.games.length < 1) {
       return null;
