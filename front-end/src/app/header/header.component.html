@@ -12,10 +12,10 @@
 <div *ngIf="user == undefined && animateur != undefined">
   <div class="header">
     BrocoliQuiz |
-    <a class="navigation" [routerLink]="['/quiz-list']">Mes Quizs</a>
-    <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>
-    <a class="navigation" [routerLink]="['/resultat-list']">Tous les Résultats</a>
-    <a class="navigation" [routerLink]="['/animateur-connexion']"  (click)="otherAnimateurs()">Se déconnecter</a>
+    <a class="navigation" routerLink="{{animateur.id}}/quiz-list">Mes Quizs</a>
+    <a class="navigation" routerLink="{{animateur.id}}/user-list">Mes Patients</a>
+    <a class="navigation" routerLink="{{animateur.id}}/resultat-list">Tous les Résultats</a>
+    <a class="navigation" routerLink="/animateur-connexion"  (click)="otherAnimateurs()">Se déconnecter</a>
   </div>
 </div>
 

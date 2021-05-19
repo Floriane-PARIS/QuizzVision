@@ -17,6 +17,7 @@ export class EditQuizComponent implements OnInit {
   public quizName: string;
   public themes: Theme[];
   public quiz: Quiz;
+  public animateurId: string;
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private router: Router,  public animateurService: AnimateurService, private quizService: QuizService, public themeService: ThemeService) {
@@ -32,8 +33,8 @@ export class EditQuizComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
-    const animateurId = this.route.snapshot.paramMap.get('animateurId');
-    this.animateurService.setSelectedAnimateur(animateurId);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   modifQuizName(): void {
@@ -59,10 +60,10 @@ export class EditQuizComponent implements OnInit {
   navigate(): void{
     console.log('event received from child: new quiz'+ this.quizService.origin);
     if (this.quizService.origin){
-      this.router.navigate(['/quiz-list']);
+      this.router.navigate(['/' + this.animateurId + '/quiz-list']);
     }
     else {
-      this.router.navigate(['/resultat-quiz']);
+      this.router.navigate(['/' + this.animateurId + '/resultat-quiz']);
     }
   }
 }
