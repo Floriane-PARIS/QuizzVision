@@ -19,9 +19,13 @@ import { AnimateurService } from "src/services/animateur.service";
     public inscriptionForm: FormGroup;
     public passWordConfirmed: string;
     public messageError: string;
+    public isActive: boolean;
+    public isActiveConfirmed: boolean;
 
     constructor(private router: Router, public formBuilder: FormBuilder, public animateurService: AnimateurService){
       this.messageError = '';
+      this.isActive = false;
+      this.isActiveConfirmed = false;
       this.inscriptionForm = this.formBuilder.group({
           name: [''],
           mail: [''],
@@ -31,6 +35,14 @@ import { AnimateurService } from "src/services/animateur.service";
     }
 
     ngOnInit(): void {
+    }
+
+    isActived(valide: boolean): void {
+      this.isActive = valide;
+    }
+
+    isActivedConfirmed(valide: boolean): void {
+      this.isActiveConfirmed = valide;
     }
 
     isNoError(): boolean {

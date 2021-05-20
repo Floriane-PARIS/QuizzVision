@@ -48,3 +48,10 @@ form button{
     outline: none;
     cursor: pointer;
 }
+
+.password {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}

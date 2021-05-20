@@ -11,13 +11,25 @@
                 <i class= "fa fa-envelope" style="color: forestgreen;"></i>
                 <input type="mail" placeholder="Adresse mail*" id="mail" [formControlName]="'mail'">
             </label>
-            <label for="password">
+            <label class="password" for="password">
                 <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input type="password" placeholder="Mot de passe*" id="password" [formControlName]="'password'">
+                <input [type]="isActive ? 'text' : 'password'" placeholder="Mot de passe*" id="1" [formControlName]="'password'">
+              <div *ngIf="isActive">
+                <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActived(false)"> </i>
+              </div>
+              <div *ngIf="!isActive">
+                <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActived(true)"></i>
+              </div>
             </label>
-            <label>
+            <label class="password">
                 <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input type="password" placeholder="Confirmer le mot de passe*" id="passwordConfirmed" [(ngModel)]="passWordConfirmed" [ngModelOptions]="{standalone: true}">
+                <input [type]="isActiveConfirmed ? 'text' : 'password'" placeholder="Confirmer le mot de passe*" id="2" [(ngModel)]="passWordConfirmed" [ngModelOptions]="{standalone: true}">
+              <div *ngIf="isActiveConfirmed">
+                <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActivedConfirmed(false)"> </i>
+              </div>
+              <div *ngIf="!isActiveConfirmed">
+                <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActivedConfirmed(true)"></i>
+              </div>
             </label>
             </div>
       <div *ngIf="messageError.length > 0">
