@@ -9,6 +9,7 @@ import {max} from "rxjs/operators";
 import {User} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";
 import {QuizService} from "../../../services/quiz.service";
+import {AnimateurService} from "../../../services/animateur.service";
 
 @Component({
   selector: 'app-game',
@@ -28,13 +29,14 @@ export class GameComponent implements OnInit {
   public configuration: Configuration;
   public length: number;
   public newGame: Quiz;
+  public animateurId: string;
   public root = document.documentElement;
 
 
   @Output()
   nextQuestion: EventEmitter<Question> = new EventEmitter<Question>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private animateurService: AnimateurService, private gameService: GameService, private userService: UserService) {
     this.gameService.gameSelected$.subscribe((game) => {
       this.game = game;
       if (this.length === 0) {
@@ -60,6 +62,8 @@ export class GameComponent implements OnInit {
     this.userService.setSelectedUser(this.idUser);
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.setSelectedGame(id);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   findNewQuiz(quizList: Quiz[]): void {
@@ -120,7 +124,7 @@ export class GameComponent implements OnInit {
   }
 
   sendConfig(): void {
-    this.router.navigate(['/configuration-jeu/' + this.idUser + '/' + this.game.id]);
+    this.router.navigate(['/' + this.animateurId + '/configuration-jeu/' + this.idUser + '/' + this.game.id]);
   }
 
   /*quitGame(): void {
@@ -140,14 +144,14 @@ export class GameComponent implements OnInit {
       this.gameService.setSelectedGame(undefined);
     }
     this.quizService.setSelectedQuiz(undefined);
-    this.router.navigate(['/quiz-list/' + this.idUser ]);
+    this.router.navigate(['/' + this.animateurId + '/quiz-list/' + this.idUser ]);
   }
 
   otherGames(): void {
     this.gameService.updateGameConfiguration(this.game, this.configuration);
     this.quizService.setSelectedQuiz(this.newGame.id);
     console.log('event received from child:', this.newGame.id);
-    this.router.navigate(['/game-start/' + this.idUser + '/' + this.newGame.id]);
+    this.router.navigate(['/' + this.animateurId +'/game-start/' + this.idUser + '/' + this.newGame.id]);
   }
 
   getResultat(): string {

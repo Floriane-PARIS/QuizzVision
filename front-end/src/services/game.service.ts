@@ -5,32 +5,26 @@ import { Game } from '../models/game.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Answer, Question} from '../models/question.model';
 import {Quiz} from '../models/quiz.model';
-import {User} from "../models/user.model";
-import {Configuration} from "../models/configuration.model";
+import {User} from '../models/user.model';
+import {Configuration} from '../models/configuration.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  /*
-   The list of game.
+
+  /**
+   * The list of game.
    */
   private games: Game[] = [];
   public origin: boolean;
-  // public gameQuestion: Question;  // changes
-  // public gameQuiz: Quiz; // changes
 
-  /*
-   Observable which contains the list of the game.
+  /**
+   * Observable which contains the list of the game.
    */
   public games$: BehaviorSubject<Game[]>
     = new BehaviorSubject([]);
-
   public gameSelected$: Subject<Game> = new Subject();
-
-  // public gameQuestion$: Subject<Question> = new Subject(); // changes
-  // public gameQuiz$: Subject<Quiz> = new Subject();
-
   public selectedGameId$: Subject<string> = new Subject();
   public gameUser$: Subject<User> = new Subject();
 
@@ -47,6 +41,10 @@ export class GameService {
     this.origin = false;
   }
 
+  /**
+   * retrieve all games from back-end
+   * @param isSetSelectedGame
+   */
   retrieveGames(isSetSelectedGame: boolean = false): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = gameList;
@@ -58,6 +56,11 @@ export class GameService {
     });
   }
 
+  /**
+   * retrieve all games with option about notes
+   * @param gameNote
+   * @param noteOperation
+   */
   retrieveGameNote(gameNote: number, noteOperation: number): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = [];
@@ -73,6 +76,13 @@ export class GameService {
     });
   }
 
+  /**
+   * retrieve all games with option about dates
+   * @param isDateEqual
+   * @param dateYear
+   * @param dateMonth
+   * @param dateDay
+   */
   retrieveGameDate(isDateEqual: boolean, dateYear: number, dateMonth: number, dateDay: number): void {
     this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
       this.games = [];
@@ -88,7 +98,14 @@ export class GameService {
     });
   }
 
-  isGameDateIsParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+  /**
+   * is the game, in the paramter, has been played at the time described by the other parameter ?
+   * @param game
+   * @param dateYear
+   * @param dateMonth
+   * @param dateDay
+   */
+  private isGameDateIsParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
     const date = new Date(game.date);
     if ((date.getFullYear() == dateYear)
       && (date.getMonth() == dateMonth)
@@ -98,7 +115,14 @@ export class GameService {
     return false;
   }
 
-  isGameDateMoreThanParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
+  /**
+   * is the game, in the paramter, has been played after the time described by the other parameter ?
+   * @param game
+   * @param dateYear
+   * @param dateMonth
+   * @param dateDay
+   */
+  private isGameDateMoreThanParametre( game: Game, dateYear: number, dateMonth: number, dateDay: number): boolean {
     const date = new Date(game.date);
     if ((date.getFullYear() > dateYear)
       || (date.getMonth() > dateMonth)
@@ -108,7 +132,10 @@ export class GameService {
     return false;
   }
 
-  islastGame(): string {
+  /**
+   * return the id of the last game of the games' list
+   */
+  private islastGame(): string {
     console.log('log:', this.games.length);
     if (this.games.length < 1) {
       return null;
@@ -116,10 +143,18 @@ export class GameService {
     return this.games[this.games.length - 1].id;
   }
 
+  /**
+   * add a game in the back-end
+   * @param game
+   */
   addGame(game: Game): void {
     this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames(true));
   }
 
+  /**
+   * select the game that we want to observe
+   * @param gameId
+   */
   setSelectedGame(gameId: string): void {
     if (gameId === undefined) {
       this.gameSelected$.next(undefined);
@@ -131,11 +166,20 @@ export class GameService {
     }
   }
 
+  /**
+   * delete game in the back-end
+   * @param game
+   */
   deleteGame(game: Game): void {
     const urlWithId = this.gameUrl + '/' + game.id;
     this.http.delete<Game>(urlWithId, this.httpOptions).subscribe(() => this.retrieveGames());
   }
 
+  /**
+   * add answer to game in the back-end
+   * @param game
+   * @param answer
+   */
   addAnswer(game: Game, answer: Answer): void {
     let answerWrite;
     if (game.answers == undefined) {
@@ -144,7 +188,6 @@ export class GameService {
       game.answers.push(answer.id);
       answerWrite = {answers: game.answers};
     }
-    console.log(answerWrite);
     const answerUrl = this.gameUrl + '/' + game.id ;
     this.http.put<Game>(answerUrl, answerWrite, this.httpOptions).subscribe((game: Game) => {
       this.gameSelected$.next(game);
@@ -152,32 +195,24 @@ export class GameService {
     });
   }
 
+  /**
+   * add question to game in the back-end
+   * @param game
+   * @param question
+   */
   addQuestion(game: Game, question: Question): void {
     const questionUrl = this.gameUrl + '/' + game.id + '/' + this.questionsPath;
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
   }
 
-  deleteAnswer(game: Game, answer: Answer): void {
-    const answerUrl = '/' + game.quizId + '/' + game.question[0].id + '/' + this.answersPath;
-    this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedGame(game.id));
-  }
-
-  /*
-  // faire une méthode pour récupérer la question
-  getQuestion(game: Game): void{
-    const questionUrl = this.quizUrl + '/' + game.quizId + '/' + this.questionsPath + '/' + game.question[0].id;
-    this.http.get<Question>(questionUrl, this.httpOptions).subscribe((gameList) => {
-      this.gameQuestion = gameList;
-      this.gameQuestion$.next(gameList);
-      this.retrieveGames();
-    });
-  }*/
-
+  /**
+   * search the next question of the quiz and change game's current question by it
+   * @param game
+   */
   nextQuestionGame(game: Game): void{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
       const index = this.getIndexQuestionInQuiz(game, quiz);
-      console.log(index);
       if (index >= 0 ) {
         this.updateGameQuestion(game, this.getQuestionWithIndexInQuiz(index + 1, quiz));
       }
@@ -185,14 +220,11 @@ export class GameService {
     });
   }
 
-  /*getLengthGame(game: Game): number{
-      const quizUrl = this.quizUrl + '/' + game.quizId ;
-      this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
-        return quiz.questions.length;
-      });
-      return 0;
-  }*/
-
+  /**
+   * update the current question of game in the back-end
+   * @param game
+   * @param question
+   */
   updateGameQuestion(game: Game, question: Question): void {
     const questionWrite = {question: [question]};
     const questionUrl = this.gameUrl + '/' + game.id ;
@@ -202,6 +234,10 @@ export class GameService {
     });
   }
 
+  /**
+   * update score of game in the back-end
+   * @param game
+   */
   updateScore(game: Game): void {
     const score = {score: game.score - 1};
     const questionUrl = this.gameUrl + '/' + game.id ;
@@ -211,7 +247,11 @@ export class GameService {
     });
   }
 
-  // return index of Question in Quiz
+  /**
+   * return index of question in quiz
+   * @param game
+   * @param quiz
+   */
   getIndexQuestionInQuiz(game: Game, quiz: Quiz): number{
     let index = 0;
     for (const question of quiz.questions) {
@@ -223,7 +263,11 @@ export class GameService {
     return -1;
   }
 
-  // return question of index in Quiz
+  /**
+   * return the question with the index indexQuestion in quiz
+   * @param indexQuestion
+   * @param quiz
+   */
   getQuestionWithIndexInQuiz(indexQuestion: number, quiz: Quiz): Question{
     let index = 0;
     for (const question of quiz.questions) {
@@ -235,25 +279,22 @@ export class GameService {
     return null;
   }
 
-  /*
-  getQuiz(game: Game): void{
-    const quizUrl = this.quizUrl + '/' + game.quizId ;
-    this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
-      this.gameQuiz = quiz;
-      this.gameQuiz$.next(quiz);
-    });
-  }
-  */
-
+  /**
+   * return the Quiz which is played in game
+   * @param game
+   */
   getQuizForGame(game: Game): Quiz{
     const quizUrl = this.quizUrl + '/' + game.quizId ;
     this.http.get<Quiz>(quizUrl, this.httpOptions).subscribe((quiz) => {
-      console.log(quiz);
       return quiz;
     });
     return null;
   }
 
+  /**
+   * select the user of the game that we want to observe
+   * @param game
+   */
   getUserForGame(game: Game): void {
     const userUrl = this.userUrl + '/' + game.userId ;
     this.http.get<User>(userUrl, this.httpOptions).subscribe((user) => {
@@ -261,8 +302,12 @@ export class GameService {
     });
   }
 
+  /**
+   * update the configuration of the game in the back-end
+   * @param game
+   * @param configuration
+   */
   updateGameConfiguration(game: Game, configuration: Configuration): void {
-    console.log('confi', configuration);
     let configurationWrite;
     if (game.configuration.length === 0) {
       configurationWrite = {configuration: [configuration]};

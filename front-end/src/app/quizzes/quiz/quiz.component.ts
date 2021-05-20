@@ -87,8 +87,8 @@ export class QuizComponent implements OnInit {
     return false;
   }
 
-  modif(): void{
+  /*modif(): void{
     this.quizService.origin = true;
     this.router.navigate(['/edit-quiz/' + this.quiz.id]);
-  }
+  }*/
 }

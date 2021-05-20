@@ -85,9 +85,9 @@ import { UserService } from "src/services/user.service";
     selectAdmin(animateur: Animateur): void {
       this.userService.setSelectedUser(undefined);
       this.animateurService.setSelectedAnimateur(animateur.id);
-      this.animateurService.retrieveAnimateurs();
+      // this.animateurService.retrieveAnimateurs();
       console.log('event received from child:', animateur.id);
-      this.router.navigate(['/quiz-list']);;
+      this.router.navigate(['/' +  animateur.id + '/quiz-list']);
     }
 
   }

@@ -10,6 +10,7 @@ import {Configuration} from '../../../models/configuration.model';
 import {User} from '../../../models/user.model';
 import {UserService} from "../../../services/user.service";
 import {CommonModule} from "@angular/common";
+import {AnimateurService} from "../../../services/animateur.service";
 
 @Component({
   selector: 'app-game-start',
@@ -23,8 +24,9 @@ export class GameStartComponent implements OnInit {
   public game: Game;
   public user: User;
   public configuration: Configuration;
+  public animateurId: string;
 
-  constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService, private userService: UserService) {
+  constructor(private router: Router, public formBuilder: FormBuilder, private route: ActivatedRoute, private quizService: QuizService, private animateurService: AnimateurService, private gameService: GameService, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       // console.log('gamQuiz', quiz);
@@ -61,6 +63,8 @@ export class GameStartComponent implements OnInit {
     this.quizService.setSelectedQuiz(id);
     const idUser = this.route.snapshot.paramMap.get('idUser');
     this.userService.setSelectedUser(idUser);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   private initializeGameForm(quiz: Quiz, configuration: Configuration): void {
@@ -88,18 +92,18 @@ export class GameStartComponent implements OnInit {
 
   backToQuizList(): void {
     this.quizService.setSelectedQuiz(undefined);
-    this.router.navigate(['/quiz-list/' + this.user.id]);
+    this.router.navigate(['/' + this.animateurId + '/quiz-list/' + this.user.id]);
   }
 
   backToConfiguration(): void {
     this.quizService.setSelectedQuiz(undefined);
-    this.router.navigate(['/configuration-edit/' + this.user.id]);
+    this.router.navigate(['/' + this.animateurId + '/configuration-edit/' + this.user.id]);
   }
 
   startGame(string: string): void {
     this.quizService.setSelectedQuiz(this.quiz.id);
     console.log('event received from child:', string);
-    this.router.navigate(['/game/' + this.user.id + '/' + string  ]);
+    this.router.navigate(['/' + this.animateurId + '/game/' + this.user.id + '/' + string  ]);
   }
 
     getBold(): string{

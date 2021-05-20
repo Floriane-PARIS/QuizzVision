@@ -5,34 +5,27 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import {Answer, Question} from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {Game} from '../models/game.model';
-import {Theme} from "../models/Theme.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class QuizService {
-  /*
-   Services Documentation:
-   https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
-   */
 
-  /*
-   The list of quiz.
-   The list is retrieved from the mock.
+export class QuizService {
+
+  /**
+   * The list of quiz.
+   * The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = QUIZ_LIST;
   public origin: boolean;
 
-  /*
-   Observable which contains the list of the quiz.
-   Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
+  /**
+   * Observable which contains the list of the quiz.
+   * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public quizzes$: BehaviorSubject<Quiz[]>
     = new BehaviorSubject(this.quizzes);
-
   public quizSelected$: Subject<Quiz> = new Subject();
-
   public questionNext$: Subject<Question> = new Subject();
 
   private quizUrl = serverUrl + '/quizzes';
@@ -43,9 +36,12 @@ export class QuizService {
 
   constructor(private http: HttpClient) {
     this.retrieveQuizzes();
-    this.origin=false;
+    this.origin = false;
   }
 
+  /**
+   * retrieve all quizzes from the back-end
+   */
   retrieveQuizzes(): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;
@@ -53,27 +49,17 @@ export class QuizService {
     });
   }
 
-  retrieveQuizzeName2(quizName: string): void {
-    this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
-      this.quizzes = [];
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < quizList.length; i++){
-        // tslint:disable-next-line:triple-equals
-        if (quizList[i].name == quizName){
-          this.quizzes.push(quizList[i]);
-        }
-      }
-      this.quizzes$.next(this.quizzes);
-    });
-  }
-
+  /**
+   * retrieve all quizzes with option about name
+   * @param quizName
+   */
   retrieveQuizzeName(quizName: string): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = [];
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < quizList.length; i++){
         // tslint:disable-next-line:triple-equals
-        if (quizList[i].name.includes(quizName)){
+        if ((quizList[i].name == quizName) || (quizList[i].name.includes(quizName))){
           this.quizzes.push(quizList[i]);
         }
       }
@@ -81,6 +67,10 @@ export class QuizService {
     });
   }
 
+  /**
+   * retrieve all quizzes with option about theme
+   * @param quizTheme
+   */
   retrieveQuizzeTheme(quizTheme: string): void {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = [];
@@ -95,10 +85,18 @@ export class QuizService {
     });
   }
 
+  /**
+   * add quiz in the back-end
+   * @param quiz
+   */
   addQuiz(quiz: Quiz): void {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
+  /**
+   * select quiz that we want to observe
+   * @param quizId
+   */
   setSelectedQuiz(quizId: string): void {
     if (quizId === undefined) {
       // this.currentUser = undefined;
@@ -111,6 +109,11 @@ export class QuizService {
     }
   }
 
+  /**
+   * select the nex question of the quiz that we want to observe
+   * @param quiz
+   * @param question
+   */
   nextQuestion(quiz: Quiz, question: Question): void{
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.get<Question>(questionUrl).subscribe((questionNext) => {
@@ -125,30 +128,57 @@ export class QuizService {
     });
   }
 
+  /**
+   * delete quiz in the back-end
+   * @param quiz
+   */
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
+  /**
+   * add question in the quiz in the back-end
+   * @param quiz
+   * @param question
+   */
   addQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * delete question of the quiz in the back-end
+   * @param quiz
+   * @param question
+   */
   deleteQuestion(quiz: Quiz, question: Question): void {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * update question in the back-end
+   * @param quiz
+   * @param question
+   */
   putQuestion(quiz: Quiz, question: Question): void {
     const questionWrite = {label : question.label };
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
-    for (const answer of question.answers) {
-      this.putAnswer(quiz, question, answer);
-    }
+    this.http.put<Question>(questionUrl, questionWrite, this.httpOptions).subscribe(() => {
+      this.setSelectedQuiz(quiz.id);
+      for (const answer of question.answers) {
+        this.putAnswer(quiz, question, answer);
+      }
+    });
   }
 
+  /**
+   * update answer in the back-end
+   * @param quiz
+   * @param question
+   * @param answer
+   */
   putAnswer(quiz: Quiz, question: Question, answer: Answer): void {
     const answerWrite = {value: answer.value, isCorrect: answer.isCorrect};
     // tslint:disable-next-line:max-line-length
@@ -156,57 +186,47 @@ export class QuizService {
     this.http.put<Answer>(answerUrl, answerWrite, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * delete answer in the back-end
+   * @param quiz
+   * @param questionId
+   * @param answer
+   */
   deleteAnswer(quiz: Quiz, questionId: string, answer: Answer): void {
     const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + questionId + '/' + this.answersPath + '/' + answer.id;
     this.http.delete<Answer>(answerUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * add answre in the back-end
+   * @param quiz
+   * @param questionId
+   * @param answer
+   */
   addAnswer(quiz: Quiz, questionId: string, answer: Answer): void {
     const answerUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + questionId + '/' + this.answersPath ;
     this.http.post<Answer>(answerUrl, answer, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * update the quiz' name
+   * @param quiz
+   * @param newNameQuiz
+   */
   renameQuiz(quiz: Quiz, newNameQuiz: string): void {
-    const newName = {name: newNameQuiz, id: quiz.id};
+    const newName = {name: newNameQuiz};
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.put<Quiz>(urlWithId, newName, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
+  /**
+   * update the quiz' theme
+   * @param quiz
+   * @param newTheme
+   */
   changeQuizTheme(quiz: Quiz, newTheme: string): void {
-    const newName = {theme: newTheme, id: quiz.id};
+    const newName = {theme: newTheme};
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.put<Quiz>(urlWithId, newName, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
-
-  // recuperer l'id de la question
-  getQuestionIdQuiz(quiz: Quiz, index: number): string {
-    return quiz.questions[index].id;
-  }
- // valideQuestion(quiz: Quiz, question: Question): void {
-   /* to do*/
- // }
-
-  /*
-  Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
-  addQuestion(quiz: Quiz, question: Question) {
-    quiz.questions.push(question);
-    const index = this.quizzes.findIndex((q: Quiz) => q.id === quiz.id);
-    if (index) {
-      this.updateQuizzes(quiz, index);
-    }
-  }
-
-  deleteQuestion(quiz: Quiz, question: Question) {
-    const index = quiz.questions.findIndex((q) => q.label === question.label);
-    if (index !== -1) {
-      quiz.questions.splice(index, 1)
-      this.updateQuizzes(quiz, index);
-    }
-  }
-
-  private updateQuizzes(quiz: Quiz, index: number) {
-    this.quizzes[index] = quiz;
-    this.quizzes$.next(this.quizzes);
-  }
-  */
 }

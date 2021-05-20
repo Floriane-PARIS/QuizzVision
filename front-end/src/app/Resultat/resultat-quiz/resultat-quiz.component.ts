@@ -9,6 +9,7 @@ import { GameService } from "src/services/game.service";
 import { QuizService } from "src/services/quiz.service";
 import { UserService } from "src/services/user.service";
 import { CommonModule } from "@angular/common";
+import {AnimateurService} from "../../../services/animateur.service";
 
 @Component({
     selector: ' app-resultat-quiz',
@@ -21,8 +22,9 @@ import { CommonModule } from "@angular/common";
     public quizzes: Quiz[];
     public resultatList: FormGroup;
     public games: Game[];
+    public animateurId: string;
 
-    constructor(private router: Router, public formBuilder: FormBuilder, private quizService: QuizService, private gameService: GameService) {
+    constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, private animateurService: AnimateurService, private quizService: QuizService, private gameService: GameService) {
       this.resultatList = this.formBuilder.group({
               firstName: [''],
               lastName: [''],
@@ -41,15 +43,16 @@ import { CommonModule } from "@angular/common";
     }
 
     ngOnInit(): void {
+      this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+      this.animateurService.setSelectedAnimateur(this.animateurId);
     }
 
     backToResultatList(): void {
-      this.router.navigate(['/resultat-list']);
+      this.router.navigate(['/' + this.animateurId + '/resultat-list']);
     }
 
     editQuiz(quiz: Quiz): void {
-        //console.log(quiz);
-        this.router.navigate(['/edit-quiz/' + quiz.id ]);
+        this.router.navigate(['/' + this.animateurId + '/edit-quiz/' + quiz.id ]);
     }
 
     nbJeuQuiz(quiz: Quiz): number {

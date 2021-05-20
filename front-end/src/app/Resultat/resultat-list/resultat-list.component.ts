@@ -8,6 +8,7 @@ import { User } from "src/models/user.model";
 import { GameService } from "src/services/game.service";
 import { QuizService } from "src/services/quiz.service";
 import { UserService } from "src/services/user.service";
+import {AnimateurService} from "../../../services/animateur.service";
 
 
 @Component({
@@ -25,10 +26,10 @@ import { UserService } from "src/services/user.service";
     public game: Game;
     public user: User;
     public gameChose: boolean;
+    public animateurId: string;
 
 
-
-    constructor(private router: Router, public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute) {
+    constructor(private router: Router, public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private animateurService: AnimateurService, private gameService: GameService, private route: ActivatedRoute) {
         this.resultatList = this.formBuilder.group({
           firstName: [''],
           lastName: [''],
@@ -54,8 +55,10 @@ import { UserService } from "src/services/user.service";
             });
     }
   ngOnInit(): void {
-  const id = this.route.snapshot.paramMap.get('id');
-      this.userService.setSelectedUser(id);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.setSelectedUser(id);
+    this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+    this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   dateGame(gameDate: Date): Date {
@@ -71,10 +74,10 @@ import { UserService } from "src/services/user.service";
    // this.userService.setSelectedUser(undefined);
    if(this.user == undefined){
       this.userService.setSelectedUser(undefined);
-      this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId]);
+      this.router.navigate(['/' + this.animateurId + '/resultat-details/' + game.id + '/' + game.quizId]);
    } else {
           this.userService.setSelectedUser(this.user.id);
-          this.router.navigate(['/resultat-details/' + game.id + '/' + game.quizId + '/' + this.user.id]);
+          this.router.navigate(['/' + this.animateurId + '/resultat-details/' + game.id + '/' + game.quizId + '/' + this.user.id]);
        }
 
   }

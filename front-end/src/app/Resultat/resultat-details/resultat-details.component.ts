@@ -10,6 +10,7 @@ import { QuizService } from 'src/services/quiz.service';
 import { UserService } from 'src/services/user.service';
 import {Question} from "../../../models/question.model";
 import {Configuration} from "../../../models/configuration.model";
+import {AnimateurService} from "../../../services/animateur.service";
 
 
 @Component({
@@ -24,11 +25,12 @@ import {Configuration} from "../../../models/configuration.model";
     public game: Game;
     public quiz: Quiz;
     public configurationChose: number;
+    public animateurId: string;
     public root = document.documentElement;
     public onglets = document.querySelectorAll('.onglets');
     public contenu = document.querySelectorAll('.contenu');
 
-    constructor(public formBuilder: FormBuilder, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute, public router: Router) {
+    constructor(public formBuilder: FormBuilder, private animateurService: AnimateurService, public userService: UserService, private quizService: QuizService, private gameService: GameService, private route: ActivatedRoute, public router: Router) {
         this.admin = false;
         this.configurationChose = 0;
         this.gameService.gameSelected$.subscribe((game: Game) => {
@@ -54,6 +56,8 @@ import {Configuration} from "../../../models/configuration.model";
       if(userId == undefined){
           this.admin = true;
       }
+      this.animateurId = this.route.snapshot.paramMap.get('animateurId');
+      this.animateurService.setSelectedAnimateur(this.animateurId);
   }
 
   dateGame(gameDate: Date): Date {
@@ -101,19 +105,19 @@ import {Configuration} from "../../../models/configuration.model";
   navigate1(): void{
     console.log('event received from child: new result' + this.gameService.origin);
     if (this.gameService.origin == true){
-      this.router.navigate(['/quiz-list/'+ this.user.id]);
+      this.router.navigate(['/' + this.animateurId + '/quiz-list/'+ this.user.id]);
 
     }
     else {
-      this.router.navigate(['/resultat-list']);
+      this.router.navigate(['/' + this.animateurId + '/resultat-list']);
     }
   }
 
   navigate(): void {
       if(this.admin){
-          this.router.navigate(['/resultat-list']);
+          this.router.navigate(['/' + this.animateurId + '/resultat-list']);
       } else {
-          this.router.navigate(['/resultat-list/'+ this.user.id]);
+          this.router.navigate(['/' + this.animateurId + '/resultat-list/'+ this.user.id]);
       }
   }
 
@@ -123,7 +127,7 @@ import {Configuration} from "../../../models/configuration.model";
 
   modifQuiz(): void{
     this.quizService.origin = false;
-    this.router.navigate(['/edit-quiz/' + this.quiz.id]);
+    this.router.navigate(['/' + this.animateurId + '/edit-quiz/' + this.quiz.id]);
   }
 
   shift(): void {
