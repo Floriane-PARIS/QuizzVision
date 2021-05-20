@@ -21,6 +21,7 @@ import { AnimateurService } from "src/services/animateur.service";
     public messageError: string;
     public isActive: boolean;
     public isActiveConfirmed: boolean;
+    public animateurs: Animateur[];
 
     constructor(private router: Router, public formBuilder: FormBuilder, public animateurService: AnimateurService){
       this.messageError = '';
@@ -31,6 +32,10 @@ import { AnimateurService } from "src/services/animateur.service";
           mail: [''],
           password: [''],
       });
+      this.animateurService.animateurs$.subscribe((animateurs: Animateur[]) => {
+        this.animateurs = animateurs;
+      });
+
 
     }
 
@@ -45,9 +50,22 @@ import { AnimateurService } from "src/services/animateur.service";
       this.isActiveConfirmed = valide;
     }
 
+    isNameAlreadyTaken(): boolean {
+      let already = false;
+      this.animateurs.forEach(element => {
+        if (element.name == this.inscriptionForm.value.name) {
+          already = true;
+        }
+      });
+      return already;
+    }
+
     isNoError(): boolean {
       if (this.inscriptionForm.value.name.length <= 0) {
         this.messageError = "vous n'avez pas saisi votre Nom";
+        return false;
+      } else if (this.isNameAlreadyTaken()) {
+        this.messageError = "Cet identifient est déjà utilisé";
         return false;
       } else if (this.inscriptionForm.value.mail.length <= 0) {
         this.messageError = "vous n'avez pas saisi votre Mail";
