@@ -1,6 +1,5 @@
 import { Question } from './question.model';
-import { Answer } from './question.model';
-import {Configuration} from "./configuration.model";
+import {Configuration} from './configuration.model';
 
 export interface Game {
   id: string;

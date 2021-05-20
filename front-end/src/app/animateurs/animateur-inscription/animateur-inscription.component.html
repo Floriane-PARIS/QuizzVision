@@ -15,12 +15,14 @@
                 <i class="fa fa-lock" style="color: forestgreen;"></i>
                 <input type="password" placeholder="Mot de passe*" id="password" [formControlName]="'password'">
             </label>
-            <label for="passwordConfirmed">
+            <label>
                 <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input type="password" placeholder="Confirmer le mot de passe*" id="passwordConfirmed" [formControlName]="'passwordConfirmed'">
+                <input type="password" placeholder="Confirmer le mot de passe*" id="passwordConfirmed" [(ngModel)]="passWordConfirmed" [ngModelOptions]="{standalone: true}">
             </label>
             </div>
-
+      <div *ngIf="messageError.length > 0">
+        {{messageError}}
+      </div>
         <div>
             <button type="submit" (click)="ajoutAnimateur()">Valider</button>
         </div>

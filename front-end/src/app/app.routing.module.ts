@@ -6,22 +6,16 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { ConfigurationEditComponent } from './configurations/configuration-edit/configuration-edit.component';
 import { GameStartComponent } from './games/game-start/game-start.component';
 import { GameComponent } from './games/game/game.component';
-import { GameQuestionComponent } from './questions/game-question/game-question.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
-import {EditThemeComponent} from './themes/edit-theme/edit-theme.component';
-import {UserEditComponent}  from './users/user-edit/user-edit.component';
-import { UserSearchComponent } from './users/user-search/user-search.component';
-import { UserComponent } from './users/user/user.component';
+import {UserEditComponent} from './users/user-edit/user-edit.component';
 import {ConfigurationJeuComponent} from './configurations/configuration-jeu/configuration-jeu.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
-import { ThemeFormComponent } from './themes/theme-form/theme-form.component';
 import { ResultatListComponent } from './Resultat/resultat-list/resultat-list.component';
 import { ResultatQuizComponent } from './Resultat/resultat-quiz/resultat-quiz.component';
 import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-details.component';
 import { InscriptionComponent } from './animateurs/animateur-inscription/animateur-inscription.component';
 import { ConnexionFormComponent } from './animateurs/animateur-connexion/animateur-connexion.component';
-import { ConfigurationComponent } from './configurations/configuration/configuration.component';
 import {AnimateurComponent} from './animateurs/animateur/animateur.component';
 
 

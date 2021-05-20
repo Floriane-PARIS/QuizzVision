@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { Animateur } from "src/models/animateur.model";
-import { Inscription } from "src/models/inscription.model";
 import { User } from "src/models/user.model";
 import { AnimateurService } from "src/services/animateur.service";
 import { UserService } from "src/services/user.service";
