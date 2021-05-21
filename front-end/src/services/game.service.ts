@@ -320,6 +320,45 @@ export class GameService {
     });
   }
 
+  getBold(configuration: Configuration): string{
+        if(configuration != undefined){
+             return configuration.bold;
+        }
+         return 'normal';
+    }
+
+
+  getPolice(configuration: Configuration): string{
+      if(configuration != undefined){
+         return configuration.police;
+      }
+      return 'Arial';
+  }
+
+  getSize(configuration: Configuration): string{
+      if(configuration != undefined){
+        return configuration.size+"px";
+      }
+      return "22px";
+  }
+
+  getBright(configuration: Configuration): string{
+    if(configuration != undefined){
+      return configuration.bright+ "%";
+    }
+    return "20%";
+  }
+
+  getContrast(configuration: Configuration): string{
+    if(configuration != undefined){
+      return configuration.bright+ "%";
+    }
+    return "20%";
+  }
+
+  getFiltre(configuration: Configuration): string{
+      return this.getBright(configuration) + " " + this.getContrast(configuration);
+  }
 
 
 }
