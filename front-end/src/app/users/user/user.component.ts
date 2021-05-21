@@ -30,6 +30,7 @@ export class UserComponent implements OnInit {
 
   select(): void {
     this.userSelected.emit(this.user);
+    this.userService.setSelectedUser(this.user.id);
   }
 
   edit(): void {

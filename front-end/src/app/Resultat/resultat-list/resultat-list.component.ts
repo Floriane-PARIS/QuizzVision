@@ -76,7 +76,7 @@ import {AnimateurService} from "../../../services/animateur.service";
       this.router.navigate(['/' + this.animateurId + '/resultat-details/' + game.id + '/' + game.quizId]);
    } else {
           this.userService.setSelectedUser(this.user.id);
-          this.router.navigate(['/' + this.animateurId + '/resultat-details/' + game.id + '/' + game.quizId + '/' + this.user.id]);
+          this.router.navigate(['/' + this.animateurId + '/resultat-details/'+ this.user.id + '/'  + game.id + '/' + game.quizId]);
        }
 
   }

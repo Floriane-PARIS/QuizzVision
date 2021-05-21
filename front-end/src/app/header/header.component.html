@@ -1,14 +1,3 @@
-<!--div *ngIf="user == undefined && animateur != undefined ">
-  <div class="header">
-    BrocoliQuiz |
-    <a class="navigation" [routerLink]="['/quiz-list']">Mes Quizs</a>
-    <a class="navigation" [routerLink]="['/user-list']">Mes Patients</a>
-    <a class="navigation" [routerLink]="['/resultat-list']">Tous les Résultats</a>
-    <a class="navigation" [routerLink]="['/animateur-connexion']">Se déconnecter</a>
-  </div>
-</div-->
-
-<!-- à décommenter -->
 <div *ngIf="user == undefined && animateur != undefined">
   <div class="header">
     BrocoliQuiz |
@@ -33,7 +22,7 @@
 
 
 <div *ngIf="user == undefined && game == undefined && quiz == undefined && animateur==undefined" >
-    <div class="header">
+    <div class="header3">
       BrocoliQuiz |
       <a class="navigation" routerLink = "/animateur"> Accueil</a>
       <a class="navigation" routerLink = "/animateur-inscription">Inscription</a>

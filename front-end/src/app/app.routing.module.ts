@@ -37,7 +37,7 @@ const routes: Routes = [
     {path: ':animateurId/resultat-list', component: ResultatListComponent},
     {path: ':animateurId/resultat-list/:id', component: ResultatListComponent},
     {path: ':animateurId/resultat-details/:gameId/:quizId', component: ResultatDetailsComponent},
-    {path: ':animateurId/resultat-details/:gameId/:quizId/:userId', component: ResultatDetailsComponent},
+    {path: ':animateurId/resultat-details/:userId/:gameId/:quizId', component: ResultatDetailsComponent},
     {path: ':animateurId/configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
     {path: 'animateur-inscription', component: InscriptionComponent},
     {path: 'animateur-connexion', component: ConnexionFormComponent},
