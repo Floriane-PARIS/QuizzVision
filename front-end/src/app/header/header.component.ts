@@ -46,7 +46,6 @@ export class HeaderComponent implements OnInit {
   }
 
   otherUsers(): void {
-    this.gameService.origin = false;
     this.animateurService.setSelectedAnimateur(this.animateur.id);
     this.userService.setSelectedUser(undefined);
     this.router.navigate(['/' + this.animateur.id + '/user-list']);

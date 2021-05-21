@@ -17,7 +17,6 @@ export class GameService {
    * The list of game.
    */
   private games: Game[] = [];
-  public origin: boolean;
 
   /**
    * Observable which contains the list of the game.
@@ -38,7 +37,6 @@ export class GameService {
 
   constructor(private http: HttpClient) {
     this.retrieveGames();
-    this.origin = false;
   }
 
   /**

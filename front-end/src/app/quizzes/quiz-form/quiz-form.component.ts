@@ -58,7 +58,6 @@ export class QuizFormComponent implements OnInit {
 
   ajoutTheme(): void{
     console.log('event received from child: new theme');
-    this.themeService.origin = true;
     this.router.navigate(['/' + this.animateurId + '/theme-list']);
   }
 

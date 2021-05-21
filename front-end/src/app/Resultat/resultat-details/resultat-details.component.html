@@ -1,4 +1,4 @@
-<button class="button-card" (click)="navigate()">Retour</button>
+<INPUT class="button-card" TYPE="button" VALUE="Retour" onClick="history.go(-1);">
 <br>
 <div class="resultat-game" *ngIf="game != undefined && quiz != undefined && user != null">
   <h2>Joueur:  {{user.firstName}} {{user.lastName}}</h2>

@@ -56,14 +56,4 @@ export class EditQuizComponent implements OnInit {
     const newName: string = this.quizTheme as string;
     this.quizService.changeQuizTheme(this.quiz, newName);
   }
-
-  navigate(): void{
-    console.log('event received from child: new quiz'+ this.quizService.origin);
-    if (this.quizService.origin){
-      this.router.navigate(['/' + this.animateurId + '/quiz-list']);
-    }
-    else {
-      this.router.navigate(['/' + this.animateurId + '/resultat-quiz']);
-    }
-  }
 }

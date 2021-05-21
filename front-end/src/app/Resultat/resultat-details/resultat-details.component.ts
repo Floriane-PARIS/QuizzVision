@@ -100,32 +100,11 @@ import {AnimateurService} from "../../../services/animateur.service";
     });
   }
 
-
-  navigate1(): void{
-    console.log('event received from child: new result' + this.gameService.origin);
-    if (this.gameService.origin == true){
-      this.router.navigate(['/' + this.animateurId + '/quiz-list/'+ this.user.id]);
-
-    }
-    else {
-      this.router.navigate(['/' + this.animateurId + '/resultat-list']);
-    }
-  }
-
-  navigate(): void {
-      if(this.admin){
-          this.router.navigate(['/' + this.animateurId + '/resultat-list']);
-      } else {
-          this.router.navigate(['/' + this.animateurId + '/resultat-list/'+ this.user.id]);
-      }
-  }
-
   isAdmin(): boolean{
       return this.admin;
   }
 
   modifQuiz(): void{
-    this.quizService.origin = false;
     this.router.navigate(['/' + this.animateurId + '/edit-quiz/' + this.quiz.id]);
   }
 
