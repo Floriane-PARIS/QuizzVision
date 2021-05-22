@@ -2,7 +2,8 @@
   {{theme.subject}}
   <br>
   Nouveau nom de thème
-  <input class="input-custom" type="text" id="subject" [(ngModel)] = "theme.subject" [ngModelOptions]="{standalone: true}">
+  <input class="input-custom" type="text" id="subject" [(ngModel)]="theme.subject"
+         [ngModelOptions]="{standalone: true}">
   <button type="submit" class="button-card" (click)="edit()">Sauvegarder</button>
   <button class="button-card" (click)="retour()">Annuler</button>
 </div>

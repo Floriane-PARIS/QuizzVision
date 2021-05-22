@@ -1,7 +1,9 @@
 <div [className]="(handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
-    <div *ngIf ="answer == undefined"> Cliquer sur une réponse</div>
-  <div *ngIf ="answer !== undefined && isValide != true">Vous avez choisi la réponse "{{answer.value}}", Cliquer sur Valide</div>
-  <div *ngIf ="answer !== undefined && isValide">Vous avez choisi la réponse "{{answer.value}}"</div>
+  <div *ngIf="answer == undefined"> Cliquer sur une réponse</div>
+  <div *ngIf="answer !== undefined && isValide != true">Vous avez choisi la réponse "{{answer.value}}", Cliquer sur
+    Valide
+  </div>
+  <div *ngIf="answer !== undefined && isValide">Vous avez choisi la réponse "{{answer.value}}"</div>
 </div>
 
 

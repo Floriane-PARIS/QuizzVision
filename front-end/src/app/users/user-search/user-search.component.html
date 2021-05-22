@@ -1,18 +1,19 @@
-
 <div class="card" p style="text-align: right; position: absolute;  left: 26.5cm; top: 2cm; box-sizing: content-box;">
-    <form class="user-search">
-      <h6>
-        Nom
-          <input class="input-custom" type="text" id="lastName" [(ngModel)] = "userLName" [ngModelOptions]="{standalone: true}">
-          <button type="submit" class="button-card" (click)="searchUserName()"></button>
-        
-          Prenom
-        <input class="input-custom" type="text" id="firstName" [(ngModel)] = "userFName" [ngModelOptions]="{standalone: true}">
-        <button type="submit" class="button-card" (click)="searchUserName()"></button>
-          
-        <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
+  <form class="user-search">
+    <h6>
+      Nom
+      <input class="input-custom" type="text" id="lastName" [(ngModel)]="userLName"
+             [ngModelOptions]="{standalone: true}">
+      <button type="submit" class="button-card" (click)="searchUserName()"></button>
+
+      Prenom
+      <input class="input-custom" type="text" id="firstName" [(ngModel)]="userFName"
+             [ngModelOptions]="{standalone: true}">
+      <button type="submit" class="button-card" (click)="searchUserName()"></button>
+
+      <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
       <br>
-      
+
     </h6>
 
   </form>
@@ -22,16 +23,16 @@
   <form class="user-search">
     <h6>
       Handicap
-      <select class="input-custom" name="user-field" id="maladies1" [(ngModel)] = "userTroubles">
-        <option value = "Autres">Autres</option>
-        <option value = "DMLA">DMLA</option>
-        <option value = "Glaucome">Glaucome</option>
-      </select>  
+      <select class="input-custom" name="user-field" id="maladies1" [(ngModel)]="userTroubles">
+        <option value="Autres">Autres</option>
+        <option value="DMLA">DMLA</option>
+        <option value="Glaucome">Glaucome</option>
+      </select>
       <button type="submit" class="button-card" (click)="searchUserTroubles()"></button>
       <br>
-      <button type="submit" class="button-card1" (click)="annule()">Tous les patients</button>
+      <button type="submit" class="button-card1" (click)="annule()">Tous les handicaps</button>
     </h6>
   </form>
-  </div>
+</div>
 
-  
+

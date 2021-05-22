@@ -1,20 +1,25 @@
 <div class="card">
-  <h2 >
+  <h2>
     Noms & Prenoms:
-    <input class="input-custom card" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.firstName" [ngModelOptions]="{standalone: true}">
-    <input class="input-custom card" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.lastName" [ngModelOptions]="{standalone: true}">
+    <input class="input-custom card" type="text" ng-init="'nous" name="fre" [(ngModel)]="user.firstName"
+           [ngModelOptions]="{standalone: true}">
+    <input class="input-custom card" type="text" ng-init="'nous" name="fre" [(ngModel)]="user.lastName"
+           [ngModelOptions]="{standalone: true}">
 
   </h2>
   <h4>
-     Souffre du trouble: <select class="input-custom card" id = "maladies" name="maladies" [(ngModel)] = "user.maladies" [ngModelOptions]="{standalone: true}">
-    <option value = "Autres">Autres</option>
-    <option value = "DMLA">DMLA</option>
-    <option value = "Glaucome">Glaucome</option>
+    Souffre du trouble: <select class="input-custom card" id="maladies" name="maladies" [(ngModel)]="user.maladies"
+                                [ngModelOptions]="{standalone: true}">
+    <option value="Autres">Autres</option>
+    <option value="DMLA">DMLA</option>
+    <option value="Glaucome">Glaucome</option>
   </select>
-  <br>
-     A savoir sur le patient: <input class="input-custom card" type="text" ng-init="'nous" name="fre" [(ngModel)] = "user.commentaires" [ngModelOptions]="{standalone: true}">
-<br>
-     Age du patient <input class="input-custom card" type="number" ng-init="'nous" name="fre" [(ngModel)] = "user.age" [ngModelOptions]="{standalone: true}">
+    <br>
+    A savoir sur le patient: <input class="input-custom card" type="text" ng-init="'nous" name="fre"
+                                    [(ngModel)]="user.commentaires" [ngModelOptions]="{standalone: true}">
+    <br>
+    Age du patient <input class="input-custom card" type="number" ng-init="'nous" name="fre" [(ngModel)]="user.age"
+                          [ngModelOptions]="{standalone: true}">
   </h4>
   <br>
   <button class="button-card draw-border select" (click)="edit()">Enregistrer</button>

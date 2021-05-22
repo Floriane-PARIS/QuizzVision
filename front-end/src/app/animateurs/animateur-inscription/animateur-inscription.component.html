@@ -1,42 +1,44 @@
 <div class="card" mat-form-field appearance="fill">
-    <form class="animateur-inscription" [formGroup]="inscriptionForm">
-        <h1>Inscription</h1>
+  <form class="animateur-inscription" [formGroup]="inscriptionForm">
+    <h1>Inscription</h1>
 
-        <div class="inputs">
-            <label for="name">
-                <i class="fa fa-user" style="color: forestgreen;"></i>
-                <input type="name" placeholder="Nom*" id="name" [formControlName]="'name'">
-            </label>
-            <label for="mail">
-                <i class= "fa fa-envelope" style="color: forestgreen;"></i>
-                <input type="mail" placeholder="Adresse mail*" id="mail" [formControlName]="'mail'">
-            </label>
-            <label class="password" for="password">
-                <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input [type]="isActive ? 'text' : 'password'" placeholder="Mot de passe*" id="1" [formControlName]="'password'">
-              <div *ngIf="isActive">
-                <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActived(false)"> </i>
-              </div>
-              <div *ngIf="!isActive">
-                <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActived(true)"></i>
-              </div>
-            </label>
-            <label class="password">
-                <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input [type]="isActiveConfirmed ? 'text' : 'password'" placeholder="Confirmer le mot de passe*" id="2" [(ngModel)]="passWordConfirmed" [ngModelOptions]="{standalone: true}">
-              <div *ngIf="isActiveConfirmed">
-                <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActivedConfirmed(false)"> </i>
-              </div>
-              <div *ngIf="!isActiveConfirmed">
-                <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActivedConfirmed(true)"></i>
-              </div>
-            </label>
-            </div>
-      <div *ngIf="messageError.length > 0">
-        {{messageError}}
-      </div>
-        <div>
-            <button type="submit" (click)="ajoutAnimateur()">Valider</button>
+    <div class="inputs">
+      <label for="name">
+        <i class="fa fa-user" style="color: forestgreen;"></i>
+        <input type="name" placeholder="Nom*" id="name" [formControlName]="'name'">
+      </label>
+      <label for="mail">
+        <i class="fa fa-envelope" style="color: forestgreen;"></i>
+        <input type="mail" placeholder="Adresse mail*" id="mail" [formControlName]="'mail'">
+      </label>
+      <label class="password" for="password">
+        <i class="fa fa-lock" style="color: forestgreen;"></i>
+        <input [type]="isActive ? 'text' : 'password'" placeholder="Mot de passe*" id="1"
+               [formControlName]="'password'">
+        <div *ngIf="isActive">
+          <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActived(false)"> </i>
         </div>
-    </form>
+        <div *ngIf="!isActive">
+          <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActived(true)"></i>
+        </div>
+      </label>
+      <label class="password">
+        <i class="fa fa-lock" style="color: forestgreen;"></i>
+        <input [type]="isActiveConfirmed ? 'text' : 'password'" placeholder="Confirmer le mot de passe*" id="2"
+               [(ngModel)]="passWordConfirmed" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="isActiveConfirmed">
+          <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActivedConfirmed(false)"> </i>
+        </div>
+        <div *ngIf="!isActiveConfirmed">
+          <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActivedConfirmed(true)"></i>
+        </div>
+      </label>
+    </div>
+    <div *ngIf="messageError.length > 0">
+      {{messageError}}
+    </div>
+    <div>
+      <button type="submit" (click)="ajoutAnimateur()">Valider</button>
+    </div>
+  </form>
 </div>

@@ -1,32 +1,34 @@
 <div *ngIf="user == undefined">
-<app-user-search></app-user-search>
+  <app-user-search></app-user-search>
 </div>
-<button type="submit" class="button-card1" (click)="ajoutPatient()" p style=" position: absolute; top: 5.5cm;"><h2 >
-  <section class="portfolio-experiment"><a>
-    <span class="text"><i class="fas fa-user-plus fa-3x"></i></span>
-    <span class="line -right"></span>
-    <span class="line -top"></span>
-    <span class="line -left"></span>
-    <span class="line -bottom"></span>
-  </a></section>
-</h2>
+<button type="submit" class="button-card1" (click)="ajoutPatient()" p style=" position: absolute; top: 5.5cm;">
+  <h2>
+    <section class="portfolio-experiment"><a>
+      <span class="text"><i class="fas fa-user-plus fa-3x"></i></span>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a></section>
+  </h2>
 </button>
 
 
 <div class="user-list" p style=" position:absolute; top: 10cm;">
-    <div class="user" *ngFor="let user of userList">
-      <div *ngIf="editUserChose != user.id">
-        <app-user [user]=user (deleteUser)="deleteUser($event)" (userSelected)="selectUser($event)" (editUser)="editUser($event)"></app-user>
-      </div>
-      <div *ngIf="editUserChose == user.id">
-        <app-user-edit [user]=user (editUserDone)="editUserDone($event)"></app-user-edit>
-      </div>
+  <div class="user" *ngFor="let user of userList">
+    <div *ngIf="editUserChose != user.id">
+      <app-user [user]=user (deleteUser)="deleteUser($event)" (userSelected)="selectUser($event)"
+                (editUser)="editUser($event)"></app-user>
     </div>
+    <div *ngIf="editUserChose == user.id">
+      <app-user-edit [user]=user (editUserDone)="editUserDone($event)"></app-user-edit>
+    </div>
+  </div>
 </div>
 
-  <!-- changes-->
-  <ng-template #elseBlock>
-    <div  class="none" p style="position: absolute; margin-left: 12cm; margin-top: 9cm;">
-      Aucun patient n'a été ajouté!
-    </div>
-  </ng-template>
+<!-- changes-->
+<ng-template #elseBlock>
+  <div class="none" p style="position: absolute; margin-left: 12cm; margin-top: 9cm;">
+    Aucun patient n'a été ajouté!
+  </div>
+</ng-template>

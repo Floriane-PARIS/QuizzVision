@@ -1,13 +1,15 @@
-<div class="card" p style="background-color: bisque;" p style="text-align: right; position: absolute; top: 2.5cm; right: 0cm;">
+<div class="card" p style="background-color: bisque;" p
+     style="text-align: right; position: absolute; top: 2.5cm; right: 0cm;">
 
   <form class="theme">
     <h6>
       <label for="title">
         Nom du thème
-          <input class="input-custom" type="text" id="subject" [(ngModel)] = "themeSubject" [ngModelOptions]="{standalone: true}">
-        
-      <button type="submit" class="button-card" (click)="searchThemeSubject()"></button>
-      <button type="submit" class="button-card1" (click)="annule()">Tous les thèmes</button>
+        <input class="input-custom" type="text" id="subject" [(ngModel)]="themeSubject"
+               [ngModelOptions]="{standalone: true}">
+
+        <button type="submit" class="button-card" (click)="searchThemeSubject()"></button>
+        <button type="submit" class="button-card1" (click)="annule()">Tous les thèmes</button>
       </label>
     </h6>
   </form>

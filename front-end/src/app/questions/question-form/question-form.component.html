@@ -1,9 +1,10 @@
 <div class="card">
-  <h2 class=" title" >Ajouter une nouvelle question</h2>
+  <h2 class=" title">Ajouter une nouvelle question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
       Question :
-      <textarea matInput class="text" type="text" id="label" placeholder="Pas plus de 5 mots par ligne!" maxlength="86" aria-placeholder="Vous avez un maximum de 86 caractères" [formControlName]="'label'"></textarea>
+      <textarea matInput class="text" type="text" id="label" placeholder="Pas plus de 5 mots par ligne!" maxlength="86"
+                aria-placeholder="Vous avez un maximum de 86 caractères" [formControlName]="'label'"></textarea>
       <br>
     </label>
     <br>
@@ -28,7 +29,7 @@
       <button class="button-card title" (click)="addAnswer()">Ajouter une réponse</button>
     </div>
     <div *ngIf="answers.length >= 2 && answers.length <= 4">
-    <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
+      <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
     </div>
     <div *ngIf="answers.length < 2">
       <br>
@@ -36,8 +37,3 @@
     </div>
   </form>
 </div>
-
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->

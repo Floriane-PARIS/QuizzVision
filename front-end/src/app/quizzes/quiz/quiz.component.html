@@ -13,8 +13,8 @@
         <div *ngIf="(game.quizId == quiz.id) && (game.userId == user.id) && (game.question[0] != null)">
           {{alreadyStart()}}
           <h5 style="color: rgba(145, 6, 87, 0.623);">Quiz en Cours :
-          <button class="button-card select" (click)="continueQuiz(game)">Continuer le Quiz</button>
-          <button class="button-card select" (click)="reDoQuiz(game)">Recommencer</button>
+            <button class="button-card select" (click)="continueQuiz(game)">Continuer le Quiz</button>
+            <button class="button-card select" (click)="reDoQuiz(game)">Recommencer</button>
           </h5>
         </div>
       </div>

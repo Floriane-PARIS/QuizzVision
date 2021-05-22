@@ -1,13 +1,15 @@
 <INPUT class="button-card" TYPE="button" VALUE="Retour" onClick="history.go(-1);">
 <br>
 <div class="resultat-game" *ngIf="game != undefined && quiz != undefined && user != null">
-  <h2>Joueur:  {{user.firstName}} {{user.lastName}}</h2>
+  <h2>Joueur: {{user.firstName}} {{user.lastName}}</h2>
   <div>
     <p>
-    Resultats du Quiz "{{quiz.name}}" dans le thème "{{quiz.theme}}", fait le {{dateGame(game.date).getDay()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
-      à {{dateGame(game.date).getHours()}}h{{dateGame(game.date).getMinutes()}}, avec une note de {{game.score}}/{{quiz.questions.length}}</p>
+      Resultats du Quiz "{{quiz.name}}" dans le thème "{{quiz.theme}}", fait le
+      {{dateGame(game.date).getDay()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
+      à {{dateGame(game.date).getHours()}}h{{dateGame(game.date).getMinutes()}}, avec une note de
+      {{game.score}}/{{quiz.questions.length}}</p>
   </div>
-    <div *ngIf="isAdmin()">
+  <div *ngIf="isAdmin()">
     <button-card (click)="modifQuiz()" class="button-card">Modifier le quiz "{{quiz.name}}"</button-card>
   </div>
 </div>
@@ -16,64 +18,70 @@
 <div class="container" *ngIf="game != undefined && quiz != undefined">
 
   <div class="container-onglets">
-    <div class="onglets active conf"   id="ongl0" (click)="ongletChange('0')">Configuration</div>
+    <div class="onglets active conf" id="ongl0" (click)="ongletChange('0')">Configuration</div>
     <div *ngFor="let question of quiz.questions; let i=index">
       <div *ngFor="let answer of quiz.questions[i].answers; let j=index">
         <div *ngIf="(game.answers[i] == answer.id)">
-        <div *ngIf="answer.isCorrect">
-          <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i class="fas fa-check"></i>  Question {{i + 1}} </div>
+          <div *ngIf="answer.isCorrect">
+            <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i
+              class="fas fa-check"></i> Question {{i + 1}}
+            </div>
+          </div>
+          <div *ngIf="(answer.isCorrect != true)">
+            <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i
+              class="fas fa-times"></i> Question {{i + 1}}
+            </div>
+          </div>
         </div>
-        <div *ngIf="(answer.isCorrect != true)">
-          <div class="onglets" id="{{'ongl'+(i+1)}}" (click)="ongletChange((i+1).toString())"><i class="fas fa-times"></i>  Question {{i + 1}} </div>
-        </div>
-      </div>
       </div>
     </div>
   </div>
 
   <div *ngFor="let question of quiz.questions; let i=index">
-  <div class="contenu" id="{{'cont'+(i+1)}}">
-    <br>
-    <h3>Question {{i + 1}}: {{question.label}}</h3>
-    <br>
-    <div *ngFor="let answer of question.answers; let j=index">
-      <div *ngIf="answer.isCorrect">
-      <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
-        <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
-    <br>
-      </div>
-      <div *ngIf="answer.id != game.answers[i]">
-        <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
-        <br>
-      </div>
-      </div>
-      <div *ngIf="answer.isCorrect != true">
-        <div  [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
-          <i class="fas fa-times"></i> Réponse {{j+1}}: {{answer.value}}
-          <br>
+    <div class="contenu" id="{{'cont'+(i+1)}}">
+      <br>
+      <h3>Question {{i + 1}}: {{question.label}}</h3>
+      <br>
+      <div *ngFor="let answer of question.answers; let j=index">
+        <div *ngIf="answer.isCorrect">
+          <div [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
+            <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
+            <br>
+          </div>
+          <div *ngIf="answer.id != game.answers[i]">
+            <i class="fas fa-check"></i> Réponse {{j+1}}: {{answer.value}}
+            <br>
+          </div>
         </div>
-        <div *ngIf="answer.id != game.answers[i]">
-          <i class="fas fa-times"></i>  Réponse {{j+1}}: {{answer.value}}
-          <br>
+        <div *ngIf="answer.isCorrect != true">
+          <div [ngStyle]="{'font-weight': 'bold' }" *ngIf="answer.id == game.answers[i]">
+            <i class="fas fa-times"></i> Réponse {{j+1}}: {{answer.value}}
+            <br>
+          </div>
+          <div *ngIf="answer.id != game.answers[i]">
+            <i class="fas fa-times"></i> Réponse {{j+1}}: {{answer.value}}
+            <br>
+          </div>
         </div>
       </div>
-  </div>
 
-  </div>
+    </div>
     <div class="contenu activeContenu" id="{{'cont'+(0)}}">
       CONFIGURATION
-      <select name="user-field" id="note" [(ngModel)] = "configurationChose">
-      <option value = 0 (click)="shift()"> au début </option>
-      <option value = 1 (click)="shift()"> à la fin </option>
-    </select>
+      <select name="user-field" id="note" [(ngModel)]="configurationChose">
+        <option value=0 (click)="shift()"> au début</option>
+        <option value=1 (click)="shift()"> à la fin</option>
+      </select>
       du Quiz:
       <div class="configuration-app" *ngIf="game.configuration.length != 0">
         <br>
-      <div class="configuration-chose">
-      <app-configuration  [configuration]="game.configuration[configurationChose]" [className]="(game.configuration[configurationChose].handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
+        <div class="configuration-chose">
+          <app-configuration [configuration]="game.configuration[configurationChose]"
+                             [className]="(game.configuration[configurationChose].handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
+        </div>
+        <app-configuration-chose [configuration]="game.configuration[configurationChose]"
+                                 [user]="undefined"></app-configuration-chose>
       </div>
-        <app-configuration-chose [configuration]="game.configuration[configurationChose]" [user]="undefined" ></app-configuration-chose>
-       </div>
     </div>
   </div>
 </div>

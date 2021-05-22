@@ -1,42 +1,56 @@
-
 <div *ngIf="configuration !== undefined">
-  <div class="game" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
-    <div class="game-button-configuration" *ngIf="configuration.handicap === 'Glaucome' || configuration.handicap === 'Autres'">
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="sendConfig()">Configuration</button>
+  <div class="game"
+       [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+    <div class="game-button-configuration"
+         *ngIf="configuration.handicap === 'Glaucome' || configuration.handicap === 'Autres'">
+      <button class="button-card"
+              [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+              (click)="sendConfig()">Configuration
+      </button>
     </div>
     <br>
-    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] !== null) && (game !== undefined)">
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'"
+         *ngIf="(game.question[0] !== null) && (game !== undefined)">
       <!--Inputs & Output allow communication between parent & child components.-->
       <!--More information: https://angular.io/guide/component-interaction-->
-      <div *ngIf = "game.question[0] !== undefined">
-      <app-game-question [configuration]="configuration" [answer]=answer [animateurId]="animateurId" [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)" (valideQuestion)="isValideAnswer($event)"></app-game-question>
-      <br>
+      <div *ngIf="game.question[0] !== undefined">
+        <app-game-question [configuration]="configuration" [answer]=answer [animateurId]="animateurId"
+                           [question]=game.question[0] [isValided]=isValided (valideAnswer)="valideAnswer($event)"
+                           (valideQuestion)="isValideAnswer($event)"></app-game-question>
+        <br>
         <div *ngIf="configuration.handicap === 'Glaucome'|| configuration.handicap === 'Autres'">
-      <app-game-response class="game-result" [isValide]="isValided" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
-      <br>
+          <app-game-response class="game-result" [isValide]="isValided" [answer]=answer
+                             [handicap]=configuration.handicap></app-game-response>
+          <br>
         </div>
-        <div class="game-result" *ngIf = "isValided">
-      <app-game-result [message]=message [handicap]=configuration.handicap ></app-game-result>
-      <br>
-      <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="next()">Question Suivante</button>
+        <div class="game-result" *ngIf="isValided">
+          <app-game-result [message]=message [handicap]=configuration.handicap></app-game-result>
+          <br>
+          <button type="button" class="button-card"
+                  [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+                  (click)="next()">Question Suivante
+          </button>
         </div>
-    </div>
-
       </div>
-      <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" *ngIf = "(game.question[0] === null) && (game !== undefined)">
-        <app-game-result [message]="'Vous avez fini le Quiz ! BRAVO ! \n Vous avez obtenu :'" [handicap]=configuration.handicap></app-game-result>
-        <br>
-        {{getResultat()}}
-        <br>
-        <h3 p style="color: firebrick;">Passez la main à votre animateur pour sortir du quiz</h3>
-        <div class="game-button" *ngIf="newGame != null">
-          Vous pouvez
+
+    </div>
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'"
+         *ngIf="(game.question[0] === null) && (game !== undefined)">
+      <app-game-result [message]="'Vous avez fini le Quiz ! BRAVO ! \n Vous avez obtenu :'"
+                       [handicap]=configuration.handicap></app-game-result>
+      <br>
+      {{getResultat()}}
+      <br>
+      <h3 p style="color: firebrick;">Passez la main à votre animateur pour sortir du quiz</h3>
+      <div class="game-button" *ngIf="newGame != null">
+        Vous pouvez
         <button type="button" class="button-card"
                 [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                (click)="otherGames()"> Jouer </button>
-          au Quiz {{newGame.name}} du theme {{newGame.theme}}
-        </div>
+                (click)="otherGames()"> Jouer
+        </button>
+        au Quiz {{newGame.name}} du theme {{newGame.theme}}
       </div>
+    </div>
   </div>
-    <button class="button-card" (click)="backToQuizList()" >Quitter</button>
+  <button class="button-card" (click)="backToQuizList()">Quitter</button>
 </div>

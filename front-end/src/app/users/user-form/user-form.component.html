@@ -1,50 +1,55 @@
 <div class="card" mat-form-field appearance="fill">
 
-    <h2 class="title" p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> <i class="fas fa-user-plus">Ajouter un patient</i></h2>
-    <form class="user-form" [formGroup]="userForm" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-      <label for="firstName">
-        Prenom:
-        <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
-      </label>
-      <br>
-      <label for="lastName">
-        Nom:
-        <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
-      </label>
-      <br>
-      <label for="date">
-        Age
-      <input class="input-custom" type="number" id = "age" min="0" [formControlName]="'age'" >
+  <h2 class="title" p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"><i
+    class="fas fa-user-plus">Ajouter un patient</i></h2>
+  <form class="user-form" [formGroup]="userForm" p
+        style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+    <label for="firstName">
+      Prenom:
+      <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
     </label>
     <br>
-      <label for="maladies">
-        Type de troubles:
-      <select class="input-custom" id = "maladies" name="maladies" [formControlName]="'maladies'">
-        <option value = "Autres">Autres</option>
-        <option value = "DMLA">DMLA</option>
-        <option value = "Glaucome">Glaucome</option>
+    <label for="lastName">
+      Nom:
+      <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
+    </label>
+    <br>
+    <label for="date">
+      Age
+      <input class="input-custom" type="number" id="age" min="0" [formControlName]="'age'">
+    </label>
+    <br>
+    <label for="maladies">
+      Type de troubles:
+      <select class="input-custom" id="maladies" name="maladies" [formControlName]="'maladies'">
+        <option value="Autres">Autres</option>
+        <option value="DMLA">DMLA</option>
+        <option value="Glaucome">Glaucome</option>
       </select>
     </label>
-      <br>
-      <label for="commentaires">
-        Commentaires:
-        <input class="input-custom" type="text"  id = "commentaires" [formControlName]="'commentaires'">
-      </label>
-      <br>
-      <label for="sexe">
-        Sexe
-        <select class="input-custom" id = "sexe" name="sexe" [formControlName]="'sexe'">
-          <option value = "Homme">Homme</option>
-          <option value = "Femme">Femme</option>
-          <option value = "Autre">Autre</option>
-        </select>
+    <br>
+    <label for="commentaires">
+      Commentaires:
+      <input class="input-custom" type="text" id="commentaires" [formControlName]="'commentaires'">
+    </label>
+    <br>
+    <label for="sexe">
+      Sexe
+      <select class="input-custom" id="sexe" name="sexe" [formControlName]="'sexe'">
+        <option value="Homme">Homme</option>
+        <option value="Femme">Femme</option>
+        <option value="Autre">Autre</option>
+      </select>
     </label>
 
-      <br>
-      <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;" >Ajouter</button>
-      <button type="submit" class="button-card" (click)="annule()" p style="text-align: center; position: relative;" >Annuler</button>
-    </form>
+    <br>
+    <button type="submit" class="button-card" (click)="addUser()" p style="text-align: center; position: relative;">
+      Ajouter
+    </button>
+    <button type="submit" class="button-card" (click)="annule()" p style="text-align: center; position: relative;">
+      Annuler
+    </button>
+  </form>
 
-  </div>
+</div>
 
-  <!--<br><br>{{userForm.getRawValue() | json}} -->
