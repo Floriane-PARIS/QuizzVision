@@ -27,7 +27,10 @@ export class QuestionComponent implements OnInit {
   }
 
   delete(): void {
-    this.deleteQuestion.emit(this.question);
+        if(confirm('Etes-vous sûr de vouloir supprimer cette question ?')) {
+          this.deleteQuestion.emit(this.question);
+        }
+
   }
 
   edit(): void {

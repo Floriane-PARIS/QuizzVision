@@ -38,7 +38,9 @@ export class UserComponent implements OnInit {
   }
 
   delete(): void {
-    this.deleteUser.emit(this.user);
+        if(confirm('Etes-vous sûr de vouloir supprimer le patient '+ this.user.firstName+' ?')) {
+          this.deleteUser.emit(this.user);
+        }
   }
 
 }
