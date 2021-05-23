@@ -68,7 +68,7 @@
   cursor: text;
   transition: -webkit-transform .2s ease-in-out;
   transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, 
+  transition: transform .2s ease-in-out,
   -webkit-transform .2s ease-in-out;
 }
 .configuration-form .button-card {
@@ -83,4 +83,23 @@
   border: none;
   width:200px;
   cursor: pointer;
+}
+
+input[type="range"] {
+    position: relative;
+    margin-left: 1em;
+}
+input[type="range"]:after,
+input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+input[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+    content: attr(max);
 }

@@ -73,7 +73,7 @@ export class AnimateurService {
    * @param animateur
    */
   updateAnimateur(animateur: Animateur): void {
-    const animateurWrite = { name: animateur.name, password: animateur.password, passwordConfirmed: animateur.passwordConfirmed, mail: animateur.mail};
+    const animateurWrite = { name: animateur.name, password: animateur.password, mail: animateur.mail};
     const animateurUrl = this.animateurUrl + '/' + animateur.id ;
     this.http.put<Animateur>(animateurUrl, animateurWrite, this.httpOptions).subscribe();
   }

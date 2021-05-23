@@ -14,7 +14,6 @@ export class ThemeService {
    * The list is retrieved from the mock.
    */
   public themes: Theme[] = THEME_LIST;
-  public origin: boolean;
 
   /**
    * Observable which contains the list of the theme.
@@ -27,7 +26,6 @@ export class ThemeService {
 
   constructor(private http: HttpClient) {
     this.retrieveThemes();
-    this.origin = false;
   }
 
   /**

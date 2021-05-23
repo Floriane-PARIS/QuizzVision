@@ -1,17 +1,17 @@
 <div class="configuration-page">
-<div class="configuration-text" >
- <app-configuration-form></app-configuration-form>
-  <div *ngIf="configuration != undefined; else elseBlock">
- <app-configuration-chose [configuration]="configuration" [user]="user" (deleteConfiguration)="deleteConfiguration($event)"></app-configuration-chose>
-</div>
-</div>
-<div class = "configuration-edit">
-  <div class="configuration-chose" *ngIf="configuration != undefined">
-    <!--div class = "configuration" *ngFor="let configuration of configurationList"-->
-      <app-configuration [configuration]="configuration" [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
-    <!--/div-->
+  <div class="configuration-text">
+    <app-configuration-form></app-configuration-form>
+    <div *ngIf="configuration != undefined; else elseBlock">
+      <app-configuration-chose [configuration]="configuration" [user]="user"
+                               (deleteConfiguration)="deleteConfiguration($event)"></app-configuration-chose>
+    </div>
   </div>
-</div>
+  <div class="configuration-edit">
+    <div class="configuration-chose" *ngIf="configuration != undefined">
+      <app-configuration [configuration]="configuration"
+                         [className]="(configuration.handicap === 'DMLA') ? 'configuration-border' : 'configuration-center'"></app-configuration>
+    </div>
+  </div>
 </div>
 
 <ng-template #elseBlock>

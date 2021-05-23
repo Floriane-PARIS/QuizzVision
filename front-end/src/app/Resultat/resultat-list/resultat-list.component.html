@@ -8,83 +8,41 @@
 
     <app-resultat-search></app-resultat-search>
 
-    <!-- Ancienne version (Plusieurs petits tableaux) -->
-    <!--form class="resultat-list" [formGroup]="resultatList" p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-      <div class="user" *ngFor="let user of users">
-        <div class="quiz" *ngFor="let quiz of quizzes">
-          <div class="game" *ngFor="let game of games">
-            <div *ngIf = "(game.quizId == quiz.id) && (game.question[0] == null)">
-              <div *ngIf = "game.userId == user.id">
-                <table class="tableau-style">
-                  <thead>
-                  <tr>
-                    <th>Nom</th>
-                    <th>Handicap</th>
-                    <th>Date</th>
-                    <th>Quiz fait</th>
-                    <th>Note</th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
+    <div *ngIf="nbGame() >0; else noneBlock">
+      <form class="resultat-list" [formGroup]="resultatList" p
+            style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
 
-                    <td>{{user.firstName}} {{user.lastName}}</td>
-                    <td>{{user.maladies}}</td>
-                    <td>{{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
-                      {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
-                    </td>
-                    <td>{{quiz.name}}</td>
-                    <td>{{game.score}} / {{quiz.questions.length}} </td>
-                    <td>
-                      <button class="button-card" (click)="details(game)">details</button>
-                    </td>
+        <table class="tableau-style">
+          <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Handicap</th>
+            <th>Date</th>
+            <th>Quiz fait</th>
+            <th>Note</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let game of games">
+          <tr *ngIf="(getQuizName(game) != null) && (getUserName(game) != null) && (game.question[0] == null)">
+            <td>{{getUserName(game)}}</td>
+            <td>{{getUserMaladie(game)}}</td>
+            <td>
+              {{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
+              {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
+            </td>
+            <td>{{getQuizName(game)}}</td>
+            <td>{{game.score}} / {{getQuizLength(game)}}</td>
+            <td>
+              <button class="button-card" (click)="details(game)">Details</button>
+              <button class="button-card" (click)="delete(game)">Effacer</button>
+            </td>
 
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </form-->
-
-    <!-- Test Flo (Les filtres fontionnent normalement) -->
-    <form class="resultat-list" [formGroup]="resultatList" p
-          style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-
-      <table class="tableau-style">
-        <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Handicap</th>
-          <th>Date</th>
-          <th>Quiz fait</th>
-          <th>Note</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody *ngFor="let game of games">
-        <tr *ngIf="(getQuizName(game) != null) && (getUserName(game) != null) && (game.question[0] == null)">
-          <td>{{getUserName(game)}}</td>
-          <td>{{getUserMaladie(game)}}</td>
-          <td>
-            {{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
-            {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
-          </td>
-          <td>{{getQuizName(game)}}</td>
-          <td>{{game.score}} / {{getQuizLength(game)}}</td>
-          <td>
-            <button class="button-card" (click)="details(game)">Details</button>
-            <button class="button-card" (click)="delete(game)">Effacer</button>
-          </td>
-
-        </tr>
-        </tbody>
-      </table>
-    </form>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -97,33 +55,42 @@
     <h2 p style=" font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';"> Résultats du patient
       {{user.firstName}} {{user.lastName}} ({{user.maladies}}):</h2>
     <br>
-    <form class="resultat-list" [formGroup]="resultatList" p
-          style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+    <div *ngIf="nbGame() >0; else noneBlock">
+      <form class="resultat-list" [formGroup]="resultatList" p
+            style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
 
-      <table class="tableau-style">
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Quiz fait</th>
-          <th>Note</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody *ngFor="let game of games">
-        <tr *ngIf="(getQuizName(game) != null) && (getUserName(game) == getUser()) && (game.question[0] == null)">
-          <td>
-            {{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
-            {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
-          </td>
-          <td>{{getQuizName(game)}}</td>
-          <td>{{game.score}} / {{getQuizLength(game)}}</td>
-          <td>
-            <button class="button-card" (click)="details(game)">details</button>
-          </td>
+        <table class="tableau-style">
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Quiz fait</th>
+            <th>Note</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let game of games">
+          <tr *ngIf="(getQuizName(game) != null) && (getUserName(game) == getUser()) && (game.question[0] == null)">
+            <td>
+              {{dateGame(game.date).getDate()}}/{{dateGame(game.date).getMonth()}}/{{dateGame(game.date).getFullYear()}}
+              {{dateGame(game.date).getHours()}}:{{dateGame(game.date).getMinutes()}}
+            </td>
+            <td>{{getQuizName(game)}}</td>
+            <td>{{game.score}} / {{getQuizLength(game)}}</td>
+            <td>
+              <button class="button-card" (click)="details(game)">details</button>
+            </td>
 
-        </tr>
-        </tbody>
-      </table>
-    </form>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noneBlock>
+  <br> <br>
+  <div class="none"> Aucun quiz n'a été terminé
+    !
   </div>
 </ng-template>

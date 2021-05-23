@@ -31,6 +31,9 @@ Chrome : http://localhost:4200
 
 ## Utiliser le site
 
-C'est l'animateur qui arrive sur la page d'accueil, et qui est le seul à pouvoir créer/modifier/supprimer des quizs et utilisateurs.
-Quand il sélectionne un utilisateur, il arrive que la page de celui-vi et peut changer la configuration selon ce que voit l'utilisateur.
-C'est seulement lorsque l'écran affiche le bouton "Commencer" que l'animateur passe l'appareil au patient qui peut ensuite se débrouiller seul jusqu'à la fin du quiz.
+Nous avons choisi de traiter les quatre handicaps suivants : DLMA, cataracte, glaucome et presbytie. 
+
+La presbytie est gérée grâce à la possibilité de mettre en gras ainsi que de changer la taille et la police du texte. Pour la cataracte, nous avons ajouté des options afin de changer la luminosité et le contraste de l’écran de jeu. 
+Nous avons également rajouté des options DLMA et glaucome afin que les patients touchés par ces problèmes puissent changer le décalage du texte ; vers le centre pour les handicaps glaucome, et vers le côté pour les handicaps DLMA.
+
+Nous avons prévu notre site pour les cas les moins autonomes. Il faut toujours une personne extérieure, un animateur ou un membre de la famille, pour créer, modifier ou supprimer des quiz et des seniors sur le site. C’est seulement lorsque l’écran affiche le bouton « Commencer » que l’animateur passe l’appareil au patient ; il peut ensuite enchainer les quiz qui lui sont proposés jusqu’à ce qu’il souhaite arrêter. Lorsqu’il a terminé, il rend la main à la personne qui l’accompagne pour qu’elle puisse voir ses résultats directement de la page du patient, ou bien à partir de la page de l’administrateur dans l’onglet « Tous les Résultats ».

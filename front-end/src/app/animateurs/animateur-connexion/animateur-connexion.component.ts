@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { Animateur } from "src/models/animateur.model";
-import { Inscription } from "src/models/inscription.model";
 import { User } from "src/models/user.model";
 import { AnimateurService } from "src/services/animateur.service";
 import { UserService } from "src/services/user.service";
@@ -24,6 +23,7 @@ import { UserService } from "src/services/user.service";
     public name: string;
     public password: string;
     public messageError: string;
+    public isActive: boolean;
 
     constructor(private router: Router,public userService: UserService,public animateurService: AnimateurService, public formBuilder: FormBuilder){
         /*this.name ='';
@@ -38,6 +38,7 @@ import { UserService } from "src/services/user.service";
           this.animateur = animateur;
         });*/
       this.messageError = '';
+      this.isActive = false;
         this.animateurService.animateurs$.subscribe((animateurs: Animateur[]) => {
           this.animateurs = animateurs;
         });
@@ -53,6 +54,10 @@ import { UserService } from "src/services/user.service";
 
     ngOnInit(): void {
     }
+
+  isActived(valide: boolean): void {
+    this.isActive = valide;
+  }
 
     checkData(): void{
 

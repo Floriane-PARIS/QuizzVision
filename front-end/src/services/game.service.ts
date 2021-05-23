@@ -17,7 +17,6 @@ export class GameService {
    * The list of game.
    */
   private games: Game[] = [];
-  public origin: boolean;
 
   /**
    * Observable which contains the list of the game.
@@ -38,7 +37,6 @@ export class GameService {
 
   constructor(private http: HttpClient) {
     this.retrieveGames();
-    this.origin = false;
   }
 
   /**
@@ -322,6 +320,45 @@ export class GameService {
     });
   }
 
+  getBold(configuration: Configuration): string{
+        if(configuration != undefined){
+             return configuration.bold;
+        }
+         return 'normal';
+    }
+
+
+  getPolice(configuration: Configuration): string{
+      if(configuration != undefined){
+         return configuration.police;
+      }
+      return 'Arial';
+  }
+
+  getSize(configuration: Configuration): string{
+      if(configuration != undefined){
+        return configuration.size+"px";
+      }
+      return "22px";
+  }
+
+  getBright(configuration: Configuration): string{
+    if(configuration != undefined){
+      return configuration.bright+ "%";
+    }
+    return "20%";
+  }
+
+  getContrast(configuration: Configuration): string{
+    if(configuration != undefined){
+      return configuration.bright+ "%";
+    }
+    return "20%";
+  }
+
+  getFiltre(configuration: Configuration): string{
+      return this.getBright(configuration) + " " + this.getContrast(configuration);
+  }
 
 
 }

@@ -1,96 +1,107 @@
 <div class="game" *ngIf="(configuration !== undefined) && (user !== undefined)">
-      <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
-        <form [formGroup]="configurationForm" class="configuration">
-            <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
-            <h3>Modifier votre configuration</h3>
-            </div>
-          <div class="configuration-play-border">
-            <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
-              <div class="configuration-play">
+  <div [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+       [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
+    <form [formGroup]="configurationForm" class="configuration">
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
+        <h3>Modifier votre configuration</h3>
+      </div>
+      <div class="configuration-play-border">
+        <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
+          <div class="configuration-play">
             <label for="bold">Texte en gras ? </label>
             <input class="config-select" type="radio" value="bold" id="bold" name="bold" [formControlName]="'bold'"> Oui
-            <input class="config-select" type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'"> Non
+            <input class="config-select" type="radio" value="normal" id="nobold" name="bold" [formControlName]="'bold'">
+            Non
             <br>
-              </div>
-            <div class="configuration-play">
-            <label for="size">Taille du texte</label>  
-            <input class="config-select" type="number" id="size" name="police-size" min="10" max="60" value = "14" step = "4" [formControlName]="'size'">
-            </div>
-              <!--div class="configuration-play"-->
-            <label for="police">Police du texte</label>
-            <select class="config-select" id = "police" name="police" [formControlName]="'police'">
-              <option value = "Arial">Arial</option>
-              <option value = "Arial Black">Arial Black</option>
-              <option value = "Comic Sans MS">Comic Sans MS</option>
-              <option value = "Georgia">Georgia</option>
-              <option value = "Impact">Impact</option>
-              <option value = "Times new Roman">Times new Roman</option>
-              <option value = "Trebuchet">Trebuchet</option>
-              <option value = "Verdana">Verdana</option>
-            </select>
-              </div>
-            <!--/div-->
-            <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'" *ngIf="configuration.handicap === 'DMLA'">
+          </div>
+          <div class="configuration-play">
+            <label for="size">Taille du texte</label>
+            <input class="config-select" type="number" id="size" name="police-size" min="10" max="60" value="14"
+                   step="4" [formControlName]="'size'">
+          </div>
+          <!--div class="configuration-play"-->
+          <label for="police">Police du texte</label>
+          <select class="config-select" id="police" name="police" [formControlName]="'police'">
+            <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Impact">Impact</option>
+            <option value="Times new Roman">Times new Roman</option>
+            <option value="Trebuchet">Trebuchet</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+        </div>
+        <!--/div-->
+        <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'"
+             *ngIf="configuration.handicap === 'DMLA'">
 
-                  <label for="bright"> <br> Luminosité </label>
-                  <div class="range">
-                    <i class="fa fa-sun-o" aria-hidden="true"></i>
-                    <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-                    <span class= "value">{{configuration.bright}}</span>
-                  </div>
+          <label for="bright"> <br> Luminosité </label>
+          <div class="range">
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
+            <span class="value">{{configuration.bright}}</span>
+          </div>
 
-                  <label for="contrast"> <br> Contraste </label>
-                  <div class="range">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                    <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-                    <span class= "value">{{configuration.contrast}}</span>
-                  </div>
+          <label for="contrast"> <br> Contraste </label>
+          <div class="range">
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+            <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
+            <span class="value">{{configuration.contrast}}</span>
+          </div>
 
-                <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
+          <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
 
-                    <label for="decalage"> <br> Décalage </label>
-                    <div class="range">
-                      <span class= "value">centre</span>
-                      <input type="range" id="shift" min="{{min}}" max="{{max}}" value="100" [formControlName]="'shift'">
-                      <span class= "value">bordure</span>
-                    </div>
-                  </div>
-
+            <label for="decalage"> <br> Décalage </label>
+            <div class="range">
+              <span class="value">centre</span>
+              <input type="range" id="shift" min="{{min}}" max="{{max}}" value="100" [formControlName]="'shift'">
+              <span class="value">bordure</span>
             </div>
           </div>
-            <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'" *ngIf="configuration.handicap !== 'DMLA'">
-              <div class="configuration-play-slider">
-            <label for="bright"> <br> Luminosité </label>
-            <div class="range">
-              <i class="fa fa-sun-o" aria-hidden="true"></i>
-              <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
-              <span class= "value">{{configuration.bright}}</span>
-            </div>
-              </div>
-              <div class="configuration-play-slider">
-            <label for="contrast"> <br> Contraste </label>
-            <div class="range">
-              <i class="fa fa-adjust" aria-hidden="true"></i>
-              <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
-              <span class= "value">{{configuration.contrast}}</span>
-            </div>
-              </div>
-            <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
-              <div class="configuration-play-slider">
-              <label for="decalage"> <br> Décalage </label>
-              <div class="range">
-                <span class= "value">centre</span>
-                <input type="range" id="shift" min="{{min}}" max="{{max}}" value="{{min}}" [formControlName]="'shift'">
-                <span class= "value">bordure</span>
-              </div>
-            </div>
-            </div>
-            </div>
-            <div class="game-button">
-            <button type="submit" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" class="button-card" (click)="addConfiguration()">Visualiser</button>
-              <button [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"  class="button-card" (click)="backToGame()" >Enregistrer</button>
-           </div>
-          </form>
+
+        </div>
       </div>
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'"
+           *ngIf="configuration.handicap !== 'DMLA'">
+        <div class="configuration-play-slider">
+          <label for="bright"> <br> Luminosité </label>
+          <div class="range">
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <input type="range" id="bright" min="0" max="200" value="200" [formControlName]="'bright'">
+            <span class="value">{{configuration.bright}}</span>
+          </div>
+        </div>
+        <div class="configuration-play-slider">
+          <label for="contrast"> <br> Contraste </label>
+          <div class="range">
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+            <input type="range" id="contrast" min="0" max="200" value="200" [formControlName]="'contrast'">
+            <span class="value">{{configuration.contrast}}</span>
+          </div>
+        </div>
+        <div *ngIf="configurationForm.getRawValue().handicap !== 'Autres'">
+          <div class="configuration-play-slider">
+            <label for="decalage"> <br> Décalage </label>
+            <div class="range">
+              <span class="value">centre</span>
+              <input type="range" id="shift" min="{{min}}" max="{{max}}" value="{{min}}" [formControlName]="'shift'">
+              <span class="value">bordure</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-button">
+        <button type="submit" class="button-card"
+                [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+                class="button-card" (click)="addConfiguration()">Visualiser
+        </button>
+        <button
+          [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+          class="button-card" (click)="backToGame()">Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 

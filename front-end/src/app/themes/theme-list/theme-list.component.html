@@ -1,11 +1,13 @@
-
-<button class="button-card" p style="position: absolute; top: 2.8cm;" (click)="navigate()">Retour</button>
+<INPUT class="button-card" p style="position: absolute; top: 2.8cm;" TYPE="button" VALUE="Retour"
+       onClick="history.go(-1);">
 <app-theme-form></app-theme-form>
 <app-theme-search></app-theme-search>
-<div class="listTheme" *ngIf="themeList.length > 0; else elseBlock" p style="position: relative; top: 5cm; left: 12cm; right: 2cm;">
+<div class="listTheme" *ngIf="themeList.length > 0; else elseBlock" p
+     style="position: relative; top: 5cm; left: 12cm; right: 2cm;">
   <div class="theme" *ngFor="let theme of themeList">
     <div *ngIf="editThemeChose != theme.id">
-      <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (editTheme)="editTheme($event)"></app-theme><br>
+      <app-theme [theme]="theme" (deleteTheme)="deleteTheme($event)" (editTheme)="editTheme($event)"></app-theme>
+      <br>
     </div>
     <div *ngIf="editThemeChose == theme.id">
       <app-edit-theme [theme]=theme (editThemeDone)="editThemeDone($event)"></app-edit-theme>

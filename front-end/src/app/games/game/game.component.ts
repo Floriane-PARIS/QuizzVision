@@ -127,16 +127,6 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/' + this.animateurId + '/configuration-jeu/' + this.idUser + '/' + this.game.id]);
   }
 
-  /*quitGame(): void {
-    // this.gameService.deleteGame(this.game);
-
-    this.gameService.updateGameConfiguration(this.game, this.configuration);
-    this.backToQuizList();
-    /*this.gameService.setSelectedGame(undefined);
-    this.quizService.setSelectedQuiz(undefined);
-    this.router.navigate(['/quiz-list/' + this.idUser]);
-  }*/
-
   backToQuizList(): void {
     if (this.game.question[0] === null) {
       this.gameService.updateGameConfiguration(this.game, this.configuration);
@@ -159,43 +149,19 @@ export class GameComponent implements OnInit {
   }
 
   getBold(): string{
-      if(this.configuration != undefined){
-           return this.configuration.bold;
-      }
-       return 'normal';
+      return this.gameService.getBold(this.configuration);
   }
 
-
   getPolice(): string{
-      if(this.configuration != undefined){
-         return this.configuration.police;
-      }
-      return 'Arial';
+      return this.gameService.getPolice(this.configuration);
   }
 
   getSize(): string{
-      if(this.configuration != undefined){
-        return this.configuration.size+"px";
-      }
-      return "22px";
-  }
-
-  getBright(): string{
-    if(this.configuration != undefined){
-      return this.configuration.bright+ "%";
-    }
-    return "20%";
-  }
-
-  getContrast(): string{
-    if(this.configuration != undefined){
-      return this.configuration.bright+ "%";
-    }
-    return "20%";
+      return this.gameService.getSize(this.configuration);
   }
 
   getFiltre(): string{
-      return this.getBright() + " " + this.getContrast();
+      return this.gameService.getFiltre(this.configuration);;
   }
 
 }

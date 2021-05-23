@@ -1,35 +1,44 @@
-<div class="game-question" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+<div class="game-question"
+     [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
   <div [className]="(configuration.handicap === 'DMLA') ? 'game-configuration-border' : 'game-configuration-center'">
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
       Question : {{question.label}}
     </div>
     <div *ngIf="configuration.handicap === 'DMLA'">
-    <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"  (click)="sendConfig()">Configuration</button>
+      <button class="button-card"
+              [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+              (click)="sendConfig()">Configuration
+      </button>
     </div>
   </div>
   <br>
-    <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
-      <div *ngIf="configuration.handicap === 'DMLA'">
-      <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap ></app-game-response>
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
+    <div *ngIf="configuration.handicap === 'DMLA'">
+      <app-game-response class="game-result" [answer]=answer [handicap]=configuration.handicap></app-game-response>
       <br>
-      </div>
+    </div>
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border' : 'game-answer-center'">
       <div class="answer" *ngFor="let answer of question.answers; let i=index">
         <div *ngIf="!isValided">
-          <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-                  (click)="choseAnswer(answer)">{{i+1}} - {{answer.value}}</button>
+          <button class="button-card"
+                  [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+                  (click)="choseAnswer(answer)">{{i+1}} - {{answer.value}}
+          </button>
         </div>
         <div *ngIf="isValided">
-          {{i+1}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
+          {{i+1}} - {{answer.value}}
+          <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container>
         </div>
       </div>
     </div>
-    </div>
-    <br>
-    <div class="game-button" *ngIf="!isValided">
-      <button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
-              (click)="valideQuestionAnswered()">Valide</button>
-    </div>
+  </div>
+  <br>
+  <div class="game-button" *ngIf="!isValided">
+    <button class="button-card"
+            [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}"
+            (click)="valideQuestionAnswered()">Valide
+    </button>
+  </div>
 </div>
 
 

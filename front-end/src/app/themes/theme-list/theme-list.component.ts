@@ -34,16 +34,6 @@ export class ThemeListComponent implements OnInit {
     this.themeService.deleteTheme(theme);
   }
 
-  navigate(): void{
-    console.log('event received from child: new quiz' + this.themeService.origin);
-    if (this.themeService.origin){
-      this.router.navigate(['/' + this.animateurId + '/quiz-form']);
-    }
-    else {
-      this.router.navigate(['/' + this.animateurId + '/quiz-list']);
-    }
-  }
-
   editTheme(theme: Theme): void {
     console.log('edit');
     this.editThemeChose = theme.id;

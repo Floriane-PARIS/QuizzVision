@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Game } from 'src/models/game.model';
 import { Quiz } from 'src/models/quiz.model';
-import { Resultat } from 'src/models/Resultat.model';
 import { User } from 'src/models/user.model';
 import { GameService } from 'src/services/game.service';
 import { QuizService } from 'src/services/quiz.service';
@@ -101,32 +100,11 @@ import {AnimateurService} from "../../../services/animateur.service";
     });
   }
 
-
-  navigate1(): void{
-    console.log('event received from child: new result' + this.gameService.origin);
-    if (this.gameService.origin == true){
-      this.router.navigate(['/' + this.animateurId + '/quiz-list/'+ this.user.id]);
-
-    }
-    else {
-      this.router.navigate(['/' + this.animateurId + '/resultat-list']);
-    }
-  }
-
-  navigate(): void {
-      if(this.admin){
-          this.router.navigate(['/' + this.animateurId + '/resultat-list']);
-      } else {
-          this.router.navigate(['/' + this.animateurId + '/resultat-list/'+ this.user.id]);
-      }
-  }
-
   isAdmin(): boolean{
       return this.admin;
   }
 
   modifQuiz(): void{
-    this.quizService.origin = false;
     this.router.navigate(['/' + this.animateurId + '/edit-quiz/' + this.quiz.id]);
   }
 

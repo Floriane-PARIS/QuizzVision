@@ -106,42 +106,20 @@ export class GameStartComponent implements OnInit {
     this.router.navigate(['/' + this.animateurId + '/game/' + this.user.id + '/' + string  ]);
   }
 
-    getBold(): string{
-      if(this.configuration != undefined){
-           return this.configuration.bold;
-      }
-       return 'normal';
-    }
+  getBold(): string{
+      return this.gameService.getBold(this.configuration);
+  }
 
+  getPolice(): string{
+      return this.gameService.getPolice(this.configuration);
+  }
 
-    getPolice(): string{
-      if (this.configuration != undefined){
-         return this.configuration.police;
-      }
-      return 'Arial';
-    }
+  getSize(): string{
+      return this.gameService.getSize(this.configuration);
+  }
 
-    getSize(): string{
-      if(this.configuration != undefined){
-        return this.configuration.size+"px";
-      }
-      return "22px";
-    }
-    getBright(): string{
-      if(this.configuration != undefined){
-        return this.configuration.bright+ "%";
-      }
-      return "20%";
-    }
-
-    getContrast(): string{
-      if(this.configuration != undefined){
-        return this.configuration.bright+ "%";
-      }
-      return "20%";
-    }
-    getFiltre(): string{
-      return this.getBright() + " " + this.getContrast();
-    }
+  getFiltre(): string{
+      return this.gameService.getFiltre(this.configuration);;
+  }
 
 }

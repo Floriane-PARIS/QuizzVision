@@ -29,9 +29,8 @@ export class UserComponent implements OnInit {
   }
 
   select(): void {
-    this.gameService.origin = true;
-    console.log(this.gameService.origin);
     this.userSelected.emit(this.user);
+    this.userService.setSelectedUser(this.user.id);
   }
 
   edit(): void {

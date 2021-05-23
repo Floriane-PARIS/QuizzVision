@@ -40,13 +40,17 @@ export class HeaderComponent implements OnInit {
     this.animateurService.animateurSelected$.subscribe((animateur) => {
       this.animateur = animateur;
     });
+    console.log("user "+this.user);
+        console.log("game "+this.game);
+        console.log("quiz "+this.quiz);
+        console.log("animateur "+this.animateur);
   }
 
   ngOnInit(): void {
+
   }
 
   otherUsers(): void {
-    this.gameService.origin = false;
     this.animateurService.setSelectedAnimateur(this.animateur.id);
     this.userService.setSelectedUser(undefined);
     this.router.navigate(['/' + this.animateur.id + '/user-list']);

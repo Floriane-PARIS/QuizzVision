@@ -1,4 +1,4 @@
-import { Configuration } from "./configuration.model";
+import { Configuration } from './configuration.model';
 
 export interface User {
     id: string;

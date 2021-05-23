@@ -1,12 +1,11 @@
-<button class="button-card" (click)="navigate()">Retour</button>
-<!--routerLink="/quiz-list"-->
+<INPUT class="button-card" TYPE="button" VALUE="Retour" onClick="history.go(-1);">
 <ng-container *ngIf="quiz">
   <br>
   <h2>le nom du quiz : {{quiz.name}}</h2>
   <div>
     <label>
       Nouveau nom de quiz
-      <input class="input-custom" type="text" id="subject" [(ngModel)] = "quizName" [ngModelOptions]="{standalone: true}">
+      <input class="input-custom" type="text" id="subject" [(ngModel)]="quizName" [ngModelOptions]="{standalone: true}">
       <button type="submit" class="button-card" (click)="modifQuizName()">Modifier</button>
     </label>
   </div>
@@ -15,7 +14,7 @@
   <div>
     <label>
       Nouveau nom de thème
-      <select name="theme-field" id="theme" [(ngModel)] = "quizTheme">
+      <select name="theme-field" id="theme" [(ngModel)]="quizTheme">
         <option *ngFor="let theme of themes" [value]="theme.subject">
           {{theme.subject}}
         </option>

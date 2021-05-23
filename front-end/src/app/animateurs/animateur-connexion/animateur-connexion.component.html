@@ -1,32 +1,39 @@
 <head>
-    <link ref="stylesheet" href="style.css">
-    <link ref="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link ref="stylesheet" href="style.css">
+  <link ref="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 </head>
 
 
 <body>
-    <form class="animateur-connexion" [formGroup]="connexionForm">
-        <h1>Se connecter</h1>
+<form class="animateur-connexion" [formGroup]="connexionForm">
+  <h1>Se connecter</h1>
 
-        <div class="inputs">
-            <label for="name">
-                <i class="fa fa-user" style="color: forestgreen;"></i>
-                <input type="name" placeholder="Nom de l'utilisateur" id="name" [formControlName]="'name'">
-            </label>
-            <label for="password">
-                <i class="fa fa-lock" style="color: forestgreen;"></i>
-                <input type="password" placeholder="Mot de passe" id="password" [formControlName]="'password'">
-            </label>
-        </div>
-
-      <div *ngIf="messageError.length > 0">
-        {{messageError}}
+  <div class="inputs">
+    <label for="name">
+      <i class="fa fa-user" style="color: forestgreen;"></i>
+      <input type="name" placeholder="Nom de l'utilisateur" id="name" [formControlName]="'name'">
+    </label>
+    <label class="password" for="password">
+      <i class="fa fa-lock" style="color: forestgreen;"></i>
+      <input [type]="isActive ? 'text' : 'password'" placeholder="Mot de passe" id="password"
+             [formControlName]="'password'">
+      <div *ngIf="isActive">
+        <i class="fa fa-eye" aria-hidden="true" cursor="pointer" (click)="isActived(false)"> </i>
       </div>
+      <div *ngIf="!isActive">
+        <i class="fa fa-eye-slash" aria-hidden="true" (click)="isActived(true)"></i>
+      </div>
+    </label>
+  </div>
 
-        <p class="inscription">Je n'ai pas de compte. Je m'en <span routerLink="/animateur-inscription">crée</span> un.</p>
-        <div>
-            <button type="submit" (click)="checkData()">Se connecter</button>
-        </div>
-    </form>
+  <div *ngIf="messageError.length > 0">
+    {{messageError}}
+  </div>
+
+  <p class="inscription">Je n'ai pas de compte. Je m'en <span routerLink="/animateur-inscription">crée</span> un.</p>
+  <div>
+    <button type="submit" (click)="checkData()">Se connecter</button>
+  </div>
+</form>
 </body>

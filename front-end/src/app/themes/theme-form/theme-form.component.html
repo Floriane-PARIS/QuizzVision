@@ -1,14 +1,14 @@
 <div class="card" p style="position: absolute; left:0cm; top: 4cm;">
 
   <form class="theme-form" [formGroup]="themeForm">
-      <h3 class="title" p style="font-family: cursive;">Ajouter un nouveau thème</h3>
-      <label for="title">
-          Nom:
-          <input class="input-custom" type="text" id="subject" [formControlName]="'subject'">
-        <span class="error" id="errorname"></span>
-        <br>
-        <button type="submit" class="button-card" (click)="addTheme()">Ajouter</button>
-      </label>
+    <h3 class="title" p style="font-family: cursive;">Ajouter un nouveau thème</h3>
+    <label for="title">
+      Nom:
+      <input class="input-custom" type="text" id="subject" [formControlName]="'subject'">
+      <span class="error" id="errorname"></span>
+      <br>
+      <button type="submit" class="button-card" (click)="addTheme()">Ajouter</button>
+    </label>
   </form>
 
 </div>
