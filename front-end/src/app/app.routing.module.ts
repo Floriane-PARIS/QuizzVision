@@ -44,6 +44,7 @@ const routes: Routes = [
     {path: 'animateur-connexion', component: ConnexionFormComponent},
     {path: 'animateur', component: AnimateurComponent},
     {path: 'error', component: ErrorComponent},
+    {path: '', redirectTo: '/animateur', pathMatch: 'full'},
     {path: '**', redirectTo: 'error' },
 ];
 
