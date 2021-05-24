@@ -86,6 +86,7 @@ import { AnimateurService } from "src/services/animateur.service";
     ajoutAnimateur(): void {
       if (this.isNoError()) {
         const animateurToCreate: Animateur = this.inscriptionForm.getRawValue() as Animateur;
+        console.log(animateurToCreate);
         this.animateurService.addAnimateur(animateurToCreate);
         this.router.navigate(['/animateur-connexion']);
         console.log("ajouter");

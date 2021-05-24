@@ -46,8 +46,6 @@ import { UserService } from "src/services/user.service";
         this.connexionForm = this.formBuilder.group({
           name: [''],
           password: [''],
-          mail:[''],
-          passwordConfirmed: [''],
       });
 
     }
@@ -63,9 +61,9 @@ import { UserService } from "src/services/user.service";
 
       const tempAnimateur = this.connexionForm.getRawValue() as Animateur;
       console.log(tempAnimateur);
-      this.animateurService.retrieveAnimateurs();
       console.log(this.animateurs);
       this.animateurs.forEach( animateur => {
+        console.log(animateur.name + ' ' + animateur.password);
         if(animateur.name == tempAnimateur.name && animateur.password == tempAnimateur.password){
           console.log(true);
           this.animateur = animateur;
@@ -75,7 +73,7 @@ import { UserService } from "src/services/user.service";
       });
       this.messageError = "erreur sur le NOM ou sur le MOT DE PASSE";
       return
-     
+
     }
 
     selectAdmin(animateur: Animateur): void {
