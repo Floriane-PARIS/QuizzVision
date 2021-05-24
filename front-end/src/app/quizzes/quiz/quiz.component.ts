@@ -76,7 +76,9 @@ export class QuizComponent implements OnInit {
   }
 
   delete(): void {
-    this.deleteQuiz.emit(this.quiz);
+      if(confirm('Etes-vous sûr de vouloir supprimer le quiz '+ this.quiz.name+' ?')) {
+        this.deleteQuiz.emit(this.quiz);
+      }
   }
 
   hasConfiguration(): Boolean{
@@ -86,9 +88,4 @@ export class QuizComponent implements OnInit {
     }
     return false;
   }
-
-  /*modif(): void{
-    this.quizService.origin = true;
-    this.router.navigate(['/edit-quiz/' + this.quiz.id]);
-  }*/
 }

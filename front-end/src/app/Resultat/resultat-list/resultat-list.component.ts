@@ -97,8 +97,10 @@ import {AnimateurService} from "../../../services/animateur.service";
 
   delete(game: Game): void {
     // this.userService.setSelectedUser(undefined);
-    this.gameService.deleteGame(game);
 
+    if(confirm('Etes-vous sûr de vouloir supprimer cette partie ?')) {
+          this.gameService.deleteGame(game);
+    }
   }
 
   getUserName(game: Game): String {

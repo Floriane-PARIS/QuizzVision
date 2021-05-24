@@ -17,6 +17,7 @@ import { ResultatDetailsComponent } from './Resultat/resultat-details/resultat-d
 import { InscriptionComponent } from './animateurs/animateur-inscription/animateur-inscription.component';
 import { ConnexionFormComponent } from './animateurs/animateur-connexion/animateur-connexion.component';
 import {AnimateurComponent} from './animateurs/animateur/animateur.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -41,8 +42,9 @@ const routes: Routes = [
     {path: ':animateurId/configuration-jeu/:idUser/:id', component: ConfigurationJeuComponent},
     {path: 'animateur-inscription', component: InscriptionComponent},
     {path: 'animateur-connexion', component: ConnexionFormComponent},
-    { path: '', redirectTo: '/animateur', pathMatch: 'full' },
     {path: 'animateur', component: AnimateurComponent},
+    {path: 'error', component: ErrorComponent},
+    {path: '**', redirectTo: 'error' },
 ];
 
 @NgModule({

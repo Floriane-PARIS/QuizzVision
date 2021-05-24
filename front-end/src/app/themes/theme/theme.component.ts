@@ -36,7 +36,10 @@ export class ThemeComponent implements OnInit {
   }
 
   delete(): void {
-    this.deleteTheme.emit(this.theme);
+    if(confirm('Etes-vous sûr de vouloir supprimer le thème '+ this.theme.subject+' ?')) {
+      this.deleteTheme.emit(this.theme);
+    }
+
   }
 }
 
