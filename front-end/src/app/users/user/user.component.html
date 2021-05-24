@@ -16,18 +16,14 @@
         src="https://tse4.mm.bing.net/th?id=OIP.haNejAiMBAjpH6mW2J9JwAAAAA&pid=Api"
         alt="Person" class="card__image">
     </div>
-    <br>
-    <br>
     {{user.firstName}} {{user.lastName}}
 
   </h2>
-  <h4>
-    Souffre du trouble: <br> {{user.maladies}}
+    Souffre du trouble: {{user.maladies}}
     <br>
-    A savoir sur le patient: <br> {{user.commentaires}}
+    A savoir sur le patient:  {{user.commentaires}}
     <br>
-    Age du patient: <br>{{user.age}}
-  </h4>
+    Age du patient: {{user.age}}
   <button class="button-card draw-border select" (click)="select()">Selectionner</button>
   <button class="button-card draw-border edit" (click)="edit()">Modifier</button>
   <button class="button-card draw-border" (click)="delete()">Supprimer</button>

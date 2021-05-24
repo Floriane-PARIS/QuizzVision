@@ -21,14 +21,14 @@
   grid-gap: 5px;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
   font-family: 'Baloo Paaji 2', cursive;
 }
 
 .card {
   background: linear-gradient(125deg,rgba(23, 126, 3, 0.623),rgba(145, 6, 87, 0.623));
   border: transparent;
-  height: max-content;
+  height: min-content;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
