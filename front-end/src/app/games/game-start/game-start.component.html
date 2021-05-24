@@ -1,19 +1,23 @@
 <!--button class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" routerLink="/quiz-list">Back</button-->
 <div class="game" *ngIf="quiz && (configuration !== undefined)">
-  <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-border' : 'game-center'">
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-question start-border' : 'game-question'">
+  <div [className]="(configuration.handicap === 'DMLA') ? 'game-configuration-border start-text' : 'configuration-center'" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}">
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-question-border' : 'game-question-center'">
       <br>
       Vous avez choisi le Quiz "{{quiz.name}}"
         <br>
         dans le theme "{{quiz.theme}}"
-        <br>
-        <h4 p style="color: firebrick;">PS: Si vous souhaitez quitter le jeu en cours de route, passez la main à votre animateur </h4>
-
     </div>
+    <div [className]="(configuration.handicap === 'DMLA') ? 'game-button' : 'game-question-center'">
+        <h4 p style="color: firebrick;">PS: Si vous souhaitez quitter le jeu en cours de route, passez la main à votre animateur </h4>
+    </div>
+  </div>
     <div [className]="(configuration.handicap === 'DMLA') ? 'game-response-border' : 'game-response-center'">
       <button type="button" class="button-card" [ngStyle]="{'font-weight': getBold(), 'font-family': getPolice(), 'font-size': getSize(), 'filter': getFiltre()}" (click)="addGame()">Commencer</button>
     </div>
   </div>
+</div>
 </div>
 
 <button class="button" (click)="backToQuizList()" >Retour</button>

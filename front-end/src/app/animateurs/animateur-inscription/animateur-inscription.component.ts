@@ -52,6 +52,7 @@ import { AnimateurService } from "src/services/animateur.service";
 
     isNameAlreadyTaken(): boolean {
       let already = false;
+      console.log(this.animateurs);
       this.animateurs.forEach(element => {
         if (element.name == this.inscriptionForm.value.name) {
           already = true;

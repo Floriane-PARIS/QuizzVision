@@ -3,13 +3,22 @@
 @import '../../questions/game-question/game-question.component.scss';
 @import '../../games/game-result/game-result.component.scss';
 
-.start {
-  font-size: 30px;
-  text-align: center;
-  height: 20em; /* hauteur du parent */
-  line-height: 5em; /* hauteur de ligne (identique) */
-  font-weight: bold;
+.start-text{
+  display: flex;
+  flex-direction: column;
+  // border: 5px solid moccasin;
+  height: 100%;
 }
+
+.start-border {
+  display: flex;
+  flex-direction: row;
+  // border: 5px solid blue;
+  height: 100%;
+}
+
+
+
 
 .button-card{
   display: table-cell;
