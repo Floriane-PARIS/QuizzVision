@@ -54,13 +54,13 @@
 
 .game-answer-border {
   display: flex;
-  width: calc(80% - var(--slider) * 1%);
+  width: min(20cm, calc(80% - var(--slider) * 1%));
 
   justify-content: flex-end;
   align-items: flex-end;
   flex-direction: column;
 
-  // border: 5px solid cornflowerblue;
+  //border: 5px solid cornflowerblue;
 }
 
 .game-answer-response {

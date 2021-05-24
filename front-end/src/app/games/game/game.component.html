@@ -38,10 +38,10 @@
          *ngIf="(game.question[0] === null) && (game !== undefined)">
       <app-game-result [message]="'Vous avez fini le Quiz ! BRAVO ! \n Vous avez obtenu :'"
                        [handicap]=configuration.handicap></app-game-result>
-      <br>
       {{getResultat()}}
-      <br>
+      <div [className]="(configuration.handicap === 'DMLA') ? 'game-answer-border game-quit':'' ">
       <h3 p style="color: firebrick;">Passez la main à votre animateur pour sortir du quiz</h3>
+      </div>
       <div class="game-button" *ngIf="newGame != null">
         Vous pouvez
         <button type="button" class="button-card"
