@@ -75,16 +75,7 @@ import { UserService } from "src/services/user.service";
       });
       this.messageError = "erreur sur le NOM ou sur le MOT DE PASSE";
       return
-      //console.log("erreur sur nom ou mot de passe");
-     //Pascal Nug Tsamo
-
-
-      /*if(this.inscription.name == this.name && this.inscription.password == this.password){
-        return true;
-      }
-      else{
-        return false;
-      }*/
+     
     }
 
     selectAdmin(animateur: Animateur): void {
